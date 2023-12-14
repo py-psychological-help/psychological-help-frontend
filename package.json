@@ -1,20 +1,7 @@
 {
-	"name": "storybook-example",
+	"name": "psychological-help-frontend",
 	"version": "0.1.0",
 	"private": true,
-	"dependencies": {
-		"@testing-library/jest-dom": "^5.14.1",
-		"@testing-library/react": "^13.0.0",
-		"@testing-library/user-event": "^13.2.1",
-		"clsx": "^1.2.1",
-		"gh-pages": "^6.1.0",
-		"prop-types": "15.8.1",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-scripts": "5.0.1",
-		"sass": "^1.62.1",
-		"web-vitals": "^2.1.0"
-	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
@@ -24,60 +11,28 @@
 		"build-storybook": "storybook build",
 		"lint": "eslint . --ext .js,.jsx .",
 		"lint:fix": "npm run lint -- --fix",
+		"lint:scss": "npx stylelint **/*.scss",
+		"lint:scss:fix": "npx stylelint **/*.scss --fix",
 		"format": "prettier . --write",
 		"prepare": "husky install",
 		"commit": "cz",
 		"deploy": "gh-pages -d dist"
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest",
-			"airbnb",
-			"airbnb/hooks",
-			"prettier"
-		],
-		"rules": {
-			"react/jsx-filename-extension": [
-				1,
-				{
-					"extensions": [
-						".js",
-						".jsx"
-					]
-				}
-			],
-			"react/react-in-jsx-scope": "off",
-			"import/prefer-default-export": "off",
-			"react/function-component-definition": "off",
-			"react/jsx-props-no-spreading": "off",
-			"react/no-unescaped-entities": "off",
-			"react/button-has-type": "off"
-		},
-		"overrides": [
-			{
-				"files": [
-					"**/*.stories.*",
-					"src/stories/**/*"
-				],
-				"rules": {
-					"import/no-anonymous-default-export": "off",
-					"import/no-extraneous-dependencies": "off"
-				}
-			}
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+	"dependencies": {
+		"@reduxjs/toolkit": "^2.0.1",
+		"@testing-library/jest-dom": "^5.14.1",
+		"@testing-library/react": "^13.0.0",
+		"@testing-library/user-event": "^13.2.1",
+		"clsx": "^1.2.1",
+		"gh-pages": "^6.1.0",
+		"prop-types": "15.8.1",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-redux": "^9.0.4",
+		"react-router-dom": "^6.14.1",
+		"react-scripts": "5.0.1",
+		"sass": "^1.62.1",
+		"web-vitals": "^2.1.0"
 	},
 	"devDependencies": {
 		"@storybook/addon-essentials": "7.0.7",
@@ -93,11 +48,26 @@
 		"cz-conventional-changelog": "^3.3.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-storybook": "^0.6.15",
 		"husky": "^8.0.3",
 		"lint-staged": "^13.2.1",
 		"prettier": "^2.8.8",
 		"storybook": "7.0.7",
+		"stylelint": "^16.0.2",
+		"stylelint-config-standard-scss": "^12.0.0",
 		"webpack": "5.81.0"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	},
 	"lint-staged": {
 		"*.{js,jsx}": "npm run lint",
