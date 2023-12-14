@@ -1,5 +1,12 @@
+import React from 'react';
 import cls from './Footer.module.scss';
 
-const Footer = () => <div>Footer</div>;
+const Footer = () => {
+	return (
+		<div>
+			<h1>Footer</h1>
+		</div>
+	);
+};
 
 export default Footer;

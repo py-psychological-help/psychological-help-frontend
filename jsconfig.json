@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
-		"module": "ES6",
+		"module": "CommonJS",
+		"target": "ES6",
 		"jsx": "preserve",
 		"checkJs": false
-	},
-	"exclude": ["node_modules"]
+	}
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import cls from './Account.module.scss';
+import cls from './AccountPage.module.scss';
 
-const Account = () => (
+const AccountPage = () => (
 	<div>
 		<h1 className={cls.lc}>Личный кабинет</h1>
 	</div>
 );
 
-export default Account;
+export default AccountPage;

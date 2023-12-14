@@ -1,18 +1,29 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Login from '../../pages/Login/Login';
+import AccountPage from '../../pages/AccountPage/AccountPage';
+import LoginPage from '../../pages/LoginPage/LoginPage';
 import MainPage from '../../pages/MainPage/MainPage';
-import Account from '../../pages/Account/Account';
-import Register from '../../pages/Register/Register';
+import RegisterPage from '../../pages/RegisterPage/RegisterPage';
+import AboutProjectPage from '../../pages/AboutProjectPage/AboutProjectPage';
+import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
+import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 const App = () => {
 	return (
-		<Routes>
-			<Route element={<MainPage />} path="/" />
-			<Route element={<Account />} path="/account" />
-			<Route element={<Login />} path="signin" />
-			<Route element={<Register />} path="signup" />
-		</Routes>
+		<>
+			<Header />
+			<Routes>
+				<Route element={<MainPage />} path="/" />
+				<Route element={<AboutProjectPage />} path="about" />
+				<Route element={<AboutHelpPage />} path="about-help" />
+				<Route element={<HowItWorksPage />} path="how-it-works" />
+				<Route element={<AccountPage />} path="account" />
+				<Route element={<LoginPage />} path="signin" />
+				<Route element={<RegisterPage />} path="signup" />
+			</Routes>
+			<Footer />
+		</>
 	);
 };
 

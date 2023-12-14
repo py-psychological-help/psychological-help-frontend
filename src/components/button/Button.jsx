@@ -1,5 +1,7 @@
-import cls from './Buttons.module.scss';
+import cls from './Button.module.scss';
 
-const Button = () => <button>click</button>;
+const Button = () => {
+	return <button className={cls.button}>click</button>;
+};
 
 export default Button;
