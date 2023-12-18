@@ -8,6 +8,7 @@ import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
 import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import Principles from '../Principles/Principles';
 
 const App = () => {
 	return (
@@ -21,6 +22,7 @@ const App = () => {
 				<Route element={<AccountPage />} path="account" />
 				<Route element={<LoginPage />} path="signin" />
 				<Route element={<RegisterPage />} path="signup" />
+				<Route element={<Principles />} path="signup" />
 			</Routes>
 			<Footer />
 		</>
