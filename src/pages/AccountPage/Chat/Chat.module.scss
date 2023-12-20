@@ -1,0 +1,40 @@
+.chat {
+  display: flex;
+  justify-content: space-between;
+  height: 79px;
+  border: 1px solid #4F4F4F;
+}
+
+.chat:hover {
+  background-color: #F2F2F2;
+}
+
+.chatMessage {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #4F4F4F;
+  margin: 17px 8px;
+  padding: 0;
+}
+
+.chatButton {
+  border: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #21272A;
+  align-self: last baseline;
+  text-decoration: none;
+  margin: 50px 8px 8px 0;
+}
+
+.chatButton:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 1s ease;
+}
+
+
