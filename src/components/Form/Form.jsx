@@ -1,6 +1,6 @@
 import React from 'react';
 import cls from './Form.module.scss';
-import Button from '../button/Button';
+import Button from '../Button/Button';
 
 const Form = () => {
 	return (
