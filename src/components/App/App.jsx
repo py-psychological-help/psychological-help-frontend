@@ -6,6 +6,7 @@ import RegisterPage from '../../pages/RegisterPage/RegisterPage';
 import AboutProjectPage from '../../pages/AboutProjectPage/AboutProjectPage';
 import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
 import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
+import VerificationPage from '../../pages/VerificationPage/VerificationPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -21,6 +22,7 @@ const App = () => {
 				<Route element={<AccountPage />} path="account" />
 				<Route element={<LoginPage />} path="signin" />
 				<Route element={<RegisterPage />} path="signup" />
+				<Route element={<VerificationPage />} path="verification" />
 			</Routes>
 			<Footer />
 		</>
