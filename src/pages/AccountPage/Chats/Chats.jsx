@@ -2,8 +2,6 @@ import React from 'react';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 
-// import { NavLink } from "react-router-dom";
-
 const chats = [
 	{
 		id: 10,

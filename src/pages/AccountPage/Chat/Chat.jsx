@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import cls from './Chat.module.scss';
 
-// eslint-disable-next-line react/prop-types
 function Chat({ name }) {
 	return (
 		<div className={cls.chat}>
@@ -13,5 +13,9 @@ function Chat({ name }) {
 		</div>
 	);
 }
+
+Chat.propTypes = {
+	name: PropTypes.string.isRequired,
+};
 
 export default Chat;
