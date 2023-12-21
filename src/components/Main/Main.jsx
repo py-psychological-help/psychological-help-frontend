@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from './Main.module.scss';
-import Button from '../Button/Button';
+import Button from '../buttonHeader/Button';
 
 function Main() {
     return (
@@ -12,12 +12,13 @@ function Main() {
                     Project info
                 </p>
                 <NavLink to="/profile">
-                    <Button 
-                    additionalStyles={styles.mainBtn} 
-                    buttonText="Help me!" />
+                    <Button
+                        additionalStyles={styles.mainBtn}
+                        buttonText="Help me!"/>
                 </NavLink>
             </div>
         </section>
     );
 }
+
 export default Main;

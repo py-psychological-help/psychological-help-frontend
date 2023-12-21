@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from './NotAuthNavigation.module.scss';
-import Button from '../Button/Button';
+import Button from '../buttonHeader/Button';
 
 function NotAuthNavigation() {
     return (
         <nav className='header__nav'>
-            <NavLink to="/" className={styles.header__logo} />
+            <NavLink to="/" className={styles.header__logo}/>
             <div className="header__nav-links">
                 <NavLink to="/about" className={styles.navLink}>
                     О нас
@@ -20,7 +20,7 @@ function NotAuthNavigation() {
             </div>
             <div className="header__nav-authbar">
                 <NavLink to="/signin">
-                    <Button buttonText="Войти" />
+                    <Button buttonText="Войти"/>
                 </NavLink>
             </div>
         </nav>

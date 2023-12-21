@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import cls from './RegisterStep3Page.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 const RegisterStep3Page = () => {
-    const { register, handleSubmit } = useForm();
+    const {register, handleSubmit} = useForm();
     const onSubmit = (data) => console.log(data);
 
     return (
@@ -26,7 +26,7 @@ const RegisterStep3Page = () => {
                         + Добавить
                         <input
                             className={cls.input}
-                            {...register('certificate', { required: true })}
+                            {...register('certificate', {required: true})}
                             type="file"
                             multiple
                             accept="image/*"
@@ -38,12 +38,12 @@ const RegisterStep3Page = () => {
             <ul className={cls.buttons}>
                 <li>
                     <Link to="/signup/step_2">
-                        <Button name="Назад" />
+                        <Button name="Назад"/>
                     </Link>
                 </li>
                 <li>
                     <Link to="/signup/">
-                        <Button name="Отправить на верификацию" type="submit" />
+                        <Button name="Отправить на верификацию" type="submit"/>
                     </Link>
                 </li>
             </ul>

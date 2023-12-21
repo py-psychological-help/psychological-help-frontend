@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import {Link} from 'react-router-dom';
+import {useForm} from 'react-hook-form';
 import cls from './RegisterStep1Page.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 const RegisterStep1Page = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
     } = useForm();
     const onSubmit = (data) => console.log(data);
 
@@ -23,13 +23,13 @@ const RegisterStep1Page = () => {
                 noValidate
             >
                 <input
-                    {...register('email', { required: true })}
+                    {...register('email', {required: true})}
                     placeholder="Почта"
                     type="email"
                 />
                 {errors.email && <span>Это обязательное поле</span>}
                 <input
-                    {...register('login', { required: true })}
+                    {...register('login', {required: true})}
                     placeholder="Логин"
                     type="text"
                 />
@@ -63,12 +63,12 @@ const RegisterStep1Page = () => {
             <ul className={cls.buttons}>
                 <li>
                     <Link to="/signup/">
-                        <Button name="Назад" />
+                        <Button name="Назад"/>
                     </Link>
                 </li>
                 <li>
                     <Link to="/signup/step_2">
-                        <Button name="Далее" type="submit" />
+                        <Button name="Далее" type="submit"/>
                     </Link>
                 </li>
             </ul>

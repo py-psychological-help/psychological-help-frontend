@@ -1,39 +1,42 @@
 {
-	"extends": [
-		"react-app",
-		"react-app/jest",
-		"airbnb",
-		"airbnb/hooks",
-		"prettier",
-		"plugin:storybook/recommended"
-	],
-	"rules": {
-		"react/jsx-filename-extension": [
-			1,
-			{
-				"extensions": [".js", ".jsx"]
-			}
-		],
-		"react/prop-types": "off",
-		"react/react-in-jsx-scope": "off",
-		"import/prefer-default-export": "off",
-		"react/function-component-definition": "off",
-		"react/jsx-props-no-spreading": "off",
-		"react/no-unescaped-entities": "off",
-		"react/button-has-type": "off",
-		"no-unused-vars": "warn",
-		"arrow-body-style": "off"
-	},
-	"overrides": [
-		{
-			"files": [
-				"src/components/**/*.stories.*",
-				"src/pages/**/*.stories.*"
-			],
-			"rules": {
-				"import/no-anonymous-default-export": "off",
-				"import/no-extraneous-dependencies": "off"
-			}
-		}
-	]
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unescaped-entities": "off",
+    "react/button-has-type": "off",
+    "no-unused-vars": "warn",
+    "arrow-body-style": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/components/**/*.stories.*",
+        "src/pages/**/*.stories.*"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off",
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
 }

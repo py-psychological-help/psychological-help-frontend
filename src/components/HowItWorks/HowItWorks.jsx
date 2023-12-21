@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from './HowItWorks.module.scss';
-import Button from '../Button/Button';
+import Button from '../buttonHeader/Button';
 
 function HowItWorks() {
     return (
@@ -24,10 +24,11 @@ function HowItWorks() {
                 <NavLink to="/profile">
                     <Button
                         additionalStyles={styles.stepsBtn}
-                        buttonText="Help me!" />
+                        buttonText="Help me!"/>
                 </NavLink>
             </div>
         </section>
     );
 }
+
 export default HowItWorks;

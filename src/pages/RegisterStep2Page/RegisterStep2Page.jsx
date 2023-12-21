@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import cls from './RegisterStep2Page.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 const RegisterStep2Page = () => {
     const {

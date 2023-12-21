@@ -5,6 +5,6 @@ export default {
     component: Sidebar,
     tags: ['autodocs'],
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: {control: 'color'},
     },
 };
