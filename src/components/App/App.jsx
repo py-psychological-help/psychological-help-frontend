@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import AccountPage from '../../pages/AccountPage/AccountPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import MainPage from '../../pages/MainPage/MainPage';
@@ -9,15 +10,18 @@ import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
 import VerificationPage from '../../pages/VerificationPage/VerificationPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import RegisterStep1Page from '../../pages/RegisterStep1Page/RegisterStep1Page';
-import RegisterStep2Page from '../../pages/RegisterStep2Page/RegisterStep2Page';
-import RegisterStep3Page from '../../pages/RegisterStep3Page/RegisterStep3Page';
-import cls from './App.module.scss';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+
 
 const App = () => {
+
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
+
 	return (
 		<div className={cls.app}>
-			<Header />
+			<Header 
+         isLoggedIn={isLoggedIn}
+      />
 
 			<main className={cls.main}>
 				<Routes>
@@ -37,9 +41,8 @@ const App = () => {
           <Route element={<VerificationPage />} path="verification" />
 				</Routes>
 			</main>
-
 			<Footer />
-		</div>
+		</>
 	);
 };
 
