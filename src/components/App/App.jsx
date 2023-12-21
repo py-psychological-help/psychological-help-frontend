@@ -6,6 +6,7 @@ import RegisterPage from '../../pages/RegisterPage/RegisterPage';
 import AboutProjectPage from '../../pages/AboutProjectPage/AboutProjectPage';
 import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
 import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
+import VerificationPage from '../../pages/VerificationPage/VerificationPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import RegisterStep1Page from '../../pages/RegisterStep1Page/RegisterStep1Page';
@@ -17,6 +18,7 @@ const App = () => {
 	return (
 		<div className={cls.app}>
 			<Header />
+
 			<main className={cls.main}>
 				<Routes>
 					<Route element={<MainPage />} path="/" />
@@ -31,8 +33,11 @@ const App = () => {
 						<Route element={<RegisterStep2Page />} path="step_2" />
 						<Route element={<RegisterStep3Page />} path="step_3" />
 					</Route>
+          /* вторая версия страницы верификации */
+          <Route element={<VerificationPage />} path="verification" />
 				</Routes>
 			</main>
+
 			<Footer />
 		</div>
 	);
