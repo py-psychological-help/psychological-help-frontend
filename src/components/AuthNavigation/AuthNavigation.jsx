@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import styles from './AuthNavigation.module.scss';
-import Button from '../Button/Button';
+import Button from '../buttonHeader/Button';
 
 function AuthNavigation() {
     return (
         <nav className={styles.headerNav}>
-            <NavLink to="/" className={styles.header__logo} />
+            <NavLink to="/" className={styles.header__logo}/>
             <div className={styles.navLinks}>
                 <NavLink to="/about" className={styles.navLink}>
                     О нас
@@ -19,11 +19,11 @@ function AuthNavigation() {
                 </NavLink>
             </div>
             <div className={styles.navAuthbar}>
-                <NavLink to="/profile">
-                    <Button 
-                    buttonText="Личный кабинет"
-                    additionalStyles={styles.navBtn} 
-                     />
+                <NavLink to="/account">
+                    <Button
+                        buttonText="Личный кабинет"
+                        additionalStyles={styles.navBtn}
+                    />
                 </NavLink>
             </div>
         </nav>

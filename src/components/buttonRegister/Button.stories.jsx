@@ -1,8 +1,8 @@
-import HowItWorks from './HowItWorks';
+import Button from './Button';
 
 export default {
-    title: 'Example/HowItWorks',
-    component: HowItWorks,
+    title: 'Example/Button',
+    component: Button,
     tags: ['autodocs'],
     argTypes: {
         backgroundColor: {control: 'color'},
@@ -12,26 +12,26 @@ export default {
 export const Primary = {
     args: {
         primary: true,
-        label: 'HowItWorks',
+        label: 'Button',
     },
 };
 
 export const Secondary = {
     args: {
-        label: 'HowItWorks',
+        label: 'Button',
     },
 };
 
 export const Large = {
     args: {
         size: 'large',
-        label: 'HowItWorks',
+        label: 'Button',
     },
 };
 
 export const Small = {
     args: {
         size: 'small',
-        label: 'HowItWorks',
+        label: 'Button',
     },
 };
