@@ -37,18 +37,18 @@ const App = () => {
 					<Route element={<AboutProjectPage />} path="/about" />
 					<Route element={<AboutHelpPage />} path="/about-help" />
 					<Route element={<HowItWorksPage />} path="/how-it-works" />
-					 <Route element={<AccountPage />} path="/account" />
-           <Route element={<AccountChatPage/>} path="account-chat"/>
-           <Route element={<AccountPrinciples/>} path="account-principles"/>
-					 <Route element={<LoginPage />} path="/signin" />
-					 <Route path="signup/">
+					<Route element={<AccountPage />} path="/account" />
+                                        <Route element={<AccountChatPage/>} path="account-chat"/>
+                                        <Route element={<AccountPrinciples/>} path="account-principles"/>
+				        <Route element={<LoginPage />} path="/signin" />
+					<Route path="signup/">
 						<Route element={<RegisterPage />} index />
 						<Route element={<RegisterStep1Page />} path="step_1" />
 						<Route element={<RegisterStep2Page />} path="step_2" />
 						<Route element={<RegisterStep3Page />} path="step_3" />
 					</Route>
-          /* вторая версия страницы верификации */
-          <Route element={<VerificationPage />} path="verification" />
+                                       /* вторая версия страницы верификации */
+                                       <Route element={<VerificationPage />} path="verification" />
 				</Routes>
 			</main>
 			<Footer />
