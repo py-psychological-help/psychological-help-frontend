@@ -1,14 +1,9 @@
-import React, {useState} from 'react';
-import {NavLink} from "react-router-dom";
+import React from 'react';
+import {NavLink, useLocation} from "react-router-dom";
 import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
-    const [activeButton, setActiveButton] = useState(null);
-
-    const handleButtonClick = (buttonName) => {
-        setActiveButton(buttonName);
-    };
-
+    const location = useLocation();
     return (
         <div className={styles.sidebar}>
             <div className={styles.box}>
@@ -18,22 +13,19 @@ const Sidebar = () => {
                 <ul className={styles.links}>
                     <li>
                         <NavLink to="/account"
-                                 className={`${styles.link} ${activeButton === 'account' && styles.active}`}
-                                 onClick={() => handleButtonClick('account')}>
+                                 className={`${styles.link} ${location.pathname === '/account' ? styles.active : ''}`}>
                             Данные
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/account/chat"
-                                 className={`${styles.link} ${activeButton === 'chat' && styles.active}`}
-                                 onClick={() => handleButtonClick('chat')}>
+                        <NavLink to="/account-chat"
+                                 className={`${styles.link} ${location.pathname === '/account-chat' ? styles.active : ''}`}>
                             Чаты
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/account/principles"
-                                 className={`${styles.link} ${activeButton === 'principles' && styles.active}`}
-                                 onClick={() => handleButtonClick('principles')}>
+                        <NavLink to="/account-principles"
+                                 className={`${styles.link} ${location.pathname === '/account-principles' ? styles.active : ''}`}>
                             Памятка
                         </NavLink>
                     </li>
