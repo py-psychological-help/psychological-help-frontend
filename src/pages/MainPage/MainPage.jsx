@@ -1,16 +1,13 @@
-import { useSelector } from 'react-redux';
-import cls from './MainPage.module.scss';
+// import { useSelector } from 'react-redux';
+import Main from '../../components/Main/Main';
 
 const MainPage = () => {
-	// Проверка стора
-	const user = useSelector((state) => state.user);
+    // Проверка стора
+    // const user = useSelector((state) => state.user);
 
-	return (
-		<div>
-			<h1>Главная</h1>
-			<p>Привет, {`${user.name} ${user.surname}`}</p>
-		</div>
-	);
+    return (
+        <Main/>
+    );
 };
 
 export default MainPage;
