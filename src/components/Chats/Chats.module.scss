@@ -1,0 +1,119 @@
+.chats {
+  margin: 26px 20px;
+}
+
+.title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+  margin: 0 0 32px 0px;
+  padding: 0;
+  min-height: 29px;
+}
+
+.dashboard {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0 0 11px 0;
+  padding: 0;
+  border-bottom: 1px solid #DDE1E6;
+}
+
+.dashboardItem {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #000;
+  margin: 0;
+  padding: 16px 0;
+  border: none;
+  background: none;
+}
+
+.dashboardItem.active {
+  border-bottom: 2px solid #4F4F4F;
+}
+
+.dashboardItem:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 1s ease;
+}
+
+.chatsList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  height: 535px;
+  gap: 8px;
+  padding: 38px 8px;
+  margin: 0;
+}
+
+.chatItem {
+  display: flex;
+  justify-content: space-between;
+  height: 79px;
+  border: 1px solid #4F4F4F;
+}
+
+.chatItem:hover {
+  background-color: #F2F2F2;
+}
+
+.chatNumber {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #4F4F4F;
+  margin: 17px 8px;
+  padding: 0;
+}
+
+.name {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #4F4F4F;
+  margin: 17px 8px;
+  padding: 0;
+}
+
+.problem {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #4F4F4F;
+  margin: 17px 8px;
+  padding: 0;
+}
+
+.chatButton {
+  border: none;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #21272A;
+  align-self: last baseline;
+  text-decoration: none;
+  margin: 50px 8px 8px 0;
+}
+
+.chatButton:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 1s ease;
+}
+
+
+
+
+

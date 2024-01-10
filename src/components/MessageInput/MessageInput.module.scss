@@ -1,0 +1,29 @@
+.messageForm {
+    display: flex;
+    gap: 14px;
+  }
+  
+  .messageInput {
+    border: 1px solid #212028;
+    border-radius: 20px;
+    width: 874px;
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #212028;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .submitButton {
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .submitButton:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 1s ease;
+  }
+  

@@ -6,11 +6,11 @@
 
 .title {
   font-family: 'Inter', Arial, sans-serif;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #000;
-  margin: 72px 0 59px 70px;
+  margin: 62px 0 32px 20px;
   padding: 0;
   min-height: 29px;
 }
@@ -18,12 +18,11 @@
 .list {
   display: grid;
   list-style: none;
-  grid-template-columns: repeat(auto-fit, 204px);
+  grid-template-columns: repeat(2, 521px);
   column-gap: 29px;
   row-gap: 29px;
-  margin: 0 0 auto 70px;
+  margin: 0 80px auto 20px;
   padding: 0;
-  max-width: 437px;
 }
 
 .item {
@@ -33,7 +32,7 @@
 }
 
 .itemTitle {
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Raleway', Arial, sans-serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 1.4;
@@ -45,7 +44,7 @@
 }
 
 .itemText {
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Raleway', Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;

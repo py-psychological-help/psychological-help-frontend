@@ -1,12 +1,8 @@
 import React from 'react';
-import cls from './AboutProjectPage.module.scss';
+import AboutProject from '../../components/AboutProject/AboutProject';
 
 const AboutProjectPage = () => {
-	return (
-		<div>
-			<h1>О проекте</h1>
-		</div>
-	);
+	return <AboutProject />;
 };
 
 export default AboutProjectPage;
