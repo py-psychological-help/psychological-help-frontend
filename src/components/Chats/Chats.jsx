@@ -1,31 +1,7 @@
 import React from 'react';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
-
-const chats = [
-	{
-		client: {
-			first_name: 'Анастасия',
-			complaint: 'Психосоматика / физическое здоровье',
-		},
-		id: 42,
-	},
-
-	{
-		client: {
-			first_name: 'User',
-			complaint: 'Семейные проблемы',
-		},
-		id: 43,
-	},
-	{
-		client: {
-			first_name: '',
-			complaint: 'Я не знаю что со мной',
-		},
-		id: 44,
-	},
-];
+import chats from '../../utils/chats';
 
 function Chats() {
 	return (

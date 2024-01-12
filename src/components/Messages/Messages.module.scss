@@ -4,16 +4,20 @@
 }
 
 .messagesList {
+	width: 100%;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+	margin: 0;
+	padding: 0;
 }
 
 .messageItem {
 	border-radius: 20px;
 	padding: 24px;
 	background-color: #d9d9d9;
+	position: relative;
 }
 
 .me {
@@ -32,30 +36,39 @@
 	color: #000;
 	margin: 0;
 	padding: 0;
-	position: relative;
 }
 
-// .chatBubble::after, .chatBubble::before {
-// 	content: "";
-// 	position: absolute;
-// 	left: 100%;
-// 	bottom: .5em;
-// 	width: 1.8em;
-// 	height: 1.8em;
-// 	border: .5em solid white;
-// 	border-radius: 50%;
-// 	background: blue;
-//   }
-  
-//   .chatBubble::before {
-// 	border-top: none;
-// 	height: .9em;
-// 	border-radius: 0 0 50% 50% / 0 0 100% 100%;
-// 	background: silver;
-// 	border-color: silver;
-// 	margin-left: -.9em;
-//   }
+.messageItem:before, .messageItem:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	height: 25px;
+}
 
-// .tail {
-// 	fill: #fff;
-// }
+.me:before {
+	left: -7px;
+	width: 20px;
+	background-color: #d9d9d9;
+	border-bottom-right-radius: 16px 14px;
+}
+
+.me:after {
+	left: -26px;
+	width: 26px;
+	background-color: #fff;
+	border-bottom-right-radius: 10px;
+}
+
+.other:before {
+	left: -7px;
+	width: 20px;
+	background-color: #f1f1f3;
+	border-bottom-right-radius: 16px 14px;
+}
+
+.other:after {
+	left: -26px;
+	width: 26px;
+	background-color: #fff;
+	border-bottom-right-radius: 10px;
+}

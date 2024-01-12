@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import cls from './ChatNumber.module.scss';
 import arrowDown from '../../images/arrow-down.svg';
 import ChatInfo from '../ChatInfo/ChatInfo';
+// import chats from '../../utils/chats';
 
 function ChatNumber(props) {
 	const [isChatInfoOpened, setIsChatInfoOpened] = useState(false);

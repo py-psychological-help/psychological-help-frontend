@@ -26,12 +26,13 @@ const Messages = () => {
 						спрашивает как проходит сессия)
 					</p>
 				</li>
+
 				{/* {messages.map((message) => (
           <div key={message.id} className={`chatBubble ${message.sender}`}>
             {message.text}
           </div>
-        ))}
-      </div> */}
+        ))} */}
+
 				<MessageInput />
 			</ul>
 		</div>

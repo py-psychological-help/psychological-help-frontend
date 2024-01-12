@@ -1,18 +1,18 @@
 .clientSide {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .title {
-    align-self: flex-start;
-    margin: 0;
-    padding: 24px 0 24px 80px;
-    font-family: 'Montserrat', Arial, sans-serif;
+	align-self: flex-start;
+	margin: 0;
+	padding: 24px 0 24px 80px;
+	font-family: 'Montserrat', Arial, sans-serif;
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.2;
 	color: #212028;
-    background-color: #d9d9d9;
-    width: 100%;
+	background-color: #d9d9d9;
+	width: 100%;
 }
