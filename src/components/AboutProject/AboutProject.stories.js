@@ -1,37 +1,37 @@
 import AboutProject from './AboutProject';
 
 export default {
-    title: 'Example/AboutProject',
-    component: AboutProject,
-    tags: ['autodocs'],
-    argTypes: {
-        backgroundColor: {control: 'color'},
-    },
+	title: 'Example/AboutProject',
+	component: AboutProject,
+	tags: ['autodocs'],
+	argTypes: {
+		backgroundColor: {control: 'color'},
+	},
 };
 
 export const Primary = {
-    args: {
-        primary: true,
-        label: 'AboutProject',
-    },
+	args: {
+		primary: true,
+		label: 'AboutProject',
+	},
 };
 
 export const Secondary = {
-    args: {
-        label: 'AboutProject',
-    },
+	args: {
+		label: 'AboutProject',
+	},
 };
 
 export const Large = {
-    args: {
-        size: 'large',
-        label: 'AboutProject',
-    },
+	args: {
+		size: 'large',
+		label: 'AboutProject',
+	},
 };
 
 export const Small = {
-    args: {
-        size: 'small',
-        label: 'AboutProject',
-    },
+	args: {
+		size: 'small',
+		label: 'AboutProject',
+	},
 };

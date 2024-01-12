@@ -5,11 +5,11 @@ import Chats from "../../components/Chats/Chats";
 
 
 const AccountChatPage = () => (
-    <div className={cls.body}>
-        <Sidebar/>
-        <Chats/>
+	<div className={cls.body}>
+		<Sidebar/>
+		<Chats/>
 
-    </div>
+	</div>
 );
 
 export default AccountChatPage;
