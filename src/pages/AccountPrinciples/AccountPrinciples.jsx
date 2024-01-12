@@ -5,10 +5,10 @@ import Principles from "../../components/Principles/Principles";
 
 
 const AccountPrinciples = () => (
-    <div className={cls.body}>
-        <Sidebar/>
-        <Principles/>
-    </div>
+	<div className={cls.body}>
+		<Sidebar/>
+		<Principles/>
+	</div>
 );
 
 export default AccountPrinciples;
