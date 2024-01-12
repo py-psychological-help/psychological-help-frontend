@@ -38,7 +38,8 @@
 	padding: 0;
 }
 
-.messageItem:before, .messageItem:after {
+.messageItem:before,
+.messageItem:after {
 	content: '';
 	position: absolute;
 	bottom: 0;
