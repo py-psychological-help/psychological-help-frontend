@@ -1,24 +1,31 @@
 .messageForm {
 	display: flex;
-	gap: 14px;
+	gap: 22px;
+	width: 846px;
 }
 
 .messageInput {
 	border: 1px solid #212028;
 	border-radius: 20px;
-	width: 874px;
 	font-family: 'Raleway', Arial, sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.25;
-	color: #212028;
+	color: #6f6f6f;
 	margin: 0;
-	padding: 20px;
+	padding: 20px 0 20px 20px;
+	width: 759px;
 }
 
 .submitButton {
 	border: none;
 	border-radius: 20px;
+	padding: 23px;
+	width: 64px;
+	height: 64px;
+	border: 1px solid #212028;
+	background-color: #fff;
+	padding: 20px;
 }
 
 .submitButton:hover {
@@ -26,3 +33,10 @@
 	opacity: 0.7;
 	transition: 1s ease;
 }
+
+.arrow {
+	width: 24px;
+	height: 24px;
+}
+
+

@@ -1,10 +1,11 @@
 // import React from 'react';
 // import cls from './Message.module.scss';
+// import tail from '../../images/tail.svg';
 
-// function Message({message}) {
-//     const {text, id, author} = message;
+// function Message({text}) {
 //     <div>
-//         <p className={cls.chatMessage}>{message.text}</p>
+//         <p className={cls.message}>{text}</p>
+//         <img className={cls.tail} alt="хвостик" src={tail} />
 //     </div>
 // }
 

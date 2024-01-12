@@ -17,6 +17,8 @@ import VerificationPage from '../../pages/VerificationPage/VerificationPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Messages from '../Messages/Messages';
+import PsychologistSide from '../PsychologistSide/PsychologistSide';
+import ClientSide from '../ClientSide/ClientSide';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -48,6 +50,8 @@ const App = () => {
 					</Route>
 					/*вторая версия страницы верификации*/
 					<Route element={<VerificationPage />} path="verification" />
+					<Route element={<PsychologistSide />} path="psy-side" />
+					<Route element={<ClientSide />} path="client-side" />
 				</Routes>
 			</main>
 			<Footer />

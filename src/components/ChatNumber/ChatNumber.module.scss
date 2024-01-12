@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    border-radius: 20px;
+    background-color: #f6f6f6;
+    width: 198px;
+    height: 49px;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.number {
+    font-family: 'Montserrat', Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.2;
+	color: #212028;
+	margin: 0;
+	padding: 0;
+}
+
+.button {
+    border: none;
+    background-color: #f6f6f6;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    padding: 0;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+}
+
+.invisible {
+    display: none;
+}
