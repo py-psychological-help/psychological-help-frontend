@@ -1,74 +1,86 @@
-.registration {
-	display: flex;
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.container {
+	min-width: 846px;
 	margin: 0 auto;
+}
+
+.header {
+	margin: 80px 0 32px;
+	font-size: 40px;
+	font-weight: 600;
+	line-height: 44px;
+}
+
+.form {
+	max-width: 481px;
+	display: flex;
 	flex-direction: column;
 }
 
-.greeting {
-	font-size: 38px;
+.inputCaption {
+	color: #212028;
+	margin: 0 0 8px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.input {
+	margin: 0 0 20px 0;
+	width: calc(100% - 40px);
+	height: 64px;
+	border-radius: 20px;
+	padding: 0 20px;
+	border: 1px solid #212028;
+	color: #6f6f6f;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.inputWrong {
+	border-color: #ff0909;
+	color: #ff0909;
+}
+
+.inputWrong:focus {
+	outline-color: #ff0909;
+}
+
+.error {
+	margin: -16px 0 0;
+    color: #ff0909;
+}
+
+.passwordContainer {
 	margin: 0;
-}
-
-.description,
-.aboutUs {
-	font-size: 20px;
-}
-
-.statistics,
-.info {
-	list-style-type: none;
-	padding: 0;
-	margin: 30px 0;
-	display: flex;
-	gap: 25px;
-}
-
-.statisticItem {
 	width: 100%;
-	padding: 20px 45px;
-	text-align: center;
-	border: 1px rgb(187 187 187) solid;
+	position: relative;
 }
 
-.hr {
-	margin: 0 -60px;
-	height: 1px;
-	background-color: rgb(187 187 187);
-}
-
-.infoItem {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	padding: 10px 0;
-	text-align: center;
-	background-color: rgb(187 187 187);
-}
-
-.infoList {
-	align-self: start;
-}
-
-.linkNext {
-	margin: 0 auto;
-	display: flex;
-	text-decoration: none;
-	justify-content: center;
-}
-
-.btn {
-	width: 100%;
-	padding: 10px 0;
-	background-color: black;
-	color: white;
+.eyeBtn {
+	position: absolute;
+	right: 10px;
+	top: 18px;
 	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+	background-color: transparent;
 }
 
-.statImg {
-	display: block;
-	width: 100px;
-	height: 50px;
-	background-color: gray;
+.passwordSpan {
+	margin: 0;
+	color: #212028;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14px;
+}
+
+.button {
+    margin: 32px 0 76px;
+    width: 209px;
+    height: 48px;
 }
