@@ -1,11 +1,11 @@
-import AccountChatPage from "./AccountChatPage";
+import AccountChatPage from './AccountChatPage';
 
 export default {
 	title: 'Example/AccountChatPage',
 	component: AccountChatPage,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: {control: 'color'},
+		backgroundColor: { control: 'color' },
 	},
 };
 

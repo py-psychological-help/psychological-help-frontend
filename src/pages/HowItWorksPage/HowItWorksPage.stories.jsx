@@ -5,7 +5,7 @@ export default {
 	component: HowItWorksPage,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: {control: 'color'},
+		backgroundColor: { control: 'color' },
 	},
 };
 

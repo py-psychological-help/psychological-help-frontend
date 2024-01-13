@@ -5,7 +5,7 @@ export default {
 	component: AuthNavigation,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: {control: 'color'},
+		backgroundColor: { control: 'color' },
 	},
 };
 

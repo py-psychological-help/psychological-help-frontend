@@ -1,11 +1,11 @@
-import AccountPrinciples from "./AccountPrinciples";
+import AccountPrinciples from './AccountPrinciples';
 
 export default {
 	title: 'Example/AccountPrinciples',
 	component: AccountPrinciples,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: {control: 'color'},
+		backgroundColor: { control: 'color' },
 	},
 };
 

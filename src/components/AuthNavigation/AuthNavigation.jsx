@@ -1,12 +1,12 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './AuthNavigation.module.scss';
 import Button from '../buttonHeader/Button';
 
 function AuthNavigation() {
 	return (
 		<nav className={styles.headerNav}>
-			<NavLink to="/" className={styles.header__logo}/>
+			<NavLink to="/" className={styles.header__logo} />
 			<div className={styles.navLinks}>
 				<NavLink to="/about" className={styles.navLink}>
 					О нас

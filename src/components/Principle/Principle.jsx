@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cls from './Principle.module.scss';
 
-function Principle({title, text}) {
+function Principle({ title, text }) {
 	return (
 		<li className={cls.item}>
 			<h2 className={cls.itemTitle}>{title}</h2>

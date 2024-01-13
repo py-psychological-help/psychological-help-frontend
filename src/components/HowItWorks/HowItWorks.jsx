@@ -1,5 +1,5 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './HowItWorks.module.scss';
 import Button from '../buttonHeader/Button';
 
@@ -24,7 +24,8 @@ function HowItWorks() {
 				<NavLink to="/profile">
 					<Button
 						additionalStyles={styles.stepsBtn}
-						buttonText="Help me!"/>
+						buttonText="Help me!"
+					/>
 				</NavLink>
 			</div>
 		</section>

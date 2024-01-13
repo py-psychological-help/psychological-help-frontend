@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {Icon } from 'react-icons-kit';
-import { eyeOff} from 'react-icons-kit/feather/eyeOff';
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import cls from './RegisterPage.module.scss';
 import Button from '../../components/buttonRegister/Button';

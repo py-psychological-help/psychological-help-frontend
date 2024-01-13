@@ -12,7 +12,7 @@ export default function LoginPage() {
 		register,
 		handleSubmit,
 		// watch,
-		formState: {isValid, errors},
+		formState: { isValid, errors },
 	} = useForm();
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);

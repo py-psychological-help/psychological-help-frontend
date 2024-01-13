@@ -1,81 +1,81 @@
 .aboutProject {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  justify-content: space-between;
-  // background-color: rgb(86, 86, 86);
-  background-color: black;
-  // position: relative;
-  width: 100%;
-  justify-content: flex-start;
-  flex-direction: column;
+	display: flex;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	justify-content: space-between;
+	// background-color: rgb(86, 86, 86);
+	background-color: black;
+	// position: relative;
+	width: 100%;
+	justify-content: flex-start;
+	flex-direction: column;
 
-  .infoBlock {
-    display: flex;
-    padding: 50px 100px 500px;
-    width: 100%;
-    margin: 0;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    justify-content: space-between;
-    background-image: url(../../images/aboutProject.jpg);
-    background-position: center;
-    background-size: cover;
-    gap: 10px;
-  }
+	.infoBlock {
+		display: flex;
+		padding: 50px 100px 500px;
+		width: 100%;
+		margin: 0;
+		flex-direction: column;
+		justify-content: center;
+		box-sizing: border-box;
+		justify-content: space-between;
+		background-image: url(../../images/aboutProject.jpg);
+		background-position: center;
+		background-size: cover;
+		gap: 10px;
+	}
 
-  .aboutProjectHeader {
-    color: rgb(222, 222, 222);
-    font-weight: 400;
-    font-size: 50px;
-    line-height: 58px;
-    padding: 0;
-    margin: 0;
+	.aboutProjectHeader {
+		color: rgb(222, 222, 222);
+		font-weight: 400;
+		font-size: 50px;
+		line-height: 58px;
+		padding: 0;
+		margin: 0;
 
-    //   @media screen and (max-width: 800px) {}
-  }
+		//   @media screen and (max-width: 800px) {}
+	}
 
-  .advantages {
-    padding: 70px;
-    width: 50%;
-    margin: 0;
-  }
+	.advantages {
+		padding: 70px;
+		width: 50%;
+		margin: 0;
+	}
 
-  .advBlock {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
-  }
+	.advBlock {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 10px;
+	}
 
-  .advElement {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 10px;
-  }
+	.advElement {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		gap: 10px;
+	}
 
-  .advImage {
-    width: 30px;
-    height: 20px;
-  }
+	.advImage {
+		width: 30px;
+		height: 20px;
+	}
 
-  .advTitle {
-    color: rgb(222, 222, 222);
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    padding: 0;
-    margin: 0;
-  }
+	.advTitle {
+		color: rgb(222, 222, 222);
+		font-weight: 500;
+		font-size: 18px;
+		line-height: 22px;
+		padding: 0;
+		margin: 0;
+	}
 
-  .advText {
-    color: rgb(222, 222, 222);
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 22px;
-    padding: 0;
-    margin: 0;
-  }
+	.advText {
+		color: rgb(222, 222, 222);
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 22px;
+		padding: 0;
+		margin: 0;
+	}
 }

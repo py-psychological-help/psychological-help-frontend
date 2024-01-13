@@ -1,8 +1,8 @@
 {
-  "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES6",
-    "jsx": "preserve",
-    "checkJs": false
-  }
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "ES6",
+		"jsx": "preserve",
+		"checkJs": false
+	}
 }

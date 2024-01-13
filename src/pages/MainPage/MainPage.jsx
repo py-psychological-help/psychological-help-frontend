@@ -5,9 +5,7 @@ const MainPage = () => {
 	// Проверка стора
 	// const user = useSelector((state) => state.user);
 
-	return (
-		<Main/>
-	);
+	return <Main />;
 };
 
 export default MainPage;
