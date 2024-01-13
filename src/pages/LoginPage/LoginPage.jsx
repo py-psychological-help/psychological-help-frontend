@@ -1,6 +1,11 @@
-import {useForm} from 'react-hook-form';
-import {Link} from 'react-router-dom';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
 import cls from './LoginPage.module.scss';
+import Button from '../../components/buttonRegister/Button';
 
 export default function LoginPage() {
 	const {
@@ -9,15 +14,26 @@ export default function LoginPage() {
 		// watch,
 		formState: {isValid, errors},
 	} = useForm();
+	const [type, setType] = useState('password');
+	const [icon, setIcon] = useState(eyeOff);
+
+	function handlePasswordToggle() {
+		if (type === 'password') {
+			setIcon(eye);
+			setType('text');
+		} else {
+			setIcon(eyeOff);
+			setType('password');
+		}
+	}
 
 	function onSubmit(data) {
 		console.log(data);
 	}
 
 	return (
-		<>
-			<h1>Авторизация</h1>
-			<p>Краткое описание</p>
+		<div className={cls.container}>
+			<h1 className={cls.header}>Авторизация</h1>
 			<form
 				className={cls.authForm}
 				onSubmit={handleSubmit(onSubmit)}
@@ -29,7 +45,11 @@ export default function LoginPage() {
 					id="authEmail"
 					type="email"
 					placeholder="почта"
-					className={cls.inputTypeMail}
+					className={
+						errors?.email
+							? `${cls.input} ${cls.inputWrong}`
+							: cls.input
+					}
 					{...register('email', {
 						required: true,
 						minLength: 7,
@@ -38,61 +58,71 @@ export default function LoginPage() {
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
-					<p>Не соответствует формату почты</p>
+					<p className={cls.error}>Не соответствует формату почты</p>
 				)}
 				{errors?.email?.type === 'required' && (
-					<p>Необходимо заполнить поле</p>
+					<p className={cls.error}>Пожалуйста, заполните поле</p>
 				)}
 				{errors?.email?.type === 'minLength' && (
-					<p>Слишком короткое значение</p>
+					<p className={cls.error}>Слишком мало символов</p>
 				)}
 				{errors?.email?.type === 'maxLength' && (
-					<p>Слишком длинное значение</p>
+					<p className={cls.error}>Слишком много символов</p>
 				)}
 
 				<h3 className={cls.inputCaption}>Пароль</h3>
+				<div className={cls.passwordContainer}>
+					<input
+						name="authPassword"
+						id="authPassword"
+						type={type}
+						placeholder="пароль"
+						className={
+							errors?.password
+								? `${cls.input} ${cls.inputWrong}`
+								: cls.input
+						}
+						{...register('password', {
+							required: true,
+							minLength: 8,
+							maxLength: 20,
+							pattern:
+								/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
+						})}
+					/>
+					<button
+						className={cls.eyeBtn}
+						onClick={handlePasswordToggle}
+					>
+						<Icon class={cls.eyePicture} icon={icon} size={25} />
+					</button>
 
-				<input
-					name="authPassword"
-					id="authPassword"
-					type="password"
-					placeholder="пароль"
-					className={cls.inputTypePassword}
-					{...register('password', {
-						required: true,
-						minLength: 8,
-						maxLength: 20,
-						pattern:
-							/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
-					})}
-				/>
-				{errors?.password?.type === 'pattern' && (
-					<p>Не соответствует формату пароля</p>
+					{errors?.password?.type === 'pattern' && (
+						<p className={cls.error}>Запрещенные символы.</p>
+					)}
+					{errors?.password?.type === 'minLength' && (
+						<p className={cls.error}>Слишком мало символов</p>
+					)}
+					{errors?.password?.type === 'maxLength' && (
+						<p className={cls.error}>Слишком много символов</p>
+					)}
+					{errors?.password?.type === 'required' && (
+						<p className={cls.error}>Пожалуйста, заполните поле</p>
+					)}
+				</div>
+				{errors?.password === undefined && (
+					<span className={cls.passwordSpan}>
+						Пароль должен содержать заглавные и строчные буквы,
+						цифры и специальные символы.
+					</span>
 				)}
-				{errors?.password?.type === 'minLength' && (
-					<p>Слишком короткое значение</p>
-				)}
-				{errors?.password?.type === 'maxLength' && (
-					<p>Слишком длинное значение</p>
-				)}
-				{errors?.password?.type === 'required' && (
-					<p>Необходимо заполнить поле</p>
-				)}
-
-				<button
-					className={cls.submitBtn}
-					type="submit"
-					disabled={!isValid}
-				>
-					Войти
-				</button>
+				<div className={cls.button}>
+					<Button type="submit" name="Войти" />
+				</div>
 			</form>
-			<div className={cls.caption}>
-				<p className={cls.captionText}>Нет аккаунта?</p>
-				<Link to="/signup" className={cls.captionLink}>
-					Зарегистрироваться
-				</Link>
-			</div>
-		</>
+			<Link to="/forgotpassword" className={cls.link}>
+				Забыли пароль?
+			</Link>
+		</div>
 	);
 }
