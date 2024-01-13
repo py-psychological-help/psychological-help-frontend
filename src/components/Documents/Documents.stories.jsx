@@ -1,8 +1,8 @@
-import AboutProjectPage from './AboutProjectPage';
+import Documents from './Documents';
 
 export default {
-	title: 'Example/AboutProjectPage',
-	component: AboutProjectPage,
+	title: 'Documents',
+	component: Documents,
 	tags: ['autodocs'],
 	argTypes: {
 		backgroundColor: { control: 'color' },
@@ -12,6 +12,6 @@ export default {
 export const Primary = {
 	args: {
 		primary: true,
-		label: 'AboutProjectPage',
+		label: 'Documents',
 	},
 };

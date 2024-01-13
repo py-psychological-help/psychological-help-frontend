@@ -1,0 +1,46 @@
+.body {
+  width: 955px;
+}
+
+.header {
+  font-family: Montserrat, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+}
+
+.p {
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+
+}
+
+.ul {
+  padding: 0;
+}
+
+.photo {
+  border-radius: 20px;
+}
+
+.listElement {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.listDocument {
+  list-style: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
