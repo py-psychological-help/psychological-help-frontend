@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cls from './Button.module.scss';
 
-const Button = ({buttonText, additionalStyles}) => {
+const Button = ({ buttonText, additionalStyles }) => {
 	const buttonStyles = `${cls.button} ${additionalStyles}`;
 	return <button className={buttonStyles}>{buttonText}</button>;
 };
@@ -17,4 +17,3 @@ Button.defaultProps = {
 };
 
 export default Button;
-

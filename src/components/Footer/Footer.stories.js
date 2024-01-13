@@ -1,4 +1,4 @@
-import {userEvent, within} from '@storybook/testing-library';
+import { userEvent, within } from '@storybook/testing-library';
 
 import Footer from './Footer';
 
@@ -13,7 +13,7 @@ export default {
 export const LoggedOut = {};
 
 export const LoggedIn = {
-	play: async ({canvasElement}) => {
+	play: async ({ canvasElement }) => {
 		const canvas = within(canvasElement);
 		const loginButton = await canvas.getByRole('button', {
 			name: /Log in/i,

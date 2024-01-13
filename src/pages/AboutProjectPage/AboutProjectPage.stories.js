@@ -5,7 +5,7 @@ export default {
 	component: AboutProjectPage,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: {control: 'color'},
+		backgroundColor: { control: 'color' },
 	},
 };
 
