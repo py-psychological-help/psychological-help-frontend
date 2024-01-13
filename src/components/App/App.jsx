@@ -1,5 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import React, {useState} from 'react';
+import cls from './App.module.scss'
 import AccountPage from '../../pages/AccountPage/AccountPage';
+import AccountChatPage from "../../pages/AccountChatPage/AccountChatPage";
+import AccountPrinciples from "../../pages/AccountPrinciples/AccountPrinciples";
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import MainPage from '../../pages/MainPage/MainPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
@@ -7,16 +11,19 @@ import AboutProjectPage from '../../pages/AboutProjectPage/AboutProjectPage';
 import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
 import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
 import WelcomePage from '../../pages/WelcomePage/WelcomePage';
-import ForgotPasswordPage from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
-import VerificationPage from '../../pages/VerificationPage/VerificationPage';
+// import ForgotPasswordPage from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import cls from './App.module.scss';
+import AccountDocumentsPage from "../../pages/AccountDocumentsPage/AccountDocumentsPage";
 
 const App = () => {
+
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
+
 	return (
 		<div className={cls.app}>
-			<Header />
+			<Header
+				isLoggedIn={isLoggedIn} />
 
 			<main className={cls.main}>
 				<Routes>
@@ -24,27 +31,23 @@ const App = () => {
 					<Route element={<AboutProjectPage />} path="/about" />
 					<Route element={<AboutHelpPage />} path="/about-help" />
 					<Route element={<HowItWorksPage />} path="/how-it-works" />
-					<Route element={<AccountPage />} path="/account" />
+					<Route element={<AccountPage />} path="account" />
+					<Route element={<AccountDocumentsPage />} path="/account/documents" />
+					<Route element={<AccountChatPage />} path="account-chat" />
+					<Route element={<AccountPrinciples />} path="account-principles" />
 					<Route element={<WelcomePage />} path="/welcome" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route element={<RegisterPage />} path="/signup" />
-					<Route
+					{/* <Route
 						element={<ForgotPasswordPage />}
-						path="/forgotpassword"
-					/>
-					{/* <Route element={<RegisterPage />} index />
-						<Route element={<RegisterStep1Page />} path="step_1" />
-						<Route element={<RegisterStep2Page />} path="step_2" />
-						<Route element={<RegisterStep3Page />} path="step_3" />
-					</Route> */}
-					{/* вторая версия страницы верификации */}
-					<Route element={<VerificationPage />} path="verification" />
-				</Routes>
-			</main>
-
-			<Footer />
+						path="/forgotpassword" /> */}
+			</Routes>
+		</main>
+		<Footer />
 		</div>
+
 	);
 };
 
 export default App;
+

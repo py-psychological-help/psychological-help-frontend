@@ -1,0 +1,45 @@
+.formsBody {
+  margin: 0;
+}
+
+.header {
+  margin-bottom: 32px;
+  margin-top: 80px;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 44px;
+  font-family: Montserrat, sans-serif;
+
+}
+
+.menu {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.menuButton {
+  text-decoration: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #6F6F6F;
+  font-family: Montserrat, sans-serif;
+  padding: 0;
+  cursor: pointer;
+}
+
+.menuButtonActive {
+  color: #212028;
+  border-bottom: 4px solid #212028;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding-bottom: 8px;
+}

@@ -5,7 +5,7 @@ export default {
 	component: LoginPage,
 	tags: ['autodocs'],
 	argTypes: {
-		backgroundColor: { control: 'color' },
+		backgroundColor: {control: 'color'},
 	},
 };
 

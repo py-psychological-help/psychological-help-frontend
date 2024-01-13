@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 export default function WelcomePage(props) {
 	return (

@@ -1,0 +1,56 @@
+.principles {
+  display: flex;
+  flex-direction: column;
+  height: 659px;
+}
+
+.title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #000;
+  margin: 62px 0 32px 20px;
+  padding: 0;
+  min-height: 29px;
+}
+
+.list {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(2, 521px);
+  column-gap: 29px;
+  row-gap: 29px;
+  margin: 0 80px auto 20px;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.itemTitle {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  min-height: 20px;
+  max-width: 204px;
+}
+
+.itemText {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  max-width: 204px;
+  min-height: 45px;
+}

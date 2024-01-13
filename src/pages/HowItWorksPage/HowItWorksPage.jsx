@@ -1,11 +1,9 @@
 import React from 'react';
-import cls from './HowItWorksPage.module.scss';
+import HowItWorks from '../../components/HowItWorks/HowItWorks';
 
 const HowItWorksPage = () => {
 	return (
-		<div>
-			<h1>Как это работает</h1>
-		</div>
+		<HowItWorks/>
 	);
 };
 

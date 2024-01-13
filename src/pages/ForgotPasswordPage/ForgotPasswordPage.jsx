@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import cls from './ForgotPasswordPage.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 export default function ForgotPassword() {
 	const {

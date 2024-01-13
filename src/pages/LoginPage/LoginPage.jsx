@@ -5,14 +5,14 @@ import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import cls from './LoginPage.module.scss';
-import Button from '../../components/button/Button';
+import Button from '../../components/buttonRegister/Button';
 
 export default function LoginPage() {
 	const {
 		register,
 		handleSubmit,
 		// watch,
-		formState: { isValid, errors },
+		formState: {isValid, errors},
 	} = useForm();
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);

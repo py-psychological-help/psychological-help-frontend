@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 // Начальное значение
 const initialState = {
@@ -21,7 +21,7 @@ const userSlice = createSlice({
 
 // Слайс генерирует действия, которые экспортируются отдельно
 // Действия генерируются автоматически из имен ключей редьюсеров
-export const { setUser } = userSlice.actions;
+export const {setUser} = userSlice.actions;
 
 // По умолчанию экспортируется редьюсер, сгенерированный слайсом
 export default userSlice.reducer;

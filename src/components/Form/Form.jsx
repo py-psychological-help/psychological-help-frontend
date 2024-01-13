@@ -1,14 +1,13 @@
 import React from 'react';
-import cls from './Form.module.scss';
-import Button from '../button/Button';
+import Button from '../buttonHeader/Button';
 
 const Form = () => {
 	return (
 		<form>
-			<input type="text" />
-			<input type="text" />
-			<input type="text" />
-			<Button />
+			<input type="text"/>
+			<input type="text"/>
+			<input type="text"/>
+			<Button/>
 		</form>
 	);
 };
