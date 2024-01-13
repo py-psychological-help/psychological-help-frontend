@@ -8,7 +8,7 @@ const Documents = () => {
 	const [showDocuments, setShowDocuments] = useState(true);
 
 	const handleShowSentDocuments = () => {
-		setShowDocuments(false); // При нажатии кнопки верификации скрываем Documents и показываем SentDocument
+		setShowDocuments(false);
 	};
 
 	return (

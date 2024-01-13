@@ -38,7 +38,6 @@ const App = () => {
 					<Route element={<LoginPage/>} path="/signin"/>
 					<Route path="signup/">
 						<Route element={<RegisterPage/>} index/>
-						{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
 					</Route>
 				</Routes>
 			</main>
