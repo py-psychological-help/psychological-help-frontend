@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
+import { useDispatch } from 'react-redux';
 import cls from './RegisterPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
+import { registerUser } from '../../slices/authSlice/authAsyncActions';
 
 export default function RegisterPage() {
 	const {
@@ -14,6 +16,7 @@ export default function RegisterPage() {
 	} = useForm();
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);
+	const dispatch = useDispatch();
 
 	function handlePasswordToggle() {
 		if (type === 'password') {
@@ -26,7 +29,7 @@ export default function RegisterPage() {
 	}
 
 	function onSubmit(data) {
-		console.log(data);
+		dispatch(registerUser(data));
 	}
 
 	return (
@@ -46,91 +49,91 @@ export default function RegisterPage() {
 			>
 				<h3 className={cls.inputCaption}>Фамилия</h3>
 				<input
-					name="surame"
-					id="surname"
+					name="lastName"
+					id="lastName"
 					type="text"
 					placeholder="Иванов"
 					className={
-						errors?.surname
+						errors?.lastName
 							? `${cls.input} ${cls.inputWrong}`
 							: cls.input
 					}
-					{...register('surname', {
+					{...register('lastName', {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
 						pattern: /^[А-ЯЁ][а-яё][-][\s]*$/,
 					})}
 				/>
-				{errors?.surname?.type === 'pattern' && (
+				{errors?.lastName?.type === 'pattern' && (
 					<p className={cls.error}>
 						Не соответствует формату фамилии
 					</p>
 				)}
-				{errors?.surname?.type === 'required' && (
+				{errors?.lastName?.type === 'required' && (
 					<p className={cls.error}>Пожалуйста, заполните поле</p>
 				)}
-				{errors?.surname?.type === 'minLength' && (
+				{errors?.lastName?.type === 'minLength' && (
 					<p className={cls.error}>Слишком мало символов</p>
 				)}
-				{errors?.surname?.type === 'maxLength' && (
+				{errors?.lastName?.type === 'maxLength' && (
 					<p className={cls.error}>Слишком много символов</p>
 				)}
 
 				<h3 className={cls.inputCaption}>Имя</h3>
 				<input
-					name="name"
-					id="name"
+					name="firstName"
+					id="firstName"
 					type="text"
 					placeholder="Владислав"
 					className={
-						errors?.name
+						errors?.firstName
 							? `${cls.input} ${cls.inputWrong}`
 							: cls.input
 					}
-					{...register('name', {
+					{...register('firstName', {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
 						pattern: /^[А-ЯЁ][а-яё][-][\s]*$/,
 					})}
 				/>
-				{errors?.name?.type === 'pattern' && (
+				{errors?.firstName?.type === 'pattern' && (
 					<p className={cls.error}>Не соответствует формату имени</p>
 				)}
-				{errors?.name?.type === 'required' && (
+				{errors?.firstName?.type === 'required' && (
 					<p className={cls.error}>Пожалуйста, заполните поле</p>
 				)}
-				{errors?.name?.type === 'minLength' && (
+				{errors?.firstName?.type === 'minLength' && (
 					<p className={cls.error}>Слишком мало символов</p>
 				)}
-				{errors?.name?.type === 'maxLength' && (
+				{errors?.firstName?.type === 'maxLength' && (
 					<p className={cls.error}>Слишком много символов</p>
 				)}
 
 				<h3 className={cls.inputCaption}>Дата рождения</h3>
 				<input
-					name="birthdate"
-					id="birthdate"
+					name="birthDate"
+					id="birthDate"
 					type="date"
 					className={
-						errors?.birthdate
+						errors?.birthDate
 							? `${cls.input} ${cls.inputWrong}`
 							: cls.input
 					}
-					{...register('birthdate', {
+					{...register('birthDate', {
 						required: true,
 					})}
 				/>
 
-				{errors?.birthdate?.type === 'required' && (
+				{errors?.birthDate?.type === 'required' && (
 					<p className={cls.error}>Пожалуйста, заполните поле</p>
 				)}
 
 				<h3 className={cls.inputCaption}>Почта</h3>
 				<input
-					name="authEmail"
-					id="authEmail"
+					name="email"
+					id="email"
 					type="email"
 					placeholder="почта"
 					className={
@@ -161,8 +164,8 @@ export default function RegisterPage() {
 				<h3 className={cls.inputCaption}>Пароль</h3>
 				<div className={cls.passwordContainer}>
 					<input
-						name="authPassword"
-						id="authPassword"
+						name="password"
+						id="password"
 						type={type}
 						placeholder="пароль"
 						className={

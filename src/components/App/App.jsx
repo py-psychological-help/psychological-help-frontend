@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import cls from './App.module.scss';
 import AccountPage from '../../pages/AccountPage/AccountPage';
 import AccountChatPage from '../../pages/AccountChatPage/AccountChatPage';
@@ -15,9 +16,17 @@ import Footer from '../Footer/Footer';
 import AccountDocumentsPage from '../../pages/AccountDocumentsPage/AccountDocumentsPage';
 import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
+import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const dispatch = useDispatch();
+
+	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
+	// Добавить проверки на налиие токена и т.п.
+	useEffect(() => {
+		dispatch(getCurrentUser());
+	}, [dispatch]);
 
 	return (
 		<div className={cls.app}>
@@ -42,7 +51,6 @@ const App = () => {
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/">
 						<Route element={<RegisterPage />} index />
-						{/* eslint-disable-next-line react/jsx-no-comment-textnodes */}
 					</Route>
 					<Route element={<PsychologistSide />} path="psy-side" />
 					<Route element={<ClientSide />} path="client-side" />
