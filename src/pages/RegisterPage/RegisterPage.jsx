@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import cls from './RegisterPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 import { registerUser } from '../../slices/authSlice/authAsyncActions';
@@ -17,6 +18,14 @@ export default function RegisterPage() {
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const isSuccess = useSelector((state) => state.auth.isSuccess);
+
+	useEffect(() => {
+		if (isSuccess) {
+			navigate('/signin');
+		}
+	}, [isSuccess, navigate]);
 
 	function handlePasswordToggle() {
 		if (type === 'password') {
@@ -135,7 +144,7 @@ export default function RegisterPage() {
 					name="email"
 					id="email"
 					type="email"
-					placeholder="почта"
+					placeholder="Почта"
 					className={
 						errors?.email
 							? `${cls.input} ${cls.inputWrong}`
@@ -167,7 +176,7 @@ export default function RegisterPage() {
 						name="password"
 						id="password"
 						type={type}
-						placeholder="пароль"
+						placeholder="Пароль"
 						className={
 							errors?.password
 								? `${cls.input} ${cls.inputWrong}`

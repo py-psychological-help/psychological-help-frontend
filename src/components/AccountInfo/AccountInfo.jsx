@@ -1,7 +1,11 @@
+import { useSelector } from 'react-redux';
 import styles from './AccountInfo.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
 
 const AccountInfo = () => {
+	const userData = useSelector((state) => state.user.userData);
+	// Выдаёт ошибку, пока сервер не прислал юзера (поэтому знаки вопроса в данных).
+	// В будущем добавить скелетон/лоадер, пока данные грузятся (state.user.isLoading)
 	return (
 		<div className={styles.body}>
 			<AccountMenu />
@@ -20,7 +24,7 @@ const AccountInfo = () => {
 							placeholder="Иван"
 							minLength="1"
 							maxLength="30"
-							value=""
+							value={userData?.first_name}
 							id="name"
 							readOnly
 						/>
@@ -35,7 +39,7 @@ const AccountInfo = () => {
 							placeholder="Иванов"
 							minLength="1"
 							maxLength="30"
-							value=""
+							value={userData?.last_name}
 							id="secondName"
 							readOnly
 						/>
@@ -50,7 +54,7 @@ const AccountInfo = () => {
 							type="text"
 							name="name"
 							placeholder="12.12.1985"
-							value=""
+							value={userData?.birth_date} // Дата - null, проверить позже
 							id="birthData"
 							readOnly
 						/>
@@ -66,7 +70,7 @@ const AccountInfo = () => {
 							name="email"
 							pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,4}"
 							placeholder="ivanov@gmail.com"
-							value=""
+							value={userData?.email}
 							id="email"
 							readOnly
 						/>
