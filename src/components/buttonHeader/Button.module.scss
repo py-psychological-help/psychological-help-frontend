@@ -1,0 +1,10 @@
+.button {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,68 @@
+.waitingRoom {
+  display: flex;
+  padding: 52px 80px;
+  margin: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+//   border: 1px red solid;
+
+  .mainSubHeader {
+      color: black;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 44px;
+      padding: 0;
+      margin: 0;
+    //   border: 1px red solid;
+      max-width: 588px;
+      align-self: center;
+      text-align: center;
+
+      &.boldLeft {
+          font-weight: 600;
+          align-self: start;
+      }
+  }
+
+  .mainText {
+      color: black;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 36px;
+      padding: 0;
+      margin: 0;
+  }
+
+  .featuresBlock {
+      display: flex;
+      gap: 20px;
+    //   border: 1px red solid;
+  }
+
+  .featuresElement {
+      display: flex;
+      width: 521px;
+      flex-direction: column;
+      border-radius: 20px;
+      background-color: #EEEEEE;
+      padding: 10px;
+      ;
+    //   border: 1px red solid;
+  }
+
+  .featuresIcon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+
+    &.peopleIcon {
+        background-image: url(../../images/icons/User/Users.svg);
+    }
+
+    &.timeIcon {
+        background-image: url(../../images/icons/time.svg);
+    }
+  }
+
+}
