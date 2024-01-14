@@ -62,7 +62,7 @@ export default function RegisterPage() {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
-						pattern: /^[А-ЯЁ][а-яё][-][\s]*$/,
+						pattern: /^[а-яА-ЯёЁ\-\s]+$/,
 					})}
 				/>
 				{errors?.lastName?.type === 'pattern' && (
@@ -95,7 +95,7 @@ export default function RegisterPage() {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
-						pattern: /^[А-ЯЁ][а-яё][-][\s]*$/,
+						pattern: /^[а-яА-ЯёЁ\-\s]+$/,
 					})}
 				/>
 				{errors?.firstName?.type === 'pattern' && (
