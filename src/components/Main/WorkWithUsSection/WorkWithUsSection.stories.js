@@ -1,8 +1,8 @@
-import Main from './Main';
+import WorkWithUsSection from './WorkWithUsSection';
 
 export default {
-    title: 'Example/Main',
-    component: Main,
+    title: 'Example/WorkWithUsSection',
+    component: WorkWithUsSection,
     tags: ['autodocs'],
     argTypes: {
         backgroundColor: {control: 'color'},
@@ -12,26 +12,26 @@ export default {
 export const Primary = {
     args: {
         primary: true,
-        label: 'Main',
+        label: 'WorkWithUsSection',
     },
 };
 
 export const Secondary = {
     args: {
-        label: 'Main',
+        label: 'WorkWithUsSection',
     },
 };
 
 export const Large = {
     args: {
         size: 'large',
-        label: 'Main',
+        label: 'WorkWithUsSection',
     },
 };
 
 export const Small = {
     args: {
         size: 'small',
-        label: 'Main',
+        label: 'WorkWithUsSection',
     },
 };

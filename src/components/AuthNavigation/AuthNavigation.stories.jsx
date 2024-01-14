@@ -1,37 +1,37 @@
 import AuthNavigation from './AuthNavigation';
 
 export default {
-	title: 'Example/AuthNavigation',
-	component: AuthNavigation,
-	tags: ['autodocs'],
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
+    title: 'Example/AuthNavigation',
+    component: AuthNavigation,
+    tags: ['autodocs'],
+    argTypes: {
+        backgroundColor: {control: 'color'},
+    },
 };
 
 export const Primary = {
-	args: {
-		primary: true,
-		label: 'AuthNavigation',
-	},
+    args: {
+        primary: true,
+        label: 'AuthNavigation',
+    },
 };
 
 export const Secondary = {
-	args: {
-		label: 'AuthNavigation',
-	},
+    args: {
+        label: 'AuthNavigation',
+    },
 };
 
 export const Large = {
-	args: {
-		size: 'large',
-		label: 'AuthNavigation',
-	},
+    args: {
+        size: 'large',
+        label: 'AuthNavigation',
+    },
 };
 
 export const Small = {
-	args: {
-		size: 'small',
-		label: 'AuthNavigation',
-	},
+    args: {
+        size: 'small',
+        label: 'AuthNavigation',
+    },
 };

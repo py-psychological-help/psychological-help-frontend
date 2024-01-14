@@ -1,8 +1,8 @@
-import Main from './Main';
+import MainSection from './MainSection';
 
 export default {
-    title: 'Example/Main',
-    component: Main,
+    title: 'Example/MainSection',
+    component: MainSection,
     tags: ['autodocs'],
     argTypes: {
         backgroundColor: {control: 'color'},
@@ -12,26 +12,26 @@ export default {
 export const Primary = {
     args: {
         primary: true,
-        label: 'Main',
+        label: 'MainSection',
     },
 };
 
 export const Secondary = {
     args: {
-        label: 'Main',
+        label: 'MainSection',
     },
 };
 
 export const Large = {
     args: {
         size: 'large',
-        label: 'Main',
+        label: 'MainSection',
     },
 };
 
 export const Small = {
     args: {
         size: 'small',
-        label: 'Main',
+        label: 'MainSection',
     },
 };
