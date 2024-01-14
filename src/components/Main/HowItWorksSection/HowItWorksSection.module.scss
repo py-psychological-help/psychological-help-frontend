@@ -5,8 +5,9 @@
     flex-direction: column;
     justify-content: space-between;
     // border: 1px red solid;
-    background-color: white;
+    background-color: #F2F2F2;
     color: black;
+    font-family: Montserrat, Arial, sans-serif;
 
     .mainSubHeader {
         font-weight: 600;
@@ -61,6 +62,7 @@
         border-radius: 20px;
         font-size: 16px;
         line-height: 24px;
+        background-color: #F2F2F2;
     }
 
     .nameInputBlock {
@@ -93,6 +95,7 @@
         align-items: center;
         resize: none;
         border-radius: 20px;
+        background-color: #F2F2F2;
     }
 
     .mainBtn {
