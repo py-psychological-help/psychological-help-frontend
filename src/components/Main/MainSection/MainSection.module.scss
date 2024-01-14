@@ -7,6 +7,7 @@
       justify-content: space-between;
       gap: 10px;
       max-width: 856px;
+
       // border: 1px red solid;
   
     .mainHeader {
@@ -15,7 +16,8 @@
       font-size: 88px;
       line-height: 132px;
       padding: 0;
-      margin: 0;
+      margin-top: 44px;
+      font-family: Segoe Print, sans-serif;
       // border: 1px red solid;
       text-align: center;
       //   @media screen and (max-width: 800px) {}
@@ -27,11 +29,12 @@
       font-size: 40px;
       line-height: 44px;
       padding: 0;
-      margin: 0;
+      margin: 44px 0;
       // border: 1px red solid;
       max-width: 588px;
       align-self: center;
       text-align: center;
+      font-family: Montserrat,sans-serif;
   
       // Базовые стили для заголовка
       &.boldLeft {
@@ -47,6 +50,7 @@
       line-height: 36px;
       padding: 0;
       margin: 0;
+      font-family: Montserrat,sans-serif;
     }
   
     .mainBtn {
@@ -61,5 +65,6 @@
       text-decoration: none; 
       align-items: center;
       justify-content: center;
+      font-family: Montserrat,sans-serif;
     }
 }

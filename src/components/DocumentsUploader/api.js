@@ -36,7 +36,6 @@ const api = new Api({
 	baseUrl: 'https://letstalk.ddns.net/api/v1',
 	commonHeaders: {
 		'Content-Type': 'application/json',
-		'Authorization': 'Token 3de05614bc3db3252ee53ed2b88b0273221c452f'
 	}
 });
 

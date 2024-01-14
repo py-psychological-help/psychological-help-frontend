@@ -17,8 +17,7 @@ function WorkWithUsSection() {
             <Button
                 additionalStyles={styles.mainBtn}
                 buttonText="Работать с нами"
-                to="/welcome" 
-            />
+                to="/welcome"/>
         </section>
     );
 }

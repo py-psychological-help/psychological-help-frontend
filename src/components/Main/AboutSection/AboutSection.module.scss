@@ -6,6 +6,7 @@
     justify-content: space-between;
     gap: 10px;
     // border: 1px red solid;
+    font-family: Montserrat, Arial, sans-serif;
 
     .mainSubHeader {
         color: black;
@@ -46,7 +47,10 @@
         width: 305px;
         flex-direction: column;
         border-radius: 20px;
+        background-color: white;
         // border: 1px red solid;
+        border: 1px solid #212028;
+        padding: 16px;
     }
 
     .mainBtn {

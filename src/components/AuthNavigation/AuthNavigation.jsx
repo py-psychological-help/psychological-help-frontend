@@ -29,7 +29,8 @@ function AuthNavigation() {
 				<Button
 					additionalStyles={styles.mainBtn}
 					buttonText="Обратиться за помощью"
-					to="/profile"
+					to="/"
+					onClick={() => scrollToSection('howItWorksSection')}
 				/>
 			</div>
 		</nav>

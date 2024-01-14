@@ -8,9 +8,6 @@ import AccountPrinciples from '../../pages/AccountPrinciples/AccountPrinciples';
 import LoginPage from '../../pages/LoginPage/LoginPage';
 import MainPage from '../../pages/MainPage/MainPage';
 import RegisterPage from '../../pages/RegisterPage/RegisterPage';
-import AboutProjectPage from '../../pages/AboutProjectPage/AboutProjectPage';
-import AboutHelpPage from '../../pages/AboutHelpPage/AboutHelpPage';
-import HowItWorksPage from '../../pages/HowItWorksPage/HowItWorksPage';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import AccountDocumentsPage from '../../pages/AccountDocumentsPage/AccountDocumentsPage';
@@ -37,10 +34,13 @@ const App = () => {
 			<main className={cls.main}>
 				<Routes>
 					<Route element={<MainPage />} path="/" />
-					<Route element={<AboutProjectPage />} path="/about" />
-					<Route element={<AboutHelpPage />} path="/about-help" />
-					<Route element={<HowItWorksPage />} path="/how-it-works" />
 					<Route element={<WelcomePage/>} path="/welcome"/>
+					<Route element={<ClientSide />} path="client-side" />
+					<Route element={<LoginPage />} path="/signin" />
+					<Route path="signup/">
+						<Route element={<RegisterPage />} index />
+					</Route>
+
 					<Route element={<AccountPage />} path="account" />
 					<Route
 						element={<AccountDocumentsPage />}
@@ -51,12 +51,8 @@ const App = () => {
 						element={<AccountPrinciples />}
 						path="account-principles"
 					/>
-					<Route element={<LoginPage />} path="/signin" />
-					<Route path="signup/">
-						<Route element={<RegisterPage />} index />
-					</Route>
 					<Route element={<PsychologistSide />} path="psy-side" />
-					<Route element={<ClientSide />} path="client-side" />
+					<Route path="*" element={<MainPage />} />
 				</Routes>
 			</main>
 			<Footer />
