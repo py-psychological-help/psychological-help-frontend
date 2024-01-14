@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
+import { useDispatch } from 'react-redux';
 import cls from './LoginPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
+import { loginUser } from '../../slices/authSlice/authAsyncActions';
 
 export default function LoginPage() {
 	const {
@@ -16,6 +18,7 @@ export default function LoginPage() {
 	} = useForm();
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);
+	const dispatch = useDispatch();
 
 	function handlePasswordToggle() {
 		if (type === 'password') {
@@ -28,7 +31,7 @@ export default function LoginPage() {
 	}
 
 	function onSubmit(data) {
-		console.log(data);
+		dispatch(loginUser(data));
 	}
 
 	return (
