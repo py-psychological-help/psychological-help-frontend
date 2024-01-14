@@ -20,7 +20,7 @@ export default function WelcomePage(props) {
 				<li>Опыт работы с клиентами</li>
 				<li>Подходы признанные научным сообществом</li>
 			</ul>
-			<Link to="/signup">
+			<Link to="/signup" className={cls.link}>
 				<Button type="button" name="Хочу в команду" />
 			</Link>
 		</div>
