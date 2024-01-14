@@ -1,8 +1,8 @@
-import Main from './Main';
+import WarningSection from './WarningSection';
 
 export default {
-    title: 'Example/Main',
-    component: Main,
+    title: 'Example/WarningSection',
+    component: WarningSection,
     tags: ['autodocs'],
     argTypes: {
         backgroundColor: {control: 'color'},
@@ -12,26 +12,26 @@ export default {
 export const Primary = {
     args: {
         primary: true,
-        label: 'Main',
+        label: 'WarningSection',
     },
 };
 
 export const Secondary = {
     args: {
-        label: 'Main',
+        label: 'WarningSection',
     },
 };
 
 export const Large = {
     args: {
         size: 'large',
-        label: 'Main',
+        label: 'WarningSection',
     },
 };
 
 export const Small = {
     args: {
         size: 'small',
-        label: 'Main',
+        label: 'WarningSection',
     },
 };

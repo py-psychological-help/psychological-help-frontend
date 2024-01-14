@@ -1,37 +1,37 @@
 import NotAuthNavigation from './NotAuthNavigation';
 
 export default {
-	title: 'Example/NotAuthNavigation',
-	component: NotAuthNavigation,
-	tags: ['autodocs'],
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
+    title: 'Example/NotAuthNavigation',
+    component: NotAuthNavigation,
+    tags: ['autodocs'],
+    argTypes: {
+        backgroundColor: {control: 'color'},
+    },
 };
 
 export const Primary = {
-	args: {
-		primary: true,
-		label: 'NotAuthNavigation',
-	},
+    args: {
+        primary: true,
+        label: 'NotAuthNavigation',
+    },
 };
 
 export const Secondary = {
-	args: {
-		label: 'NotAuthNavigation',
-	},
+    args: {
+        label: 'NotAuthNavigation',
+    },
 };
 
 export const Large = {
-	args: {
-		size: 'large',
-		label: 'NotAuthNavigation',
-	},
+    args: {
+        size: 'large',
+        label: 'NotAuthNavigation',
+    },
 };
 
 export const Small = {
-	args: {
-		size: 'small',
-		label: 'NotAuthNavigation',
-	},
+    args: {
+        size: 'small',
+        label: 'NotAuthNavigation',
+    },
 };
