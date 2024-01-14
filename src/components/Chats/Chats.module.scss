@@ -25,7 +25,7 @@
 .dashboardItem {
 	font-family: 'Montserrat', Arial, sans-serif;
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 1.25;
 	color: #6f6f6f;
 	margin: 0;
@@ -34,9 +34,10 @@
 	background: none;
 }
 
-.dashboardItem.active {
+.active {
 	border-bottom: 2px solid #4f4f4f;
 	color: #212028;
+	font-weight: 600;
 }
 
 .dashboardItem:hover {

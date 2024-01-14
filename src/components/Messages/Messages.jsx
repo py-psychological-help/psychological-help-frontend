@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import cls from './Messages.module.scss';
 import MessageInput from '../MessageInput/MessageInput';
-// import tail from '../../images/tail.svg';
 
 const Messages = () => {
 	return (

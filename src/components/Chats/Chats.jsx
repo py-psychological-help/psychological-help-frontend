@@ -1,27 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
+import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
-function Chats() {
+function Chats(props) {
+	const [isSelected, setIsSelected] = useState();
+
+	const filteredChats = chats.filter((chat) => {
+		if (isSelected === 'active') return chat.active;
+		if (isSelected === 'new') return chat.new;
+		if (isSelected === 'archive') return chat.archive;
+		return chats;
+	});
+
+	const { className } = props;
+
 	return (
 		<main className={cls.chats}>
 			<h1 className={cls.title}>Чаты</h1>
 			<ul className={cls.dashboard}>
 				<li>
-					<button className={`${cls.dashboardItem} ${cls.active}`}>
+					<button
+						type="button"
+						onClick={() => setIsSelected('active')}
+						className={clsx(cls.dashboardItem, className, {
+							[cls.active]: isSelected === 'active',
+						})}
+					>
 						Ожидающие
 					</button>
 				</li>
 				<li>
-					<button className={cls.dashboardItem}>Активные</button>
+					<button
+						type="button"
+						onClick={() => setIsSelected('new')}
+						className={clsx(cls.dashboardItem, className, {
+							[cls.active]: isSelected === 'new',
+						})}
+					>
+						Активные
+					</button>
 				</li>
 				<li>
-					<button className={cls.dashboardItem}>Архив</button>
+					<button
+						type="button"
+						onClick={() => setIsSelected('archive')}
+						className={clsx(cls.dashboardItem, className, {
+							[cls.active]: isSelected === 'archive',
+						})}
+					>
+						Архив
+					</button>
 				</li>
 			</ul>
 			<ul className={cls.chatsList}>
-				{chats.map((chat) => (
+				{filteredChats.map((chat) => (
 					<Chat
 						key={chat.id}
 						id={chat.id}

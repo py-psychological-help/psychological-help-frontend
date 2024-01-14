@@ -1,7 +1,7 @@
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+	display: none;
+	-webkit-appearance: none;
 }
 
 .container {
@@ -54,7 +54,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .error {
 	margin: -16px 0 0;
-    color: #ff0909;
+	color: #ff0909;
 }
 
 .passwordContainer {
@@ -80,7 +80,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .button {
-    margin: 32px 0 76px;
-    width: 209px;
-    height: 48px;
+	margin: 32px 0 76px;
+	width: 209px;
+	height: 48px;
 }

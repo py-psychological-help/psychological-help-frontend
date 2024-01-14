@@ -1,127 +1,123 @@
 .footer {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 79px 70px 20px;
-  background-color: #D9D9D9;
-  flex-shrink: 0;
-  color: black;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	padding: 79px 70px 20px;
+	background-color: #D9D9D9;
+	flex-shrink: 0;
+	color: black;
 }
 
 .footerInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .footerInfoBlock {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
 .footerTitle {
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 30px;
-  color: black;
-  text-align: center;
-  margin: 0;
-  padding: 0 0 20px;
+	font-weight: 400;
+	font-size: 30px;
+	line-height: 30px;
+	color: black;
+	text-align: center;
+	margin: 0;
+	padding: 0 0 20px;
 }
 
 .footerText {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15.73px;
-  color: black;
-  margin: 0;
-  padding: 0;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 15.73px;
+	color: black;
+	margin: 0;
+	padding: 0;
 }
 
 .footerLinksBlock {
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  padding: 0 50px 0 0;
+	display: flex;
+	flex-direction: row;
+	gap: 100px;
+	padding: 0 50px 0 0;
 }
 
 .footerNav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .footerNavTitle {
-  margin: 0 0 20px 0;
-  font-weight: 500;
-  font-size: 21px;
-  line-height: 21px;
-  color: black;
+	margin: 0 0 20px 0;
+	font-weight: 500;
+	font-size: 21px;
+	line-height: 21px;
+	color: black;
 }
 
 .footerNavList {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  gap: 10px;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	gap: 10px;
 }
 
 .footerNavElement {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 .footerNavlink {
-  color: black;
-  transition: 0.3s linear;
-  text-decoration: none;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 21px;
+	color: black;
+	transition: 0.3s linear;
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 21px;
 
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
+	&:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
 }
 
 .copyrightBlock {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
-
 
 .footer__nav {
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 15.73px;
-  padding-top: 20px;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 15.73px;
+	padding-top: 20px;
+	justify-content: space-between;
 }
-
 
 .footer__nav-year {
-  margin: 0;
-  padding: 0;
-  color: #a0a0a0;
-  text-align: center;
+	margin: 0;
+	padding: 0;
+	color: #a0a0a0;
+	text-align: center;
 }
 
-
 .footer__nav-link {
-  color: black;
-  transition: 0.3s linear;
-  text-decoration: none;
+	color: black;
+	transition: 0.3s linear;
+	text-decoration: none;
 
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
+	&:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
 }

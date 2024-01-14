@@ -6,6 +6,8 @@ const chats = [
 		},
 		id: 42,
 		chat_secret_key: '1',
+		active: true,
+		new: false,
 	},
 
 	{
@@ -15,6 +17,8 @@ const chats = [
 		},
 		id: 43,
 		chat_secret_key: '2',
+		active: false,
+		new: true,
 	},
 	{
 		client: {
@@ -23,6 +27,8 @@ const chats = [
 		},
 		id: 44,
 		chat_secret_key: '3',
+		active: true,
+		new: false,
 	},
 ];
 
