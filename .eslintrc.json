@@ -5,7 +5,8 @@
 		"airbnb",
 		"airbnb/hooks",
 		"prettier",
-		"plugin:storybook/recommended"
+		"plugin:storybook/recommended",
+		"plugin:import/typescript"
 	],
 	"rules": {
 		"react/jsx-filename-extension": [

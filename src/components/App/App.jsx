@@ -16,7 +16,9 @@ import Footer from '../Footer/Footer';
 import AccountDocumentsPage from '../../pages/AccountDocumentsPage/AccountDocumentsPage';
 import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
+import WelcomePage from "../../pages/WelcomePage/WelcomePage";
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
+
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -38,6 +40,7 @@ const App = () => {
 					<Route element={<AboutProjectPage />} path="/about" />
 					<Route element={<AboutHelpPage />} path="/about-help" />
 					<Route element={<HowItWorksPage />} path="/how-it-works" />
+					<Route element={<WelcomePage/>} path="/welcome"/>
 					<Route element={<AccountPage />} path="account" />
 					<Route
 						element={<AccountDocumentsPage />}
