@@ -1,28 +1,28 @@
 .item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border-radius: 20px;
-  background-color: #eee;
-  padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	border-radius: 20px;
+	background-color: #eee;
+	padding: 24px;
 }
 
 .itemTitle {
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #000;
-  margin: 0;
-  padding: 0;
+	font-family: Montserrat, Arial, sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: #000;
+	margin: 0;
+	padding: 0;
 }
 
 .itemText {
-  font-family: Montserrat, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #000;
-  margin: 0;
-  padding: 0;
+	font-family: Montserrat, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #000;
+	margin: 0;
+	padding: 0;
 }
