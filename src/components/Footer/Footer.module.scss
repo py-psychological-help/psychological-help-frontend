@@ -3,9 +3,9 @@
 	flex-direction: column;
 	gap: 50px;
 	padding: 79px 70px 20px;
-	background-color: rgb(37, 37, 37);
+	background-color: #D9D9D9;
 	flex-shrink: 0;
-	color: rgb(175, 175, 175);
+	color: black;
 }
 
 .footerInfo {
@@ -24,7 +24,7 @@
 	font-weight: 400;
 	font-size: 30px;
 	line-height: 30px;
-	color: rgb(175, 175, 175);
+	color: black;
 	text-align: center;
 	margin: 0;
 	padding: 0 0 20px;
@@ -34,7 +34,7 @@
 	font-weight: 400;
 	font-size: 13px;
 	line-height: 15.73px;
-	color: rgb(175, 175, 175);
+	color: black;
 	margin: 0;
 	padding: 0;
 }
@@ -57,7 +57,7 @@
 	font-weight: 500;
 	font-size: 21px;
 	line-height: 21px;
-	color: rgb(206, 205, 205);
+	color: black;
 }
 
 .footerNavList {
@@ -75,7 +75,7 @@
 }
 
 .footerNavlink {
-	color: rgb(175, 175, 175);
+	color: black;
 	transition: 0.3s linear;
 	text-decoration: none;
 	font-weight: 400;

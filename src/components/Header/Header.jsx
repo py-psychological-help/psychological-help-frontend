@@ -5,19 +5,19 @@ import Navigation from '../Navigation/Navigation';
 import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 
-const Header = ({ isLoggedIn }) => {
-	//   const location = useLocation();
+const Header = ({isLoggedIn}) => {
+    //   const location = useLocation();
 
-	return (
-		<header className={styles.header}>
-			<Logo />
-			<Navigation isLoggedIn={isLoggedIn} />
-		</header>
-	);
+    return (
+        <header className={styles.header}>
+            <Logo/>
+            <Navigation isLoggedIn={isLoggedIn}/>
+        </header>
+    );
 };
 
 Header.propTypes = {
-	isLoggedIn: PropTypes.bool.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default Header;

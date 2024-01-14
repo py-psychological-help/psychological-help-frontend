@@ -16,19 +16,21 @@
 	gap: 16px;
 	padding-left: 64px;
 	justify-content: center;
-	color: rgb(222, 222, 222);
+	margin-left: 100px;
 }
 
-.navBtn {
-	width: 100%;
+.mainBtn {
+	width: 329px;
+	height: 48px;
 	padding: 0;
 	margin: 0;
-	font-size: 15px;
-	cursor: pointer;
-	color: rgb(222, 222, 222);
-	background-color: transparent;
-	border: none;
-	border-radius: 5px;
+	font-size: 20px;
+	background-color: black;
+	border-radius: 40px;
+	color: white;
+	text-decoration: none;
+	align-items: center;
+	justify-content: center;
 }
 
 .navLink {
@@ -36,7 +38,7 @@
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 18px;
-	color: rgb(222, 222, 222);
+	color: black;
 	padding: 0;
 	margin: 0;
 

@@ -1,28 +1,51 @@
-import React, { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import style from './DropZone.module.scss';
+import React, {useCallback, useState} from 'react';
+import {useDropzone} from 'react-dropzone';
+import style from './DocumentsUploader.module.scss';
+import api from "./api";
 
-function DropZone({ onVerification }) {
-	const [filesToUpload, setFilesTiUpload] = useState([]);
+function readBase64(file) {
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = reject;
+		reader.readAsDataURL(file);
+	});
+}
+
+function DocumentsUploader({onSuccessfulUpload}) {
+	const [docsToUpload, setDocsToUpload] = useState([]);
 	const [checkboxChecked, setCheckboxChecked] = useState(false);
 
-	const handleRemoveFile = (index) => {
-		setFilesTiUpload((prevFiles) => {
+	const handleRemoveDoc = (index) => {
+		setDocsToUpload((prevFiles) => {
 			const newFiles = [...prevFiles];
 			newFiles.splice(index, 1);
 			return newFiles;
 		});
 	};
-	const handleVerification = () => {
-		if (checkboxChecked && onVerification) {
-			onVerification();
+
+	const handleUpload = () => {
+		if (!checkboxChecked) {
+			return;
 		}
-	};
+
+		const uploadedDocs = []
+		for (let i = 0; i < docsToUpload.length; i += 1) {
+			const doc = readBase64(docsToUpload[i]).then(api.uploadDocument)
+			uploadedDocs.push(doc)
+		}
+
+		Promise.all(uploadedDocs)
+			.then(onSuccessfulUpload)
+			.catch(e => console.log(e))
+
+	}
+
 
 	const onDrop = useCallback((droppedFiles) => {
-		setFilesTiUpload((files) => [...files, ...droppedFiles]);
+		setDocsToUpload((files) => [...files, ...droppedFiles]);
 	}, []);
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({
+	const {getRootProps, getInputProps, isDragActive} = useDropzone({
 		onDrop,
 	});
 
@@ -44,10 +67,10 @@ function DropZone({ onVerification }) {
 					<button className={style.button}>Загрузить</button>
 				</div>
 			</div>
-			{filesToUpload.length > 0 && (
+			{docsToUpload.length > 0 && (
 				<div>
 					<ul className={style.ul}>
-						{filesToUpload.map((file, i) => (
+						{docsToUpload.map((file, i) => (
 							// eslint-disable-next-line react/no-array-index-key
 							<div key={i} className={style.listElement}>
 								<img
@@ -61,22 +84,21 @@ function DropZone({ onVerification }) {
 								</li>
 								<button
 									className={style.deleteButton}
-									onClick={() => handleRemoveFile(i)}
+									onClick={() => handleRemoveDoc(i)}
 								>
-									<span />
+									<span/>
 								</button>
 							</div>
 						))}
 					</ul>
 				</div>
 			)}
-			{filesToUpload.length > 1 && (
+			{docsToUpload.length > 1 && (
 				<div>
 					<button
 						className={style.verification}
-						formMethod="POST"
 						disabled={!checkboxChecked}
-						onClick={handleVerification}
+						onClick={handleUpload}
 					>
 						Отправить на верификацию
 					</button>
@@ -103,4 +125,4 @@ function DropZone({ onVerification }) {
 	);
 }
 
-export default DropZone;
+export default DocumentsUploader;
