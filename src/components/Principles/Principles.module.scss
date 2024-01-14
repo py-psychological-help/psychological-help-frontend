@@ -5,14 +5,13 @@
 }
 
 .title {
-	font-family: 'Inter', Arial, sans-serif;
-	font-size: 32px;
+	margin-bottom: 32px;
+	margin-top: 80px;
+	font-size: 40px;
+	font-style: normal;
 	font-weight: 600;
-	line-height: 1.1;
-	color: #000;
-	margin: 62px 0 32px 20px;
-	padding: 0;
-	min-height: 29px;
+	line-height: 44px;
+	font-family: Montserrat, sans-serif;
 }
 
 .list {
@@ -21,7 +20,7 @@
 	grid-template-columns: repeat(2, 521px);
 	column-gap: 29px;
 	row-gap: 29px;
-	margin: 0 80px auto 20px;
+	margin: 0 80px auto 0;
 	padding: 0;
 }
 
