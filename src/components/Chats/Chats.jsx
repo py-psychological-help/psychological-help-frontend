@@ -5,7 +5,14 @@ import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
 function Chats(props) {
-	const [isActive, setIsActive] = useState(0);
+	const [isSelected, setIsSelected] = useState();
+
+	const filteredChats = chats.filter((chat) => {
+		if (isSelected === 'active') return chat.active;
+		if (isSelected === 'new') return chat.new;
+		if (isSelected === 'archive') return chat.archive;
+		return chats;
+	});
 
 	const { className } = props;
 
@@ -16,12 +23,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						id={1}
-						onClick={() => {
-							setIsActive(1);
-						}}
+						onClick={() => setIsSelected('active')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isActive === 1,
+							[cls.active]: isSelected === 'active',
 						})}
 					>
 						Ожидающие
@@ -30,10 +34,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						id={2}
-						onClick={() => setIsActive(2)}
+						onClick={() => setIsSelected('new')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isActive === 2,
+							[cls.active]: isSelected === 'new',
 						})}
 					>
 						Активные
@@ -42,10 +45,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						id={3}
-						onClick={() => setIsActive(3)}
+						onClick={() => setIsSelected('archive')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isActive === 3,
+							[cls.active]: isSelected === 'archive',
 						})}
 					>
 						Архив
@@ -53,7 +55,7 @@ function Chats(props) {
 				</li>
 			</ul>
 			<ul className={cls.chatsList}>
-				{chats.map((chat) => (
+				{filteredChats.map((chat) => (
 					<Chat
 						key={chat.id}
 						id={chat.id}
