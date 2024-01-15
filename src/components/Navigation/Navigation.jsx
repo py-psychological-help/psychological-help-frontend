@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import AuthNavigation from '../AuthNavigation/AuthNavigation';
 import NotAuthNavigation from '../NotAuthNavigation/NotAuthNavigation';
 
-function Navigation({isLoggedIn}) {
-	return isLoggedIn ? <AuthNavigation/> : <NotAuthNavigation/>;
-}
+function Navigation() {
+	const isLoggedIn = useSelector((state) => state.user.userData);
 
-Navigation.propTypes = {
-	isLoggedIn: PropTypes.bool.isRequired,
-};
+	return isLoggedIn ? <AuthNavigation /> : <NotAuthNavigation />;
+}
 
 export default Navigation;

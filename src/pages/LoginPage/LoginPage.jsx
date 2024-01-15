@@ -20,13 +20,8 @@ export default function LoginPage() {
 	const [icon, setIcon] = useState(eyeOff);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const isSuccess = useSelector((state) => state.auth.isSuccess);
-
-	useEffect(() => {
-		if (isSuccess) {
-			navigate('/account');
-		}
-	}, [isSuccess, navigate]);
+	// const userData = useSelector((state) => state.user.userData);
+	const { isSuccess, authToken } = useSelector((state) => state.auth);
 
 	function handlePasswordToggle() {
 		if (type === 'password') {
@@ -37,6 +32,10 @@ export default function LoginPage() {
 			setType('password');
 		}
 	}
+
+	useEffect(() => {
+		if (isSuccess && authToken) navigate('/account');
+	}, [navigate, dispatch, isSuccess, authToken]);
 
 	function onSubmit(data) {
 		dispatch(loginUser(data));
@@ -102,6 +101,7 @@ export default function LoginPage() {
 						})}
 					/>
 					<button
+						type="button"
 						className={cls.eyeBtn}
 						onClick={handlePasswordToggle}
 					>

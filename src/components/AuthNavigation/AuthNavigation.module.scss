@@ -9,15 +9,13 @@
 	padding: 0 0 0 3px;
 	margin: 0;
 	width: 100%;
-	font-family: Montserrat,sans-serif;
 }
 
 .navLinks {
 	display: flex;
 	gap: 16px;
-	padding-left: 64px;
 	justify-content: center;
-	margin-left: 100px;
+	margin-left: 91px;
 }
 
 .mainBtn {
@@ -32,6 +30,16 @@
 	text-decoration: none;
 	align-items: center;
 	justify-content: center;
+}
+
+.logoutBtn {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 12px 32px;
+	border: 2px black solid;
+	border-radius: 20px;
+	cursor: pointer;
 }
 
 .navLink {
