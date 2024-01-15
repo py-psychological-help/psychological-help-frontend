@@ -1,6 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cls from './App.module.scss';
 import AccountPage from '../../pages/AccountPage/AccountPage';
 import AccountChatPage from '../../pages/AccountChatPage/AccountChatPage';
@@ -13,22 +13,30 @@ import Footer from '../Footer/Footer';
 import AccountDocumentsPage from '../../pages/AccountDocumentsPage/AccountDocumentsPage';
 import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
-import WelcomePage from "../../pages/WelcomePage/WelcomePage";
+import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
-
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const userData = useSelector((state) => state.user.userData);
+	const authToken = useSelector((state) => state.auth.authToken);
 
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
 	// Добавить проверки на налиие токена и т.п.
 	useEffect(() => {
-		const user = getCurrentUser();
-		if (user !== null) {
-			setIsLoggedIn(true);
+		// создаёт перерендеры при каждой смене роута, позже пофиксить
+		if (authToken) {
+			dispatch(getCurrentUser());
 		}
-	}, [dispatch]);
+	}, [dispatch, authToken]);
+
+	useEffect(() => {
+		if (userData) navigate('/account');
+		// eslint-disable-next-line
+	}, [userData]); // Ругается на отсутствие navigate
+
 
 
 	return (
@@ -38,7 +46,7 @@ const App = () => {
 			<main className={cls.main}>
 				<Routes>
 					<Route element={<MainPage />} path="/" />
-					<Route element={<WelcomePage/>} path="/welcome"/>
+					<Route element={<WelcomePage />} path="/welcome" />
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/" element={<RegisterPage/>}/>

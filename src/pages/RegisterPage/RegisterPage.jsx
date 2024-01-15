@@ -21,12 +21,6 @@ export default function RegisterPage() {
 	const navigate = useNavigate();
 	const isSuccess = useSelector((state) => state.auth.isSuccess);
 
-	useEffect(() => {
-		if (isSuccess) {
-			navigate('/signin');
-		}
-	}, [isSuccess, navigate]);
-
 	function handlePasswordToggle() {
 		if (type === 'password') {
 			setIcon(eye);
@@ -36,6 +30,10 @@ export default function RegisterPage() {
 			setType('password');
 		}
 	}
+
+	useEffect(() => {
+		if (isSuccess) navigate('/signin');
+	}, [navigate, dispatch, isSuccess]);
 
 	function onSubmit(data) {
 		dispatch(registerUser(data));
@@ -191,6 +189,7 @@ export default function RegisterPage() {
 						})}
 					/>
 					<button
+						type="button"
 						className={cls.eyeBtn}
 						onClick={handlePasswordToggle}
 					>
