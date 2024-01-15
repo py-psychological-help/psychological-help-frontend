@@ -22,6 +22,7 @@ const App = () => {
 	const navigate = useNavigate();
 	const userData = useSelector((state) => state.user.userData);
 	const authToken = useSelector((state) => state.auth.authToken);
+	const userIsTrue = useSelector((state) => state.user.userData);
 
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
 	// Добавить проверки на налиие токена и т.п.
@@ -38,7 +39,6 @@ const App = () => {
 	}, [userData]); // Ругается на отсутствие navigate
 
 
-
 	return (
 		<div className={cls.app}>
 			<Header isLoggedIn={isLoggedIn} />
@@ -51,7 +51,7 @@ const App = () => {
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/" element={<RegisterPage/>}/>
 
-					{isLoggedIn ? (
+					{userIsTrue ? (
 						<>
 						<Route element={<AccountPage />} path="account" />
 				<Route
