@@ -9,11 +9,11 @@ function checkResponse(res) {
 }
 
 class Api {
-	constructor({baseUrl, commonHeaders, authToken}) {
+	constructor({baseUrl, commonHeaders, token}) {
 		this.baseUrl = baseUrl;
 		this.commonHeaders = {
 			...commonHeaders,
-			Authorization: `Token ${authToken}`,
+			Authorization: `Token ${token}`,
 		};
 	}
 
@@ -42,7 +42,7 @@ const api = new Api({
 	commonHeaders: {
 		'Content-Type': 'application/json',
 	},
-	authToken: authToken || '',
+	token: authToken,
 });
 
 export default api

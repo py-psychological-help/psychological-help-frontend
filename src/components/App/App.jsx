@@ -24,8 +24,12 @@ const App = () => {
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
 	// Добавить проверки на налиие токена и т.п.
 	useEffect(() => {
-		dispatch(getCurrentUser());
+		const user = getCurrentUser();
+		if (user !== null) {
+			setIsLoggedIn(true);
+		}
 	}, [dispatch]);
+
 
 	return (
 		<div className={cls.app}>
@@ -37,9 +41,7 @@ const App = () => {
 					<Route element={<WelcomePage/>} path="/welcome"/>
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
-					<Route path="signup/">
-						<Route element={<RegisterPage />} index />
-					</Route>
+					<Route path="signup/" element={<RegisterPage/>}/>
 
 					{isLoggedIn ? (
 						<>
