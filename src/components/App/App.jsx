@@ -17,7 +17,7 @@ import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
 const App = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const userData = useSelector((state) => state.user.userData);
@@ -37,6 +37,8 @@ const App = () => {
 		// eslint-disable-next-line
 	}, [userData]); // Ругается на отсутствие navigate
 
+
+
 	return (
 		<div className={cls.app}>
 			<Header isLoggedIn={isLoggedIn} />
@@ -47,21 +49,25 @@ const App = () => {
 					<Route element={<WelcomePage />} path="/welcome" />
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
-					<Route path="signup/">
-						<Route element={<RegisterPage />} index />
-					</Route>
+					<Route path="signup/" element={<RegisterPage/>}/>
 
-					<Route element={<AccountPage />} path="account" />
-					<Route
-						element={<AccountDocumentsPage />}
-						path="/account/documents"
-					/>
-					<Route element={<AccountChatPage />} path="account-chat" />
-					<Route
-						element={<AccountPrinciples />}
-						path="account-principles"
-					/>
-					<Route element={<PsychologistSide />} path="psy-side" />
+					{isLoggedIn ? (
+						<>
+						<Route element={<AccountPage />} path="account" />
+				<Route
+					element={<AccountDocumentsPage />}
+					path="/account/documents"
+				/>
+				<Route element={<AccountChatPage />} path="account-chat" />
+				<Route
+					element={<AccountPrinciples />}
+					path="account-principles"
+				/>
+				<Route element={<PsychologistSide />} path="psy-side" />
+						</>
+						)
+					: (<Route path="signup/" element={<RegisterPage />}/>)
+					}
 					<Route path="*" element={<MainPage />} />
 				</Routes>
 			</main>

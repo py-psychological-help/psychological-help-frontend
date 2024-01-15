@@ -40,6 +40,7 @@ const AuthNavigation = memo(() => {
 				>
 					Как это работает
 				</NavLink>
+
 				<NavLink
 					to={isLoggedIn ? '/account' : '/signup'}
 					className={styles.navLink}
