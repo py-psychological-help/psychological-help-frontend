@@ -18,7 +18,7 @@ import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
 
 const App = () => {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const dispatch = useDispatch();
 
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
@@ -41,17 +41,23 @@ const App = () => {
 						<Route element={<RegisterPage />} index />
 					</Route>
 
-					<Route element={<AccountPage />} path="account" />
-					<Route
-						element={<AccountDocumentsPage />}
-						path="/account/documents"
-					/>
-					<Route element={<AccountChatPage />} path="account-chat" />
-					<Route
-						element={<AccountPrinciples />}
-						path="account-principles"
-					/>
-					<Route element={<PsychologistSide />} path="psy-side" />
+					{isLoggedIn ? (
+						<>
+						<Route element={<AccountPage />} path="account" />
+				<Route
+					element={<AccountDocumentsPage />}
+					path="/account/documents"
+				/>
+				<Route element={<AccountChatPage />} path="account-chat" />
+				<Route
+					element={<AccountPrinciples />}
+					path="account-principles"
+				/>
+				<Route element={<PsychologistSide />} path="psy-side" />
+						</>
+						)
+					: (<Route path="signup/" element={<RegisterPage />}/>)
+					}
 					<Route path="*" element={<MainPage />} />
 				</Routes>
 			</main>

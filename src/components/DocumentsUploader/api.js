@@ -9,9 +9,12 @@ function checkResponse(res) {
 }
 
 class Api {
-	constructor({baseUrl, commonHeaders}) {
+	constructor({baseUrl, commonHeaders, authToken}) {
 		this.baseUrl = baseUrl;
-		this.commonHeaders = commonHeaders;
+		this.commonHeaders = {
+			...commonHeaders,
+			Authorization: `Token ${authToken}`,
+		};
 	}
 
 	getUploadedDocuments() {
@@ -32,11 +35,14 @@ class Api {
 	}
 }
 
+const authToken = localStorage.getItem('authToken');
+
 const api = new Api({
 	baseUrl: 'https://letstalk.ddns.net/api/v1',
 	commonHeaders: {
 		'Content-Type': 'application/json',
-	}
+	},
+	authToken: authToken || '',
 });
 
 export default api
