@@ -29,7 +29,7 @@ function AuthNavigation() {
 				>
 					Как это работает
 				</NavLink>
-				<NavLink to="/signup" className={styles.navLink}>
+				<NavLink to="/welcome" className={styles.navLink}>
 					Психологам
 				</NavLink>
 			</div>
