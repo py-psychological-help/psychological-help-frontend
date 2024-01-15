@@ -12,7 +12,9 @@ export const userSlice = createSlice({
 		},
 		logout: (state) => {
 			state.userData = undefined;
-			localStorage.removeItem(localStorage.getItem('authToken'));
+			state.error = null;
+			state.isLoading = false;
+			localStorage.removeItem('authToken');
 		},
 	},
 	extraReducers: (builder) => {

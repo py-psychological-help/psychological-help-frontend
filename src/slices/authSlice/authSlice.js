@@ -37,7 +37,7 @@ const authSlice = createSlice({
 			.addCase(loginUser.fulfilled, (state, action) => {
 				state.isLoading = false;
 				// state.userData = action.payload; // С бэка пока приходит только токен (без юзера), позже поправят
-				state.authToken = action.payload.auth_token; // Поправить в будущем snake_case ?
+				state.authToken = action.payload.auth_token; // Поправить в будущем snake_case
 			})
 			.addCase(loginUser.rejected, (state, action) => {
 				state.isLoading = false;
