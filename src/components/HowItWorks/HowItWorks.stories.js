@@ -1,37 +1,37 @@
 import HowItWorks from './HowItWorks';
 
 export default {
-    title: 'Example/HowItWorks',
-    component: HowItWorks,
-    tags: ['autodocs'],
-    argTypes: {
-        backgroundColor: {control: 'color'},
-    },
+	title: 'Example/HowItWorks',
+	component: HowItWorks,
+	tags: ['autodocs'],
+	argTypes: {
+		backgroundColor: { control: 'color' },
+	},
 };
 
 export const Primary = {
-    args: {
-        primary: true,
-        label: 'HowItWorks',
-    },
+	args: {
+		primary: true,
+		label: 'HowItWorks',
+	},
 };
 
 export const Secondary = {
-    args: {
-        label: 'HowItWorks',
-    },
+	args: {
+		label: 'HowItWorks',
+	},
 };
 
 export const Large = {
-    args: {
-        size: 'large',
-        label: 'HowItWorks',
-    },
+	args: {
+		size: 'large',
+		label: 'HowItWorks',
+	},
 };
 
 export const Small = {
-    args: {
-        size: 'small',
-        label: 'HowItWorks',
-    },
+	args: {
+		size: 'small',
+		label: 'HowItWorks',
+	},
 };

@@ -1,30 +1,62 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import styles from './NotAuthNavigation.module.scss';
 import Button from '../buttonHeader/Button';
 
-function NotAuthNavigation() {
-    return (
-        <nav className='header__nav'>
-            <NavLink to="/" className={styles.header__logo}/>
-            <div className="header__nav-links">
-                <NavLink to="/about" className={styles.navLink}>
-                    О нас
-                </NavLink>
-                <NavLink to="/how-it-works" className={styles.navLink}>
-                    Как это работает
-                </NavLink>
-                <NavLink to="/signup" className={styles.navLink}>
-                    Работать с нами
-                </NavLink>
-            </div>
-            <div className="header__nav-authbar">
-                <NavLink to="/signin">
-                    <Button buttonText="Войти"/>
-                </NavLink>
-            </div>
-        </nav>
-    );
+const scrollToSection = (sectionId) => {
+	const element = document.getElementById(sectionId);
+	if (element) {
+		element.scrollIntoView({ behavior: 'smooth' });
+	}
+};
+
+function AuthNavigation() {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const welcomePath = location.pathname === '/';
+
+	return (
+		<nav className={styles.headerNav}>
+			<NavLink to="/" className={styles.header__logo} />
+			<div className={styles.navLinks}>
+				<NavLink
+					to="/"
+					onClick={() => scrollToSection('aboutSection')}
+					className={styles.navLink}
+				>
+					О проекте
+				</NavLink>
+				<NavLink
+					to="/"
+					onClick={() => scrollToSection('howItWorksSection')}
+					className={styles.navLink}
+				>
+					Как это работает
+				</NavLink>
+				<NavLink to="/welcome" className={styles.navLink}>
+					Психологам
+				</NavLink>
+			</div>
+			<div className={styles.navAuthbar}>
+				{welcomePath ? (
+					<Button
+						additionalStyles={styles.mainBtn}
+						buttonText="Обратиться за помощью"
+						to="/"
+						onClick={() => scrollToSection('howItWorksSection')}
+					/>
+				) : (
+					<button
+						onClick={() => navigate('/signin')}
+						className={styles.loginBtn}
+						// buttonText="Выйти"
+					>
+						Войти
+					</button>
+				)}
+			</div>
+		</nav>
+	);
 }
 
-export default NotAuthNavigation;
+export default AuthNavigation;

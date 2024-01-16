@@ -1,17 +1,17 @@
-import AccountPrinciples from "./AccountPrinciples";
+import AccountPrinciples from './AccountPrinciples';
 
 export default {
-    title: 'Example/AccountPrinciples',
-    component: AccountPrinciples,
-    tags: ['autodocs'],
-    argTypes: {
-        backgroundColor: {control: 'color'},
-    },
+	title: 'Example/AccountPrinciples',
+	component: AccountPrinciples,
+	tags: ['autodocs'],
+	argTypes: {
+		backgroundColor: { control: 'color' },
+	},
 };
 
 export const Primary = {
-    args: {
-        primary: true,
-        label: 'AccountPrinciples',
-    },
+	args: {
+		primary: true,
+		label: 'AccountPrinciples',
+	},
 };

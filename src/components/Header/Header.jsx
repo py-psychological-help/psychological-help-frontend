@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import { useLocation } from 'react-router-dom';
-import Navigation from "../Navigation/Navigation";
+import Navigation from '../Navigation/Navigation';
 import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 

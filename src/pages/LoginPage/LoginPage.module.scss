@@ -1,0 +1,94 @@
+.container {
+	max-width: 521px;
+	margin: 0 auto;
+}
+
+.header {
+	margin: 80px 0 32px;
+	font-size: 40px;
+	font-weight: 600;
+	line-height: 44px;
+}
+
+.authForm {
+	display: flex;
+	flex-direction: column;
+}
+
+.inputCaption {
+	color: #212028;
+	margin: 0 0 8px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+.input {
+	margin: 0 0 4px 0;
+	width: calc(100% - 40px);
+	height: 64px;
+	border-radius: 20px;
+	padding: 0 20px;
+	border: 1px solid #212028;
+	color: #6f6f6f;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+.inputWrong {
+	border-color: #ff0909;
+	color: #ff0909;
+}
+
+.inputWrong:focus {
+	outline-color: #ff0909;
+}
+
+.input:first-of-type {
+	margin-bottom: 20px;
+}
+
+.error {
+	margin: -16px 0 0;
+	color: #ff0909;
+}
+
+.passwordContainer {
+	margin: 0;
+	width: 100%;
+	position: relative;
+}
+
+.eyeBtn {
+	position: absolute;
+	right: 10px;
+	top: 18px;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.passwordSpan {
+	margin: 0;
+	color: #212028;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14px;
+}
+
+.link {
+	display: block;
+	margin-bottom: 80px;
+	color: #212028;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	text-decoration-line: underline;
+}
+
+.button {
+	margin: 32px 0 12px;
+	width: 131px;
+	height: 48px;
+}

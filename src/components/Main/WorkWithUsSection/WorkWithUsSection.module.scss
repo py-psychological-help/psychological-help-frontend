@@ -1,0 +1,47 @@
+.warningSection {
+    display: flex;
+    padding: 52px 80px;
+    margin: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    // border: 1px red solid;
+    background-color: #212028;
+    color: white;
+    font-family: Montserrat, sans-serif;
+
+    .mainSubHeader {
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 44px;
+        padding: 0;
+        margin: 0;
+        // border: 1px red solid;
+    }
+
+    .mainText {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 36px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mainBtn {
+        width: 239px;
+        height: 48px;
+        padding: 0;
+        font-size: 20px;
+        background-color: #D9D9D9;
+        border-radius: 40px;
+        color: black;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .link {
+        margin-top: 32px;
+        margin-right: auto;
+    }
+}
