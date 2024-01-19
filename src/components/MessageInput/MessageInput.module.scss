@@ -7,7 +7,7 @@
 .messageInput {
 	border: 1px solid #212028;
 	border-radius: 20px;
-	font-family: 'Raleway', Arial, sans-serif;
+	font-family: 'Raleway', Arial, sans-serif; // Откуда шрифт?
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.25;
@@ -18,9 +18,7 @@
 }
 
 .submitButton {
-	border: none;
 	border-radius: 20px;
-	padding: 23px;
 	width: 64px;
 	height: 64px;
 	border: 1px solid #212028;
