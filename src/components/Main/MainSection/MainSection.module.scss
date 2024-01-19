@@ -7,18 +7,21 @@
       justify-content: space-between;
       gap: 10px;
       max-width: 856px;
+      
       // border: 1px red solid;
-  
-    .mainHeader {
+      
+      .mainHeader {
       margin: 44px 0 0;
       padding: 0;
       color: black;
       font-weight: 400;
       font-size: 88px;
       line-height: 132px;
-      font-family: Segoe Print, sans-serif;
+      font-family: var(--font-family-secondary);
+
       // border: 1px red solid;
       text-align: center;
+
       //   @media screen and (max-width: 800px) {}
     }
   
@@ -29,11 +32,11 @@
       line-height: 44px;
       padding: 0;
       margin: 44px 0;
+
       // border: 1px red solid;
       max-width: 588px;
       align-self: center;
       text-align: center;
-      font-family: Montserrat,sans-serif;
   
       // Базовые стили для заголовка
       &.boldLeft {
@@ -49,14 +52,13 @@
       line-height: 36px;
       padding: 0;
       margin: 0;
-      font-family: Montserrat,sans-serif;
     }
   
     .mainBtn {
       width: 329px;
       height: 48px;
       padding: 0;
-      margin: 50px 0 0 0;
+      margin: 50px 0 0;
       font-size: 20px;
       background-color: black;
       border-radius: 40px;
@@ -64,6 +66,5 @@
       text-decoration: none; 
       align-items: center;
       justify-content: center;
-      font-family: Montserrat,sans-serif;
     }
 }
