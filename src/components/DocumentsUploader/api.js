@@ -9,18 +9,23 @@ function checkResponse(res) {
 }
 
 class Api {
-	constructor({baseUrl, commonHeaders, token}) {
+	constructor({baseUrl, getAuthToken}) {
 		this.baseUrl = baseUrl;
-		this.commonHeaders = {
-			...commonHeaders,
-			Authorization: `Token ${token}`,
+		this.getAuthToken = getAuthToken;
+	}
+
+	getHeaders() {
+		const authToken = this.getAuthToken();
+		return {
+			'Content-Type': 'application/json',
+			'Authorization': `Token ${authToken}`,
 		};
 	}
 
 	getUploadedDocuments() {
 		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
 			method: "GET",
-			headers: this.commonHeaders,
+			headers: this.getHeaders(),
 		})
 			.then(checkResponse)
 	}
@@ -28,21 +33,17 @@ class Api {
 	uploadDocument(doc) {
 		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
 			method: "POST",
-			headers: this.commonHeaders,
+			headers: this.getHeaders(),
 			body:JSON.stringify({scan: doc})
 		})
 			.then(checkResponse)
 	}
 }
 
-const authToken = localStorage.getItem('authToken');
 
 const api = new Api({
 	baseUrl: 'https://letstalk.ddns.net/api/v1',
-	commonHeaders: {
-		'Content-Type': 'application/json',
-	},
-	token: authToken,
+	getAuthToken: () => localStorage.getItem('authToken'),
 });
 
 export default api
