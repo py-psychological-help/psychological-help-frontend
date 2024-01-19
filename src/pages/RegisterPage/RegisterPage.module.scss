@@ -48,6 +48,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	color: #ff0909;
 }
 
+.inputWrong::placeholder {
+	color: #ff0909;
+}
+
 .inputWrong:focus {
 	outline-color: #ff0909;
 }
@@ -72,6 +76,10 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	cursor: pointer;
 }
 
+.eyeBtnWrong {
+	color: #ff0909;
+}
+
 .passwordSpan {
 	margin: 0;
 	color: #212028;
@@ -81,7 +89,12 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .button {
-	margin: 32px 0 76px;
+	margin: 4px 0 76px;
 	width: 209px;
 	height: 48px;
+}
+
+.apiError {
+	margin: 20px 0 0;
+	color: #ff0909;
 }

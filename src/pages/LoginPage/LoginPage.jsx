@@ -8,20 +8,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import cls from './LoginPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 import { loginUser } from '../../slices/authSlice/authAsyncActions';
+import { clearMessage } from '../../slices/messageSlice';
 
 export default function LoginPage() {
 	const {
 		register,
 		handleSubmit,
-		// watch,
 		formState: { isValid, errors },
-	} = useForm();
+	} = useForm({ mode: 'onChange' });
 	const [type, setType] = useState('password');
 	const [icon, setIcon] = useState(eyeOff);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	// const userData = useSelector((state) => state.user.userData);
 	const { isSuccess, authToken } = useSelector((state) => state.auth);
+	const { message } = useSelector((state) => state.message);
 
 	function handlePasswordToggle() {
 		if (type === 'password') {
@@ -40,6 +41,10 @@ export default function LoginPage() {
 	function onSubmit(data) {
 		dispatch(loginUser(data));
 	}
+
+	useEffect(() => {
+		dispatch(clearMessage());
+	}, [dispatch]);
 
 	return (
 		<div className={cls.container}>
@@ -102,14 +107,20 @@ export default function LoginPage() {
 					/>
 					<button
 						type="button"
-						className={cls.eyeBtn}
+						className={
+							errors?.password
+								? `${cls.eyeBtn} ${cls.eyeBtnWrong}`
+								: cls.eyeBtn
+						}
 						onClick={handlePasswordToggle}
 					>
 						<Icon class={cls.eyePicture} icon={icon} size={25} />
 					</button>
 
 					{errors?.password?.type === 'pattern' && (
-						<p className={cls.error}>Запрещенные символы.</p>
+						<p className={cls.error}>
+							Не соответствует требованиям к паролю
+						</p>
 					)}
 					{errors?.password?.type === 'minLength' && (
 						<p className={cls.error}>Слишком мало символов</p>
@@ -127,6 +138,7 @@ export default function LoginPage() {
 						цифры и специальные символы.
 					</span>
 				)}
+				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
 					<Button type="submit" name="Войти" />
 				</div>
