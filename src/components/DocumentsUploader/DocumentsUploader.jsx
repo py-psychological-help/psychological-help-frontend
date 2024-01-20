@@ -31,7 +31,8 @@ function DocumentsUploader({onSuccessfulUpload}) {
 
 		const uploadedDocs = []
 		for (let i = 0; i < docsToUpload.length; i += 1) {
-			const doc = readBase64(docsToUpload[i]).then(api.uploadDocument)
+			const doc = readBase64(docsToUpload[i])
+				.then(d => api.uploadDocument(d))
 			uploadedDocs.push(doc)
 		}
 
@@ -79,7 +80,6 @@ function DocumentsUploader({onSuccessfulUpload}) {
 									alt="фото документа"
 								/>
 								<li className={style.listDocument}>
-									{' '}
 									{file.name}
 								</li>
 								<button

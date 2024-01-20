@@ -2,6 +2,13 @@ import React from "react";
 import styles from './AboutSection.module.scss';
 import Button from '../../buttonHeader/Button';
 
+const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 function AboutSection() {
     return (
         <section id="aboutSection" className={styles.aboutSection}>
@@ -48,7 +55,7 @@ function AboutSection() {
             <Button
                 additionalStyles={styles.mainBtn}
                 buttonText="Обратиться за помощью"
-                to="/profile" 
+                onClick={() => scrollToSection('howItWorksSection')}
             />
         </section>
     );

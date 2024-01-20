@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setMessage } from '../messageSlice';
 
 const baseURL = 'https://letstalk.ddns.net/api/v1/';
 
@@ -28,17 +29,22 @@ export const registerUser = createAsyncThunk(
 			);
 			return response.data;
 		} catch (error) {
+			console.log(error);
 			if (error.response && error.response.data) {
-				return thunkAPI.rejectWithValue(error.response.data); // Ошибка с бэка
+				// тут будут тексты ошибок от бэка, когда они их добавят
+				// const message = error.response.data.non_field_errors.toString();
+				const message = 'Произошла ошибка';
+
+				thunkAPI.dispatch(setMessage(message));
 			}
-			return thunkAPI.rejectWithValue(error.message); // Для дефолтной или кастомной ошибки, мб понадобится
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	}
 );
 
 export const loginUser = createAsyncThunk(
 	'auth/login',
-	async ({ email, password }, { rejectWithValue }) => {
+	async ({ email, password }, thunkAPI) => {
 		try {
 			const config = {
 				headers: {
@@ -54,9 +60,11 @@ export const loginUser = createAsyncThunk(
 			return response.data; // Должна быть инфа о пользователе, но пока только токен
 		} catch (error) {
 			if (error.response && error.response.data) {
-				return rejectWithValue(error.response.data); // Ошибка с бэка
+				const message = error.response.data.non_field_errors.toString();
+
+				thunkAPI.dispatch(setMessage(message));
 			}
-			return rejectWithValue(error.message); // Для дефолтной или кастомной ошибки, мб понадобится
+			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	}
 );
