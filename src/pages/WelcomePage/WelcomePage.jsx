@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 
-export default function WelcomePage(props) {
+export default function WelcomePage() {
 	return (
 		<div className={cls.container}>
 			<h1 className={cls.header}>Приветствуем вас на нашем ресурсе</h1>
@@ -16,9 +16,11 @@ export default function WelcomePage(props) {
 				необходимо иметь:
 			</h2>
 			<ul className={cls.list}>
-				<li>Профильное образование</li>
-				<li>Опыт работы с клиентами</li>
-				<li>Подходы признанные научным сообществом</li>
+				<li className={cls.listItem}>Профильное образование</li>
+				<li className={cls.listItem}>Опыт работы с клиентами</li>
+				<li className={cls.listItem}>
+					Подходы признанные научным сообществом
+				</li>
 			</ul>
 			<Link to="/signup" className={cls.link}>
 				<Button type="button" name="Хочу в команду" />

@@ -11,15 +11,13 @@
 	font-style: normal;
 	font-weight: 600;
 	line-height: 44px;
-	font-family: Montserrat, sans-serif;
 }
 
 .list {
 	display: grid;
 	list-style: none;
 	grid-template-columns: repeat(2, 521px);
-	column-gap: 29px;
-	row-gap: 29px;
+	gap: 29px;
 	margin: 0 80px auto 0;
 	padding: 0;
 }
@@ -31,7 +29,7 @@
 }
 
 .itemTitle {
-	font-family: 'Raleway', Arial, sans-serif;
+	font-family: 'Raleway', Arial, sans-serif; // Откуда шрифт?
 	font-size: 24px;
 	font-weight: 600;
 	line-height: 1.4;

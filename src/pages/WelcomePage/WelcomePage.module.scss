@@ -1,7 +1,6 @@
 .container {
-	margin: 80px auto 80px;
+	margin: 80px auto;
 	max-width: 847px;
-	font-family: Montserrat, sans-serif;
 }
 
 .header {
@@ -30,8 +29,9 @@
 	font-size: 20px;
 	font-weight: 400;
 	line-height: 26px;
-	li {
-	margin-bottom: 12px;
+	
+	.listItem {
+		margin-bottom: 12px;
 	}
 }
 
