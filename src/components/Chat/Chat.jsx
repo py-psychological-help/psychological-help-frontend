@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cls from './Chat.module.scss';
 
-function Chat({ id, firstName, complaint }) {
+function Chat({ id, firstName, complaint, onSelect }) {
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
@@ -13,9 +13,9 @@ function Chat({ id, firstName, complaint }) {
 				</p>
 				<p className={cls.problem}>{`Проблема: ${complaint}`}</p>
 			</div>
-			<NavLink to="/psy-side" className={cls.chatButton}>
+			<Link to="/psy-side" className={cls.chatButton} onClick={onSelect}>
 				Подключиться
-			</NavLink>
+			</Link>
 		</div>
 	);
 }

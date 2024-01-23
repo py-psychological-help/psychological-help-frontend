@@ -3,13 +3,12 @@ import clsx from 'clsx';
 import cls from './ChatNumber.module.scss';
 import arrowDown from '../../images/arrow-down.svg';
 import ChatInfo from '../ChatInfo/ChatInfo';
-// import chats from '../../utils/chats';
 
 function ChatNumber(props) {
 	const [isChatInfoOpened, setIsChatInfoOpened] = useState(false);
 	const [isInvisible, setIsInvisible] = useState(false);
 	// eslint-disable-next-line react/prop-types
-	const { className } = props;
+	const { className, id } = props;
 
 	const handleChatNumberClick = () => {
 		setIsChatInfoOpened(true);

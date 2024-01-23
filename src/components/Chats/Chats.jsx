@@ -4,17 +4,15 @@ import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
-function Chats(props) {
-	const [isSelected, setIsSelected] = useState();
+function Chats({ className, onSelect }) {
+	const [isFiltered, setIsFiltered] = useState();
 
 	const filteredChats = chats.filter((chat) => {
-		if (isSelected === 'active') return chat.active;
-		if (isSelected === 'new') return chat.new;
-		if (isSelected === 'archive') return chat.archive;
+		if (isFiltered === 'active') return chat.active;
+		if (isFiltered === 'new') return chat.new;
+		if (isFiltered === 'archive') return chat.archive;
 		return chats;
 	});
-
-	const { className } = props;
 
 	return (
 		<main className={cls.chats}>
@@ -23,9 +21,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('active')}
+						onClick={() => setIsFiltered('active')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'active',
+							[cls.active]: isFiltered === 'active',
 						})}
 					>
 						Ожидающие
@@ -34,9 +32,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('new')}
+						onClick={() => setIsFiltered('new')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'new',
+							[cls.active]: isFiltered === 'new',
 						})}
 					>
 						Активные
@@ -45,9 +43,9 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('archive')}
+						onClick={() => setIsFiltered('archive')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'archive',
+							[cls.active]: isFiltered === 'archive',
 						})}
 					>
 						Архив
@@ -59,8 +57,10 @@ function Chats(props) {
 					<Chat
 						key={chat.id}
 						id={chat.id}
-						firstName={chat.client.first_name}
-						complaint={chat.client.complaint}
+						firstName={chat.psychologist.first_name}
+						complaint={chat.psychologist.complaint}
+						chatSecretKey={chat.psychologist.chat_secret_key}
+						onSelect={onSelect}
 					/>
 				))}
 			</ul>

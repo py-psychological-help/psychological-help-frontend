@@ -38,6 +38,11 @@ const App = () => {
 		// eslint-disable-next-line
 	}, [userData]); // Ругается на отсутствие navigate
 
+	const [selectedChat, setSelectedChat] = useState();
+
+	const handleChatSelection = (chat) => {
+		setSelectedChat(chat);
+	};
 
 	return (
 		<div className={cls.app}>
@@ -49,25 +54,36 @@ const App = () => {
 					<Route element={<WelcomePage />} path="/welcome" />
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
-					<Route path="signup/" element={<RegisterPage/>}/>
+					<Route path="signup/" element={<RegisterPage />} />
 
 					{userIsTrue ? (
 						<>
-						<Route element={<AccountPage />} path="account" />
-				<Route
-					element={<AccountDocumentsPage />}
-					path="/account/documents"
-				/>
-				<Route element={<AccountChatPage />} path="account-chat" />
-				<Route
-					element={<AccountPrinciples />}
-					path="account-principles"
-				/>
-				<Route element={<PsychologistSide />} path="psy-side" />
+							<Route element={<AccountPage />} path="account" />
+							<Route
+								element={<AccountDocumentsPage />}
+								path="/account/documents"
+							/>
+							<Route
+								element={<AccountChatPage />}
+								path="account-chat"
+							/>
+							<Route
+								element={<AccountPrinciples />}
+								path="account-principles"
+							/>
+							<Route
+								element={
+									<PsychologistSide
+										selectedChat={selectedChat}
+										onSelect={handleChatSelection}
+									/>
+								}
+								path="psy-side"
+							/>
 						</>
-						)
-					: (<Route path="signup/" element={<RegisterPage />}/>)
-					}
+					) : (
+						<Route path="signup/" element={<RegisterPage />} />
+					)}
 					<Route path="*" element={<MainPage />} />
 				</Routes>
 			</main>
