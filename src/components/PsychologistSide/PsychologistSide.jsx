@@ -12,7 +12,7 @@ function PsychologistSide({ selectedChat, onSelect }) {
 
 	return (
 		<div className={cls.container}>
-			<ChatNumber />
+			<ChatNumber selectedChat={selectedChat} />
 			<Messages selectedChat={selectedChat} onSelect={onSelect} />
 			<button
 				className={cls.close}

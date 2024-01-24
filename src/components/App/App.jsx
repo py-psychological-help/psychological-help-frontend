@@ -64,7 +64,11 @@ const App = () => {
 								path="/account/documents"
 							/>
 							<Route
-								element={<AccountChatPage />}
+								element={
+									<AccountChatPage
+										onSelect={handleChatSelection}
+									/>
+								}
 								path="account-chat"
 							/>
 							<Route
@@ -75,7 +79,6 @@ const App = () => {
 								element={
 									<PsychologistSide
 										selectedChat={selectedChat}
-										onSelect={handleChatSelection}
 									/>
 								}
 								path="psy-side"

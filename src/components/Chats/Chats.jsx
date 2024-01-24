@@ -54,14 +54,7 @@ function Chats({ className, onSelect }) {
 			</ul>
 			<ul className={cls.chatsList}>
 				{filteredChats.map((chat) => (
-					<Chat
-						key={chat.id}
-						id={chat.id}
-						firstName={chat.psychologist.first_name}
-						complaint={chat.psychologist.complaint}
-						chatSecretKey={chat.psychologist.chat_secret_key}
-						onSelect={onSelect}
-					/>
+					<Chat key={chat.id} chat={chat} onSelect={onSelect} />
 				))}
 			</ul>
 			<span className={cls.span}>
