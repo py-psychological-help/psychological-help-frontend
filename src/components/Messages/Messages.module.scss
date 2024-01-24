@@ -1,4 +1,6 @@
 .messagesContainer {
+	display: flex;
+	align-items: end;
 	width: 846px;
 	height: 856px;
 }
@@ -11,4 +13,5 @@
 	gap: 32px;
 	margin: 0;
 	padding: 0;
+
 }

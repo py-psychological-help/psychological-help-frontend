@@ -5,7 +5,7 @@ import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
 function Chats({ className, onSelect }) {
-	const [isFiltered, setIsFiltered] = useState();
+	const [isFiltered, setIsFiltered] = useState('new');
 
 	const filteredChats = chats.filter((chat) => {
 		if (isFiltered === 'active') return chat.active;
@@ -21,9 +21,9 @@ function Chats({ className, onSelect }) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsFiltered('active')}
+						onClick={() => setIsFiltered('new')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isFiltered === 'active',
+							[cls.active]: isFiltered === 'new',
 						})}
 					>
 						Ожидающие
@@ -32,9 +32,9 @@ function Chats({ className, onSelect }) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsFiltered('new')}
+						onClick={() => setIsFiltered('active')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isFiltered === 'new',
+							[cls.active]: isFiltered === 'active',
 						})}
 					>
 						Активные
