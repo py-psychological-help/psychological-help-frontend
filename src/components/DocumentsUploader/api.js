@@ -23,7 +23,7 @@ class Api {
 	}
 
 	getUploadedDocuments() {
-		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
+		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
 			method: "GET",
 			headers: this.getHeaders(),
 		})
@@ -31,7 +31,7 @@ class Api {
 	}
 
 	uploadDocument(doc) {
-		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
+		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
 			method: "POST",
 			headers: this.getHeaders(),
 			body:JSON.stringify({scan: doc})
