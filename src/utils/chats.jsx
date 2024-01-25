@@ -51,8 +51,8 @@ const chats = [
 		},
 		id: 44,
 		chat_secret_key: '3',
-		active: true,
-		new: false,
+		active: false,
+		new: true,
 		messages: [
 			{
 				id: 1,

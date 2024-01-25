@@ -37,7 +37,7 @@ class Api {
 	}
 
 	verifyDocuments() {
-		return fetch(`${this.baseUrl}/users/psychologists/me/approved`, {
+		return fetch(`${this.baseUrl}/users/psychologists/me`, {
 			method: 'GET',
 			headers: this.getHeaders(),
 		}).then(checkResponse);
