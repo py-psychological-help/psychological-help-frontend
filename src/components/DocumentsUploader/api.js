@@ -22,15 +22,15 @@ class Api {
 	}
 
 	getUploadedDocuments() {
-		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
-			method: 'GET',
+		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
+			method: "GET",
 			headers: this.getHeaders(),
 		}).then(checkResponse);
 	}
 
 	uploadDocument(doc) {
-		return fetch(`${this.baseUrl}/users/psychologists/me/education/`, {
-			method: 'POST',
+		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
+			method: "POST",
 			headers: this.getHeaders(),
 			body: JSON.stringify({ scan: doc }),
 		}).then(checkResponse);
