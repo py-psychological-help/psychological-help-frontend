@@ -35,13 +35,6 @@ class Api {
 			body: JSON.stringify({ scan: doc }),
 		}).then(checkResponse);
 	}
-
-	verifyDocuments() {
-		return fetch(`${this.baseUrl}/users/psychologists/me`, {
-			method: 'GET',
-			headers: this.getHeaders(),
-		}).then(checkResponse);
-	}
 }
 
 const api = new Api({

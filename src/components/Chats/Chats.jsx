@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
-import api from '../DocumentsUploader/api';
 
 function Chats({ className, onSelect }) {
 	const [isVerified, setIsVerified] = useState(false);
+	const userData = useSelector((state) => state.user.userData);
+
 	useEffect(() => {
-		api.verifyDocuments()
-			.then((data) => {
-				setIsVerified(data.approved);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+		if (userData) setIsVerified(userData.approved);
+	}, [userData]);
 
 	const [isFiltered, setIsFiltered] = useState('new');
 
