@@ -1,8 +1,8 @@
 import cls from './Button.module.scss';
 
-const Button = ({ name, type }) => {
+const Button = ({ name, type, isValid }) => {
 	return (
-		<button className={cls.button} type={type}>
+		<button className={cls.button} type={type} disabled={!isValid}>
 			{name}
 		</button>
 	);

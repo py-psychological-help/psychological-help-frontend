@@ -2,14 +2,13 @@ function checkResponse(res) {
 	if (res.ok) {
 		return res.json();
 	}
-	return res.json()
-		.then((body) => {
-			return Promise.reject(new Error(body.message))
-		})
+	return res.json().then((body) => {
+		return Promise.reject(new Error(body.message));
+	});
 }
 
 class Api {
-	constructor({baseUrl, getAuthToken}) {
+	constructor({ baseUrl, getAuthToken }) {
 		this.baseUrl = baseUrl;
 		this.getAuthToken = getAuthToken;
 	}
@@ -18,7 +17,7 @@ class Api {
 		const authToken = this.getAuthToken();
 		return {
 			'Content-Type': 'application/json',
-			'Authorization': `Token ${authToken}`,
+			Authorization: `Token ${authToken}`,
 		};
 	}
 
@@ -26,24 +25,21 @@ class Api {
 		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
 			method: "GET",
 			headers: this.getHeaders(),
-		})
-			.then(checkResponse)
+		}).then(checkResponse);
 	}
 
 	uploadDocument(doc) {
 		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
 			method: "POST",
 			headers: this.getHeaders(),
-			body:JSON.stringify({scan: doc})
-		})
-			.then(checkResponse)
+			body: JSON.stringify({ scan: doc }),
+		}).then(checkResponse);
 	}
 }
-
 
 const api = new Api({
 	baseUrl: 'https://letstalk.ddns.net/api/v1',
 	getAuthToken: () => localStorage.getItem('authToken'),
 });
 
-export default api
+export default api;
