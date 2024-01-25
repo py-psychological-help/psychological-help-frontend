@@ -22,14 +22,13 @@ export const registerUser = createAsyncThunk(
 					first_name: firstName,
 					last_name: lastName,
 					birth_date: birthDate,
-					email,
+					email: email.toLowerCase(),
 					password,
 				},
 				config
 			);
 			return response.data;
 		} catch (error) {
-			console.log(error);
 			if (error.response && error.response.data) {
 				// тут будут тексты ошибок от бэка, когда они их добавят
 				// const message = error.response.data.non_field_errors.toString();
@@ -53,7 +52,7 @@ export const loginUser = createAsyncThunk(
 			};
 			const response = await axios.post(
 				`${baseURL}auth/token/login/`,
-				{ email, password }, // Поля из формы входа (идентичные)
+				{ email: email.toLowerCase(), password }, // Поля из формы входа (идентичные)
 				config
 			);
 			localStorage.setItem('authToken', response.data.auth_token);
