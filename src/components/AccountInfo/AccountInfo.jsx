@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useRef, useState} from "react";
 import styles from './AccountInfo.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
+import {updateCurrentUser} from "../../slices/userSlice/userAsyncActions";
 
 const AccountInfo = () => {
 	const userData = useSelector((state) => state.user.userData);
@@ -13,7 +14,7 @@ const AccountInfo = () => {
 		lastName:userData?.last_name,
 		birthDate:userData?.birth_date
 	})
-
+	const dispatch = useDispatch();
 	const nameInputRef = useRef();
 	const lastNameInputRef = useRef();
 	const birthDayInputRef = useRef();
@@ -27,6 +28,11 @@ const AccountInfo = () => {
 	const cancelEditing = (e) => {
 		e.preventDefault()
 		setIsEditing(false);
+		setUserFormData({
+			firstName:userData?.first_name,
+			lastName:userData?.last_name,
+			birthDate:userData?.birth_date
+		});
 	}
 
 	const handleInputChange = (e) => {
@@ -36,6 +42,13 @@ const AccountInfo = () => {
 			[name]: value,
 		});
 	};
+
+	const handleButtonSubmit = (e) => {
+		e.preventDefault()
+		dispatch(updateCurrentUser(userFormData));
+		setIsEditing(false);
+	}
+
 	return (
 		<div className={styles.body}>
 			<AccountMenu />
@@ -113,7 +126,7 @@ const AccountInfo = () => {
 					</label>
 					{isEditing
 						? (<div className={styles.buttons}>
-							<button className={styles.saveButton} type='submit'>Сохранить</button>
+							<button className={styles.saveButton} type='submit' onClick={handleButtonSubmit}>Сохранить</button>
 						<button className={styles.editButton} type='button' onClick={cancelEditing}>Отменить</button>
 						</div>)
 						: (<button className={styles.editButton} type='button'
