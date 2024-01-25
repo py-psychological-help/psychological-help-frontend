@@ -47,6 +47,10 @@ function DocumentsUploader({ onSuccessfulUpload }) {
 	}, []);
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		onDrop,
+		accept: {
+			'image/jpeg': ['.jpeg'],
+			'image/jpg': ['.jpg']
+		}
 	});
 
 	return (
@@ -75,8 +79,8 @@ function DocumentsUploader({ onSuccessfulUpload }) {
 							<div key={i} className={style.listElement}>
 								<img
 									className={style.photo}
-									src="https://via.placeholder.com/80x80"
-									alt="фото документа"
+									src={URL.createObjectURL(file)}
+									alt={file.name}
 								/>
 								<li className={style.listDocument}>
 									{file.name}

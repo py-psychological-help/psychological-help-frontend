@@ -16,8 +16,8 @@ export default function LoginPage() {
 		handleSubmit,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
-	const [type, setType] = useState('password');
-	const [icon, setIcon] = useState(eyeOff);
+	const [type, setType] = useState('text');
+	const [icon, setIcon] = useState(eye);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	// const userData = useSelector((state) => state.user.userData);
@@ -35,7 +35,7 @@ export default function LoginPage() {
 	}
 
 	useEffect(() => {
-		if (isSuccess && authToken) navigate('/account');
+		if (isSuccess && authToken) navigate('/account-chat');
 	}, [navigate, dispatch, isSuccess, authToken]);
 
 	function onSubmit(data) {
@@ -67,9 +67,9 @@ export default function LoginPage() {
 					}
 					{...register('email', {
 						required: true,
-						minLength: 7,
+						minLength: 6,
 						maxLength: 50,
-						pattern: /[^@\s]+@[^@\s]+\.[^@\s]+/,
+						pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -102,7 +102,7 @@ export default function LoginPage() {
 							minLength: 8,
 							maxLength: 20,
 							pattern:
-								/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
+								/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])$/,
 						})}
 					/>
 					<button
@@ -140,7 +140,7 @@ export default function LoginPage() {
 				)}
 				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
-					<Button type="submit" name="Войти" />
+					<Button type="submit" name="Войти" isValid={isValid} />
 				</div>
 			</form>
 			<Link to="/forgotpassword" className={cls.link}>
