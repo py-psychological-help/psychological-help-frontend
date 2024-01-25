@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
+import api from '../DocumentsUploader/api';
 
 function Chats({ className, onSelect }) {
+	const [isVerified, setIsVerified] = useState(false);
+	useEffect(() => {
+		api.verifyDocuments()
+			.then((data) => {
+				setIsVerified(data.approved);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
 	const [isFiltered, setIsFiltered] = useState('new');
 
 	const filteredChats = chats.filter((chat) => {
@@ -25,6 +37,7 @@ function Chats({ className, onSelect }) {
 						className={clsx(cls.dashboardItem, className, {
 							[cls.active]: isFiltered === 'new',
 						})}
+						disabled={!isVerified}
 					>
 						Ожидающие
 					</button>
@@ -36,6 +49,7 @@ function Chats({ className, onSelect }) {
 						className={clsx(cls.dashboardItem, className, {
 							[cls.active]: isFiltered === 'active',
 						})}
+						disabled={!isVerified}
 					>
 						Активные
 					</button>
@@ -47,21 +61,29 @@ function Chats({ className, onSelect }) {
 						className={clsx(cls.dashboardItem, className, {
 							[cls.active]: isFiltered === 'archive',
 						})}
+						disabled={!isVerified}
 					>
 						Архив
 					</button>
 				</li>
 			</ul>
-			<ul className={cls.chatsList}>
-				{filteredChats.map((chat) => (
-					<Chat key={chat.id} chat={chat} onSelect={onSelect} />
-				))}
-			</ul>
-			<span className={cls.span}>
-				Чтобы начать работать с нами, завершите регистрацию. Перейдите
-				во вкладку Профиль/ Документы и загрузите все необходимые
-				документы для работы на сервисе
-			</span>
+			{isVerified ? (
+				<ul className={cls.chatsList}>
+					{filteredChats.map((chat) => (
+						<Chat key={chat.id} chat={chat} onSelect={onSelect} />
+					))}
+				</ul>
+			) : (
+				<span
+					className={clsx(cls.span, className, {
+						[cls.visible]: !isVerified,
+					})}
+				>
+					Чтобы начать работать с нами, завершите регистрацию.
+					Перейдите во вкладку Профиль/ Документы и загрузите все
+					необходимые документы для работы на сервисе
+				</span>
+			)}
 		</main>
 	);
 }
