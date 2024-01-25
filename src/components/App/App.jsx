@@ -38,6 +38,12 @@ const App = () => {
 		// eslint-disable-next-line
 	}, [userData]); // Ругается на отсутствие navigate
 
+	const [selectedChat, setSelectedChat] = useState();
+
+	const handleChatSelection = (chat) => {
+		setSelectedChat(chat);
+	};
+
 	return (
 		<div className={cls.app}>
 			<Header isLoggedIn={isLoggedIn} />
@@ -58,7 +64,11 @@ const App = () => {
 								path="/account/documents"
 							/>
 							<Route
-								element={<AccountChatPage />}
+								element={
+									<AccountChatPage
+										onSelect={handleChatSelection}
+									/>
+								}
 								path="account-chat"
 							/>
 							<Route
@@ -66,7 +76,11 @@ const App = () => {
 								path="account-principles"
 							/>
 							<Route
-								element={<PsychologistSide />}
+								element={
+									<PsychologistSide
+										selectedChat={selectedChat}
+									/>
+								}
 								path="psy-side"
 							/>
 						</>

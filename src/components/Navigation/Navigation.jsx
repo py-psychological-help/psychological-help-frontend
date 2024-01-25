@@ -1,12 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import AuthNavigation from '../AuthNavigation/AuthNavigation';
-import NotAuthNavigation from '../NotAuthNavigation/NotAuthNavigation';
+// import React from 'react';
+// import { useSelector } from 'react-redux';
+// import AuthNavigation from '../AuthNavigation/AuthNavigation';
+// import NotAuthNavigation from '../NotAuthNavigation/NotAuthNavigation';
 
-function Navigation() {
-	const isLoggedIn = useSelector((state) => state.user.userData);
+// function Navigation() {
+// 	const isLoggedIn = useSelector((state) => state.user.userData);
 
-	return isLoggedIn ? <AuthNavigation /> : <NotAuthNavigation />;
-}
+// 	return isLoggedIn ? <AuthNavigation /> : <NotAuthNavigation />;
+// }
 
-export default Navigation;
+// export default Navigation;

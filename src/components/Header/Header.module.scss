@@ -6,7 +6,7 @@
 	justify-content: space-between;
 	justify-content: center;
 	align-items: center;
-	background-color: #F2F2F2;
+	background-color: #f2f2f2;
 	border-bottom: 1px solid black;
 
 	.headerNav {
@@ -25,17 +25,17 @@
 
 	.headerNav > * {
 		width: 100%;
-	  }
-	  
-	  .headerNav > *:nth-child(1),
-	  .headerNav > *:nth-child(3) {
+	}
+
+	.headerNav > *:nth-child(1),
+	.headerNav > *:nth-child(3) {
 		background: none;
-	  }
-	  
-	  .headerNav > *:nth-child(2) {
+	}
+
+	.headerNav > *:nth-child(2) {
 		background: none;
-	  }
-	
+	}
+
 	.navLinks {
 		position: relative;
 		display: flex;
@@ -44,7 +44,7 @@
 		justify-content: center;
 		align-items: center;
 	}
-	
+
 	.mainBtn {
 		width: 329px;
 		height: 48px;
@@ -58,7 +58,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.logBtn {
 		font-weight: 600;
 		font-size: 16px;
@@ -70,8 +70,6 @@
 		margin: 0;
 	}
 
-
-	
 	.navLink {
 		text-decoration: none;
 		font-weight: 600;
@@ -80,19 +78,18 @@
 		color: black;
 		padding: 0;
 		margin: 0;
-	
+
 		&:hover {
 			opacity: 0.8;
 		}
 	}
-	
+
 	.navAuthbar {
 		display: flex;
 		gap: 30px;
 		align-items: center;
 		justify-content: end;
 	}
-	
+
 	//   @media screen and (max-width: 800px) {}
-	
 }

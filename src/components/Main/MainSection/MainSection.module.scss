@@ -1,70 +1,70 @@
 .mainSection {
-    display: flex;
-      padding: 0;
-      margin: 0;
-      flex-direction: column;
-      justify-content: center;
-      justify-content: space-between;
-      gap: 10px;
-      max-width: 856px;
-      
-      // border: 1px red solid;
-      
-      .mainHeader {
-      margin: 44px 0 0;
-      padding: 0;
-      color: black;
-      font-weight: 400;
-      font-size: 88px;
-      line-height: 132px;
-      font-family: var(--font-family-secondary);
+	display: flex;
+	padding: 0;
+	margin: 0;
+	flex-direction: column;
+	justify-content: center;
+	justify-content: space-between;
+	gap: 10px;
+	max-width: 856px;
 
-      // border: 1px red solid;
-      text-align: center;
+	// border: 1px red solid;
 
-      //   @media screen and (max-width: 800px) {}
-    }
-  
-    .mainSubHeader {
-      color: black;
-      font-weight: 400;
-      font-size: 40px;
-      line-height: 44px;
-      padding: 0;
-      margin: 44px 0;
+	.mainHeader {
+		margin: 44px 0 0;
+		padding: 0;
+		color: black;
+		font-weight: 400;
+		font-size: 88px;
+		line-height: 132px;
+		font-family: var(--font-family-secondary);
 
-      // border: 1px red solid;
-      max-width: 588px;
-      align-self: center;
-      text-align: center;
-  
-      // Базовые стили для заголовка
-      &.boldLeft {
-        font-weight: 600;
-        align-self: start;
-      }
-    }
-  
-    .mainText {
-      color: black;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 36px;
-      padding: 0;
-      margin: 0;
-    }
-  
-    .mainBtn {
-      width: 329px;
-      height: 48px;
-      padding: 0;
-      margin: 50px 0 0;
-      font-size: 20px;
-      background-color: black;
-      border-radius: 40px;
-      color: white;
-      text-decoration: none; 
-      align-items: center;
-      justify-content: center;
-    }
+		// border: 1px red solid;
+		text-align: center;
+
+		//   @media screen and (max-width: 800px) {}
+	}
+
+	.mainSubHeader {
+		color: black;
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 44px;
+		padding: 0;
+		margin: 44px 0;
+
+		// border: 1px red solid;
+		max-width: 588px;
+		align-self: center;
+		text-align: center;
+
+		// Базовые стили для заголовка
+		&.boldLeft {
+			font-weight: 600;
+			align-self: start;
+		}
+	}
+
+	.mainText {
+		color: black;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.mainBtn {
+		width: 329px;
+		height: 48px;
+		padding: 0;
+		margin: 50px 0 0;
+		font-size: 20px;
+		background-color: black;
+		border-radius: 40px;
+		color: white;
+		text-decoration: none;
+		align-items: center;
+		justify-content: center;
+	}
 }
