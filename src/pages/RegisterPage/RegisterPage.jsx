@@ -14,7 +14,6 @@ export default function RegisterPage() {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
 	const [type, setType] = useState('password');
@@ -29,12 +28,14 @@ export default function RegisterPage() {
 	const maxDate = date.toISOString().slice(0, 10);
 
 	const passwordValidation = (password) => {
+		const spaceRegExp = /(\s)/;
 		const cyrrillicRegExp = /(?=.*?[А-ЯЁа-яё])/;
 		const uppercaseRegExp = /(?=.*?[A-Z])/;
 		const lowercaseRegExp = /(?=.*?[a-z])/;
 		const digitsRegExp = /(?=.*?[0-9])/;
 		const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
 
+		const spacePassword = spaceRegExp.test(password);
 		const cyrrillicPassword = cyrrillicRegExp.test(password);
 		const uppercasePassword = uppercaseRegExp.test(password);
 		const lowercasePassword = lowercaseRegExp.test(password);
@@ -44,6 +45,8 @@ export default function RegisterPage() {
 		let errMsg = null;
 		if (cyrrillicPassword) {
 			errMsg = 'Только символы латиницы';
+		} else if (spacePassword) {
+			errMsg = 'Пароль не может содержать пробелы';
 		} else if (!uppercasePassword) {
 			errMsg = 'Пароль должен содержать заглавную букву';
 		} else if (!lowercasePassword) {
@@ -111,11 +114,11 @@ export default function RegisterPage() {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
-						pattern: /^[а-яА-ЯёЁ\-\s]+$/,
+						pattern: /^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/,
 					})}
 				/>
 				{errors?.lastName?.type === 'pattern' && (
-					<p className={cls.error}>Только символы кириллицы</p>
+					<p className={cls.error}>Укажите фамилию как в паспорте</p>
 				)}
 				{errors?.lastName?.type === 'required' && (
 					<p className={cls.error}>Пожалуйста, заполните поле</p>
@@ -142,11 +145,11 @@ export default function RegisterPage() {
 						required: true,
 						minLength: 1,
 						maxLength: 50,
-						pattern: /^[а-яА-ЯёЁ\-\s]+$/,
+						pattern: /^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/,
 					})}
 				/>
 				{errors?.firstName?.type === 'pattern' && (
-					<p className={cls.error}>Только символы кириллицы</p>
+					<p className={cls.error}>Укажите имя как в паспорте</p>
 				)}
 				{errors?.firstName?.type === 'required' && (
 					<p className={cls.error}>Пожалуйста, заполните поле</p>
@@ -200,9 +203,9 @@ export default function RegisterPage() {
 					}
 					{...register('email', {
 						required: true,
-						minLength: 7,
+						minLength: 6,
 						maxLength: 50,
-						pattern: /[^@\s]+@[^@\s]+\.[^@\s]+/,
+						pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -226,7 +229,7 @@ export default function RegisterPage() {
 						type={type}
 						placeholder="Jkl12nY*"
 						className={
-							errors?.password && errors?.password.message
+							errors?.password
 								? `${cls.input} ${cls.inputWrong}`
 								: cls.input
 						}
@@ -270,7 +273,11 @@ export default function RegisterPage() {
 				)}
 				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
-					<Button type="submit" name="Регистрация" />
+					<Button
+						type="submit"
+						name="Регистрация"
+						isValid={isValid}
+					/>
 				</div>
 			</form>
 		</div>
