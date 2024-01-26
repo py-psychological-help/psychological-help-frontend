@@ -22,6 +22,7 @@
 		width: 100%;
 	}
 
+
 	// .headerNav > * {
 	// 	width: 100%;
 	//   }
@@ -39,7 +40,6 @@
 		flex-basis: 20%;
 	}
 
-
 	.navLinks {
 		position: relative;
 		display: flex;
@@ -49,7 +49,7 @@
 		align-items: center;
 		flex-grow: 1;
 	}
-	
+
 	.mainBtn {
 		width: 302px;
 		height: 44px;
@@ -65,7 +65,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.logBtn {
 		font-weight: 600;
 		font-size: 16px;
@@ -78,7 +78,6 @@
 		flex-basis: 20%;
 	}
 
-
 	.navLink {
 		text-decoration: none;
 		font-weight: 600;
@@ -87,12 +86,12 @@
 		color: black;
 		padding: 0;
 		margin: 0;
-	
+
 		&:hover {
 			opacity: 0.8;
 		}
 	}
-	
+
 	.navAuthbar {
 		display: flex;
 		gap: 30px;
@@ -100,7 +99,6 @@
 		justify-content: end;
 		flex-basis: 20%;
 	}
-	
+
 	//   @media screen and (max-width: 800px) {}
-	
 }

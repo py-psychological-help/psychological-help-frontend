@@ -7,7 +7,7 @@ const Footer = () => {
 		<footer className={styles.footer}>
 			<div className={styles.footerInfoBlock}>
 				<div className={styles.footerInfo}>
-					<Logo/>
+					<Logo />
 				</div>
 
 				<div className={styles.footerLinksBlock}>
@@ -15,10 +15,26 @@ const Footer = () => {
 						<h3 className={styles.footerNavTitle}>Клиентам</h3>
 						<ul className={styles.footerNavList}>
 							{[
-								{id: 'yandex', text: 'Яндекс.Практикум', url: 'https://practicum.yandex.ru/'},
-								{id: 'github', text: 'Github', url: 'https://github.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
+								{
+									id: 'yandex',
+									text: 'Яндекс.Практикум',
+									url: 'https://practicum.yandex.ru/',
+								},
+								{
+									id: 'github',
+									text: 'Github',
+									url: 'https://github.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
 							].map((item) => (
 								<li
 									key={item.id}
@@ -42,10 +58,26 @@ const Footer = () => {
 
 						<ul className={styles.footerNavList}>
 							{[
-								{id: 'yandex', text: 'Яндекс.Практикум', url: 'https://practicum.yandex.ru/'},
-								{id: 'github', text: 'Github', url: 'https://github.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
+								{
+									id: 'yandex',
+									text: 'Яндекс.Практикум',
+									url: 'https://practicum.yandex.ru/',
+								},
+								{
+									id: 'github',
+									text: 'Github',
+									url: 'https://github.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
 							].map((item) => (
 								<li
 									key={item.id}
@@ -69,10 +101,26 @@ const Footer = () => {
 
 						<ul className={styles.footerNavList}>
 							{[
-								{id: 'yandex', text: 'Яндекс.Практикум', url: 'https://practicum.yandex.ru/'},
-								{id: 'github', text: 'Github', url: 'https://github.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
-								{id: 'linkedin', text: 'LinkedIn', url: 'https://www.linkedin.com/'},
+								{
+									id: 'yandex',
+									text: 'Яндекс.Практикум',
+									url: 'https://practicum.yandex.ru/',
+								},
+								{
+									id: 'github',
+									text: 'Github',
+									url: 'https://github.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
+								{
+									id: 'linkedin',
+									text: 'LinkedIn',
+									url: 'https://www.linkedin.com/',
+								},
 							].map((item) => (
 								<li
 									key={item.id}

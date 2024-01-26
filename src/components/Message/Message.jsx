@@ -1,12 +1,13 @@
-// import React from 'react';
-// import cls from './Message.module.scss';
-// import tail from '../../images/tail.svg';
+import React from 'react';
+import cls from './Message.module.scss';
 
-// function Message({text}) {
-//     <div>
-//         <p className={cls.message}>{text}</p>
-//         <img className={cls.tail} alt="хвостик" src={tail} />
-//     </div>
-// }
+function Message({ text, isAuthorMe }) {
+	const className = isAuthorMe === true ? cls.me : cls.other;
+	return (
+		<li className={`${cls.messageItem} ${className}`}>
+			<p className={cls.chatBubble}>{text}</p>
+		</li>
+	);
+}
 
-// export default Message;
+export default Message;

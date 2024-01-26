@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import styles from './AboutSection.module.scss';
 import Button from '../../buttonHeader/Button';
 
 const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
+	const element = document.getElementById(sectionId);
+	if (element) {
+		element.scrollIntoView({ behavior: 'smooth' });
+	}
 };
 
 function AboutSection() {
@@ -41,22 +41,23 @@ function AboutSection() {
                     </p>
                 </div>
 
-                <div className={styles.featuresElement}>
-                    <h3 className={styles.featuresHeader}>Бесплатная помощь</h3>
-                    <p className={styles.featuresText}>
-                        Бесплатная консультация
-                        в чате с психологом доступная для всех, независимо от финансового положения.
-                    </p>
-                </div>
+				<div className={styles.featuresElement}>
+					<h3 className={styles.featuresHeader}>Бесплатная помощь</h3>
+					<p className={styles.featuresText}>
+						Бесплатная консультация в чате с психологом доступная
+						для всех, независимо от финансового положения.
+					</p>
+				</div>
 
-                <div className={styles.featuresElement}>
-                    <h3 className={styles.featuresHeader}>Современная и безопасная платформа</h3>
-                    <p className={styles.featuresText}>
-                        Наша платформа обеспечивает безопасное
-                        и надежное общение  между психологом и нуждающимся в помощи.
-                    </p>
-                </div>
-
+				<div className={styles.featuresElement}>
+					<h3 className={styles.featuresHeader}>
+						Современная и безопасная платформа
+					</h3>
+					<p className={styles.featuresText}>
+						Наша платформа обеспечивает безопасное и надежное
+						общение между психологом и нуждающимся в помощи.
+					</p>
+				</div>
                 <div className={styles.featuresElement}>
                     <h3 className={styles.featuresHeader}>Многообразие специалистов</h3>
                     <p className={styles.featuresText}>

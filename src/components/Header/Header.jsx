@@ -7,26 +7,27 @@ import Logo from '../Logo/Logo';
 import Button from '../buttonHeader/Button';
 
 const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
+	const element = document.getElementById(sectionId);
+	if (element) {
+		element.scrollIntoView({ behavior: 'smooth' });
+	}
 };
 
 const Header = memo(() => {
-    const isLoggedIn = useSelector((state) => state.user.userData);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const location = useLocation();
+	const isLoggedIn = useSelector((state) => state.user.userData);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
 
-    const handleNav = () => {
-        navigate('/signin');
-    };
+	const handleNav = () => {
+		navigate('/signin');
+	};
 
-    const handleLogout = () => {
-        dispatch(userActions.logout());
-        navigate('/');
-    };
+	const handleLogout = () => {
+		dispatch(userActions.logout());
+		navigate('/');
+	};
+
 
     return (
         <section className={styles.header}>

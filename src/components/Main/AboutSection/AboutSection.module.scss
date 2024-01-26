@@ -19,21 +19,21 @@
         align-self: center;
         text-align: center;
 
-        // Базовые стили для заголовка
-        &.boldLeft {
-            font-weight: 600;
-            align-self: start;
-        }
-    }
+		// Базовые стили для заголовка
+		&.boldLeft {
+			font-weight: 600;
+			align-self: start;
+		}
+	}
 
-    .mainText {
-        color: black;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 36px;
-        padding: 0;
-        margin: 0;
-    }
+	.mainText {
+		color: black;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: 0;
+	}
 
     .aboutBlock {
         display: flex;
@@ -75,17 +75,17 @@
         padding: 16px;
     }
 
-    .mainBtn {
-        width: 329px;
-        height: 48px;
-        padding: 0;
-        margin: 50px 0 0;
-        font-size: 20px;
-        background-color: black;
-        border-radius: 40px;
-        color: white;
-        text-decoration: none;
-        align-items: center;
-        justify-content: center;
-    }
+	.mainBtn {
+		width: 329px;
+		height: 48px;
+		padding: 0;
+		margin: 50px 0 0;
+		font-size: 20px;
+		background-color: black;
+		border-radius: 40px;
+		color: white;
+		text-decoration: none;
+		align-items: center;
+		justify-content: center;
+	}
 }

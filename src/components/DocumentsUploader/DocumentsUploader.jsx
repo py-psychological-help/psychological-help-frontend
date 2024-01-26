@@ -1,7 +1,7 @@
-import React, {useCallback, useState} from 'react';
-import {useDropzone} from 'react-dropzone';
+import React, { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import style from './DocumentsUploader.module.scss';
-import api from "./api";
+import api from './api';
 
 function readBase64(file) {
 	return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ function readBase64(file) {
 	});
 }
 
-function DocumentsUploader({onSuccessfulUpload}) {
+function DocumentsUploader({ onSuccessfulUpload }) {
 	const [docsToUpload, setDocsToUpload] = useState([]);
 	const [checkboxChecked, setCheckboxChecked] = useState(false);
 
@@ -29,25 +29,28 @@ function DocumentsUploader({onSuccessfulUpload}) {
 			return;
 		}
 
-		const uploadedDocs = []
+		const uploadedDocs = [];
 		for (let i = 0; i < docsToUpload.length; i += 1) {
-			const doc = readBase64(docsToUpload[i])
-				.then(d => api.uploadDocument(d))
-			uploadedDocs.push(doc)
+			const doc = readBase64(docsToUpload[i]).then((d) =>
+				api.uploadDocument(d)
+			);
+			uploadedDocs.push(doc);
 		}
 
 		Promise.all(uploadedDocs)
 			.then(onSuccessfulUpload)
-			.catch(e => console.log(e))
-
-	}
-
+			.catch((e) => console.log(e));
+	};
 
 	const onDrop = useCallback((droppedFiles) => {
 		setDocsToUpload((files) => [...files, ...droppedFiles]);
 	}, []);
-	const {getRootProps, getInputProps, isDragActive} = useDropzone({
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({
 		onDrop,
+		accept: {
+			'image/jpeg': ['.jpeg'],
+			'image/jpg': ['.jpg']
+		}
 	});
 
 	return (
@@ -76,8 +79,8 @@ function DocumentsUploader({onSuccessfulUpload}) {
 							<div key={i} className={style.listElement}>
 								<img
 									className={style.photo}
-									src="https://via.placeholder.com/80x80"
-									alt="фото документа"
+									src={URL.createObjectURL(file)}
+									alt={file.name}
 								/>
 								<li className={style.listDocument}>
 									{file.name}
@@ -86,7 +89,7 @@ function DocumentsUploader({onSuccessfulUpload}) {
 									className={style.deleteButton}
 									onClick={() => handleRemoveDoc(i)}
 								>
-									<span/>
+									<span />
 								</button>
 							</div>
 						))}

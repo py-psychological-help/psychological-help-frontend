@@ -36,3 +36,49 @@
 		display: block;
 	}
 }
+
+.buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.editButton {
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 20px;
+	background-color: white;
+	cursor: pointer;
+	width: 194px;
+	padding: 12px 32px;
+	border: 2px solid #212028;
+	margin-top: 40px;
+}
+
+.editButton:hover {
+	background-color: #CBC4B0;
+	border: 2px solid #CBC4B0;
+}
+
+.saveButton {
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 20px;
+	background-color: white;
+	cursor: pointer;
+	width: 194px;
+	padding: 12px 32px;
+	border: 2px solid black;
+	margin-top: 40px;
+}
+.saveButton:hover {
+  background-color: #CBC4B0;
+  border: 2px solid #CBC4B0;
+}
