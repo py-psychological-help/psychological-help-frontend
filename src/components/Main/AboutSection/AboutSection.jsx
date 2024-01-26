@@ -12,13 +12,26 @@ const scrollToSection = (sectionId) => {
 function AboutSection() {
     return (
         <section id="aboutSection" className={styles.aboutSection}>
-            <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
-                О проекте
-            </h2>
 
-            <p className={styles.mainText}>
-                Анонимно и бесплатно помогаем тем, кто ищет поддержку в трудную минуту, через удобный онлайн чат
-            </p>
+            <div className={styles.aboutBlock}>
+                <div className={styles.aboutElement}>
+                    <div className={styles.aboutText}>
+                        <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
+                            О проекте
+                        </h2>
+                        <p className={styles.mainText}>
+                            Полностью анонимное, безопасное пространство для открытого общения между психологом
+                            и нуждающимся в помощи.
+                        </p>
+                    </div>
+                    <Button
+                        additionalStyles={styles.mainBtn}
+                        buttonText="Обратиться за помощью"
+                        onClick={() => scrollToSection('howItWorksSection')}
+                    />
+                </div>
+            </div>
+
             <div className={styles.featuresBlock}>
                 <div className={styles.featuresElement}>
                     <h3 className={styles.featuresHeader}>Анонимность</h3>
@@ -52,11 +65,7 @@ function AboutSection() {
                     </p>
                 </div>
             </div>
-            <Button
-                additionalStyles={styles.mainBtn}
-                buttonText="Обратиться за помощью"
-                onClick={() => scrollToSection('howItWorksSection')}
-            />
+
         </section>
     );
 }

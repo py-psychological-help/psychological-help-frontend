@@ -5,6 +5,7 @@ import AboutSection from "./AboutSection/AboutSection";
 import WarningSection from "./WarningSection/WarningSection";
 import HowItWorksSection from "./HowItWorksSection/HowItWorksSection";
 import WorkWithUsSection from "./WorkWithUsSection/WorkWithUsSection";
+import FaqSection from "./FaqSection/FaqSection";
 
 function Main() {
 	return (
@@ -14,6 +15,7 @@ function Main() {
 			<WarningSection/>
 			<HowItWorksSection/>
 			<WorkWithUsSection/>
+			<FaqSection/>
 		</section>
 	);
 }

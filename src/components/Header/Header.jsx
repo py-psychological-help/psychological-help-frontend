@@ -42,6 +42,7 @@ const Header = memo(() => {
                     >
                         О проекте
                     </NavLink>
+
                     <NavLink
                         to="/"
                         onClick={() => scrollToSection('howItWorksSection')}
@@ -56,32 +57,40 @@ const Header = memo(() => {
                     >
                         Психологам
                     </NavLink>
+
+                    <NavLink
+                        to="/"
+                        onClick={() => scrollToSection('faqSection')}
+                        className={styles.navLink}
+                    >
+                        Вопросы
+                    </NavLink>
                 </div>
 
                 <div className={styles.navAuthbar}>
-                {isLoggedIn && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.logBtn}
-        buttonText="Выйти"
-        onClick={handleLogout}
-    />
-)}
+                    {isLoggedIn && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.logBtn}
+                            buttonText="Выйти"
+                            onClick={handleLogout}
+                        />
+                    )}
 
-{!isLoggedIn && location.pathname !== '/' && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.logBtn}
-        buttonText="Войти"
-        onClick={handleNav}
-    />
-)}
+                    {!isLoggedIn && location.pathname !== '/' && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.logBtn}
+                            buttonText="Войти"
+                            onClick={handleNav}
+                        />
+                    )}
 
-{!isLoggedIn && location.pathname === '/' && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.mainBtn}
-        buttonText="Обратиться за помощью"
-        onClick={() => scrollToSection('howItWorksSection')}
-    />
-)}
+                    {!isLoggedIn && location.pathname === '/' && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.mainBtn}
+                            buttonText="Обратиться за помощью"
+                            onClick={() => scrollToSection('howItWorksSection')}
+                        />
+                    )}
 
                 </div>
             </nav>
