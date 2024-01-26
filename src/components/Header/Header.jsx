@@ -28,70 +28,75 @@ const Header = memo(() => {
 		navigate('/');
 	};
 
-	return (
-		<section className={styles.header}>
-			<nav className={styles.headerNav}>
-				<div className={styles.logoBar}>
-					<Logo />
-				</div>
-				<div className={styles.navLinks}>
-					<NavLink
-						to="/"
-						onClick={() => scrollToSection('aboutSection')}
-						className={styles.navLink}
-					>
-						О проекте
-					</NavLink>
-					<NavLink
-						to="/"
-						onClick={() => scrollToSection('howItWorksSection')}
-						className={styles.navLink}
-					>
-						Как это работает
-					</NavLink>
 
-					<NavLink
-						to={isLoggedIn ? '/account' : '/signup'}
-						className={styles.navLink}
-					>
-						Психологам
-					</NavLink>
-				</div>
+    return (
+        <section className={styles.header}>
+            <nav className={styles.headerNav}>
+                <div className={styles.logoBar}>
+                    <Logo />
+                </div>
+                <div className={styles.navLinks}>
+                    <NavLink
+                        to="/"
+                        onClick={() => scrollToSection('aboutSection')}
+                        className={styles.navLink}
+                    >
+                        О проекте
+                    </NavLink>
 
-				<div className={styles.navAuthbar}>
-					{isLoggedIn && location.pathname !== '/welcome' && (
-						<Button
-							additionalStyles={styles.logBtn}
-							buttonText="Выйти"
-							onClick={handleLogout}
-						/>
-					)}
+                    <NavLink
+                        to="/"
+                        onClick={() => scrollToSection('howItWorksSection')}
+                        className={styles.navLink}
+                    >
+                        Как это работает
+                    </NavLink>
 
-					{!isLoggedIn &&
-						location.pathname !== '/' &&
-						location.pathname !== '/welcome' && (
-							<Button
-								additionalStyles={styles.logBtn}
-								buttonText="Войти"
-								onClick={handleNav}
-							/>
-						)}
+                    <NavLink
+                        to={isLoggedIn ? '/account' : '/signup'}
+                        className={styles.navLink}
+                    >
+                        Психологам
+                    </NavLink>
 
-					{!isLoggedIn &&
-						location.pathname === '/' &&
-						location.pathname !== '/welcome' && (
-							<Button
-								additionalStyles={styles.mainBtn}
-								buttonText="Обратиться за помощью"
-								onClick={() =>
-									scrollToSection('howItWorksSection')
-								}
-							/>
-						)}
-				</div>
-			</nav>
-		</section>
-	);
+                    <NavLink
+                        to="/"
+                        onClick={() => scrollToSection('faqSection')}
+                        className={styles.navLink}
+                    >
+                        Вопросы
+                    </NavLink>
+                </div>
+
+                <div className={styles.navAuthbar}>
+                    {isLoggedIn && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.logBtn}
+                            buttonText="Выйти"
+                            onClick={handleLogout}
+                        />
+                    )}
+
+                    {!isLoggedIn && location.pathname !== '/' && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.logBtn}
+                            buttonText="Войти"
+                            onClick={handleNav}
+                        />
+                    )}
+
+                    {!isLoggedIn && location.pathname === '/' && location.pathname !== '/welcome' && (
+                        <Button
+                            additionalStyles={styles.mainBtn}
+                            buttonText="Обратиться за помощью"
+                            onClick={() => scrollToSection('howItWorksSection')}
+                        />
+                    )}
+
+                </div>
+            </nav>
+        </section>
+    );
 });
 
 export default Header;
