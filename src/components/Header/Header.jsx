@@ -69,7 +69,7 @@ const Header = memo(() => {
                     )}
 
                     {!isLoggedIn && location.pathname !== '/' && (location.pathname === '/welcome' || location.pathname === '/signin'
-						|| location.pathname === '/forgotpassword')
+						|| location.pathname === '/forgotpassword'|| location.pathname === '/signup')
 						&& (
                         <Button
                             additionalStyles={styles.logBtn}
