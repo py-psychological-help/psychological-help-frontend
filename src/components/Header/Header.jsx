@@ -6,12 +6,6 @@ import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 import Button from '../buttonHeader/Button';
 
-const scrollToSection = (sectionId) => {
-	const element = document.getElementById(sectionId);
-	if (element) {
-		element.scrollIntoView({ behavior: 'smooth' });
-	}
-};
 
 const Header = memo(() => {
 	const isLoggedIn = useSelector((state) => state.user.userData);
@@ -37,31 +31,28 @@ const Header = memo(() => {
                 </div>
                 <div className={styles.navLinks}>
                     <NavLink
-                        to="/"
-                        onClick={() => scrollToSection('aboutSection')}
+                        to="/#aboutSection"
                         className={styles.navLink}
                     >
                         О проекте
                     </NavLink>
 
                     <NavLink
-                        to="/"
-                        onClick={() => scrollToSection('howItWorksSection')}
+                        to="/#howItWorksSection"
                         className={styles.navLink}
                     >
                         Как это работает
                     </NavLink>
 
                     <NavLink
-                        to={isLoggedIn ? '/account' : '/signup'}
+                        to={isLoggedIn ? '/account' : '/welcome'}
                         className={styles.navLink}
                     >
                         Психологам
                     </NavLink>
 
                     <NavLink
-                        to="/"
-                        onClick={() => scrollToSection('faqSection')}
+                        to="/#faqSection"
                         className={styles.navLink}
                     >
                         Вопросы
@@ -77,7 +68,9 @@ const Header = memo(() => {
                         />
                     )}
 
-                    {!isLoggedIn && location.pathname !== '/' && location.pathname !== '/welcome' && (
+                    {!isLoggedIn && location.pathname !== '/' && (location.pathname === '/welcome' || location.pathname === '/signin'
+						|| location.pathname === '/forgotpassword')
+						&& (
                         <Button
                             additionalStyles={styles.logBtn}
                             buttonText="Войти"
@@ -89,7 +82,7 @@ const Header = memo(() => {
                         <Button
                             additionalStyles={styles.mainBtn}
                             buttonText="Обратиться за помощью"
-                            onClick={() => scrollToSection('howItWorksSection')}
+                            onClick={() => navigate('/#howItWorksSection')}
                         />
                     )}
 
