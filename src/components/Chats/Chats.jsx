@@ -6,7 +6,7 @@ import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
 function Chats({ className, onSelect }) {
-	const [isVerified, setIsVerified] = useState(false);
+	const [isVerified, setIsVerified] = useState(true);
 	const userData = useSelector((state) => state.user.userData);
 
 	useEffect(() => {
@@ -21,6 +21,8 @@ function Chats({ className, onSelect }) {
 		if (isFiltered === 'archive') return chat.archive;
 		return chats;
 	});
+
+	const isActiveChatExist = chats.some((chat) => chat.active);
 
 	return (
 		<main className={cls.chats}>
@@ -66,7 +68,14 @@ function Chats({ className, onSelect }) {
 			{isVerified ? (
 				<ul className={cls.chatsList}>
 					{filteredChats.map((chat) => (
-						<Chat key={chat.id} chat={chat} onSelect={onSelect} />
+						<Chat
+							key={chat.id}
+							chat={chat}
+							onSelect={onSelect}
+							onDisable={
+								isActiveChatExist && isFiltered === 'new'
+							}
+						/>
 					))}
 				</ul>
 			) : (

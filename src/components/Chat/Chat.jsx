@@ -1,12 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import cls from './Chat.module.scss';
 
-function Chat({ chat, onSelect }) {
+function Chat({ chat, onSelect, onDisable }) {
+	const navigate = useNavigate();
 	const handleClick = () => {
 		onSelect(chat);
+		navigate('/psy-side');
 	};
+
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
@@ -20,13 +23,13 @@ function Chat({ chat, onSelect }) {
 					className={cls.problem}
 				>{`Проблема: ${chat.psychologist.complaint}`}</p>
 			</div>
-			<Link
-				to="/psy-side"
+			<button
 				className={cls.chatButton}
 				onClick={handleClick}
+				disabled={chat.new && onDisable}
 			>
 				Подключиться
-			</Link>
+			</button>
 		</div>
 	);
 }
