@@ -62,10 +62,10 @@ const AccountInfo = () => {
 							className={styles.input}
 							type="text"
 							name="firstName"
-							pattern="[a-zA-Zа-яА-Я\s\-]*"
+							pattern="/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/"
 							placeholder="Иван"
 							minLength="1"
-							maxLength="30"
+							maxLength="50"
 							value={userFormData.firstName}
 							onChange={handleInputChange}
 							ref={nameInputRef}

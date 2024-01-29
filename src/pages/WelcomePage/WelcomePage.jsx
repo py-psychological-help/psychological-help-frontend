@@ -23,7 +23,7 @@ export default function WelcomePage() {
 				</li>
 			</ul>
 			<Link to="/signup" className={cls.link}>
-				<Button type="button" name="Хочу в команду" />
+				<Button type="button" name="Хочу в команду"  isValid/>
 			</Link>
 		</div>
 	);
