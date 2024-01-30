@@ -15,7 +15,7 @@ import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
 import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
-import ForgotPassword from "../../pages/ForgotPasswordPage/ForgotPasswordPage";
+import ForgotPassword from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,6 +24,7 @@ const App = () => {
 	const userData = useSelector((state) => state.user.userData);
 	const authToken = useSelector((state) => state.auth.authToken);
 	const userIsTrue = useSelector((state) => state.user.userData);
+	const isloading = useSelector((state) => state.user.isLoading);
 
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
 	// Добавить проверки на налиие токена и т.п.
@@ -56,9 +57,12 @@ const App = () => {
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/" element={<RegisterPage />} />
-					<Route element={<ForgotPassword/>} path="/forgotpassword"/>
+					<Route
+						element={<ForgotPassword />}
+						path="/forgotpassword"
+					/>
 
-					{userIsTrue ? (
+					{userIsTrue || isloading ? (
 						<>
 							<Route element={<AccountPage />} path="account" />
 							<Route
