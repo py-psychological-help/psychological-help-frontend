@@ -41,6 +41,10 @@
 	color: #ff0909;
 }
 
+.inputWrong::placeholder {
+	color: #ff0909;
+}
+
 .inputWrong:focus {
 	outline-color: #ff0909;
 }
