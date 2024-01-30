@@ -8,7 +8,7 @@ const MessageInput = ({ onSend }) => {
 
 	const handleSend = () => {
 		if (text.trim() !== '') {
-			onSend(text, true);
+			onSend(text);
 			setText('');
 		}
 	};
