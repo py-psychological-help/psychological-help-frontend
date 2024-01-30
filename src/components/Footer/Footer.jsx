@@ -1,151 +1,64 @@
-import React from 'react';
-import Logo from '../Logo/Logo';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import Logo from '../Logo/Logo';
 
-const Footer = () => {
+
+const Footer = memo(() => {
+	const isLoggedIn = useSelector((state) => state.user.userData);
+
 	return (
-		<footer className={styles.footer}>
-			<div className={styles.footerInfoBlock}>
-				<div className={styles.footerInfo}>
+		<section className={styles.footer}>
+			<nav className={styles.footerNav}>
+				<div className={styles.logoBar}>
 					<Logo />
 				</div>
+				<div className={styles.navLinks}>
+					<NavLink
+						to="/#aboutSection"
+						className={styles.navLink}
+					>
+						О проекте
+					</NavLink>
 
-				<div className={styles.footerLinksBlock}>
-					<nav className={styles.footerNav}>
-						<h3 className={styles.footerNavTitle}>Клиентам</h3>
-						<ul className={styles.footerNavList}>
-							{[
-								{
-									id: 'yandex',
-									text: 'Яндекс.Практикум',
-									url: 'https://practicum.yandex.ru/',
-								},
-								{
-									id: 'github',
-									text: 'Github',
-									url: 'https://github.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-							].map((item) => (
-								<li
-									key={item.id}
-									className={styles.footerNavElement}
-								>
-									<a
-										className={styles.footerNavlink}
-										href={item.url}
-										target="_blank"
-										rel="noreferrer"
-									>
-										{item.text}
-									</a>
-								</li>
-							))}
-						</ul>
-					</nav>
+					<NavLink
+						to="/#howItWorksSection"
+						className={styles.navLink}
+					>
+						Как это работает
+					</NavLink>
 
-					<nav className={styles.footerNav}>
-						<h3 className={styles.footerNavTitle}>Психологам</h3>
+					<NavLink
+						to={isLoggedIn ? '/account' : '/welcome'}
+						className={styles.navLink}
+					>
+						Психологам
+					</NavLink>
 
-						<ul className={styles.footerNavList}>
-							{[
-								{
-									id: 'yandex',
-									text: 'Яндекс.Практикум',
-									url: 'https://practicum.yandex.ru/',
-								},
-								{
-									id: 'github',
-									text: 'Github',
-									url: 'https://github.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-							].map((item) => (
-								<li
-									key={item.id}
-									className={styles.footerNavElement}
-								>
-									<a
-										className={styles.footerNavlink}
-										href={item.url}
-										target="_blank"
-										rel="noreferrer"
-									>
-										{item.text}
-									</a>
-								</li>
-							))}
-						</ul>
-					</nav>
+					{!isLoggedIn && (
+						<NavLink
+							to="/#faqSection"
+							className={styles.navLink}
+						>
+							Вопросы
+						</NavLink>
+					)}
 
-					<nav className={styles.footerNav}>
-						<h3 className={styles.footerNavTitle}>Фондам</h3>
 
-						<ul className={styles.footerNavList}>
-							{[
-								{
-									id: 'yandex',
-									text: 'Яндекс.Практикум',
-									url: 'https://practicum.yandex.ru/',
-								},
-								{
-									id: 'github',
-									text: 'Github',
-									url: 'https://github.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-								{
-									id: 'linkedin',
-									text: 'LinkedIn',
-									url: 'https://www.linkedin.com/',
-								},
-							].map((item) => (
-								<li
-									key={item.id}
-									className={styles.footerNavElement}
-								>
-									<a
-										className={styles.footerNavlink}
-										href={item.url}
-										target="_blank"
-										rel="noreferrer"
-									>
-										{item.text}
-									</a>
-								</li>
-							))}
-						</ul>
-					</nav>
+					<NavLink
+						to={isLoggedIn ? '/welcome' : '/signin'}
+						className={styles.navLink}
+					>
+						Личный кабинет
+					</NavLink>
 				</div>
+			</nav>
+			<div className={styles.copyRightBlock}>
+				<p className={styles.copyRight}>&copy; 2024 Давай поговорим</p>
 			</div>
-			<div className={styles.copyrightBlock}>
-				<p className={styles.footerYear}>© 2023</p>
-				<p className={styles.location}>Location: Russia</p>
-			</div>
-		</footer>
+		</section>
 	);
-};
+});
 
 export default Footer;
