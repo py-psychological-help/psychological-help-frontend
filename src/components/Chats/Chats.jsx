@@ -6,7 +6,7 @@ import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
 function Chats({ className, onSelect }) {
-	const [isVerified, setIsVerified] = useState(true);
+	const [isVerified, setIsVerified] = useState(false);
 	const userData = useSelector((state) => state.user.userData);
 
 	useEffect(() => {
@@ -23,6 +23,12 @@ function Chats({ className, onSelect }) {
 	});
 
 	const isActiveChatExist = chats.some((chat) => chat.active);
+	const handleConnectBtnDisabled = () => {
+		if (isActiveChatExist && isFiltered === 'new') {
+			return true;
+		}
+		return false;
+	};
 
 	return (
 		<main className={cls.chats}>
@@ -72,9 +78,7 @@ function Chats({ className, onSelect }) {
 							key={chat.id}
 							chat={chat}
 							onSelect={onSelect}
-							onDisable={
-								isActiveChatExist && isFiltered === 'new'
-							}
+							onDisable={handleConnectBtnDisabled}
 						/>
 					))}
 				</ul>

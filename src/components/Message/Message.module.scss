@@ -1,8 +1,3 @@
-.messagesContainer {
-	width: 768px;
-	height: 955px;
-}
-
 .messageItem {
 	border-radius: 20px;
 	padding: 24px;
@@ -15,7 +10,7 @@
 }
 
 .other {
-	background-color: #f1f1f3;
+	background-color: #A9C6C5;
 }
 
 .chatBubble {
@@ -37,23 +32,23 @@
 }
 
 .me:before {
-	left: -7px;
+	right: -7px;
 	width: 20px;
 	background-color: #d9d9d9;
-	border-bottom-right-radius: 16px 14px;
+	border-bottom-left-radius: 16px 14px;
 }
 
 .me:after {
-	left: -26px;
+	right: -26px;
 	width: 26px;
 	background-color: #fff;
-	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
 .other:before {
 	left: -7px;
 	width: 20px;
-	background-color: #f1f1f3;
+	background-color: #A9C6C5;
 	border-bottom-right-radius: 16px 14px;
 }
 

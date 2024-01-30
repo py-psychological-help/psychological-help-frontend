@@ -38,16 +38,18 @@
 }
 
 .chatButton {
-	border: 2px solid #212028;
-	border-radius: 20px;
-	background-color: #d9d9d9;
-	font-size: 16px;
+	border: none;
+	border-radius: 12px;
+	background-color: #343434;
+	font-size: 20px;
 	font-weight: 600;
-	line-height: 1.25;
-	color: #212028;
+	line-height: 1.2;
+	color: #EBE7DC;
 	padding: 12px 32px;
 	text-decoration: none;
 	margin: 70px 24px 28px auto;
+	width: 223px;
+	height: 48px;
 }
 
 .chatButton:hover {

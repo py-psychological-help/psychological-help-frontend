@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 import cls from './Chat.module.scss';
 
 function Chat({ chat, onSelect, onDisable }) {
@@ -33,11 +32,5 @@ function Chat({ chat, onSelect, onDisable }) {
 		</div>
 	);
 }
-
-// Chat.propTypes = {
-// 	id: PropTypes.number.isRequired,
-// 	firstName: PropTypes.string.isRequired,
-// 	complaint: PropTypes.string.isRequired,
-// };
 
 export default Chat;
