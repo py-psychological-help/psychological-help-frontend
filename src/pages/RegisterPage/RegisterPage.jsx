@@ -205,7 +205,11 @@ export default function RegisterPage() {
 						required: true,
 						minLength: 6,
 						maxLength: 50,
-						pattern: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+						// ужасный паттерн для почты по требованиям к продукту
+						pattern:
+							/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
+						// более дружелюбный паттерн, который можно использовать
+						// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -243,7 +247,7 @@ export default function RegisterPage() {
 					<button
 						type="button"
 						className={
-							errors?.password && errors?.password.message
+							errors?.password
 								? `${cls.eyeBtn} ${cls.eyeBtnWrong}`
 								: cls.eyeBtn
 						}
