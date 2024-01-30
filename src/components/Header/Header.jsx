@@ -56,12 +56,15 @@ const Header = memo(() => {
 						Психологам
 					</NavLink>
 
-					<NavLink
-						to="/#faqSection"
-						className={styles.navLink}
-					>
-						Вопросы
-					</NavLink>
+					{!isLoggedIn && (
+						<NavLink
+							to="/#faqSection"
+							className={styles.navLink}
+						>
+							Вопросы
+						</NavLink>
+					)}
+					
 				</div>
 
 				<div className={styles.navAuthbar}>
