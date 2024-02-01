@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
-function Chats(props) {
-	const [isSelected, setIsSelected] = useState();
+function Chats({ className, onSelect }) {
+	const [isVerified, setIsVerified] = useState(true);
+	const userData = useSelector((state) => state.user.userData);
+
+	useEffect(() => {
+		if (userData) setIsVerified(userData.approved);
+	}, [userData]);
+
+	const [isFiltered, setIsFiltered] = useState('new');
 
 	const filteredChats = chats.filter((chat) => {
-		if (isSelected === 'active') return chat.active;
-		if (isSelected === 'new') return chat.new;
-		if (isSelected === 'archive') return chat.archive;
+		if (isFiltered === 'active') return chat.active;
+		if (isFiltered === 'new') return chat.new;
+		if (isFiltered === 'archive') return chat.archive;
 		return chats;
 	});
 
-	const { className } = props;
+	const isActiveChatExist = chats.some((chat) => chat.active);
 
 	return (
 		<main className={cls.chats}>
@@ -23,10 +31,11 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('active')}
+						onClick={() => setIsFiltered('new')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'active',
+							[cls.active]: isFiltered === 'new',
 						})}
+						disabled={!isVerified}
 					>
 						Ожидающие
 					</button>
@@ -34,10 +43,11 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('new')}
+						onClick={() => setIsFiltered('active')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'new',
+							[cls.active]: isFiltered === 'active',
 						})}
+						disabled={!isVerified}
 					>
 						Активные
 					</button>
@@ -45,30 +55,40 @@ function Chats(props) {
 				<li>
 					<button
 						type="button"
-						onClick={() => setIsSelected('archive')}
+						onClick={() => setIsFiltered('archive')}
 						className={clsx(cls.dashboardItem, className, {
-							[cls.active]: isSelected === 'archive',
+							[cls.active]: isFiltered === 'archive',
 						})}
+						disabled={!isVerified}
 					>
 						Архив
 					</button>
 				</li>
 			</ul>
-			<ul className={cls.chatsList}>
-				{filteredChats.map((chat) => (
-					<Chat
-						key={chat.id}
-						id={chat.id}
-						firstName={chat.client.first_name}
-						complaint={chat.client.complaint}
-					/>
-				))}
-			</ul>
-			<span className={cls.span}>
-				Чтобы начать работать с нами, завершите регистрацию. Перейдите
-				во вкладку Профиль/ Документы и загрузите все необходимые
-				документы для работы на сервисе
-			</span>
+			{isVerified ? (
+				<ul className={cls.chatsList}>
+					{filteredChats.map((chat) => (
+						<Chat
+							key={chat.id}
+							chat={chat}
+							onSelect={onSelect}
+							onDisable={
+								isActiveChatExist && isFiltered === 'new'
+							}
+						/>
+					))}
+				</ul>
+			) : (
+				<span
+					className={clsx(cls.span, className, {
+						[cls.visible]: !isVerified,
+					})}
+				>
+					Чтобы начать работать с нами, завершите регистрацию.
+					Перейдите во вкладку Профиль/ Документы и загрузите все
+					необходимые документы для работы на сервисе
+				</span>
+			)}
 		</main>
 	);
 }

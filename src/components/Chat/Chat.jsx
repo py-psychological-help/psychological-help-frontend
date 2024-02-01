@@ -1,29 +1,43 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 import cls from './Chat.module.scss';
 
-function Chat({ id, firstName, complaint }) {
+function Chat({ chat, onSelect, onDisable }) {
+	const navigate = useNavigate();
+	const handleClick = () => {
+		onSelect(chat);
+		navigate('/psy-side');
+	};
+
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
-				<h2 className={cls.number}>{`Заявка №${id}`}</h2>
+				<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
 				<p className={cls.name}>
-					{firstName.length > 0 ? `Имя: ${firstName}` : ''}
+					{chat.psychologist.first_name.length > 0
+						? `Имя: ${chat.psychologist.first_name}`
+						: ''}
 				</p>
-				<p className={cls.problem}>{`Проблема: ${complaint}`}</p>
+				<p
+					className={cls.problem}
+				>{`Проблема: ${chat.psychologist.complaint}`}</p>
 			</div>
-			<NavLink to="/psy-side" className={cls.chatButton}>
+			<button
+				className={cls.chatButton}
+				onClick={handleClick}
+				disabled={chat.new && onDisable}
+			>
 				Подключиться
-			</NavLink>
+			</button>
 		</div>
 	);
 }
 
-Chat.propTypes = {
-	id: PropTypes.number.isRequired,
-	firstName: PropTypes.string.isRequired,
-	complaint: PropTypes.string.isRequired,
-};
+// Chat.propTypes = {
+// 	id: PropTypes.number.isRequired,
+// 	firstName: PropTypes.string.isRequired,
+// 	complaint: PropTypes.string.isRequired,
+// };
 
 export default Chat;

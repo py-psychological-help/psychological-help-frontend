@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCurrentUser } from './userAsyncActions';
+import {getCurrentUser, updateCurrentUser} from './userAsyncActions';
 
 const initialState = {};
 
@@ -7,9 +7,9 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		setUserData: (state, action) => {
-			state.userData = action.payload;
-		},
+		// setUserData: (state, action) => {
+		// 	state.userData = action.payload;
+		// },
 		logout: (state) => {
 			state.userData = undefined;
 			state.error = null;
@@ -31,7 +31,19 @@ export const userSlice = createSlice({
 			.addCase(getCurrentUser.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
-			});
+			})
+			.addCase(updateCurrentUser.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(updateCurrentUser.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.userData = action.payload;
+			})
+			.addCase(updateCurrentUser.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
 	},
 });
 

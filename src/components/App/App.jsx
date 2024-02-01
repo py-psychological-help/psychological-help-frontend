@@ -15,6 +15,7 @@ import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
 import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
+import ForgotPassword from "../../pages/ForgotPasswordPage/ForgotPasswordPage";
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -38,6 +39,12 @@ const App = () => {
 		// eslint-disable-next-line
 	}, [userData]); // Ругается на отсутствие navigate
 
+	const [selectedChat, setSelectedChat] = useState();
+
+	const handleChatSelection = (chat) => {
+		setSelectedChat(chat);
+	};
+
 	return (
 		<div className={cls.app}>
 			<Header isLoggedIn={isLoggedIn} />
@@ -49,6 +56,7 @@ const App = () => {
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/" element={<RegisterPage />} />
+					<Route element={<ForgotPassword/>} path="/forgotpassword"/>
 
 					{userIsTrue ? (
 						<>
@@ -58,7 +66,11 @@ const App = () => {
 								path="/account/documents"
 							/>
 							<Route
-								element={<AccountChatPage />}
+								element={
+									<AccountChatPage
+										onSelect={handleChatSelection}
+									/>
+								}
 								path="account-chat"
 							/>
 							<Route
@@ -66,7 +78,11 @@ const App = () => {
 								path="account-principles"
 							/>
 							<Route
-								element={<PsychologistSide />}
+								element={
+									<PsychologistSide
+										selectedChat={selectedChat}
+									/>
+								}
 								path="psy-side"
 							/>
 						</>

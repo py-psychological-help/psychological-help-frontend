@@ -1,113 +1,130 @@
 .howItWorksSection {
-    display: flex;
-    padding: 52px 80px;
-    margin: 0;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #F2F2F2;
-    color: black;
-    font-family: Montserrat, Arial, sans-serif;
-    max-width: 1280px;
+  display: flex;
+  padding: 52px 80px;
+  margin: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  color: black;
+  font-family: Montserrat, Arial, sans-serif;
+  max-width: 1280px;
 
-    .mainSubHeader {
-        font-weight: 600;
-        font-size: 32px;
-        line-height: 36px;
-        padding: 0;
-        margin: 0;
-    }
+  .mainSubHeader {
+	font-weight: 600;
+	font-size: 32px;
+	line-height: 36px;
+	padding: 0;
+	margin: 0;
+  }
 
-    .featuresBlock {
-        display: flex;
-        gap: 20px;
-        margin: 32px 0;
-    }
+  .featuresBlock {
+	display: flex;
+	gap: 20px;
+	margin: 32px 0;
+  }
 
-    .featuresElement {
-        display: flex;
-        width: 414px;
-        gap: 20px;
-        flex-direction: row;
-        border-radius: 20px;
-        border: 1px black solid;
-        padding: 10px;
-    }
+  .featuresElement {
+	display: flex;
+	width: 414px;
+	gap: 20px;
+	flex-direction: row;
+	border-radius: 20px;
+	border: 1px black solid;
+	padding: 10px;
+  }
 
-    .featuresText {
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 26px;
-        padding: 0;
-        margin: 0;
-    }
+  .featuresText {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 26px;
+	padding: 0;
+	margin: 0;
+  }
 
-    .helpForm {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+  .helpForm {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+  }
 
-    .helpFormBlock {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+  .helpFormBlock {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+  }
 
-    .input {
-        width: 738px;
-        padding: 20px;
-        border-radius: 20px;
-        font-size: 16px;
-        line-height: 24px;
-        background-color: #F2F2F2;
-    }
+  .input {
+	width: 738px;
+	padding: 20px;
+	border-radius: 20px;
+	font-size: 16px;
+	line-height: 24px;
+	background-color: #f2f2f2;
+	border: 1px black solid;
+  }
 
-    .nameInputBlock {
-        display: flex;
-        gap: 20px;
-        align-items: center;
-    }
+  .nameInputBlock {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+  }
 
-    .checkBox {
-        margin: 0 12px 0 0;
-    }
+  .checkBox {
+	margin: 0 12px 0 0;
+  }
 
-    .textInputBlock {
-        display: flex;
-        justify-content: space-between;
-    }
+  .textInputBlock {
+	display: flex;
+	justify-content: space-between;
+  }
 
-    .textInputInfo {
-        width: 303px;
-        padding: 16px;
-        border: 1px black solid;
-        border-radius: 20px;
-    }
+  .textInputInfo {
+	width: 303px;
+	padding: 16px;
+	border: 1px black solid;
+	border-radius: 20px;
+  }
 
-    .textInput {
-        display: flex;
-        width: 900px;
-        height: 238px;
-        padding: 10px;
-        align-items: center;
-        resize: none;
-        border-radius: 20px;
-        background-color: #F2F2F2;
-    }
+  .textInput {
+	display: flex;
+	width: 900px;
+	height: 238px;
+	padding: 10px;
+	align-items: center;
+	resize: none;
+	border-radius: 20px;
+	background-color: #f2f2f2;
+  }
 
-    .mainBtn {
-        width: 329px;
-        height: 48px;
-        padding: 0;
-        margin: 50px 0 0;
-        font-size: 20px;
-        background-color: black;
-        border-radius: 40px;
-        color: white;
-        text-decoration: none;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
+  .mainBtn {
+	width: 329px;
+	height: 48px;
+	padding: 0;
+	margin: 50px 0 0;
+	font-size: 20px;
+	background-color: black;
+	border-radius: 40px;
+	color: white;
+	text-decoration: none;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+  }
 
+  .inputWrong {
+	border-color: #ff0909;
+	color: #ff0909;
+  }
+
+  .inputWrong::placeholder {
+	color: #ff0909;
+  }
+
+  .inputWrong:focus {
+	outline-color: #ff0909;
+  }
+
+  .error {
+	color: #ff0909;
+  }
 }

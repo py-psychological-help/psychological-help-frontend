@@ -1,134 +1,196 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import validator from 'validator';
+import { useDispatch } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
+import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
 
 const HowItWorksSection = () => {
-    const [formData, setFormData] = useState({
-        text: '',
-        email: '',
-        name: '',
-        disableName: false,
-    });
+  const [formData, setFormData] = useState({
+    complaint: '',
+    email: '',
+    first_name: '',
+  });
 
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: type === 'checkbox' ? checked : value,
-        }));
-    };
+  const [errors, setErrors] = useState({
+    email: '',
+    first_name: '',
+    complaint: '',
+  });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Submitted Data:', formData);
-    };
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-    return (
-        <section id="howItWorksSection" className={styles.howItWorksSection}>
-            <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
-                Как это работает
-            </h2>
+  const [emailChanged, setEmailChanged] = useState(false);
+  const [firstNameChanged, setFirstNameChanged] = useState(false);
+  const [complaintChanged, setComplaintChanged] = useState(false);
 
-            <div className={styles.featuresBlock}>
-                <div className={styles.featuresElement}>
-                    <h2 className={styles.mainSubHeader}>1</h2>
-                    <p className={styles.featuresText}>Оставляете заявку в форме</p>
-                </div>
+  const validateField = (name, value) => {
+    if (name === 'email') {
+      if (value.trim() === '') {
+        return 'Пожалуйста, заполните поле';
+      }
+      if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i.test(value)) {
+        return 'Введите корректный email';
+      }
+    } else if (name === 'first_name') {
+      if (value.trim() === '' || !/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)) {
+        return value.trim() === '' || /^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)
+            ? ''
+            : 'Укажите имя как в паспорте';
+      }
+    } else if (name === 'complaint') {
+      if (value.trim() === '') {
+        return 'Пожалуйста, заполните поле';
+      }
+      if (value.length > 500) {
+        return 'Превышено максимальное количество символов (500)';
+      }
+    }
+    return '';
+  };
 
-                <div className={styles.featuresElement}>
-                    <h2 className={styles.mainSubHeader}>2</h2>
-                    <p className={styles.featuresText}>Психолог обрабатывает ваш запрос</p>
-                </div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
 
-                <div className={styles.featuresElement}>
-                    <h2 className={styles.mainSubHeader}>3</h2>
-                    <p className={styles.featuresText}>
-                        Вы получаете консультацию с помощью нашего онлайн — чата
-                    </p>
-                </div>
-            </div>
+    if (name === 'email') setEmailChanged(true);
+    else if (name === 'first_name') setFirstNameChanged(true);
+    else if (name === 'complaint') setComplaintChanged(true);
+  };
 
-            <div className={styles.helpFormBlock}>
-                <h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
-                <p className={styles.featuresText}>
-                    Для того чтобы отправить заявку, заполните форму обращения.
-                </p>
+  useEffect(() => {
+    if (emailChanged) {
+      const emailError = validateField('email', formData.email);
+      setErrors((prevErrors) => ({ ...prevErrors, email: emailError }));
+      setEmailChanged(false);
+    }
+  }, [formData.email, emailChanged]);
 
-                <form className={styles.helpForm} onSubmit={handleSubmit}>
+  useEffect(() => {
+    if (firstNameChanged) {
+      const firstNameError = validateField('first_name', formData.first_name);
+      setErrors((prevErrors) => ({ ...prevErrors, first_name: firstNameError }));
+      setFirstNameChanged(false);
+    }
+  }, [formData.first_name, firstNameChanged]);
 
-                    <div className={styles.textInputBlock}>
-                        <label htmlFor="text">
-                            <textarea
-                                className={styles.textInput}
-                                id="text"
-                                name="text"
-                                value={formData.text}
-                                onChange={handleChange}
-                                required
-                                rows="10"
-                                placeholder="Опишите кратко вашу проблему для работы с психологом."
-                            />
-                        </label>
-                        <div className={styles.textInputInfo}>
-                            <p className={styles.featuresText}>
-                                Вся информация, которую вы оставите на сайте или обсудите с психологом конфиденциальна.
-                            </p>
-                        </div>
-                    </div>
+  useEffect(() => {
+    if (complaintChanged) {
+      const complaintError = validateField('complaint', formData.complaint);
+      setErrors((prevErrors) => ({ ...prevErrors, complaint: complaintError }));
+      setComplaintChanged(false);
+    }
+  }, [formData.complaint, complaintChanged]);
 
-                    <p className={styles.featuresText}>
-                        Напишите почту для связи психолога с вами.
-                    </p>
+  const dispatch = useDispatch();
 
-                    <label htmlFor="email">
-                        <input
-                            className={styles.input}
-                            type="email"
-                            name="email"
-                            id="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            pattern={validator.isEmail(String(formData.email))}
-                            placeholder="example@mail.ru"
-                        />
-                    </label>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                    <div className={styles.nameInputBlock}>
+    if (errors.email || errors.first_name || errors.complaint) {
+      return;
+    }
 
-                        <label htmlFor="name">
-                            <input
-                                className={styles.input}
-                                type="text"
-                                name="name"
-                                id="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required={!formData.disableName}
-                                disabled={formData.disableName}
-                                placeholder="Ваше имя"
-                            />
-                        </label>
+    setSubmitting(true);
 
-                        <label htmlFor="disableName">
-                            <input
-                                className={styles.checkBox}
-                                type="checkbox"
-                                name="disableName"
-                                id="disableName"
-                                checked={formData.disableName}
-                                onChange={handleChange}
-                            />
-                            Не готов(а) указывать имя
-                        </label>
+    try {
+      await dispatch(submitHelpRequest(formData));
+      setSubmitSuccess(true);
+    } catch (error) {
+      setSubmitError(error.message || 'Произошла ошибка при отправке заявки');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
-                    </div>
+  return (
+      <section id="howItWorksSection" className={styles.howItWorksSection}>
+        <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
+          Как это работает
+        </h2>
 
-                    <button className={styles.mainBtn} type="submit">Отправить заявку</button>
-                </form>
-            </div >
-        </section >
-    );
+        <div className={styles.featuresBlock}>
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>1</h2>
+            <p className={styles.featuresText}>Оставляете заявку в форме</p>
+          </div>
+
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>2</h2>
+            <p className={styles.featuresText}>Психолог обрабатывает ваш запрос</p>
+          </div>
+
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>3</h2>
+            <p className={styles.featuresText}>
+              Вы получаете консультацию с помощью нашего онлайн — чата
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.helpFormBlock}>
+          <h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
+          <p className={styles.featuresText}>
+            Вся информация, которую вы оставите на сайте или обсудите с психологом конфиденциальна.
+          </p>
+
+          {submitSuccess ? (
+              <p className={styles.successMessage}>Заявка успешно отправлена!</p>
+          ) : (
+              <form className={styles.helpForm} onSubmit={handleSubmit}>
+                <label htmlFor="email">
+                  <input
+                      className={`${styles.input} ${errors.email && styles.inputWrong}`}
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="example@mail.ru"
+                  />
+                </label>
+                {errors.email && <p className={styles.error}>{errors.email}</p>}
+
+                <label htmlFor="first_name">
+                  <input
+                      className={`${styles.input} ${errors.first_name && styles.inputWrong}`}
+                      type="text"
+                      name="first_name"
+                      id="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      disabled={formData.disableName}
+                      placeholder="Ваше имя"
+                  />
+                </label>
+                {errors.first_name && <p className={styles.error}>{errors.first_name}</p>}
+
+                <label htmlFor="complaint">
+                <textarea
+                    className={`${styles.textInput} ${errors.complaint && styles.inputWrong}`}
+                    id="complaint"
+                    name="complaint"
+                    value={formData.complaint}
+                    onChange={handleChange}
+                    required
+                    rows="10"
+                    placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
+                />
+                </label>
+                {errors.complaint && <p className={styles.error}>{errors.complaint}</p>}
+
+                <button className={styles.mainBtn} type="submit" disabled={submitting}>
+                  {submitting ? 'Отправка...' : 'Отправить заявку'}
+                </button>
+
+                {submitError && <p className={styles.errorMessage}>{submitError}</p>}
+              </form>
+          )}
+        </div>
+      </section>
+  );
 };
 
 export default HowItWorksSection;

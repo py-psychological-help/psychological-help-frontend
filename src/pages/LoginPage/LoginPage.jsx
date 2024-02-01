@@ -105,7 +105,7 @@ export default function LoginPage() {
 							minLength: 8,
 							maxLength: 20,
 							pattern:
-								/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])$/,
+								/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
 						})}
 					/>
 					<button
