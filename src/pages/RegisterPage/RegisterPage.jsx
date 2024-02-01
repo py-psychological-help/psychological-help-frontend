@@ -103,7 +103,6 @@ export default function RegisterPage() {
 				<input
 					name="lastName"
 					id="lastName"
-					type="text"
 					placeholder="Иванов"
 					className={
 						errors?.lastName
@@ -134,7 +133,6 @@ export default function RegisterPage() {
 				<input
 					name="firstName"
 					id="firstName"
-					type="text"
 					placeholder="Владислав"
 					className={
 						errors?.firstName
@@ -194,7 +192,6 @@ export default function RegisterPage() {
 				<input
 					name="email"
 					id="email"
-					type="email"
 					placeholder="example@gmail.com"
 					className={
 						errors?.email

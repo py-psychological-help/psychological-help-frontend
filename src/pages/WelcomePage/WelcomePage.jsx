@@ -4,6 +4,7 @@ import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 
 export default function WelcomePage() {
+	const isValid = true;
 	return (
 		<div className={cls.container}>
 			<h1 className={cls.header}>Приветствуем вас на нашем ресурсе</h1>
@@ -23,7 +24,7 @@ export default function WelcomePage() {
 				</li>
 			</ul>
 			<Link to="/signup" className={cls.link}>
-				<Button type="button" name="Хочу в команду" />
+				<Button type="button" name="Хочу в команду" isValid={isValid} />
 			</Link>
 		</div>
 	);

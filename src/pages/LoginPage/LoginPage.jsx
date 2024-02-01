@@ -58,7 +58,6 @@ export default function LoginPage() {
 				<input
 					name="authEmail"
 					id="authEmail"
-					type="email"
 					placeholder="Почта"
 					className={
 						errors?.email
