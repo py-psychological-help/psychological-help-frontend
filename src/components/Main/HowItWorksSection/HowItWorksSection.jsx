@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import validator from 'validator';
 import { useDispatch } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
@@ -10,22 +10,88 @@ const HowItWorksSection = () => {
     email: '',
     first_name: '',
   });
+
+  const [errors, setErrors] = useState({
+    email: '',
+    first_name: '',
+    complaint: '',
+  });
+
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  const [emailChanged, setEmailChanged] = useState(false);
+  const [firstNameChanged, setFirstNameChanged] = useState(false);
+  const [complaintChanged, setComplaintChanged] = useState(false);
+
+  const validateField = (name, value) => {
+    if (name === 'email') {
+      if (value.trim() === '') {
+        return 'Пожалуйста, заполните поле';
+      }
+      if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i.test(value)) {
+        return 'Введите корректный email';
+      }
+    } else if (name === 'first_name') {
+      if (value.trim() === '' || !/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)) {
+        return value.trim() === '' || /^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)
+            ? ''
+            : 'Укажите имя как в паспорте';
+      }
+    } else if (name === 'complaint') {
+      if (value.trim() === '') {
+        return 'Пожалуйста, заполните поле';
+      }
+      if (value.length > 500) {
+        return 'Превышено максимальное количество символов (500)';
+      }
+    }
+    return '';
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    if (name === 'email') setEmailChanged(true);
+    else if (name === 'first_name') setFirstNameChanged(true);
+    else if (name === 'complaint') setComplaintChanged(true);
   };
+
+  useEffect(() => {
+    if (emailChanged) {
+      const emailError = validateField('email', formData.email);
+      setErrors((prevErrors) => ({ ...prevErrors, email: emailError }));
+      setEmailChanged(false);
+    }
+  }, [formData.email, emailChanged]);
+
+  useEffect(() => {
+    if (firstNameChanged) {
+      const firstNameError = validateField('first_name', formData.first_name);
+      setErrors((prevErrors) => ({ ...prevErrors, first_name: firstNameError }));
+      setFirstNameChanged(false);
+    }
+  }, [formData.first_name, firstNameChanged]);
+
+  useEffect(() => {
+    if (complaintChanged) {
+      const complaintError = validateField('complaint', formData.complaint);
+      setErrors((prevErrors) => ({ ...prevErrors, complaint: complaintError }));
+      setComplaintChanged(false);
+    }
+  }, [formData.complaint, complaintChanged]);
 
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (errors.email || errors.first_name || errors.complaint) {
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -39,93 +105,91 @@ const HowItWorksSection = () => {
   };
 
   return (
-    <section id="howItWorksSection" className={styles.howItWorksSection}>
-      <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
-        Как это работает
-      </h2>
+      <section id="howItWorksSection" className={styles.howItWorksSection}>
+        <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
+          Как это работает
+        </h2>
 
-      <div className={styles.featuresBlock}>
-        <div className={styles.featuresElement}>
-          <h2 className={styles.mainSubHeader}>1</h2>
-          <p className={styles.featuresText}>Оставляете заявку в форме</p>
+        <div className={styles.featuresBlock}>
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>1</h2>
+            <p className={styles.featuresText}>Оставляете заявку в форме</p>
+          </div>
+
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>2</h2>
+            <p className={styles.featuresText}>Психолог обрабатывает ваш запрос</p>
+          </div>
+
+          <div className={styles.featuresElement}>
+            <h2 className={styles.mainSubHeader}>3</h2>
+            <p className={styles.featuresText}>
+              Вы получаете консультацию с помощью нашего онлайн — чата
+            </p>
+          </div>
         </div>
 
-        <div className={styles.featuresElement}>
-          <h2 className={styles.mainSubHeader}>2</h2>
-          <p className={styles.featuresText}>Психолог обрабатывает ваш запрос</p>
-        </div>
-
-        <div className={styles.featuresElement}>
-          <h2 className={styles.mainSubHeader}>3</h2>
+        <div className={styles.helpFormBlock}>
+          <h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
           <p className={styles.featuresText}>
-            Вы получаете консультацию с помощью нашего онлайн — чата
+            Вся информация, которую вы оставите на сайте или обсудите с психологом конфиденциальна.
           </p>
-        </div>
-      </div>
 
-      <div className={styles.helpFormBlock}>
-        <h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
-        <p className={styles.featuresText}>
-          Вся информация, которую вы оставите на сайте или обсудите с психологом конфиденциальна.
-        </p>
+          {submitSuccess ? (
+              <p className={styles.successMessage}>Заявка успешно отправлена!</p>
+          ) : (
+              <form className={styles.helpForm} onSubmit={handleSubmit}>
+                <label htmlFor="email">
+                  <input
+                      className={`${styles.input} ${errors.email && styles.inputWrong}`}
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="example@mail.ru"
+                  />
+                </label>
+                {errors.email && <p className={styles.error}>{errors.email}</p>}
 
-        {submitSuccess ? (
-          <p className={styles.successMessage}>Заявка успешно отправлена!</p>
-        ) : (
-          <form className={styles.helpForm} onSubmit={handleSubmit}>
-            <label htmlFor="email">
-              <input
-                className={styles.input}
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                pattern={validator.isEmail(String(formData.email))}
-                placeholder="example@mail.ru"
-              />
-            </label>
+                <label htmlFor="first_name">
+                  <input
+                      className={`${styles.input} ${errors.first_name && styles.inputWrong}`}
+                      type="text"
+                      name="first_name"
+                      id="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      disabled={formData.disableName}
+                      placeholder="Ваше имя"
+                  />
+                </label>
+                {errors.first_name && <p className={styles.error}>{errors.first_name}</p>}
 
-            <div className={styles.nameInputBlock}>
-              <label htmlFor="first_name">
-                <input
-                  className={styles.input}
-                  type="text"
-                  name="first_name"
-                  id="first_name"
-                  value={formData.first_name}
-                  onChange={handleChange}
-                  disabled={formData.disableName}
-                  placeholder="Ваше имя"
-                />
-              </label>
-            </div>
-
-            <div className={styles.textInputBlock}>
-              <label htmlFor="text">
+                <label htmlFor="complaint">
                 <textarea
-                  className={styles.textInput}
-                  id="complaint"
-                  name="complaint"
-                  value={formData.complaint}
-                  onChange={handleChange}
-                  required
-                  rows="10"
-                  placeholder="Опишите кратко вашу проблему для работы с психологом."
+                    className={`${styles.textInput} ${errors.complaint && styles.inputWrong}`}
+                    id="complaint"
+                    name="complaint"
+                    value={formData.complaint}
+                    onChange={handleChange}
+                    required
+                    rows="10"
+                    placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
                 />
-              </label>
-            </div>
+                </label>
+                {errors.complaint && <p className={styles.error}>{errors.complaint}</p>}
 
-            <button className={styles.mainBtn} type="submit" disabled={submitting}>
-              {submitting ? 'Отправка...' : 'Отправить заявку'}
-            </button>
+                <button className={styles.mainBtn} type="submit" disabled={submitting}>
+                  {submitting ? 'Отправка...' : 'Отправить заявку'}
+                </button>
 
-            {submitError && <p className={styles.errorMessage}>{submitError}</p>}
-          </form>
-        )}
-      </div>
-    </section>
+                {submitError && <p className={styles.errorMessage}>{submitError}</p>}
+              </form>
+          )}
+        </div>
+      </section>
   );
 };
 
