@@ -6,8 +6,6 @@ import {updateCurrentUser} from "../../slices/userSlice/userAsyncActions";
 
 const AccountInfo = () => {
 	const userData = useSelector((state) => state.user.userData);
-	// Выдаёт ошибку, пока сервер не прислал юзера (поэтому знаки вопроса в данных).
-	// В будущем добавить скелетон/лоадер, пока данные грузятся (state.user.isLoading)
 	const [isEditing, setIsEditing] = useState(false);
 	const [userFormData, setUserFormData] = useState({
 		firstName:userData?.first_name,
@@ -48,7 +46,6 @@ const AccountInfo = () => {
 		dispatch(updateCurrentUser(userFormData));
 		setIsEditing(false);
 	}
-
 	return (
 		<div className={styles.body}>
 			<AccountMenu />
@@ -101,7 +98,7 @@ const AccountInfo = () => {
 							type="date"
 							name="birthDate"
 							placeholder="12.12.1985"
-							value={userFormData.birthDate} // Дата - null, проверить позже
+							value={userFormData.birthDate}
 							onChange={handleInputChange}
 							id="birthDate"
 							ref={birthDayInputRef}
@@ -127,7 +124,7 @@ const AccountInfo = () => {
 					{isEditing
 						? (<div className={styles.buttons}>
 							<button className={styles.saveButton} type='submit' onClick={handleButtonSubmit}>Сохранить</button>
-						<button className={styles.editButton} type='button' onClick={cancelEditing}>Отменить</button>
+						<button className={styles.cancelButton} type='button' onClick={cancelEditing}>Отменить</button>
 						</div>)
 						: (<button className={styles.editButton} type='button'
 								   onClick={enableEditing}>Редактировать</button>)}
