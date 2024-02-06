@@ -1,31 +1,21 @@
-.messagesContainer {
-	width: 768px;
-	height: 955px;
-}
-
 .messageItem {
-	border-radius: 20px;
-	padding: 24px;
-	background-color: #d9d9d9;
+	border-radius: 25px;
 	position: relative;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #343434;
+	margin: 0;
+	padding: 24px;
+	width: 798px;
 }
 
 .me {
-	background-color: #d9d9d9;
+	background-color: #fff;
 }
 
 .other {
-	background-color: #f1f1f3;
-}
-
-.chatBubble {
-	font-family: 'Raleway', Arial, sans-serif;
-	font-size: 32px;
-	font-weight: 500;
-	line-height: 1.25;
-	color: #000;
-	margin: 0;
-	padding: 0;
+	background-color: #EEFFFF;
 }
 
 .messageItem:before,
@@ -37,29 +27,29 @@
 }
 
 .me:before {
-	left: -7px;
+	right: -7px;
 	width: 20px;
-	background-color: #d9d9d9;
-	border-bottom-right-radius: 16px 14px;
+	background-color: #fff;
+	border-bottom-left-radius: 16px 14px;
 }
 
 .me:after {
-	left: -26px;
+	right: -26px;
 	width: 26px;
-	background-color: #fff;
-	border-bottom-right-radius: 10px;
+	background-color: #EBE7DC;
+	border-bottom-left-radius: 10px;
 }
 
 .other:before {
 	left: -7px;
 	width: 20px;
-	background-color: #f1f1f3;
+	background-color: #EEFFFF;
 	border-bottom-right-radius: 16px 14px;
 }
 
 .other:after {
 	left: -26px;
 	width: 26px;
-	background-color: #fff;
+	background-color: #EBE7DC;
 	border-bottom-right-radius: 10px;
 }
