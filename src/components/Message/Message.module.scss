@@ -6,7 +6,7 @@
 	line-height: 1.5;
 	color: #343434;
 	margin: 0;
-	padding: 24px;
+	padding: 8px 24px 8px 24px;
 	width: 798px;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .other {
-	background-color: #EEFFFF;
+	background-color: #eeffff;
 }
 
 .messageItem:before,
@@ -36,20 +36,20 @@
 .me:after {
 	right: -26px;
 	width: 26px;
-	background-color: #EBE7DC;
+	background-color: #ebe7dc;
 	border-bottom-left-radius: 10px;
 }
 
 .other:before {
 	left: -7px;
 	width: 20px;
-	background-color: #EEFFFF;
+	background-color: #eeffff;
 	border-bottom-right-radius: 16px 14px;
 }
 
 .other:after {
 	left: -26px;
 	width: 26px;
-	background-color: #EBE7DC;
+	background-color: #ebe7dc;
 	border-bottom-right-radius: 10px;
 }

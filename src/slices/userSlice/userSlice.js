@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {getCurrentUser, updateCurrentUser} from './userAsyncActions';
+import { getCurrentUser, updateCurrentUser } from './userAsyncActions';
 
 const initialState = {};
 
@@ -43,7 +43,7 @@ export const userSlice = createSlice({
 			.addCase(updateCurrentUser.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
-			})
+			});
 	},
 });
 

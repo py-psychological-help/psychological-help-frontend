@@ -15,7 +15,7 @@ import PsychologistSide from '../PsychologistSide/PsychologistSide';
 import ClientSide from '../ClientSide/ClientSide';
 import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
-import ForgotPassword from "../../pages/ForgotPasswordPage/ForgotPasswordPage";
+import ForgotPassword from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -56,7 +56,10 @@ const App = () => {
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route path="signup/" element={<RegisterPage />} />
-					<Route element={<ForgotPassword/>} path="/forgotpassword"/>
+					<Route
+						element={<ForgotPassword />}
+						path="/forgotpassword"
+					/>
 
 					{userIsTrue ? (
 						<>

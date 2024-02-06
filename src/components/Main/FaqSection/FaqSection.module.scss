@@ -1,39 +1,39 @@
 .faqSection {
-    display: flex;
-      padding: 100px;
-      margin: 0;
-      flex-direction: column;
-      justify-content: center;
-      justify-content: space-between;
-      gap: 10px;
-      max-width: 856px;
-      // border: 1px red solid;
-      
-    .mainSubHeader {
-      color: black;
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 36px;
-      padding: 0;
-      margin: 0;
-      // border: 1px red solid;
-      align-self: center;
-      text-align: center;
-      // Базовые стили для заголовка
-      &.boldLeft {
-        font-weight: 600;
-        align-self: start;
-      }
-    }
-  
-    .mainText {
-      color: black;
-      font-weight: 400;
-      max-width: 700px;
-      font-size: 24px;
-      line-height: 36px;
-      padding: 0;
-      margin: auto;
-      // border: 1px red solid;
-    }
+	display: flex;
+	padding: 100px;
+	margin: 0;
+	flex-direction: column;
+	justify-content: center;
+	justify-content: space-between;
+	gap: 10px;
+	max-width: 856px;
+	// border: 1px red solid;
+
+	.mainSubHeader {
+		color: black;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: 0;
+		// border: 1px red solid;
+		align-self: center;
+		text-align: center;
+		// Базовые стили для заголовка
+		&.boldLeft {
+			font-weight: 600;
+			align-self: start;
+		}
+	}
+
+	.mainText {
+		color: black;
+		font-weight: 400;
+		max-width: 700px;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: auto;
+		// border: 1px red solid;
+	}
 }

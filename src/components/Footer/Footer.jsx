@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import Logo from '../Logo/Logo';
 
-
 const Footer = memo(() => {
 	const isLoggedIn = useSelector((state) => state.user.userData);
 
@@ -15,10 +14,7 @@ const Footer = memo(() => {
 					<Logo />
 				</div>
 				<div className={styles.navLinks}>
-					<NavLink
-						to="/#aboutSection"
-						className={styles.navLink}
-					>
+					<NavLink to="/#aboutSection" className={styles.navLink}>
 						О проекте
 					</NavLink>
 
@@ -37,14 +33,10 @@ const Footer = memo(() => {
 					</NavLink>
 
 					{!isLoggedIn && (
-						<NavLink
-							to="/#faqSection"
-							className={styles.navLink}
-						>
+						<NavLink to="/#faqSection" className={styles.navLink}>
 							Вопросы
 						</NavLink>
 					)}
-
 
 					<NavLink
 						to={isLoggedIn ? '/welcome' : '/signin'}

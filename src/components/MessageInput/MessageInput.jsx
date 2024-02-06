@@ -1,19 +1,28 @@
 import React, { useState, useRef } from 'react';
-import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import cls from './MessageInput.module.scss';
 
-const MessageInput = ({ onSend }) => {
+const MessageInput = ({ onSend, className }) => {
 	const [text, setText] = useState('');
+	const [isError, setIsError] = useState(false);
+
 	const textareaRef = useRef(null);
 
-	const handleInputChange = () => {
+	const wordsRegex = /\b\w+\b.*\b\w+\b/; // поменять
+
+	const handleMessageInputChange = () => {
 		const textarea = textareaRef.current;
 		textarea.style.height = 'auto';
 		textarea.style.height = `${textarea.scrollHeight}px`;
+		if (!wordsRegex.test(textarea.value)) {
+			setIsError(true);
+		} else {
+			setIsError(false);
+		}
 	};
 
 	const handleSend = () => {
-		if (text.trim() !== '') {
+		if (text.trim() !== '' && !isError) {
 			onSend(text, true);
 			setText('');
 			textareaRef.current.style.height = 'auto';
@@ -21,19 +30,25 @@ const MessageInput = ({ onSend }) => {
 	};
 
 	return (
-		<div className={cls.messageForm}>
+		<form className={cls.messageForm} noValidate>
 			<div className={cls.container}>
 				<textarea
 					ref={textareaRef}
-					className={cls.messageInput}
 					name="messageInput"
 					value={text}
 					onChange={(e) => {
 						setText(e.target.value);
-						handleInputChange();
+						handleMessageInputChange();
 					}}
+					className={clsx(cls.messageInput, className, {
+						[cls.errorInput]: isError,
+					})}
 				/>
-				<span className={cls.errorText}>
+				<span
+					className={clsx(cls.errorText, className, {
+						[cls.visible]: isError,
+					})}
+				>
 					Ошибка, слишком кратко описана проблема, минимум 2 слова.
 				</span>
 			</div>
@@ -44,12 +59,8 @@ const MessageInput = ({ onSend }) => {
 			>
 				Отправить
 			</button>
-		</div>
+		</form>
 	);
-};
-
-MessageInput.propTypes = {
-	onSend: PropTypes.func.isRequired,
 };
 
 export default MessageInput;

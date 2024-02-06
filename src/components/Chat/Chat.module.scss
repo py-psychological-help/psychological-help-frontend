@@ -60,7 +60,7 @@
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 1.2;
-	color: #EBE7DC;
+	color: #ebe7dc;
 	padding: 12px 32px;
 	text-decoration: none;
 	align-self: center;
@@ -70,8 +70,19 @@
 }
 
 .chatButton:hover {
-	background-color: #A9C6C5;
-	color:#343434;
+	background-color: #a9c6c5;
+	color: #343434;
 	cursor: pointer;
 	transition: 1s ease;
+}
+
+.disabled {
+	color: #6f6f6f;
+	background-color: #d9d9d9;
+}
+
+.disabled:hover {
+	color: #6f6f6f;
+	background-color: #d9d9d9;
+	transition: none;
 }
