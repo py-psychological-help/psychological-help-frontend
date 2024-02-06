@@ -12,12 +12,15 @@ function Chat({ chat, onSelect, onDisable }) {
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
-				<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
-				<p className={cls.name}>
-					{chat.psychologist.first_name.length > 0
-						? `Имя: ${chat.psychologist.first_name}`
-						: ''}
-				</p>
+				<div className={cls.row}>
+					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
+					<span className={cls.divider}>&#183;</span>
+					<p className={cls.name}>
+						{chat.psychologist.first_name.length > 0
+							? `${chat.psychologist.first_name}`
+							: ''}
+					</p>
+				</div>
 				<p
 					className={cls.problem}
 				>{`Проблема: ${chat.psychologist.complaint}`}</p>

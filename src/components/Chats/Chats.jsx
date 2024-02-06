@@ -6,12 +6,12 @@ import Chat from '../Chat/Chat';
 import chats from '../../utils/chats';
 
 function Chats({ className, onSelect }) {
-	const [isVerified, setIsVerified] = useState(false);
-	const userData = useSelector((state) => state.user.userData);
+	const [isVerified, setIsVerified] = useState(true);
+	// const userData = useSelector((state) => state.user.userData);
 
-	useEffect(() => {
-		if (userData) setIsVerified(userData.approved);
-	}, [userData]);
+	// useEffect(() => {
+	// 	if (userData) setIsVerified(userData.approved);
+	// }, [userData]);
 
 	const [isFiltered, setIsFiltered] = useState('new');
 
@@ -71,28 +71,28 @@ function Chats({ className, onSelect }) {
 					</button>
 				</li>
 			</ul>
-			{isVerified ? (
-				<ul className={cls.chatsList}>
-					{filteredChats.map((chat) => (
-						<Chat
-							key={chat.id}
-							chat={chat}
-							onSelect={onSelect}
-							onDisable={handleConnectBtnDisabled}
-						/>
-					))}
-				</ul>
-			) : (
-				<span
-					className={clsx(cls.span, className, {
-						[cls.visible]: !isVerified,
-					})}
-				>
-					Чтобы начать работать с нами, завершите регистрацию.
-					Перейдите во вкладку Профиль/ Документы и загрузите все
-					необходимые документы для работы на сервисе
-				</span>
-			)}
+			{/* {isVerified ? ( */}
+			<ul className={cls.chatsList}>
+				{filteredChats.map((chat) => (
+					<Chat
+						key={chat.id}
+						chat={chat}
+						onSelect={onSelect}
+						onDisable={handleConnectBtnDisabled}
+					/>
+				))}
+			</ul>
+			{/* ) : ( */}
+			<span
+				className={clsx(cls.span, className, {
+					[cls.visible]: !isVerified,
+				})}
+			>
+				Чтобы начать работать с нами, завершите регистрацию. Перейдите
+				во вкладку Профиль/ Документы и загрузите все необходимые
+				документы для работы на сервисе
+			</span>
+			{/* )} */}
 		</main>
 	);
 }
