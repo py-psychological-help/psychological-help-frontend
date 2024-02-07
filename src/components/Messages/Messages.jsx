@@ -7,14 +7,13 @@ import Message from '../Message/Message';
 function Messages({ selectedChat }) {
 	const [ws, setWs] = useState(null);
 	const [messages, setMessages] = useState([]);
-	const chatSecretKey = '7fdKYDAYgFASHOMoe5mi';
+	const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
 	const token = useSelector((state) => state.auth.authToken);
 
 	useEffect(() => {
 		const socket = new WebSocket(
-			`ws://127.0.0.1:8000/ws/chat/${chatSecretKey}/?token=${token}}`
+			`ws://dpogovorim.ru:8011/ws/chat/${chatSecretKey}/?token=${token}`
 		);
-		// const socket = new WebSocket(`wss://socketsbay.com/wss/v2/1/demo/`);
 
 		socket.onopen = () => {
 			console.log('Подключился к вебсокету');
@@ -35,6 +34,7 @@ function Messages({ selectedChat }) {
 	const sendMessage = (message) => {
 		if (ws) {
 			ws.send(message);
+			console.log(typeof message);
 			console.log('Отправил сообщение', message);
 		}
 	};

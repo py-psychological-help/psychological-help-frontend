@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from '../config';
 import makeRequest from '../../utils/makeRequest';
 
+console.log(localStorage.getItem('authToken'));
 export const fetchChats = createAsyncThunk(
 	'chats/fetchChats',
 	async (arg, thunkAPI) => {
