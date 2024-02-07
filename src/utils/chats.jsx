@@ -12,12 +12,12 @@ const chats = [
 			{
 				id: 1,
 				text: 'Здравствуйте!Чем могу помочь?',
-				is_author_me: true,
+				is_author_me: false,
 			},
 			{
-				id: 1,
-				text: 'Здравствуйте!Кружится голова',
-				is_author_me: false,
+				id: 2,
+				text: 'Здравствуйте!Грустно',
+				is_author_me: true,
 			},
 		],
 	},

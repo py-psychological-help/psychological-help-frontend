@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
 import cls from './Chat.module.scss';
 
-function Chat({ chat, onSelect, onDisable }) {
+function Chat({ chat, onSelect, onDisable, className }) {
 	const navigate = useNavigate();
 	const handleClick = () => {
 		onSelect(chat);
@@ -26,7 +27,9 @@ function Chat({ chat, onSelect, onDisable }) {
 				>{`Проблема: ${chat.psychologist.complaint}`}</p>
 			</div>
 			<button
-				className={cls.chatButton}
+				className={clsx(cls.chatButton, className, {
+					[cls.disabled]: chat.new && onDisable,
+				})}
 				onClick={handleClick}
 				disabled={chat.new && onDisable}
 			>
