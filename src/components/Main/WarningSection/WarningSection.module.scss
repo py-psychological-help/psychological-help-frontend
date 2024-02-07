@@ -1,13 +1,14 @@
 .warningSection {
 	display: flex;
-	padding: 52px 80px;
+	padding: 80px;
 	margin: 0;
 	flex-direction: column;
 	justify-content: space-between;
-	gap: 10px;
+	gap: 12px;
 	// border: 1px red solid;
 	background-color: #212028;
 	color: white;
+	width: 1280px;
 
 	.mainSubHeader {
 		font-weight: 600;
@@ -16,6 +17,10 @@
 		padding: 0;
 		margin: 0;
 		// border: 1px red solid;
+	}
+
+	.highlightText {
+		color: #D2F074;
 	}
 
 	.mainText {
@@ -29,6 +34,7 @@
 	.featuresBlock {
 		display: flex;
 		gap: 20px;
+		padding: 20px 0 0 0;
 		// border: 1px red solid;
 	}
 
@@ -36,11 +42,10 @@
 		display: flex;
 		width: 305px;
 		flex-direction: column;
-		border-radius: 20px;
-		// border: 1px red solid;
+		border-left: 1px #D2F074 solid;
 		justify-content: space-between;
-		background-color: #363655;
-		padding: 10px;
+		padding: 0 20px 0 11px;
+		gap: 50px;
 	}
 
 	.featuresText {
