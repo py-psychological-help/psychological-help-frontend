@@ -26,7 +26,7 @@ const Header = memo(() => {
 	};
 
 	return (
-		<section className={styles.header}>
+		<section id="headerSection" className={styles.header}>
 			<nav className={styles.headerNav}>
 				<div className={styles.logoBar}>
 					<Logo />
