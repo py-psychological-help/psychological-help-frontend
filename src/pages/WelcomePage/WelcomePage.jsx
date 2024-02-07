@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 
 export default function WelcomePage() {
 	const isValid = true;
+	const navigate = useNavigate();
+
 	return (
 		<div className={cls.container}>
 			<h1 className={cls.header}>Приветствуем тебя на нашем ресурсе!</h1>
@@ -38,6 +40,7 @@ export default function WelcomePage() {
 			<Link to="/signup" className={cls.link}>
 				<Button type="button" name="Хочу в команду" isValid={isValid} />
 			</Link>
-		</div>
+			</div>
+		</section>
 	);
 }

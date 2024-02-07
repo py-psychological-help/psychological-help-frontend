@@ -1,5 +1,6 @@
 .body {
 	width: 955px;
+    background-color: rgba(235, 231, 220, 1);
 }
 
 .header {
@@ -7,6 +8,7 @@
 	font-style: normal;
 	font-weight: 600;
 	line-height: 36px;
+     margin-bottom: 12px;
 }
 
 .p {
@@ -14,6 +16,7 @@
 	font-style: normal;
 	font-weight: 400;
 	line-height: 36px;
+    margin: 0;
 }
 
 .ul {

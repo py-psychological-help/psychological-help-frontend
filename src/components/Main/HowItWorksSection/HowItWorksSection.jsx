@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import validator from 'validator';
 import { useDispatch } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
 import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
@@ -36,8 +35,8 @@ const HowItWorksSection = () => {
     } else if (name === 'first_name') {
       if (value.trim() === '' || !/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)) {
         return value.trim() === '' || /^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)
-            ? ''
-            : 'Укажите имя как в паспорте';
+          ? ''
+          : 'Укажите имя как в паспорте';
       }
     } else if (name === 'complaint') {
       if (value.trim() === '') {
@@ -105,91 +104,95 @@ const HowItWorksSection = () => {
   };
 
   return (
-      <section id="howItWorksSection" className={styles.howItWorksSection}>
-        <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
-          Как это работает
-        </h2>
+    <section id="howItWorksSection" className={styles.howItWorksSection}>
+      <h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
+        Как это работает
+      </h2>
 
-        <div className={styles.featuresBlock}>
-          <div className={styles.featuresElement}>
-            <h2 className={styles.mainSubHeader}>1</h2>
-            <p className={styles.featuresText}>Оставляете заявку в форме</p>
-          </div>
-
-          <div className={styles.featuresElement}>
-            <h2 className={styles.mainSubHeader}>2</h2>
-            <p className={styles.featuresText}>Психолог обрабатывает ваш запрос</p>
-          </div>
-
-          <div className={styles.featuresElement}>
-            <h2 className={styles.mainSubHeader}>3</h2>
-            <p className={styles.featuresText}>
-              Вы получаете консультацию с помощью нашего онлайн — чата
-            </p>
-          </div>
+      <div className={styles.featuresBlock}>
+        <div className={styles.featuresElement}>
+          <div className={`${styles.featuresIcon} ${styles.iconNote}`} />
+          <p className={styles.featuresText}>Оставляешь заявку на&nbsp;сайте</p>
         </div>
 
-        <div className={styles.helpFormBlock}>
-          <h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
+        <div className={styles.featuresElement}>
+          <div className={`${styles.featuresIcon} ${styles.iconSync}`} />
+          <p className={styles.featuresText}>Психолог обрабатывает заявку</p>
+        </div>
+
+        <div className={styles.featuresElement}>
+          <div className={`${styles.featuresIcon} ${styles.iconMessage}`} />
           <p className={styles.featuresText}>
-            Вся информация, которую вы оставите на сайте или обсудите с психологом конфиденциальна.
+            Консультация в нашем онлайн-чате
           </p>
-
-          {submitSuccess ? (
-              <p className={styles.successMessage}>Заявка успешно отправлена!</p>
-          ) : (
-              <form className={styles.helpForm} onSubmit={handleSubmit}>
-                <label htmlFor="email">
-                  <input
-                      className={`${styles.input} ${errors.email && styles.inputWrong}`}
-                      type="email"
-                      name="email"
-                      id="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="example@mail.ru"
-                  />
-                </label>
-                {errors.email && <p className={styles.error}>{errors.email}</p>}
-
-                <label htmlFor="first_name">
-                  <input
-                      className={`${styles.input} ${errors.first_name && styles.inputWrong}`}
-                      type="text"
-                      name="first_name"
-                      id="first_name"
-                      value={formData.first_name}
-                      onChange={handleChange}
-                      disabled={formData.disableName}
-                      placeholder="Ваше имя"
-                  />
-                </label>
-                {errors.first_name && <p className={styles.error}>{errors.first_name}</p>}
-
-                <label htmlFor="complaint">
-                <textarea
-                    className={`${styles.textInput} ${errors.complaint && styles.inputWrong}`}
-                    id="complaint"
-                    name="complaint"
-                    value={formData.complaint}
-                    onChange={handleChange}
-                    required
-                    rows="10"
-                    placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
-                />
-                </label>
-                {errors.complaint && <p className={styles.error}>{errors.complaint}</p>}
-
-                <button className={styles.mainBtn} type="submit" disabled={submitting}>
-                  {submitting ? 'Отправка...' : 'Отправить заявку'}
-                </button>
-
-                {submitError && <p className={styles.errorMessage}>{submitError}</p>}
-              </form>
-          )}
         </div>
-      </section>
+      </div>
+
+      <div className={styles.helpFormBlock}>
+        <h2 className={styles.mainSubHeader}>Оставить заявку</h2>
+        <p className={styles.helpFormText}>
+          Вся информация, которую ты&nbsp;оставишь на&nbsp;сайте
+          или обсудишь с&nbsp;психологом, конфиденциальна.
+        </p>
+
+        {submitSuccess ? (
+          <p className={styles.successMessage}>Заявка успешно отправлена!</p>
+        ) : (
+          <form className={styles.helpForm} onSubmit={handleSubmit}>
+            <label htmlFor="email">
+              <p className={styles.inputCaption}>Почта</p>
+              <input
+                className={`${styles.input} ${errors.email && styles.inputWrong}`}
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              // placeholder="example@mail.ru"
+              />
+            </label>
+            {errors.email && <p className={styles.error}>{errors.email}</p>}
+
+            <label htmlFor="first_name">
+              <p className={styles.inputCaption}>Имя (Можно не указывать)</p>
+              <input
+                className={`${styles.input} ${errors.first_name && styles.inputWrong}`}
+                type="text"
+                name="first_name"
+                id="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+                disabled={formData.disableName}
+              // placeholder="Ваше имя"
+              />
+            </label>
+            {errors.first_name && <p className={styles.error}>{errors.first_name}</p>}
+
+            <label htmlFor="complaint">
+              <p className={styles.inputCaption}>Проблема</p>
+              <textarea
+                className={`${styles.textInput} ${errors.complaint && styles.inputWrong}`}
+                id="complaint"
+                name="complaint"
+                value={formData.complaint}
+                onChange={handleChange}
+                required
+                rows="10"
+              // placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
+              />
+            </label>
+            {errors.complaint && <p className={styles.error}>{errors.complaint}</p>}
+
+            <button className={styles.mainBtn} type="submit" disabled={submitting}>
+              {submitting ? 'Отправка...' : 'Отправить заявку'}
+            </button>
+
+            {submitError && <p className={styles.errorMessage}>{submitError}</p>}
+          </form>
+        )}
+      </div>
+    </section>
   );
 };
 

@@ -1,14 +1,14 @@
 .warningSection {
 	display: flex;
-	padding: 52px 80px;
+	padding: 80px 80px;
 	margin: 0;
 	flex-direction: column;
 	justify-content: space-between;
-	gap: 10px;
 	// border: 1px red solid;
 	background-color: #212028;
 	color: white;
 	font-family: Montserrat, sans-serif;
+	width: 1280px;
 
 	.mainSubHeader {
 		font-weight: 600;
@@ -24,24 +24,67 @@
 		font-size: 24px;
 		line-height: 36px;
 		padding: 0;
-		margin: 0;
+		margin: 7px 0 0 0;
+		max-width: 850px;
 	}
 
 	.mainBtn {
 		width: 239px;
 		height: 48px;
 		padding: 0;
+		font-weight: 600;
 		font-size: 20px;
+		line-height: 24px;
 		background-color: #d9d9d9;
-		border-radius: 40px;
+		border-radius: 12px;
 		color: black;
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
+		gap: 8px;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: #A9C6C5;
+		}
 	}
 
 	.link {
 		margin-top: 32px;
 		margin-right: auto;
+	}
+
+	.featuresBlock {
+		display: flex;
+		gap: 20px;
+		padding: 30px 0 0 0;
+		// border: 1px red solid;
+	}
+
+	.featuresElement {
+		display: flex;
+		width: 413px;
+		flex-direction: column;
+		border-left: 1px #A9C6C5 solid;
+		// justify-content: space-between;
+		padding: 13px 0px 20px 11px;
+		gap: 12px;
+	}
+
+	.featuresHeader {
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 26px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.featuresText {
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 26px;
+		padding: 0;
+		// margin: 12px 0 0 0;
+		margin: 0;
 	}
 }
