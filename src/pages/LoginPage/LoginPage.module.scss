@@ -1,10 +1,10 @@
 .container {
 	max-width: 521px;
-	margin: 0 auto;
+	margin: 108px auto 232px 300px;
 }
 
 .header {
-	margin: 80px 0 32px;
+	margin: 0 0 32px;
 	font-size: 40px;
 	font-weight: 600;
 	line-height: 44px;
@@ -27,9 +27,9 @@
 	margin: 0 0 4px;
 	width: calc(100% - 40px);
 	height: 64px;
-	border-radius: 20px;
+	border-radius: 10px;
 	padding: 0 20px;
-	border: 1px solid #212028;
+	border: 1px solid #a9c6c5;
 	color: #6f6f6f;
 	font-size: 16px;
 	font-weight: 400;
@@ -88,21 +88,28 @@
 
 .link {
 	display: block;
-	margin-bottom: 80px;
 	color: #212028;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: 24px;
 	text-decoration-line: underline;
 }
 
-.button {
+.buttonContainer {
+	height: max-content;
 	margin: 4px 0 12px;
+	display: flex;
+	flex-direction: row;
+	gap: 32px;
+	align-items: center;
+}
+
+.button {
 	width: 131px;
 	height: 48px;
 }
 
 .apiError {
-	margin: 20px 0 0;
+	margin: 26px 0 0;
 	color: #ff0909;
 }
