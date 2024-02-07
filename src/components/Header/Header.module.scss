@@ -1,24 +1,23 @@
 .header {
 	display: flex;
-	padding: 18px 80px;
+	padding: 24px 80px;
 	margin: 0 auto;
 	box-sizing: border-box;
 	justify-content: space-between;
 	justify-content: center;
 	align-items: center;
-	background-color: #e0d8c4;
+	background-color: #ebe7dc;
 
 	.headerNav {
 		display: flex;
 		flex-direction: row;
-		gap: 16px;
 		text-decoration: none;
 		align-items: center;
 		text-align: center;
 		justify-content: space-between;
 		color: black;
-		padding: 0 0 0 3px;
 		margin: 0;
+		padding: 0;
 		width: 100%;
 	}
 
@@ -29,39 +28,55 @@
 	.navLinks {
 		position: relative;
 		display: flex;
-		margin: 0, auto;
-		gap: 42px;
+		margin: 0;
+		padding: 0;
+		gap: 40px;
 		justify-content: center;
 		align-items: center;
 		flex-grow: 1;
 	}
 
 	.mainBtn {
-		width: 302px;
-		height: 44px;
+		width: 329px;
+		height: 48px;
 		padding: 0;
 		margin: 0;
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: 600;
-		line-height: 20px;
+		line-height: 24px;
 		background-color: black;
 		border-radius: 12px;
 		color: white;
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: #a9c6c5;
+			color: black;
+		}
 	}
 
 	.logBtn {
+		width: 134px;
+		height: 48px;
 		font-weight: 600;
-		font-size: 16px;
-		line-height: 20px;
+		font-size: 20px;
+		line-height: 24px;
 		padding: 12px 32px;
 		border: 2px black solid;
-		border-radius: 20px;
+		border-radius: 10px;
 		cursor: pointer;
 		margin: 0;
 		flex-basis: 20%;
+		background-color: #ebe7dc;
+		transition: border 0.3s ease;
+
+		&:hover {
+			color: black;
+			border: 2px #a9c6c5 solid;
+		}
 	}
 
 	.navLink {
@@ -74,7 +89,7 @@
 		margin: 0;
 
 		&:hover {
-			opacity: 0.8;
+			opacity: 0.6;
 		}
 	}
 

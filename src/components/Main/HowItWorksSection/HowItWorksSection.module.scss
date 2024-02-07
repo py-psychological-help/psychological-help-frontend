@@ -1,18 +1,17 @@
 .howItWorksSection {
 	display: flex;
-	padding: 52px 80px;
+	padding: 100px 80px;
 	margin: 0;
 	flex-direction: column;
 	justify-content: space-between;
-	background-color: #f2f2f2;
 	color: black;
 	font-family: Montserrat, Arial, sans-serif;
 	max-width: 1280px;
 
 	.mainSubHeader {
 		font-weight: 600;
-		font-size: 32px;
-		line-height: 36px;
+		font-size: 40px;
+		line-height: 44px;
 		padding: 0;
 		margin: 0;
 	}
@@ -27,40 +26,60 @@
 		display: flex;
 		width: 414px;
 		gap: 20px;
-		flex-direction: row;
+		flex-direction: column;
 		border-radius: 20px;
-		border: 1px black solid;
-		padding: 10px;
+		// border: 1px black solid;
+		padding: 50px 50px 60px 50px;
+		justify-content: center;
+		background-color: white;
+	}
+
+	.featuresIcon {
+		width: 60px;
+		height: 60px;
+		align-self: center;
+
+		&.iconNote {
+			background-image: url(../../../images/icon-note.svg);
+		}
+
+		&.iconSync {
+			background-image: url(../../../images/icon-sync.svg);
+		}
+
+		&.iconMessage {
+			background-image: url(../../../images/icon-message.svg)
+		}
 	}
 
 	.featuresText {
 		font-weight: 400;
-		font-size: 20px;
-		line-height: 26px;
+		font-size: 24px;
+		line-height: 36px;
 		padding: 0;
 		margin: 0;
+		text-align: center;
 	}
 
 	.helpForm {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		padding: 31px 0 0 0;
 	}
 
 	.helpFormBlock {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		padding: 70px 0 0 0;
 	}
 
-	.input {
-		width: 738px;
-		padding: 20px;
-		border-radius: 20px;
-		font-size: 16px;
-		line-height: 24px;
-		background-color: #f2f2f2;
-		border: 1px black solid;
+	.helpFormText {
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 12px 0 0 0;
+		margin: 0;
+		max-width: 650px;
 	}
 
 	.nameInputBlock {
@@ -87,28 +106,57 @@
 
 	.textInput {
 		display: flex;
-		width: 900px;
-		height: 238px;
+		width: 933px;
+		height: 218px;
 		padding: 10px;
 		align-items: center;
 		resize: none;
-		border-radius: 20px;
-		background-color: #f2f2f2;
+		border-radius: 10px;
+		// background-color: #f2f2f2;
+		border: 1px #A9C6C5 solid;
 	}
 
 	.mainBtn {
-		width: 329px;
+		width: 256px;
 		height: 48px;
 		padding: 0;
-		margin: 50px 0 0;
+		margin: 31px 0 0;
+		font-weight: 600;
 		font-size: 20px;
+		line-height: 24px;
 		background-color: black;
-		border-radius: 40px;
+		border-radius: 12px;
 		color: white;
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
+		border: transparent;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: #A9C6C5;
+			color: black;
+		}
+	}
+
+	.input {
+		width: 480px;
+		padding: 20px;
+		border-radius: 10px;
+		font-size: 16px;
+		line-height: 24px;
+		// background-color: #f2f2f2;
+		border: 1px #A9C6C5 solid;
+		margin: 0 0 49px 0;
+	}
+
+	.inputCaption {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		margin: 0 0 7px 0;
+		padding: 0;
 	}
 
 	.inputWrong {

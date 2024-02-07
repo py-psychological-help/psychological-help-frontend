@@ -1,67 +1,68 @@
 .mainSection {
 	display: flex;
-	padding: 0;
+	padding: 90px 0 0 0;
 	margin: 0;
 	flex-direction: column;
 	justify-content: center;
 	justify-content: space-between;
+	align-items: center;
 	gap: 10px;
 	max-width: 856px;
 	// border: 1px red solid;
-
+  
 	.mainHeader {
-		margin: 44px 0 0;
-		padding: 0;
-		color: black;
-		font-weight: 400;
-		font-size: 88px;
-		line-height: 132px;
-		font-family: var(--font-family-secondary);
-		// border: 1px red solid;
-		text-align: center;
-
-		//   @media screen and (max-width: 800px) {}
+	  margin: 0 0 10px 0;
+	  padding: 0;
+	  color: black;
+	  font-weight: 400;
+	  font-size: 88px;
+	  line-height: 132px;
+	  font-family: var(--font-family-secondary);
+	  // border: 1px red solid;
+	  text-align: center;
+  
+	  //   @media screen and (max-width: 800px) {}
 	}
-
+  
+	.textBlock {
+	  display: flex;
+	  flex-direction: column;
+	  max-width: 695px;
+	  // border: 1px red solid;
+	  padding: 0;
+	  margin: 0;
+	}
+  
 	.mainSubHeader {
-		color: black;
-		font-weight: 500;
-		font-size: 24px;
-		line-height: 36px;
-		padding: 0;
-		margin: 0;
-		// border: 1px red solid;
-		align-self: center;
-		text-align: center;
-		// Базовые стили для заголовка
-		&.boldLeft {
-			font-weight: 600;
-			align-self: start;
-		}
+	  color: black;
+	  font-weight: 500;
+	  font-size: 24px;
+	  line-height: 36px;
+	  padding: 0;
+	  margin: 0;
+	  // border: 1px red solid;
+	  align-self: center;
+	  text-align: center;
+  
+	  // Базовые стили для заголовка
+	  &.boldLeft {
+		font-weight: 600;
+		align-self: start;
+	  }
 	}
-
+  
 	.mainText {
-		color: black;
-		font-weight: 400;
-		max-width: 700px;
-		font-size: 24px;
-		line-height: 36px;
-		padding: 0;
-		margin: auto;
-		// border: 1px red solid;
+	  color: black;
+	  font-weight: 400;
+	  max-width: 700px;
+	  font-size: 24px;
+	  line-height: 36px;
+	  padding: 20px 0 0 0;
+	  // padding: 0;
+	  margin: 0;
+	  align-self: center;
+  
+	  // border: 1px red solid;
 	}
-
-	.mainBtn {
-		width: 329px;
-		height: 48px;
-		padding: 0;
-		margin: 50px 0 0;
-		font-size: 20px;
-		background-color: black;
-		border-radius: 40px;
-		color: white;
-		text-decoration: none;
-		align-items: center;
-		justify-content: center;
-	}
-}
+  
+  }

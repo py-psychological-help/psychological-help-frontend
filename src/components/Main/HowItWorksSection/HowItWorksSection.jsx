@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import validator from 'validator';
 import { useDispatch } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
 import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
@@ -130,32 +129,38 @@ const HowItWorksSection = () => {
 
 			<div className={styles.featuresBlock}>
 				<div className={styles.featuresElement}>
-					<h2 className={styles.mainSubHeader}>1</h2>
+					<div
+						className={`${styles.featuresIcon} ${styles.iconNote}`}
+					/>
 					<p className={styles.featuresText}>
-						Оставляете заявку в форме
+						Оставляешь заявку на&nbsp;сайте
 					</p>
 				</div>
 
 				<div className={styles.featuresElement}>
-					<h2 className={styles.mainSubHeader}>2</h2>
+					<div
+						className={`${styles.featuresIcon} ${styles.iconSync}`}
+					/>
 					<p className={styles.featuresText}>
-						Психолог обрабатывает ваш запрос
+						Психолог обрабатывает заявку
 					</p>
 				</div>
 
 				<div className={styles.featuresElement}>
-					<h2 className={styles.mainSubHeader}>3</h2>
+					<div
+						className={`${styles.featuresIcon} ${styles.iconMessage}`}
+					/>
 					<p className={styles.featuresText}>
-						Вы получаете консультацию с помощью нашего онлайн — чата
+						Консультация в нашем онлайн-чате
 					</p>
 				</div>
 			</div>
 
 			<div className={styles.helpFormBlock}>
-				<h2 className={styles.mainSubHeader}>Обратиться за помощью</h2>
-				<p className={styles.featuresText}>
-					Вся информация, которую вы оставите на сайте или обсудите с
-					психологом конфиденциальна.
+				<h2 className={styles.mainSubHeader}>Оставить заявку</h2>
+				<p className={styles.helpFormText}>
+					Вся информация, которую ты&nbsp;оставишь на&nbsp;сайте или
+					обсудишь с&nbsp;психологом, конфиденциальна.
 				</p>
 
 				{submitSuccess ? (
@@ -165,6 +170,7 @@ const HowItWorksSection = () => {
 				) : (
 					<form className={styles.helpForm} onSubmit={handleSubmit}>
 						<label htmlFor="email">
+							<p className={styles.inputCaption}>Почта</p>
 							<input
 								className={`${styles.input} ${
 									errors.email && styles.inputWrong
@@ -175,7 +181,7 @@ const HowItWorksSection = () => {
 								value={formData.email}
 								onChange={handleChange}
 								required
-								placeholder="example@mail.ru"
+								// placeholder="example@mail.ru"
 							/>
 						</label>
 						{errors.email && (
@@ -183,6 +189,9 @@ const HowItWorksSection = () => {
 						)}
 
 						<label htmlFor="first_name">
+							<p className={styles.inputCaption}>
+								Имя (Можно не указывать)
+							</p>
 							<input
 								className={`${styles.input} ${
 									errors.first_name && styles.inputWrong
@@ -193,7 +202,7 @@ const HowItWorksSection = () => {
 								value={formData.first_name}
 								onChange={handleChange}
 								disabled={formData.disableName}
-								placeholder="Ваше имя"
+								// placeholder="Ваше имя"
 							/>
 						</label>
 						{errors.first_name && (
@@ -201,6 +210,7 @@ const HowItWorksSection = () => {
 						)}
 
 						<label htmlFor="complaint">
+							<p className={styles.inputCaption}>Проблема</p>
 							<textarea
 								className={`${styles.textInput} ${
 									errors.complaint && styles.inputWrong
@@ -211,7 +221,7 @@ const HowItWorksSection = () => {
 								onChange={handleChange}
 								required
 								rows="10"
-								placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
+								// placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
 							/>
 						</label>
 						{errors.complaint && (
