@@ -17,6 +17,7 @@ import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
 import ForgotPassword from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 import NewPassword from '../../pages/ResetPasswordPage/ResetPasswordPage';
+import WaitingRoom from "../WaitingRoom/WaitingRoom";
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -57,6 +58,7 @@ const App = () => {
 					<Route element={<ClientSide />} path="client-side" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route element={<RegisterPage />} path="signup/" />
+					<Route element={<WaitingRoom/>} path="/waiting-room" />
 					<Route
 						element={<ForgotPassword />}
 						path="/forgotpassword"
