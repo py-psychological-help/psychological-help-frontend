@@ -50,7 +50,7 @@ const Footer = memo(() => {
 						to={isLoggedIn ? '/welcome' : '/signin'}
 						className={styles.navLink}
 					>
-						Личный кабинет
+						Личный кабинет психолога
 					</NavLink>
 				</div>
 			</nav>
