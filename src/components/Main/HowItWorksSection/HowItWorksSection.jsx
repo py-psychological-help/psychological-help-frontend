@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import {useNavigate} from "react-router-dom";
 import styles from './HowItWorksSection.module.scss';
 import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
 
@@ -23,6 +24,7 @@ const HowItWorksSection = () => {
 	const [emailChanged, setEmailChanged] = useState(false);
 	const [firstNameChanged, setFirstNameChanged] = useState(false);
 	const [complaintChanged, setComplaintChanged] = useState(false);
+	const navigate = useNavigate();
 
 	const validateField = (name, value) => {
 		if (name === 'email') {
@@ -98,6 +100,12 @@ const HowItWorksSection = () => {
 		}
 	}, [formData.complaint, complaintChanged]);
 
+	useEffect(() => {
+		if(submitSuccess) {
+			navigate("/waiting-room")
+		}
+	},[navigate, submitSuccess])
+
 	const dispatch = useDispatch();
 
 	const handleSubmit = async (e) => {
@@ -163,11 +171,6 @@ const HowItWorksSection = () => {
 					обсудишь с&nbsp;психологом, конфиденциальна.
 				</p>
 
-				{submitSuccess ? (
-					<p className={styles.successMessage}>
-						Заявка успешно отправлена!
-					</p>
-				) : (
 					<form className={styles.helpForm} onSubmit={handleSubmit}>
 						<label htmlFor="email">
 							<p className={styles.inputCaption}>Почта</p>
@@ -240,7 +243,6 @@ const HowItWorksSection = () => {
 							<p className={styles.errorMessage}>{submitError}</p>
 						)}
 					</form>
-				)}
 			</div>
 		</section>
 	);
