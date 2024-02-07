@@ -8,7 +8,7 @@ const MessageInput = ({ onSend, className }) => {
 
 	const textareaRef = useRef(null);
 
-	const wordsRegex = /\b\w+\b.*\b\w+\b/; // поменять
+	const wordsRegex = /[А-Яа-яЁё]+[\s\p{P}][А-Яа-яЁё]+/; // поменять
 
 	const handleMessageInputChange = () => {
 		const textarea = textareaRef.current;
