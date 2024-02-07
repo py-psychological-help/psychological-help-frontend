@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 
+
 export default function WelcomePage() {
 	const isValid = true;
 	const navigate = useNavigate();

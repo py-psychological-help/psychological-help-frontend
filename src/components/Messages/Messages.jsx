@@ -14,8 +14,8 @@ function Messages({ selectedChat }) {
 						isAuthorMe={message.is_author_me}
 					/>
 				))}
-				<MessageInput />
 			</ul>
+			<MessageInput />
 		</div>
 	);
 }

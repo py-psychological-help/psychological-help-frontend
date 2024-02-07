@@ -14,8 +14,7 @@ function WarningSection() {
 			<p className={styles.mainText}>
 				Если вы&nbsp;переживаете или испытываете острый эмоциональный
 				<br />
-				кризис,
-				позвоните на&nbsp;номер горячей линии или обратитесь
+				кризис, позвоните на&nbsp;номер горячей линии или обратитесь
 				<br />
 				в&nbsp;кризисный центр.
 			</p>
@@ -23,7 +22,8 @@ function WarningSection() {
 			<div className={styles.featuresBlock}>
 				<div className={styles.featuresElement}>
 					<p className={styles.featuresText}>
-						Горячая линия психологической помощи Московского института психоанализа
+						Горячая линия психологической помощи Московского
+						института психоанализа
 					</p>
 					<p className={styles.featuresText}>+7 (800) 500-22-87</p>
 				</div>
@@ -46,7 +46,8 @@ function WarningSection() {
 
 				<div className={styles.featuresElement}>
 					<p className={styles.featuresText}>
-						Горячая линия Центра экстренной психологической помощи МЧС России
+						Горячая линия Центра экстренной психологической помощи
+						МЧС России
 					</p>
 					<p className={styles.featuresText}>+7 (495) 989-50-50</p>
 				</div>

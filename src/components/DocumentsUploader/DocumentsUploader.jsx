@@ -49,8 +49,8 @@ function DocumentsUploader({ onSuccessfulUpload }) {
 		onDrop,
 		accept: {
 			'image/jpeg': ['.jpeg'],
-			'image/jpg': ['.jpg']
-		}
+			'image/jpg': ['.jpg'],
+		},
 	});
 
 	return (

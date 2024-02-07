@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import cls from './Chat.module.scss';
 
-function Chat({ chat, onSelect, onDisable }) {
+function Chat({ chat, onSelect, onDisable, className }) {
 	const navigate = useNavigate();
 	const handleClick = () => {
 		onSelect(chat);
@@ -13,18 +13,23 @@ function Chat({ chat, onSelect, onDisable }) {
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
-				<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
-				<p className={cls.name}>
-					{chat.psychologist.first_name.length > 0
-						? `Имя: ${chat.psychologist.first_name}`
-						: ''}
-				</p>
+				<div className={cls.row}>
+					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
+					<span className={cls.divider}>&#183;</span>
+					<p className={cls.name}>
+						{chat.psychologist.first_name.length > 0
+							? `${chat.psychologist.first_name}`
+							: ''}
+					</p>
+				</div>
 				<p
 					className={cls.problem}
 				>{`Проблема: ${chat.psychologist.complaint}`}</p>
 			</div>
 			<button
-				className={cls.chatButton}
+				className={clsx(cls.chatButton, className, {
+					[cls.disabled]: chat.new && onDisable,
+				})}
 				onClick={handleClick}
 				disabled={chat.new && onDisable}
 			>
@@ -33,11 +38,5 @@ function Chat({ chat, onSelect, onDisable }) {
 		</div>
 	);
 }
-
-// Chat.propTypes = {
-// 	id: PropTypes.number.isRequired,
-// 	firstName: PropTypes.string.isRequired,
-// 	complaint: PropTypes.string.isRequired,
-// };
 
 export default Chat;

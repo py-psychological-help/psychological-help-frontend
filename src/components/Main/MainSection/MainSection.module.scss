@@ -1,68 +1,67 @@
 .mainSection {
-  display: flex;
-  padding: 90px 0 0 0;
-  margin: 0;
-  flex-direction: column;
-  justify-content: center;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  max-width: 856px;
-  // border: 1px red solid;
+	display: flex;
+	padding: 90px 0 0 0;
+	margin: 0;
+	flex-direction: column;
+	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	max-width: 856px;
+	// border: 1px red solid;
 
-  .mainHeader {
-    margin: 0 0 10px 0;
-    padding: 0;
-    color: black;
-    font-weight: 400;
-    font-size: 88px;
-    line-height: 132px;
-    font-family: var(--font-family-secondary);
-    // border: 1px red solid;
-    text-align: center;
+	.mainHeader {
+		margin: 0 0 10px 0;
+		padding: 0;
+		color: black;
+		font-weight: 400;
+		font-size: 88px;
+		line-height: 132px;
+		font-family: var(--font-family-secondary);
+		// border: 1px red solid;
+		text-align: center;
 
-    //   @media screen and (max-width: 800px) {}
-  }
+		//   @media screen and (max-width: 800px) {}
+	}
 
-  .textBlock {
-    display: flex;
-    flex-direction: column;
-    max-width: 695px;
-    // border: 1px red solid;
-    padding: 0;
-    margin: 0;
-  }
+	.textBlock {
+		display: flex;
+		flex-direction: column;
+		max-width: 695px;
+		// border: 1px red solid;
+		padding: 0;
+		margin: 0;
+	}
 
-  .mainSubHeader {
-    color: black;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
-    padding: 0;
-    margin: 0;
-    // border: 1px red solid;
-    align-self: center;
-    text-align: center;
+	.mainSubHeader {
+		color: black;
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: 0;
+		// border: 1px red solid;
+		align-self: center;
+		text-align: center;
 
-    // Базовые стили для заголовка
-    &.boldLeft {
-      font-weight: 600;
-      align-self: start;
-    }
-  }
+		// Базовые стили для заголовка
+		&.boldLeft {
+			font-weight: 600;
+			align-self: start;
+		}
+	}
 
-  .mainText {
-    color: black;
-    font-weight: 400;
-    max-width: 700px;
-    font-size: 24px;
-    line-height: 36px;
-    padding: 20px 0 0 0;
-    // padding: 0;
-    margin: 0;
-    align-self: center;
+	.mainText {
+		color: black;
+		font-weight: 400;
+		max-width: 700px;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 20px 0 0 0;
+		// padding: 0;
+		margin: 0;
+		align-self: center;
 
-    // border: 1px red solid;
-  }
-
+		// border: 1px red solid;
+	}
 }

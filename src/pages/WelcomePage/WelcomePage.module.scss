@@ -1,5 +1,5 @@
 .WelcomePageSection {
-	background-color: #EBE7DC;
+	background-color: #ebe7dc;
 	margin: 0 auto;
 	padding: 0;
 	display: flex;
@@ -128,7 +128,7 @@
 	}
 
 	&.icon3 {
-		background-image: url(../../images/icon-3.svg)
+		background-image: url(../../images/icon-3.svg);
 	}
 }
 
@@ -156,8 +156,8 @@
 	justify-content: center;
 	transition: background-color 0.3s ease;
 
-		&:hover {
-			background-color: #A9C6C5;
-			color: black;
-		}
-  }
+	&:hover {
+		background-color: #a9c6c5;
+		color: black;
+	}
+}

@@ -1,40 +1,66 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef } from 'react';
+import clsx from 'clsx';
 import cls from './MessageInput.module.scss';
-import arrow from '../../images/arrow.svg';
 
-const MessageInput = ({ onSend }) => {
+const MessageInput = ({ onSend, className }) => {
 	const [text, setText] = useState('');
+	const [isError, setIsError] = useState(false);
+
+	const textareaRef = useRef(null);
+
+	const wordsRegex = /[А-Яа-яЁё]+[\s\p{P}][А-Яа-яЁё]+/; // поменять
+
+	const handleMessageInputChange = () => {
+		const textarea = textareaRef.current;
+		textarea.style.height = 'auto';
+		textarea.style.height = `${textarea.scrollHeight}px`;
+		if (!wordsRegex.test(textarea.value)) {
+			setIsError(true);
+		} else {
+			setIsError(false);
+		}
+	};
 
 	const handleSend = () => {
-		if (text.trim() !== '') {
+		if (text.trim() !== '' && !isError) {
 			onSend(text, true);
 			setText('');
+			textareaRef.current.style.height = 'auto';
 		}
 	};
 
 	return (
-		<div className={cls.messageForm}>
-			<input
-				className={cls.messageInput}
-				type="text"
-				value={text}
-				onChange={(e) => setText(e.target.value)}
-				placeholder="Сообщение"
-			/>
+		<form className={cls.messageForm} noValidate>
+			<div className={cls.container}>
+				<textarea
+					ref={textareaRef}
+					name="messageInput"
+					value={text}
+					onChange={(e) => {
+						setText(e.target.value);
+						handleMessageInputChange();
+					}}
+					className={clsx(cls.messageInput, className, {
+						[cls.errorInput]: isError,
+					})}
+				/>
+				<span
+					className={clsx(cls.errorText, className, {
+						[cls.visible]: isError,
+					})}
+				>
+					Ошибка, слишком кратко описана проблема, минимум 2 слова.
+				</span>
+			</div>
 			<button
 				type="button"
 				className={cls.submitButton}
 				onClick={handleSend}
 			>
-				<img src={arrow} alt="стрелка" className={cls.arrow} />
+				Отправить
 			</button>
-		</div>
+		</form>
 	);
-};
-
-MessageInput.propTypes = {
-	onSend: PropTypes.func.isRequired,
 };
 
 export default MessageInput;

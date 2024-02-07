@@ -6,7 +6,6 @@ import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 import Button from '../buttonHeader/Button';
 
-
 const Header = memo(() => {
 	const isLoggedIn = useSelector((state) => state.user.userData);
 	const dispatch = useDispatch();
@@ -21,12 +20,10 @@ const Header = memo(() => {
 		}
 	};
 
-
 	const handleLogout = () => {
 		dispatch(userActions.logout());
 		navigate('/');
 	};
-
 
 	return (
 		<section id="headerSection" className={styles.header}>
@@ -35,10 +32,7 @@ const Header = memo(() => {
 					<Logo />
 				</div>
 				<div className={styles.navLinks}>
-					<NavLink
-						to="/#aboutSection"
-						className={styles.navLink}
-					>
+					<NavLink to="/#aboutSection" className={styles.navLink}>
 						О проекте
 					</NavLink>
 
@@ -57,14 +51,10 @@ const Header = memo(() => {
 					</NavLink>
 
 					{!isLoggedIn && (
-						<NavLink
-							to="/#faqSection"
-							className={styles.navLink}
-						>
+						<NavLink to="/#faqSection" className={styles.navLink}>
 							Вопросы
 						</NavLink>
 					)}
-					
 				</div>
 
 				<div className={styles.navAuthbar}>
@@ -76,9 +66,12 @@ const Header = memo(() => {
 						/>
 					)}
 
-					{!isLoggedIn && location.pathname !== '/' && (location.pathname === '/welcome' || location.pathname === '/signin'
-							|| location.pathname === '/forgotpassword'|| location.pathname === '/signup')
-						&& (
+					{!isLoggedIn &&
+						location.pathname !== '/' &&
+						(location.pathname === '/welcome' ||
+							location.pathname === '/signin' ||
+							location.pathname === '/forgotpassword' ||
+							location.pathname === '/signup') && (
 							<Button
 								additionalStyles={styles.logBtn}
 								buttonText="Войти"
@@ -86,14 +79,15 @@ const Header = memo(() => {
 							/>
 						)}
 
-					{!isLoggedIn && location.pathname === '/' && location.pathname !== '/welcome' && (
-						<Button
-							additionalStyles={styles.mainBtn}
-							buttonText="Обратиться за помощью"
-							onClick={() => navigate('/#howItWorksSection')}
-						/>
-					)}
-
+					{!isLoggedIn &&
+						location.pathname === '/' &&
+						location.pathname !== '/welcome' && (
+							<Button
+								additionalStyles={styles.mainBtn}
+								buttonText="Обратиться за помощью"
+								onClick={() => navigate('/#howItWorksSection')}
+							/>
+						)}
 				</div>
 			</nav>
 		</section>

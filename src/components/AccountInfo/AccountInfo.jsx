@@ -1,17 +1,17 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useRef, useState} from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
 import styles from './AccountInfo.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
-import {updateCurrentUser} from "../../slices/userSlice/userAsyncActions";
+import { updateCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
 const AccountInfo = () => {
 	const userData = useSelector((state) => state.user.userData);
 	const [isEditing, setIsEditing] = useState(false);
 	const [userFormData, setUserFormData] = useState({
-		firstName:userData?.first_name,
-		lastName:userData?.last_name,
-		birthDate:userData?.birth_date
-	})
+		firstName: userData?.first_name,
+		lastName: userData?.last_name,
+		birthDate: userData?.birth_date,
+	});
 	const dispatch = useDispatch();
 	const nameInputRef = useRef();
 	const lastNameInputRef = useRef();
@@ -19,22 +19,22 @@ const AccountInfo = () => {
 	const accountFormRef = useRef();
 
 	const enableEditing = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		setIsEditing(true);
 	};
 
 	const cancelEditing = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		setIsEditing(false);
 		setUserFormData({
-			firstName:userData?.first_name,
-			lastName:userData?.last_name,
-			birthDate:userData?.birth_date
+			firstName: userData?.first_name,
+			lastName: userData?.last_name,
+			birthDate: userData?.birth_date,
 		});
-	}
+	};
 
 	const handleInputChange = (e) => {
-		const {name, value} = e.target;
+		const { name, value } = e.target;
 		setUserFormData({
 			...userFormData,
 			[name]: value,
@@ -42,10 +42,10 @@ const AccountInfo = () => {
 	};
 
 	const handleButtonSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 		dispatch(updateCurrentUser(userFormData));
 		setIsEditing(false);
-	}
+	};
 	return (
 		<div className={styles.body}>
 			<AccountMenu />
@@ -53,7 +53,8 @@ const AccountInfo = () => {
 				<form className={styles.form} ref={accountFormRef}>
 					<label
 						className={`${styles.label} ${styles.name}`}
-						htmlFor="name">
+						htmlFor="name"
+					>
 						<span>Имя</span>
 						<input
 							className={styles.input}
@@ -91,7 +92,8 @@ const AccountInfo = () => {
 					</label>
 					<label
 						className={`${styles.label} ${styles.birthDate}`}
-						htmlFor="birthDate">
+						htmlFor="birthDate"
+					>
 						<span>Дата рождения</span>
 						<input
 							className={styles.input}
@@ -108,7 +110,8 @@ const AccountInfo = () => {
 					</label>
 					<label
 						className={`${styles.label} ${styles.email}`}
-						htmlFor="email">
+						htmlFor="email"
+					>
 						<span>Почта</span>
 						<input
 							className={styles.input}
@@ -121,13 +124,32 @@ const AccountInfo = () => {
 							readOnly
 						/>
 					</label>
-					{isEditing
-						? (<div className={styles.buttons}>
-							<button className={styles.saveButton} type='submit' onClick={handleButtonSubmit}>Сохранить</button>
-						<button className={styles.cancelButton} type='button' onClick={cancelEditing}>Отменить</button>
-						</div>)
-						: (<button className={styles.editButton} type='button'
-								   onClick={enableEditing}>Редактировать</button>)}
+					{isEditing ? (
+						<div className={styles.buttons}>
+							<button
+								className={styles.saveButton}
+								type="submit"
+								onClick={handleButtonSubmit}
+							>
+								Сохранить
+							</button>
+							<button
+								className={styles.cancelButton}
+								type="button"
+								onClick={cancelEditing}
+							>
+								Отменить
+							</button>
+						</div>
+					) : (
+						<button
+							className={styles.editButton}
+							type="button"
+							onClick={enableEditing}
+						>
+							Редактировать
+						</button>
+					)}
 				</form>
 			</div>
 		</div>
