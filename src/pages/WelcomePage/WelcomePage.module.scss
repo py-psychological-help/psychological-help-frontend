@@ -6,10 +6,8 @@
 }
 
 .container {
-	margin: 80px auto 100px;
-	max-width: 847px;
-	padding: 20px 0 0 0px;
-	background-color: #ebe7dc;
+	margin: 108px auto;
+	max-width: 846px;
 }
 
 .header {
@@ -21,10 +19,56 @@
 
 .caption {
 	margin: 0;
+	max-width: 800px;
 	font-size: 24px;
 	font-weight: 400;
 	line-height: 36px;
 }
+
+.profits {
+	margin: 32px 0 18px;
+	max-width: 800px;
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 36px;
+}
+
+.profitsList {
+	margin: 0;
+	padding-left: 0;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 57px;
+	list-style-type: none;
+
+	.profitItem {
+		counter-increment: item;
+		margin-bottom: 12px;
+	}
+
+	.profitItem::before {
+		content: counter(item);
+		margin-right: 20px;
+		font-size: 32px;
+		line-height: 36px;
+		text-align: center;
+		background-color: #343434;
+		color: #f2f2f2;
+		font-weight: 600;
+		border-radius: 10px;
+		padding: 4px 10px;
+	}
+
+	.profitItem:first-of-type::before {
+		padding-left: 12px;
+		padding-right: 13px;
+	}
+}
+
+.required {
+	margin:26px 0 20px;
+	max-width: 800px;
+	font-size: 20px;
 
 .subtitle {
 	margin: 32px 0 21px 0;
@@ -34,13 +78,14 @@
 	line-height: 36px;
 }
 
-.list {
+.requiredList {
+	margin: 30px 0 32px;
 	padding-inline-start: 30px;
 	font-size: 20px;
 	font-weight: 400;
 	line-height: 26px;
 
-	.listItem {
+	.requiredItem {
 		margin-bottom: 12px;
 	}
 }
