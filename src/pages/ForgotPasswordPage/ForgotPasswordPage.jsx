@@ -6,12 +6,14 @@ export default function ForgotPassword() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { isValid, errors },
 	} = useForm();
 
 	function onSubmit(data) {
 		console.log(data);
 	}
+
+	console.log(errors);
 
 	return (
 		<div className={cls.container}>
@@ -29,8 +31,6 @@ export default function ForgotPassword() {
 				<input
 					name="email"
 					id="email"
-					type="email"
-					placeholder="почта"
 					className={
 						errors?.email
 							? `${cls.input} ${cls.inputWrong}`
@@ -38,9 +38,13 @@ export default function ForgotPassword() {
 					}
 					{...register('email', {
 						required: true,
-						minLength: 7,
+						minLength: 6,
 						maxLength: 50,
-						pattern: /[^@\s]+@[^@\s]+\.[^@\s]+/,
+						// ужасный паттерн для почты по требованиям к продукту
+						pattern:
+							/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
+						// более дружелюбный паттерн, который можно использовать
+						// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -56,7 +60,11 @@ export default function ForgotPassword() {
 					<p className={cls.error}>Слишком много символов</p>
 				)}
 				<div className={cls.button}>
-					<Button type="submit" name="Восстановить пароль" />
+					<Button
+						type="submit"
+						name="Восстановить пароль"
+						isValid={isValid}
+					/>
 				</div>
 			</form>
 		</div>

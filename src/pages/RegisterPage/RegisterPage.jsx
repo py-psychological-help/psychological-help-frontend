@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Icon } from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import cls from './RegisterPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 import { registerUser } from '../../slices/authSlice/authAsyncActions';
 import { clearMessage } from '../../slices/messageSlice';
+import passwordValidation from '../../utils/passwordValidation';
 
 export default function RegisterPage() {
 	const {
@@ -16,8 +15,6 @@ export default function RegisterPage() {
 		handleSubmit,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
-	const [type, setType] = useState('password');
-	const [icon, setIcon] = useState(eyeOff);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const isSuccess = useSelector((state) => state.auth.isSuccess);
@@ -26,51 +23,6 @@ export default function RegisterPage() {
 	const date = new Date();
 	date.setFullYear(date.getFullYear() - 18);
 	const maxDate = date.toISOString().slice(0, 10);
-
-	const passwordValidation = (password) => {
-		const spaceRegExp = /(\s)/;
-		const cyrrillicRegExp = /(?=.*?[А-ЯЁа-яё])/;
-		const uppercaseRegExp = /(?=.*?[A-Z])/;
-		const lowercaseRegExp = /(?=.*?[a-z])/;
-		const digitsRegExp = /(?=.*?[0-9])/;
-		const specialCharRegExp = /(?=.*?[#?!@$%^&*-])/;
-
-		const spacePassword = spaceRegExp.test(password);
-		const cyrrillicPassword = cyrrillicRegExp.test(password);
-		const uppercasePassword = uppercaseRegExp.test(password);
-		const lowercasePassword = lowercaseRegExp.test(password);
-		const digitsPassword = digitsRegExp.test(password);
-		const specialCharPassword = specialCharRegExp.test(password);
-
-		let errMsg = null;
-		if (cyrrillicPassword) {
-			errMsg = 'Только символы латиницы';
-		} else if (spacePassword) {
-			errMsg = 'Пароль не может содержать пробелы';
-		} else if (!uppercasePassword) {
-			errMsg = 'Пароль должен содержать заглавную букву';
-		} else if (!lowercasePassword) {
-			errMsg = 'Пароль должен содержать строчную букву';
-		} else if (!digitsPassword) {
-			errMsg = 'Пароль должен содержать цифру';
-		} else if (!specialCharPassword) {
-			errMsg = 'Пароль должен содержать специальный символ';
-		} else {
-			errMsg = null;
-		}
-
-		return errMsg;
-	};
-
-	function handlePasswordToggle() {
-		if (type === 'password') {
-			setIcon(eye);
-			setType('text');
-		} else {
-			setIcon(eyeOff);
-			setType('password');
-		}
-	}
 
 	useEffect(() => {
 		if (isSuccess) navigate('/signin');
@@ -89,9 +41,11 @@ export default function RegisterPage() {
 			<h1 className={cls.header}>Регистрация</h1>
 			<p className={cls.caption}>
 				Регистрация психолога необходима для того, чтобы иметь
-				возможность работать и помогать людям. После регистрации,
-				психолог получает доступ к платформе, где он может вести
-				консультации и проводить терапевтические сессии онлайн.
+				возможность работать и помогать людям.
+				<br /> После регистрации, психолог получает доступ к платформе,{' '}
+				<br />
+				где он может вести консультации и проводить терапевтические
+				сессии онлайн.
 			</p>
 
 			<form
@@ -103,7 +57,6 @@ export default function RegisterPage() {
 				<input
 					name="lastName"
 					id="lastName"
-					placeholder="Иванов"
 					className={
 						errors?.lastName
 							? `${cls.input} ${cls.inputWrong}`
@@ -133,7 +86,6 @@ export default function RegisterPage() {
 				<input
 					name="firstName"
 					id="firstName"
-					placeholder="Владислав"
 					className={
 						errors?.firstName
 							? `${cls.input} ${cls.inputWrong}`
@@ -164,6 +116,7 @@ export default function RegisterPage() {
 					name="birthDate"
 					id="birthDate"
 					type="date"
+					data-placeholder=""
 					className={
 						errors?.birthDate
 							? `${cls.input} ${cls.inputWrong}`
@@ -192,7 +145,6 @@ export default function RegisterPage() {
 				<input
 					name="email"
 					id="email"
-					placeholder="example@gmail.com"
 					className={
 						errors?.email
 							? `${cls.input} ${cls.inputWrong}`
@@ -223,55 +175,36 @@ export default function RegisterPage() {
 				)}
 
 				<h3 className={cls.inputCaption}>Пароль</h3>
-				<div className={cls.passwordContainer}>
-					<input
-						name="password"
-						id="password"
-						type={type}
-						placeholder="Jkl12nY*"
-						className={
-							errors?.password
-								? `${cls.input} ${cls.inputWrong}`
-								: cls.input
-						}
-						{...register('password', {
-							required: true,
-							minLength: 8,
-							maxLength: 20,
-							validate: passwordValidation,
-						})}
-					/>
-					<button
-						type="button"
-						className={
-							errors?.password
-								? `${cls.eyeBtn} ${cls.eyeBtnWrong}`
-								: cls.eyeBtn
-						}
-						onClick={handlePasswordToggle}
-					>
-						<Icon class={cls.eyePicture} icon={icon} size={25} />
-					</button>
+				<input
+					name="password"
+					id="password"
+					type="text"
+					className={
+						errors?.password
+							? `${cls.input} ${cls.inputWrong}`
+							: cls.input
+					}
+					{...register('password', {
+						required: true,
+						minLength: 8,
+						maxLength: 20,
+						validate: passwordValidation,
+					})}
+				/>
 
-					{errors?.password?.type === 'validate' && (
-						<p className={cls.error}>{errors.password.message}</p>
-					)}
-					{errors?.password?.type === 'minLength' && (
-						<p className={cls.error}>Слишком мало символов</p>
-					)}
-					{errors?.password?.type === 'maxLength' && (
-						<p className={cls.error}>Слишком много символов</p>
-					)}
-					{errors?.password?.type === 'required' && (
-						<p className={cls.error}>Пожалуйста, заполните поле</p>
-					)}
-				</div>
-				{errors?.password === undefined && (
-					<span className={cls.passwordSpan}>
-						Пароль должен содержать заглавные и строчные буквы,
-						цифры и специальные символы.
-					</span>
+				{errors?.password?.type === 'validate' && (
+					<p className={cls.error}>{errors.password.message}</p>
 				)}
+				{errors?.password?.type === 'minLength' && (
+					<p className={cls.error}>Слишком мало символов</p>
+				)}
+				{errors?.password?.type === 'maxLength' && (
+					<p className={cls.error}>Слишком много символов</p>
+				)}
+				{errors?.password?.type === 'required' && (
+					<p className={cls.error}>Пожалуйста, заполните поле</p>
+				)}
+
 				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
 					<Button

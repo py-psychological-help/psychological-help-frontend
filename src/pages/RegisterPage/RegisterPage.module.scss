@@ -6,17 +6,25 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 .container {
 	max-width: 846px;
-	margin: 0 auto;
+	margin: 105px auto 25px 300px;
 }
 
 .header {
-	margin: 80px 0 32px;
+	margin: 0 0 14px;
 	font-size: 40px;
 	font-weight: 600;
 	line-height: 44px;
 }
 
+.caption {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 36px;
+}
+
 .form {
+	margin-top: 32px;
 	max-width: 481px;
 	display: flex;
 	flex-direction: column;
@@ -24,23 +32,27 @@ input[type='date']::-webkit-calendar-picker-indicator {
 
 .inputCaption {
 	color: #212028;
-	margin: 0 0 8px;
+	margin: 0 0 5px;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 20px;
 }
 
 .input {
-	margin: 0 0 20px;
-	width: calc(100% - 40px);
+	margin: 0 0 21px;
+	width: 100%;
 	height: 64px;
-	border-radius: 20px;
+	border-radius: 10px;
 	padding: 0 20px;
-	border: 1px solid #212028;
+	border: 1px solid #a9c6c5;
 	color: #6f6f6f;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
+}
+
+.input:last-of-type {
+	margin-bottom: 5px;
 }
 
 .inputWrong {
@@ -66,27 +78,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
 	margin: 0;
 	width: 100%;
 	position: relative;
-}
-
-.eyeBtn {
-	position: absolute;
-	right: 10px;
-	top: 18px;
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
-}
-
-.eyeBtnWrong {
-	color: #ff0909;
-}
-
-.passwordSpan {
-	margin: 0;
-	color: #212028;
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 14px;
 }
 
 .button {
