@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseURL = 'https://letstalk.ddns.net/api/v1/';
+const baseURL = 'https://dpogovorim.ru/api/v1/';
 
 export const submitHelpRequest = createAsyncThunk(
 	'howItWorks/submitHelpRequest',

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from '../messageSlice';
 
-const baseURL = 'https://letstalk.ddns.net/api/v1/';
+const baseURL = 'https://dpogovorim.ru/api/v1/';
 
 export const getCurrentUser = createAsyncThunk(
 	'user/getCurrentUser',
