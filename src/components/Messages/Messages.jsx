@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import cls from './Messages.module.scss';
 import MessageInput from '../MessageInput/MessageInput';
@@ -7,7 +8,9 @@ import Message from '../Message/Message';
 function Messages({ selectedChat }) {
 	const [ws, setWs] = useState(null);
 	const [messages, setMessages] = useState([]);
-	const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
+
+	const { key: chatSecretKey } = useParams();
+	// const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
 	const token = useSelector((state) => state.auth.authToken);
 	const messagesListRef = useRef(null);
 
@@ -30,7 +33,7 @@ function Messages({ selectedChat }) {
 		return () => {
 			socket.close();
 		};
-	}, [token]);
+	}, [token, chatSecretKey]);
 
 	useEffect(() => {
 		if (messagesListRef.current) {
