@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
-import chats from '../../utils/chats';
+// import chats from '../../utils/chats';
+import { fetchChats } from '../../slices/chatsSlice/chatsActions';
 
 function Chats({ className, onSelect }) {
 	const [isVerified, setIsVerified] = useState(true);
-	// const userData = useSelector((state) => state.user.userData);
+	const selectChats = useSelector((state) => state.chats.chats);
+	const dispatch = useDispatch();
+	const userData = useSelector((state) => state.user.userData);
+
 
 	// useEffect(() => {
 	// 	if (userData) setIsVerified(userData.approved);
 	// }, [userData]);
 
+	useEffect(() => {
+		dispatch(fetchChats());
+	}, [dispatch]);
+
 	const [isFiltered, setIsFiltered] = useState('new');
 
-	const filteredChats = chats.filter((chat) => {
+	const filteredChats = selectChats.filter((chat) => {
 		if (isFiltered === 'active') return chat.active;
 		if (isFiltered === 'new') return chat.new;
 		if (isFiltered === 'archive') return chat.archive;
-		return chats;
+		return selectChats;
 	});
 
-	const isActiveChatExist = chats.some((chat) => chat.active);
+	const isActiveChatExist = selectChats.some((chat) => chat.active);
 	const handleConnectBtnDisabled = () => {
 		if (isActiveChatExist && isFiltered === 'new') {
 			return true;

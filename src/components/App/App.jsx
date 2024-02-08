@@ -55,7 +55,7 @@ const App = () => {
 				<Routes>
 					<Route element={<MainPage />} path="/" />
 					<Route element={<WelcomePage />} path="/welcome" />
-					<Route element={<ClientSide />} path="client-side" />
+					<Route element={<ClientSide />} path="/client-side/:key/" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route element={<RegisterPage />} path="signup/" />
 					<Route element={<WaitingRoom/>} path="/waiting-room" />
@@ -90,7 +90,7 @@ const App = () => {
 										selectedChat={selectedChat}
 									/>
 								}
-								path="psy-side"
+								path="/psy-side/:key/"
 							/>
 						</>
 					) : (

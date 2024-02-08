@@ -12,8 +12,7 @@ const MessageInput = ({ onSend, className }) => {
 
 	const handleMessageInputChange = () => {
 		const textarea = textareaRef.current;
-		textarea.style.height = 'auto';
-		textarea.style.height = `${textarea.scrollHeight}px`;
+
 		if (!wordsRegex.test(textarea.value)) {
 			setIsError(true);
 		} else {
@@ -23,7 +22,7 @@ const MessageInput = ({ onSend, className }) => {
 
 	const handleSend = () => {
 		if (text.trim() !== '' && !isError) {
-			onSend(text, true);
+			onSend(text);
 			setText('');
 			textareaRef.current.style.height = 'auto';
 		}

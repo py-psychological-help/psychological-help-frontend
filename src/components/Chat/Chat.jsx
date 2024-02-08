@@ -1,13 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import cls from './Chat.module.scss';
 
 function Chat({ chat, onSelect, onDisable, className }) {
 	const navigate = useNavigate();
+	const { key: chatSecretKey } = useParams();
 	const handleClick = () => {
 		onSelect(chat);
-		navigate('/psy-side');
+		navigate(`/psy-side/${chat.chat_secret_key}/`);
 	};
 
 	return (
@@ -17,21 +18,21 @@ function Chat({ chat, onSelect, onDisable, className }) {
 					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
 					<span className={cls.divider}>&#183;</span>
 					<p className={cls.name}>
-						{chat.psychologist.first_name.length > 0
-							? `${chat.psychologist.first_name}`
+						{chat.client.first_name.length > 0
+							? `${chat.client.first_name}`
 							: ''}
 					</p>
 				</div>
 				<p
 					className={cls.problem}
-				>{`Проблема: ${chat.psychologist.complaint}`}</p>
+				>{`Проблема: ${chat.client.complaint}`}</p>
 			</div>
 			<button
 				className={clsx(cls.chatButton, className, {
 					[cls.disabled]: chat.new && onDisable,
 				})}
 				onClick={handleClick}
-				disabled={chat.new && onDisable}
+				// disabled={chat.new && onDisable}
 			>
 				Подключиться
 			</button>

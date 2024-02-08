@@ -1,0 +1,72 @@
+[
+	{
+		"id": 1,
+		"chat_secret_key": "3gjc7cV3jTVu0SaBYAjB",
+		"active": true,
+		"new": true,
+		"client": {
+			"id": 1,
+			"email": "khusainov.nr@yandex.ru",
+			"first_name": "Жак",
+			"complaint": "ВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВОЛАТОЛФЖЦТАЖОКТАЖОВО"
+		},
+		"psychologist": null,
+		"messages": []
+	},
+	{
+		"id": 2,
+		"chat_secret_key": "iFlD5k62FmPcQEgnGpOo",
+		"active": true,
+		"new": true,
+		"client": {
+			"id": 2,
+			"email": "da@da.ru",
+			"first_name": "Игнат",
+			"complaint": "Друг ушел к жене"
+		},
+		"psychologist": null,
+		"messages": []
+	},
+	{
+		"id": 3,
+		"chat_secret_key": "5wrK8BqUifnCyzDGaLJ5",
+		"active": true,
+		"new": true,
+		"client": {
+			"id": 3,
+			"email": "rodalexandr13@yandex.ru",
+			"first_name": "",
+			"complaint": "asdasdasdasdsadasd"
+		},
+		"psychologist": null,
+		"messages": []
+	},
+	{
+		"id": 4,
+		"chat_secret_key": "Tj0A0XxMVvyXlw3fxPGW",
+		"active": true,
+		"new": true,
+		"client": {
+			"id": 4,
+			"email": "pokertrend@yandex.ru",
+			"first_name": "Александр",
+			"complaint": "sdfdf"
+		},
+		"psychologist": null,
+		"messages": []
+	},
+	{
+		"id": 5,
+		"chat_secret_key": "qcmmVvf6WD19gWoMkLRb",
+		"active": true,
+		"new": true,
+		"client": {
+			"id": 5,
+			"email": "ilyaradaev1982@yandex.ru",
+			"first_name": "Илья",
+			"complaint": "Входящий лид №1 от 31.01.2024"
+		},
+		"psychologist": null,
+		"messages": []
+	}
+]
