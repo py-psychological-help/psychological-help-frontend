@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import cls from './Messages.module.scss';
 import MessageInput from '../MessageInput/MessageInput';
@@ -9,6 +9,7 @@ function Messages({ selectedChat }) {
 	const [messages, setMessages] = useState([]);
 	const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
 	const token = useSelector((state) => state.auth.authToken);
+	const messagesListRef = useRef(null);
 
 	useEffect(() => {
 		const socket = new WebSocket(
@@ -31,6 +32,13 @@ function Messages({ selectedChat }) {
 		};
 	}, [token]);
 
+	useEffect(() => {
+		if (messagesListRef.current) {
+			messagesListRef.current.scrollTop =
+				messagesListRef.current.scrollHeight;
+		}
+	}, [messages]);
+
 	const sendMessage = (message) => {
 		if (ws) {
 			ws.send(message);
@@ -41,7 +49,7 @@ function Messages({ selectedChat }) {
 
 	return (
 		<div className={cls.messagesContainer}>
-			<ul className={cls.messagesList}>
+			<ul ref={messagesListRef} className={cls.messagesList}>
 				{messages.map((data) => (
 					<Message
 						key={data.date}
@@ -49,8 +57,8 @@ function Messages({ selectedChat }) {
 						isAuthorMe={data.psy}
 					/>
 				))}
-				<MessageInput onSend={sendMessage} />
 			</ul>
+			<MessageInput onSend={sendMessage} />
 		</div>
 	);
 }

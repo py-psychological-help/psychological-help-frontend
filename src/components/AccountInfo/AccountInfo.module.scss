@@ -32,7 +32,7 @@
 		border-radius: 10px;
 		padding: 20px;
 		font-size: 16px;
-	    font-weight: 500;
+		font-weight: 500;
 		color: black;
 		display: block;
 	}
@@ -50,7 +50,7 @@
 	font-style: normal;
 	font-weight: 600;
 	line-height: 20px;
-    background-color: inherit;
+	background-color: inherit;
 	cursor: pointer;
 	width: 210px;
 	padding: 12px 32px;
@@ -66,7 +66,7 @@
 	border-radius: 10px;
 	text-decoration: none;
 	font-family: Montserrat, sans-serif;
-    color: rgba(235, 231, 220, 1);
+	color: rgba(235, 231, 220, 1);
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 600;
@@ -76,30 +76,30 @@
 	width: 178px;
 	padding: 12px 32px;
 	border: 1px solid rgba(52, 52, 52, 1);
-    margin-right: 32px;
+	margin-right: 32px;
 }
 .saveButton:hover {
-  border:1px solid rgba(169, 198, 197, 1);
-  color: rgba(52, 52, 52, 1);
-  background-color: rgba(169, 198, 197, 1);
+	border: 1px solid rgba(169, 198, 197, 1);
+	color: rgba(52, 52, 52, 1);
+	background-color: rgba(169, 198, 197, 1);
 }
 
 .cancelButton {
-  border-radius: 10px;
-  text-decoration: none;
-  font-family: Montserrat, sans-serif;
-  color: rgba(52, 52, 52, 1);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 24px;
-  background-color: inherit;
-  cursor: pointer;
-  width: 178px;
-  padding: 12px 32px;
-  border: 2px solid rgba(52, 52, 52, 1);
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	color: rgba(52, 52, 52, 1);
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px;
+	background-color: inherit;
+	cursor: pointer;
+	width: 178px;
+	padding: 12px 32px;
+	border: 2px solid rgba(52, 52, 52, 1);
 }
 
 .cancelButton:hover {
-  border: 2px solid rgba(169, 198, 197, 1);
+	border: 2px solid rgba(169, 198, 197, 1);
 }

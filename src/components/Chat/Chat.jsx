@@ -17,14 +17,14 @@ function Chat({ chat, onSelect, onDisable, className }) {
 					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
 					<span className={cls.divider}>&#183;</span>
 					<p className={cls.name}>
-						{chat.psychologist.first_name.length > 0
-							? `${chat.psychologist.first_name}`
+						{chat.client.first_name.length > 0
+							? `${chat.client.first_name}`
 							: ''}
 					</p>
 				</div>
 				<p
 					className={cls.problem}
-				>{`Проблема: ${chat.psychologist.complaint}`}</p>
+				>{`Проблема: ${chat.client.complaint}`}</p>
 			</div>
 			<button
 				className={clsx(cls.chatButton, className, {

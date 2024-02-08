@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
 import Chat from '../Chat/Chat';
-import chats from '../../utils/chats';
+// import chats from '../../utils/chats';
 import { fetchChats } from '../../slices/chatsSlice/chatsActions';
 
 function Chats({ className, onSelect }) {
@@ -15,22 +15,21 @@ function Chats({ className, onSelect }) {
 	useEffect(() => {
 		if (userData) setIsVerified(userData.approved);
 	}, [userData]);
+
 	useEffect(() => {
 		dispatch(fetchChats());
 	}, [dispatch]);
 
-	console.log(selectChats);
-
 	const [isFiltered, setIsFiltered] = useState('new');
 
-	const filteredChats = chats.filter((chat) => {
+	const filteredChats = selectChats.filter((chat) => {
 		if (isFiltered === 'active') return chat.active;
 		if (isFiltered === 'new') return chat.new;
 		if (isFiltered === 'archive') return chat.archive;
-		return chats;
+		return selectChats;
 	});
 
-	const isActiveChatExist = chats.some((chat) => chat.active);
+	const isActiveChatExist = selectChats.some((chat) => chat.active);
 	const handleConnectBtnDisabled = () => {
 		if (isActiveChatExist && isFiltered === 'new') {
 			return true;
