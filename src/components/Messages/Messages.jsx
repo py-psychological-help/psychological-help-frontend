@@ -16,7 +16,7 @@ function Messages({ selectedChat }) {
 
 	useEffect(() => {
 		const socket = new WebSocket(
-			`wss://dpogovorim.ru:8011/ws/chat/${chatSecretKey}/?token=${token}`
+			`wss://dpogovorim.ru/ws/chat/${chatSecretKey}/?token=${token}`
 		);
 
 		socket.onopen = () => {
