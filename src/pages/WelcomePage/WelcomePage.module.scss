@@ -6,10 +6,8 @@
 }
 
 .container {
-	margin: 80px auto 100px;
-	max-width: 847px;
-	padding: 20px 0 0 0px;
-	background-color: #ebe7dc;
+	margin: 108px auto;
+	max-width: 846px;
 }
 
 .header {
@@ -21,81 +19,124 @@
 
 .caption {
 	margin: 0;
+	max-width: 800px;
 	font-size: 24px;
 	font-weight: 400;
 	line-height: 36px;
 }
 
-.subtitle {
-	margin: 32px 0 21px 0;
-	padding: 0;
+.profits {
+	margin: 32px 0 18px;
+	max-width: 800px;
 	font-size: 32px;
 	font-weight: 600;
 	line-height: 36px;
 }
 
-.list {
+.profitsList {
+	margin: 0;
+	padding-left: 0;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 57px;
+	list-style-type: none;
+
+	.profitItem {
+		counter-increment: item;
+		margin-bottom: 12px;
+	}
+
+	.profitItem::before {
+		content: counter(item);
+		margin-right: 20px;
+		font-size: 32px;
+		line-height: 36px;
+		text-align: center;
+		background-color: #343434;
+		color: #f2f2f2;
+		font-weight: 600;
+		border-radius: 10px;
+		padding: 4px 10px;
+	}
+
+	.profitItem:first-of-type::before {
+		padding-left: 12px;
+		padding-right: 13px;
+	}
+}
+
+.required {
+  margin: 26px 0 20px;
+  max-width: 800px;
+  font-size: 20px;
+
+  .subtitle {
+	margin: 32px 0 21px 0;
+	padding: 0;
+	font-size: 32px;
+	font-weight: 600;
+	line-height: 36px;
+  }
+
+  .requiredList {
+	margin: 30px 0 32px;
 	padding-inline-start: 30px;
 	font-size: 20px;
 	font-weight: 400;
 	line-height: 26px;
+  }
 
-	.listItem {
-		margin-bottom: 12px;
-	}
-}
-
-.link {
+  .link {
 	display: block;
 	width: 231px;
 	height: 48px;
 	margin: 33px 0 0 0;
 	border-radius: 10px;
 	border: transparent;
-}
+  }
 
-.line {
+  .line {
 	display: flex;
 	gap: 22px;
 	margin: 0 0 24px 0;
 	padding: 0;
-}
+  }
 
-.lineText {
+  .lineText {
 	font-size: 24px;
 	font-weight: 400;
 	line-height: 36px;
 	margin: 4px 0 0 0;
 	padding: 0;
-}
+  }
 
-.lineNumber {
+  .lineNumber {
 	width: 39px;
 	height: 46px;
 	align-self: center;
 
 	&.icon1 {
-		background-image: url(../../images/icon-1.svg);
+	  background-image: url(../../images/icon-1.svg);
 	}
 
 	&.icon2 {
-		background-image: url(../../images/icon-2.svg);
+	  background-image: url(../../images/icon-2.svg);
 	}
 
 	&.icon3 {
-		background-image: url(../../images/icon-3.svg);
+	  background-image: url(../../images/icon-3.svg);
 	}
-}
+  }
 
-.subSubTitle {
+  .subSubTitle {
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 26px;
 	margin: 31px 0;
 	padding: 0;
-}
+  }
 
-.mainBtn {
+  .mainBtn {
 	width: 231px;
 	height: 48px;
 	padding: 0;
@@ -112,7 +153,22 @@
 	transition: background-color 0.3s ease;
 
 	&:hover {
-		background-color: #a9c6c5;
-		color: black;
+	  background-color: #a9c6c5;
+	  color: black;
 	}
+  }
+}
+
+.requiredItem {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  color: rgba(52, 52, 52, 1);
+}
+
+.button {
+  width: 231px;
+  height: 48px;
+  margin-top: 32px;
 }

@@ -38,7 +38,7 @@ class Api {
 }
 
 const api = new Api({
-	baseUrl: 'https://letstalk.ddns.net/api/v1',
+	baseUrl: 'https://dpogovorim.ru/api/v1',
 	getAuthToken: () => localStorage.getItem('authToken'),
 });
 

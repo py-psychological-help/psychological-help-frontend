@@ -22,7 +22,7 @@ function PsychologistSide({ selectedChat, onSelect }) {
 					Завершить чат
 				</button>
 			</div>
-			<div className={cls.container}>
+			<div className={cls.messagesContainer}>
 				<ChatInfo selectedChat={selectedChat} />
 				<Messages selectedChat={selectedChat} onSelect={onSelect} />
 			</div>
