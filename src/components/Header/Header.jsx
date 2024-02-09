@@ -5,6 +5,7 @@ import { userActions } from '../../slices/userSlice/userSlice';
 import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 import Button from '../buttonHeader/Button';
+import { authActions } from '../../slices/authSlice/authSlice';
 
 const Header = memo(() => {
 	const isLoggedIn = useSelector((state) => state.user.userData);
@@ -22,6 +23,7 @@ const Header = memo(() => {
 
 	const handleLogout = () => {
 		dispatch(userActions.logout());
+		dispatch(authActions.logout());
 		navigate('/');
 	};
 

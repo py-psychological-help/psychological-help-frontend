@@ -17,7 +17,7 @@ import WelcomePage from '../../pages/WelcomePage/WelcomePage';
 import { getCurrentUser } from '../../slices/userSlice/userAsyncActions';
 import ForgotPassword from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 import NewPassword from '../../pages/ResetPasswordPage/ResetPasswordPage';
-import WaitingRoom from "../WaitingRoom/WaitingRoom";
+import WaitingRoom from '../WaitingRoom/WaitingRoom';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,13 +33,10 @@ const App = () => {
 		// создаёт перерендеры при каждой смене роута, позже пофиксить
 		if (authToken) {
 			dispatch(getCurrentUser());
+			navigate('/account');
 		}
-	}, [dispatch, authToken]);
-
-	useEffect(() => {
-		if (userData) navigate('/account');
 		// eslint-disable-next-line
-	}, [userData]); // Ругается на отсутствие navigate
+	}, [dispatch, authToken]);
 
 	const [selectedChat, setSelectedChat] = useState();
 
@@ -58,7 +55,7 @@ const App = () => {
 					<Route element={<ClientSide />} path="/client-side/:key/" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route element={<RegisterPage />} path="signup/" />
-					<Route element={<WaitingRoom/>} path="/waiting-room" />
+					<Route element={<WaitingRoom />} path="/waiting-room" />
 					<Route
 						element={<ForgotPassword />}
 						path="/forgotpassword"

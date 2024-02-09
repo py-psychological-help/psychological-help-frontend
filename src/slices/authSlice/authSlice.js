@@ -7,7 +7,7 @@ const authToken = localStorage.getItem('authToken')
 
 const initialState = {
 	isLoading: false,
-	authToken, // jwt
+	authToken,
 	error: null,
 	isSuccess: false,
 };
@@ -15,7 +15,13 @@ const initialState = {
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		logout: (state) => {
+			state.error = null;
+			state.isLoading = false;
+			state.authToken = null;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(registerUser.pending, (state) => {
