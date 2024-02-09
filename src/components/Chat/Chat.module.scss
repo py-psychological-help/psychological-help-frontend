@@ -1,6 +1,7 @@
 .chat {
 	display: flex;
 	justify-content: space-between;
+	gap: 245px;
 	border-radius: 20px;
 	background-color: #fff;
 	height: 100px;
@@ -11,6 +12,10 @@
 	flex-direction: column;
 	padding: 0;
 	margin: 0;
+	max-width: 422px;
+	white-space: nowrap;     
+    overflow: hidden;        
+    text-overflow: ellipsis;
 }
 
 .row {
@@ -18,7 +23,7 @@
 	margin: 24px 0 12px 32px;
 	padding: 0;
 	align-items: center;
-	height: 20px;
+	height: 20px;    
 }
 
 .number {
@@ -42,6 +47,10 @@
 	color: #343434;
 	margin: 0;
 	padding: 0;
+	white-space: nowrap;
+	max-width: 302px;  
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .problem {
@@ -51,6 +60,10 @@
 	color: #343434;
 	margin: 0 0 24px 32px;
 	padding: 0;
+	max-width: 422px;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .chatButton {

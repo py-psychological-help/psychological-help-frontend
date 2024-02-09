@@ -11,6 +11,10 @@ function Chat({ chat, onSelect, onDisable, className }) {
 		navigate(`/psy-side/${chat.chat_secret_key}/`);
 	};
 
+	const getFirstFiveWords = (text) => {
+		return text.split(' ').slice(0, 5).join(' ');
+	};
+
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
@@ -23,9 +27,9 @@ function Chat({ chat, onSelect, onDisable, className }) {
 							: ''}
 					</p>
 				</div>
-				<p
-					className={cls.problem}
-				>{`Проблема: ${chat.client.complaint}`}</p>
+				<p className={cls.problem}>{`Проблема: ${getFirstFiveWords(
+					chat.client.complaint
+				)}`}</p>
 			</div>
 			<button
 				className={clsx(cls.chatButton, className, {

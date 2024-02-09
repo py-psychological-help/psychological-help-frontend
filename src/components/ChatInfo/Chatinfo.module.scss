@@ -39,4 +39,8 @@
 	color: #343434;
 	margin: 0 12px 12px 12px;
 	padding: 0;
+	max-width: 173px;
+	white-space: nowrap;     
+    overflow: hidden;        
+    text-overflow: ellipsis;
 }
