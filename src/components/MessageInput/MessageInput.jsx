@@ -28,6 +28,13 @@ const MessageInput = ({ onSend, className }) => {
 		}
 	};
 
+	const handleKeyPress = (e) => {
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			handleSend();
+		}
+	};
+
 	return (
 		<form className={cls.messageForm} noValidate>
 			<div className={cls.container}>
@@ -39,6 +46,7 @@ const MessageInput = ({ onSend, className }) => {
 						setText(e.target.value);
 						handleMessageInputChange();
 					}}
+					onKeyDown={handleKeyPress}
 					className={clsx(cls.messageInput, className, {
 						[cls.errorInput]: isError,
 					})}
