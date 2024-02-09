@@ -66,109 +66,109 @@
 }
 
 .required {
-  margin: 26px 0 20px;
-  max-width: 800px;
-  font-size: 20px;
-
-  .subtitle {
-	margin: 32px 0 21px 0;
-	padding: 0;
-	font-size: 32px;
-	font-weight: 600;
-	line-height: 36px;
-  }
-
-  .requiredList {
-	margin: 30px 0 32px;
-	padding-inline-start: 30px;
+	margin: 26px 0 20px;
+	max-width: 800px;
 	font-size: 20px;
-	font-weight: 400;
-	line-height: 26px;
-  }
 
-  .link {
-	display: block;
-	width: 231px;
-	height: 48px;
-	margin: 33px 0 0 0;
-	border-radius: 10px;
-	border: transparent;
-  }
-
-  .line {
-	display: flex;
-	gap: 22px;
-	margin: 0 0 24px 0;
-	padding: 0;
-  }
-
-  .lineText {
-	font-size: 24px;
-	font-weight: 400;
-	line-height: 36px;
-	margin: 4px 0 0 0;
-	padding: 0;
-  }
-
-  .lineNumber {
-	width: 39px;
-	height: 46px;
-	align-self: center;
-
-	&.icon1 {
-	  background-image: url(../../images/icon-1.svg);
+	.subtitle {
+		margin: 32px 0 21px 0;
+		padding: 0;
+		font-size: 32px;
+		font-weight: 600;
+		line-height: 36px;
 	}
 
-	&.icon2 {
-	  background-image: url(../../images/icon-2.svg);
+	.requiredList {
+		margin: 30px 0 32px;
+		padding-inline-start: 30px;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 26px;
 	}
 
-	&.icon3 {
-	  background-image: url(../../images/icon-3.svg);
+	.link {
+		display: block;
+		width: 231px;
+		height: 48px;
+		margin: 33px 0 0 0;
+		border-radius: 10px;
+		border: transparent;
 	}
-  }
 
-  .subSubTitle {
-	font-size: 20px;
-	font-weight: 600;
-	line-height: 26px;
-	margin: 31px 0;
-	padding: 0;
-  }
-
-  .mainBtn {
-	width: 231px;
-	height: 48px;
-	padding: 0;
-	margin: 13px 0 0 0;
-	font-size: 20px;
-	font-weight: 600;
-	line-height: 24px;
-	background-color: black;
-	border-radius: 12px;
-	color: white;
-	text-decoration: none;
-	align-items: center;
-	justify-content: center;
-	transition: background-color 0.3s ease;
-
-	&:hover {
-	  background-color: #a9c6c5;
-	  color: black;
+	.line {
+		display: flex;
+		gap: 22px;
+		margin: 0 0 24px 0;
+		padding: 0;
 	}
-  }
+
+	.lineText {
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 36px;
+		margin: 4px 0 0 0;
+		padding: 0;
+	}
+
+	.lineNumber {
+		width: 39px;
+		height: 46px;
+		align-self: center;
+
+		&.icon1 {
+			background-image: url(../../images/icon-1.svg);
+		}
+
+		&.icon2 {
+			background-image: url(../../images/icon-2.svg);
+		}
+
+		&.icon3 {
+			background-image: url(../../images/icon-3.svg);
+		}
+	}
+
+	.subSubTitle {
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 26px;
+		margin: 31px 0;
+		padding: 0;
+	}
+
+	.mainBtn {
+		width: 231px;
+		height: 48px;
+		padding: 0;
+		margin: 13px 0 0 0;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 24px;
+		background-color: black;
+		border-radius: 12px;
+		color: white;
+		text-decoration: none;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: #a9c6c5;
+			color: black;
+		}
+	}
 }
 
 .requiredItem {
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 26px;
-  color: rgba(52, 52, 52, 1);
+	margin-bottom: 12px;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 26px;
+	color: rgba(52, 52, 52, 1);
 }
 
 .button {
-  width: 231px;
-  height: 48px;
-  margin-top: 32px;
+	width: 231px;
+	height: 48px;
+	margin-top: 32px;
 }
