@@ -20,7 +20,13 @@ function Chat({ chat, onSelect, onDisable, className }) {
 			<div className={cls.chatInfo}>
 				<div className={cls.row}>
 					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
-					<span className={cls.divider}>&#183;</span>
+					<span
+						className={clsx(cls.divider, className, {
+							[cls.invisible]: !chat.client.first_name,
+						})}
+					>
+						&#183;
+					</span>
 					<p className={cls.name}>
 						{chat.client.first_name.length > 0
 							? `${chat.client.first_name}`
