@@ -53,8 +53,11 @@ const MessageInput = ({ onSend, className }) => {
 			</div>
 			<button
 				type="button"
-				className={cls.submitButton}
+				className={clsx(cls.submitButton, className, {
+					[cls.disabled]: isError,
+				})}
 				onClick={handleSend}
+				disabled={isError}
 			>
 				Отправить
 			</button>
