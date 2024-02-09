@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from './authAsyncActions';
+import {
+	registerUser,
+	loginUser,
+	requestPasswordChange,
+	resetPasswordChange,
+} from './authAsyncActions';
 
 const authToken = localStorage.getItem('authToken')
 	? localStorage.getItem('authToken')
@@ -46,6 +51,30 @@ const authSlice = createSlice({
 				state.authToken = action.payload.auth_token; // Поправить в будущем snake_case
 			})
 			.addCase(loginUser.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(requestPasswordChange.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(requestPasswordChange.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(requestPasswordChange.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(resetPasswordChange.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(resetPasswordChange.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(resetPasswordChange.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			});
