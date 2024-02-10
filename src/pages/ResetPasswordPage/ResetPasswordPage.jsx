@@ -1,18 +1,38 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import cls from './ResetPasswordPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 import passwordValidation from '../../utils/passwordValidation';
+import { resetPasswordChange } from '../../slices/authSlice/authAsyncActions';
+import { clearMessage } from '../../slices/messageSlice';
 
 export default function ResetPasswordPage() {
 	const {
 		register,
 		handleSubmit,
 		formState: { isValid, errors },
-	} = useForm();
+	} = useForm({ mode: 'onChange' });
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const isSuccess = useSelector((state) => state.auth.isSuccess);
+	const { message } = useSelector((state) => state.message);
+	const { uid, token } = useParams();
 
 	function onSubmit(data) {
-		console.log(data);
+		const fullData = { uid, token, ...data };
+		console.log(fullData);
+		dispatch(resetPasswordChange(fullData));
 	}
+
+	useEffect(() => {
+		if (isSuccess) navigate('/signin');
+	}, [navigate, dispatch, isSuccess]);
+
+	useEffect(() => {
+		dispatch(clearMessage());
+	}, [dispatch]);
 
 	return (
 		<div className={cls.container}>
@@ -42,18 +62,20 @@ export default function ResetPasswordPage() {
 						validate: passwordValidation,
 					})}
 				/>
-				{errors?.email?.type === 'pattern' && (
-					<p className={cls.error}>Не соответствует формату почты</p>
+				{errors?.password?.type === 'validate' && (
+					<p className={cls.error}>{errors.password.message}</p>
 				)}
-				{errors?.email?.type === 'required' && (
-					<p className={cls.error}>Пожалуйста, заполните поле</p>
-				)}
-				{errors?.email?.type === 'minLength' && (
+				{errors?.password?.type === 'minLength' && (
 					<p className={cls.error}>Слишком мало символов</p>
 				)}
-				{errors?.email?.type === 'maxLength' && (
+				{errors?.password?.type === 'maxLength' && (
 					<p className={cls.error}>Слишком много символов</p>
 				)}
+				{errors?.password?.type === 'required' && (
+					<p className={cls.error}>Пожалуйста, заполните поле</p>
+				)}
+
+				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
 					<Button type="submit" name="Войти" isValid={isValid} />
 				</div>

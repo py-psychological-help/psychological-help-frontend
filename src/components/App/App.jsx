@@ -38,6 +38,11 @@ const App = () => {
 		// eslint-disable-next-line
 	}, [dispatch, authToken]);
 
+	useEffect(() => {
+		if (userData) navigate('/account-chat');
+		// eslint-disable-next-line
+	}, [dispatch, authToken]);
+
 	const [selectedChat, setSelectedChat] = useState();
 
 	const handleChatSelection = (chat) => {
@@ -60,7 +65,10 @@ const App = () => {
 						element={<ForgotPassword />}
 						path="/forgotpassword"
 					/>
-					<Route element={<NewPassword />} path="/resetpassword" />
+					<Route
+						element={<NewPassword />}
+						path="/reset-confirmation/:uid/:token"
+					/>
 
 					{userIsTrue ? (
 						<>
