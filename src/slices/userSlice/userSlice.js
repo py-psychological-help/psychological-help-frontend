@@ -12,6 +12,7 @@ export const userSlice = createSlice({
 		// },
 		logout: (state) => {
 			state.userData = undefined;
+			state.isSuccess = false;
 			state.error = null;
 			state.isLoading = false;
 			localStorage.removeItem('authToken');

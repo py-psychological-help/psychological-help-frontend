@@ -12,7 +12,6 @@ function Chats({ className, onSelect }) {
 	const dispatch = useDispatch();
 	const userData = useSelector((state) => state.user.userData);
 
-
 	// useEffect(() => {
 	// 	if (userData) setIsVerified(userData.approved);
 	// }, [userData]);
