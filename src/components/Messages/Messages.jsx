@@ -8,6 +8,7 @@ import Message from '../Message/Message';
 function Messages({ selectedChat }) {
 	const [ws, setWs] = useState(null);
 	const [messages, setMessages] = useState([]);
+	const [error, setError] = useState(false);
 
 	const { key: chatSecretKey } = useParams();
 	// const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
@@ -24,7 +25,11 @@ function Messages({ selectedChat }) {
 		};
 
 		socket.onmessage = (e) => {
-			console.log('Получил сообщение: ', e.data);
+			const data = JSON.parse(e.data);
+			if (data.error) {
+				setError(true);
+				return;
+			}
 			setMessages((prevState) => [...prevState, JSON.parse(e.data)]);
 		};
 
@@ -52,16 +57,22 @@ function Messages({ selectedChat }) {
 
 	return (
 		<div className={cls.messagesContainer}>
-			<ul ref={messagesListRef} className={cls.messagesList}>
-				{messages.map((data) => (
-					<Message
-						key={data.date}
-						text={data.message}
-						isAuthorMe={data.psy}
-					/>
-				))}
-			</ul>
-			<MessageInput onSend={sendMessage} />
+			{!error ? (
+				<>
+					<ul ref={messagesListRef} className={cls.messagesList}>
+						{messages.map((data) => (
+							<Message
+								key={data.date}
+								text={data.message}
+								isAuthorMe={data.psy}
+							/>
+						))}
+					</ul>
+					<MessageInput onSend={sendMessage} />
+				</>
+			) : (
+				<h1>Чат уже занят</h1>
+			)}
 		</div>
 	);
 }

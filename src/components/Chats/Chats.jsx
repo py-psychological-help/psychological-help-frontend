@@ -23,11 +23,22 @@ function Chats({ className, onSelect }) {
 	const [isFiltered, setIsFiltered] = useState('new');
 
 	const filteredChats = selectChats.filter((chat) => {
-		if (isFiltered === 'active') return chat.active;
+		if (isFiltered === 'active') {
+			return (
+				chat.psychologist?.last_name === userData.last_name &&
+				chat.active === true
+			);
+		}
 		if (isFiltered === 'new') return chat.new;
-		if (isFiltered === 'archive') return chat.archive;
+		if (isFiltered === 'archive') {
+			return (
+				chat.psychologist?.last_name === userData.last_name &&
+				chat.active === false
+			);
+		}
 		return selectChats;
 	});
+	console.log(filteredChats);
 
 	const isActiveChatExist = selectChats.some((chat) => chat.active);
 	const handleConnectBtnDisabled = () => {

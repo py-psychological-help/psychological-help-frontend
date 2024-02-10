@@ -42,7 +42,7 @@ function Chat({ chat, onSelect, onDisable, className }) {
 					[cls.disabled]: chat.new && onDisable,
 				})}
 				onClick={handleClick}
-				disabled={chat.new && onDisable}
+				// disabled={chat.new && onDisable}
 			>
 				Подключиться
 			</button>
