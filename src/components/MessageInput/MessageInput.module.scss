@@ -61,3 +61,14 @@
 	cursor: pointer;
 	transition: 1s ease;
 }
+
+.disabled {
+	color: #6f6f6f;
+	background-color: #d9d9d9;
+}
+
+.disabled:hover {
+	color: #6f6f6f;
+	background-color: #d9d9d9;
+	transition: none;
+}

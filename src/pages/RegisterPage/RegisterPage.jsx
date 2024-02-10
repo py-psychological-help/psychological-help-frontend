@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Icon } from 'react-icons-kit';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import cls from './RegisterPage.module.scss';
@@ -13,12 +12,14 @@ export default function RegisterPage() {
 	const {
 		register,
 		handleSubmit,
+		watch,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const isSuccess = useSelector((state) => state.auth.isSuccess);
 	const { message } = useSelector((state) => state.message);
+	const [type, setType] = useState('text');
 
 	const date = new Date();
 	date.setFullYear(date.getFullYear() - 18);
@@ -35,6 +36,14 @@ export default function RegisterPage() {
 	useEffect(() => {
 		dispatch(clearMessage());
 	}, [dispatch]);
+
+	function changeDateInput() {
+		if (type === 'text') {
+			setType('date');
+		} else if (watch('birthDate') === undefined && type === 'date') {
+			setType('text');
+		}
+	}
 
 	return (
 		<div className={cls.container}>
@@ -115,8 +124,8 @@ export default function RegisterPage() {
 				<input
 					name="birthDate"
 					id="birthDate"
-					type="date"
-					data-placeholder=""
+					type={type}
+					onFocus={changeDateInput}
 					className={
 						errors?.birthDate
 							? `${cls.input} ${cls.inputWrong}`

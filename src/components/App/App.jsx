@@ -64,7 +64,10 @@ const App = () => {
 						element={<ForgotPassword />}
 						path="/forgotpassword"
 					/>
-					<Route element={<NewPassword />} path="/resetpassword" />
+					<Route
+						element={<NewPassword />}
+						path="/reset-confirmation/:uid/:token"
+					/>
 
 					{userIsTrue ? (
 						<>

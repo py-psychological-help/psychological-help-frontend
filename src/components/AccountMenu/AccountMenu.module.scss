@@ -9,6 +9,7 @@
 	font-style: normal;
 	font-weight: 600;
 	line-height: 44px;
+    color: rgba(52, 52, 52, 1);
 }
 
 .menu {
@@ -27,15 +28,15 @@
 	line-height: 20px;
 	border: none;
 	outline: none;
-	color: #6f6f6f;
+	color: rgba(111, 111, 111, 1);
 	padding: 0;
 	cursor: pointer;
 	background-color: rgba(235, 231, 220, 1);
 }
 
 .menuButtonActive {
-	color: #212028;
-	border-bottom: 4px solid #212028;
+	color:  rgba(52, 52, 52, 1);
+	border-bottom: 4px solid  rgba(52, 52, 52, 1);
 	border-bottom-left-radius: 2px;
 	border-bottom-right-radius: 2px;
 	padding-bottom: 8px;
