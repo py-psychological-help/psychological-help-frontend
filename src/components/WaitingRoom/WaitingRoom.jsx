@@ -33,7 +33,6 @@ function WaitingRoom() {
 						</p>
 					</div>
 				</div>
-			</div>
 		</section>
 	);
 }
