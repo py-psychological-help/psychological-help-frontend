@@ -7,15 +7,14 @@ import Chat from '../Chat/Chat';
 import { fetchChats } from '../../slices/chatsSlice/chatsActions';
 
 function Chats({ className, onSelect }) {
-	const [isVerified, setIsVerified] = useState(true);
+	const [isVerified, setIsVerified] = useState(false);
 	const selectChats = useSelector((state) => state.chats.chats);
 	const dispatch = useDispatch();
 	const userData = useSelector((state) => state.user.userData);
 
-
-	// useEffect(() => {
-	// 	if (userData) setIsVerified(userData.approved);
-	// }, [userData]);
+	useEffect(() => {
+		if (userData) setIsVerified(userData.approved);
+	}, [userData]);
 
 	useEffect(() => {
 		dispatch(fetchChats());
@@ -24,11 +23,22 @@ function Chats({ className, onSelect }) {
 	const [isFiltered, setIsFiltered] = useState('new');
 
 	const filteredChats = selectChats.filter((chat) => {
-		if (isFiltered === 'active') return chat.active;
+		if (isFiltered === 'active') {
+			return (
+				chat.psychologist?.last_name === userData.last_name &&
+				chat.active === true
+			);
+		}
 		if (isFiltered === 'new') return chat.new;
-		if (isFiltered === 'archive') return chat.archive;
+		if (isFiltered === 'archive') {
+			return (
+				chat.psychologist?.last_name === userData.last_name &&
+				chat.active === false
+			);
+		}
 		return selectChats;
 	});
+	console.log(filteredChats);
 
 	const isActiveChatExist = selectChats.some((chat) => chat.active);
 	const handleConnectBtnDisabled = () => {
@@ -79,32 +89,32 @@ function Chats({ className, onSelect }) {
 					</button>
 				</li>
 			</ul>
-			{/* {isVerified ? ( */}
-			<ul className={cls.chatsList}>
-				{filteredChats.map((chat) => (
-					<Chat
-						key={chat.id}
-						chat={chat}
-						onSelect={onSelect}
-						onDisable={handleConnectBtnDisabled}
-					/>
-				))}
-			</ul>
-			{/* ) : ( */}
-			<div
-				className={clsx(cls.span, className, {
-					[cls.visible]: !isVerified,
-				})}
-			>
-				<p className={cls.text}>
-					Чтобы начать работать с нами, завершите регистрацию.
-				</p>
-				<p className={cls.text}>
-					Перейдите во вкладку Профиль/ Документы и загрузите все
-					необходимые документы для работы на сервисе
-				</p>
-			</div>
-			{/* )} */}
+			{isVerified ? (
+				<ul className={cls.chatsList}>
+					{filteredChats.map((chat) => (
+						<Chat
+							key={chat.id}
+							chat={chat}
+							onSelect={onSelect}
+							onDisable={handleConnectBtnDisabled}
+						/>
+					))}
+				</ul>
+			) : (
+				<div
+					className={clsx(cls.span, className, {
+						[cls.visible]: !isVerified,
+					})}
+				>
+					<p className={cls.text}>
+						Чтобы начать работать с нами, завершите регистрацию.
+					</p>
+					<p className={cls.text}>
+						Перейдите во вкладку Профиль/ Документы и загрузите все
+						необходимые документы для работы на сервисе
+					</p>
+				</div>
+			)}
 		</main>
 	);
 }

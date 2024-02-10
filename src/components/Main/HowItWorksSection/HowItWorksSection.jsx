@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import styles from './HowItWorksSection.module.scss';
 import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
 
@@ -101,10 +101,10 @@ const HowItWorksSection = () => {
 	}, [formData.complaint, complaintChanged]);
 
 	useEffect(() => {
-		if(submitSuccess) {
-			navigate("/waiting-room")
+		if (submitSuccess) {
+			navigate('/waiting-room');
 		}
-	},[navigate, submitSuccess])
+	}, [navigate, submitSuccess]);
 
 	const dispatch = useDispatch();
 
@@ -171,78 +171,78 @@ const HowItWorksSection = () => {
 					обсудишь с&nbsp;психологом, конфиденциальна.
 				</p>
 
-					<form className={styles.helpForm} onSubmit={handleSubmit}>
-						<label htmlFor="email">
-							<p className={styles.inputCaption}>Почта</p>
-							<input
-								className={`${styles.input} ${
-									errors.email && styles.inputWrong
-								}`}
-								type="email"
-								name="email"
-								id="email"
-								value={formData.email}
-								onChange={handleChange}
-								required
-								// placeholder="example@mail.ru"
-							/>
-						</label>
-						{errors.email && (
-							<p className={styles.error}>{errors.email}</p>
-						)}
+				<form className={styles.helpForm} onSubmit={handleSubmit}>
+					<label htmlFor="email">
+						<p className={styles.inputCaption}>Почта</p>
+						<input
+							className={`${styles.input} ${
+								errors.email && styles.inputWrong
+							}`}
+							type="email"
+							name="email"
+							id="email"
+							value={formData.email}
+							onChange={handleChange}
+							required
+							// placeholder="example@mail.ru"
+						/>
+					</label>
+					{errors.email && (
+						<p className={styles.error}>{errors.email}</p>
+					)}
 
-						<label htmlFor="first_name">
-							<p className={styles.inputCaption}>
-								Имя (Можно не указывать)
-							</p>
-							<input
-								className={`${styles.input} ${
-									errors.first_name && styles.inputWrong
-								}`}
-								type="text"
-								name="first_name"
-								id="first_name"
-								value={formData.first_name}
-								onChange={handleChange}
-								disabled={formData.disableName}
-								// placeholder="Ваше имя"
-							/>
-						</label>
-						{errors.first_name && (
-							<p className={styles.error}>{errors.first_name}</p>
-						)}
+					<label htmlFor="first_name">
+						<p className={styles.inputCaption}>
+							Имя (Можно не указывать)
+						</p>
+						<input
+							className={`${styles.input} ${
+								errors.first_name && styles.inputWrong
+							}`}
+							type="text"
+							name="first_name"
+							id="first_name"
+							value={formData.first_name}
+							onChange={handleChange}
+							disabled={formData.disableName}
+							// placeholder="Ваше имя"
+						/>
+					</label>
+					{errors.first_name && (
+						<p className={styles.error}>{errors.first_name}</p>
+					)}
 
-						<label htmlFor="complaint">
-							<p className={styles.inputCaption}>Проблема</p>
-							<textarea
-								className={`${styles.textInput} ${
-									errors.complaint && styles.inputWrong
-								}`}
-								id="complaint"
-								name="complaint"
-								value={formData.complaint}
-								onChange={handleChange}
-								required
-								rows="10"
-								// placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
-							/>
-						</label>
-						{errors.complaint && (
-							<p className={styles.error}>{errors.complaint}</p>
-						)}
+					<label htmlFor="complaint">
+						<p className={styles.inputCaption}>Проблема</p>
+						<textarea
+							className={`${styles.textInput} ${
+								errors.complaint && styles.inputWrong
+							}`}
+							id="complaint"
+							name="complaint"
+							value={formData.complaint}
+							onChange={handleChange}
+							required
+							rows="10"
+							// placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
+						/>
+					</label>
+					{errors.complaint && (
+						<p className={styles.error}>{errors.complaint}</p>
+					)}
 
-						<button
-							className={styles.mainBtn}
-							type="submit"
-							disabled={submitting}
-						>
-							{submitting ? 'Отправка...' : 'Отправить заявку'}
-						</button>
+					<button
+						className={styles.mainBtn}
+						type="submit"
+						disabled={submitting}
+					>
+						{submitting ? 'Отправка...' : 'Отправить заявку'}
+					</button>
 
-						{submitError && (
-							<p className={styles.errorMessage}>{submitError}</p>
-						)}
-					</form>
+					{submitError && (
+						<p className={styles.errorMessage}>{submitError}</p>
+					)}
+				</form>
 			</div>
 		</section>
 	);
