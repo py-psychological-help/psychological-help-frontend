@@ -21,7 +21,7 @@ export const AskForHelpReq = createAsyncThunk(
 			return response.data;
 		} catch (error) {
 			if (error.response && error.response.data) {
-				const message = 'Произошла ошибка';
+				const message = 'Произошла ошибка регистрации заявки';
 				thunkAPI.dispatch(setMessage(message));
 			}
 			return thunkAPI.rejectWithValue(error.message);

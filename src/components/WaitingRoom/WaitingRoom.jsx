@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './WaitingRoom.module.scss';
 
-function WaitingRoom() {
+const WaitingRoom = () => {
 	return (
 		<section id="waitingRoom" className={styles.waitingRoom}>
 			<div className={styles.headers}>
@@ -25,16 +25,19 @@ function WaitingRoom() {
 					</p>
 				</div>
 
-					<div className={styles.featuresElement}>
-						<div className={`${styles.featuresIcon} ${styles.timeIcon}`}/>
-						<p className={styles.featuresText}>
-							Время работы: 10:00 - 22:00
-							<br/>GMT+3 (Москва, Россия)
-						</p>
-					</div>
+				<div className={styles.featuresElement}>
+					<div
+						className={`${styles.featuresIcon} ${styles.timeIcon}`}
+					/>
+					<p className={styles.featuresText}>
+						Время работы: 10:00 - 22:00
+						<br />
+						GMT+3 (Москва, Россия)
+					</p>
 				</div>
+			</div>
 		</section>
 	);
-}
+};
 
 export default WaitingRoom;
