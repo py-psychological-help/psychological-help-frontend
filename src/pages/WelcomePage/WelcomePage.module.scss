@@ -144,7 +144,7 @@
 	font-size: 20px;
 	font-weight: 600;
 	line-height: 24px;
-	background-color: black;
+	background-color: rgba(52, 52, 52, 1);
 	border-radius: 12px;
 	color: white;
 	text-decoration: none;
@@ -154,7 +154,7 @@
 
 	&:hover {
 	  background-color: #a9c6c5;
-	  color: black;
+	  color: rgba(52, 52, 52, 1);
 	}
   }
 }
