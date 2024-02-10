@@ -25,13 +25,13 @@ function WaitingRoom() {
 					</p>
 				</div>
 
-				<div className={styles.featuresElement}>
-					<div
-						className={`${styles.featuresIcon} ${styles.timeIcon}`}
-					/>
-					<p className={styles.featuresText}>
-						Время работы: 10:00 - 22:00 GMT+3 (Москва, Россия)
-					</p>
+					<div className={styles.featuresElement}>
+						<div className={`${styles.featuresIcon} ${styles.timeIcon}`}/>
+						<p className={styles.featuresText}>
+							Время работы: 10:00 - 22:00
+							<br/>GMT+3 (Москва, Россия)
+						</p>
+					</div>
 				</div>
 			</div>
 		</section>

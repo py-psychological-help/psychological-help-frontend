@@ -9,7 +9,7 @@
 	// border: 1px red solid;
 
 	.mainSubHeader {
-		color: black;
+		color: rgba(52, 52, 52, 1);
 		font-weight: 600;
 		font-size: 40px;
 		line-height: 44px;
@@ -24,7 +24,7 @@
 	}
 
 	.mainText {
-		color: black;
+		color: rgba(52, 52, 52, 1);
 		font-weight: 400;
 		max-width: 700px;
 		font-size: 24px;
@@ -84,6 +84,7 @@
 		line-height: 36px;
 		margin: 0;
 		padding: 0;
+	   color:rgba(52, 52, 52, 1)
 	}
 
 	.faqAnswer {
@@ -101,6 +102,7 @@
 		line-height: 20px;
 		margin: 0;
 		padding: 0;
+	  color:rgba(52, 52, 52, 1)
 	}
 
 	.expandedAnswer {
