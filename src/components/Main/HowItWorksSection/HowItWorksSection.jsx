@@ -21,7 +21,7 @@ const HowItWorksSection = () => {
 	useEffect(() => {
 		if (isSuccess) {
 			navigate('/waiting-room');
-			dispatch(helpReqActions.resetSuccessStatus());
+			dispatch(helpReqActions.resetSuccessStatus()); // Костыль для сброса isSuccess, чтобы редиректнуться на др. страницу
 		}
 		// eslint-disable-next-line
 	}, [isSuccess]);

@@ -88,15 +88,16 @@ const Header = memo(() => {
 								onClick={() => navigate('/#howItWorksSection')}
 							/>
 						)}
-					{!isLoggedIn && (location.pathname === '/signin' ||
-						location.pathname ==='/forgotpassword' ||
-					      location.pathname === '/waiting-room') && (
-						<Button
-							additionalStyles={styles.mainBtn}
-							buttonText="Обратиться за помощью"
-							onClick={() => navigate('/#howItWorksSection')}
-						/>
-					)}
+					{!isLoggedIn &&
+						(location.pathname === '/signin' ||
+							location.pathname === '/forgotpassword' ||
+							location.pathname === '/waiting-room') && (
+							<Button
+								additionalStyles={styles.mainBtn}
+								buttonText="Обратиться за помощью"
+								onClick={() => navigate('/#howItWorksSection')}
+							/>
+						)}
 				</div>
 			</nav>
 		</section>
