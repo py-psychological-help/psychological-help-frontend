@@ -38,9 +38,7 @@ function Chat({ chat, onSelect, onDisable, className }) {
 				)}`}</p>
 			</div>
 			<button
-				className={clsx(cls.chatButton, className, {
-					[cls.disabled]: chat.new && onDisable,
-				})}
+				className={clsx(cls.chatButton, className)}
 				onClick={handleClick}
 				// disabled={chat.new && onDisable}
 			>
