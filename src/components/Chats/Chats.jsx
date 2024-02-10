@@ -15,7 +15,7 @@ function Chats({ className, onSelect }) {
 	// useEffect(() => {
 	// 	if (userData) setIsVerified(userData.approved);
 	// }, [userData]);
-  
+
 	useEffect(() => {
 		if (userData) setIsVerified(userData.approved);
 	}, [userData]);

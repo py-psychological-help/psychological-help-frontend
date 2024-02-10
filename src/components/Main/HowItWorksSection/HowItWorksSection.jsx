@@ -1,31 +1,37 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
 import { AskForHelpReq } from '../../../slices/clientSlice/helpReqAsyncActions';
+import { clearMessage } from '../../../slices/messageSlice';
+import { helpReqActions } from '../../../slices/clientSlice/helpReqSlice';
 
 const HowItWorksSection = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { isError, isLoading, isSuccess } = useSelector(
-		(state) => state.helpReq
-	);
-
+	const { isLoading, isSuccess } = useSelector((state) => state.helpReq);
+	const { message } = useSelector((state) => state.message);
 	const {
 		register,
 		handleSubmit,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
 
-	const askForHelp = (data) => {
-		dispatch(AskForHelpReq(data));
+	useEffect(() => {
 		if (isSuccess) {
 			navigate('/waiting-room');
+			dispatch(helpReqActions.resetSuccessStatus()); // Костыль для сброса isSuccess, чтобы редиректнуться на др. страницу
 		}
-	};
+		// eslint-disable-next-line
+	}, [isSuccess]);
+
+	useEffect(() => {
+		dispatch(clearMessage());
+	}, [dispatch]);
 
 	const onSubmit = (data) => {
-		askForHelp(data);
+		dispatch(AskForHelpReq(data));
 	};
 
 	return (
@@ -176,8 +182,8 @@ const HowItWorksSection = () => {
 						{isLoading ? 'Отправка...' : 'Отправить заявку'}
 					</button>
 
-					{isError && (
-						<p className={styles.errorMessage}>Ошибка отправки</p>
+					{message && (
+						<p className={styles.errorMessage}>{message}</p>
 					)}
 				</form>
 			</div>
