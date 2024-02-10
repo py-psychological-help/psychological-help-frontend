@@ -23,9 +23,9 @@ const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const userData = useSelector((state) => state.user.userData);
 	const authToken = useSelector((state) => state.auth.authToken);
 	const userIsTrue = useSelector((state) => state.user.userData);
+	const { isSuccess } = useSelector((state) => state.user);
 
 	// Получения даты юзера по токену, с помощью useSelector эти данные можно юзать во всё приложении
 	// Добавить проверки на налиие токена и т.п.
@@ -33,15 +33,14 @@ const App = () => {
 		// создаёт перерендеры при каждой смене роута, позже пофиксить
 		if (authToken) {
 			dispatch(getCurrentUser());
-			navigate('/account');
 		}
 		// eslint-disable-next-line
 	}, [dispatch, authToken]);
 
 	useEffect(() => {
-		if (userData) navigate('/account-chat');
+		if (isSuccess) navigate('/account-chat');
 		// eslint-disable-next-line
-	}, [dispatch, authToken]);
+	}, [isSuccess]);
 
 	const [selectedChat, setSelectedChat] = useState();
 

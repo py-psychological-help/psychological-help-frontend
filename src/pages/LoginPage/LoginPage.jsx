@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './LoginPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
@@ -14,14 +14,7 @@ export default function LoginPage() {
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
 	const dispatch = useDispatch();
-	// const navigate = useNavigate();
-	// const userData = useSelector((state) => state.user.userData);
-	const { isSuccess, authToken } = useSelector((state) => state.auth);
 	const { message } = useSelector((state) => state.message);
-
-	// useEffect(() => {
-	// 	if (isSuccess && authToken) navigate('/account-chat');
-	// }, [navigate, dispatch, isSuccess, authToken]);
 
 	function onSubmit(data) {
 		dispatch(loginUser(data));

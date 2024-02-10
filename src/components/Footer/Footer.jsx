@@ -26,7 +26,7 @@ const Footer = memo(() => {
 					</NavLink>
 
 					<NavLink
-						to={isLoggedIn ? '/account' : '/welcome'}
+						to={isLoggedIn ? '/account-chat' : '/welcome'}
 						className={styles.navLink}
 					>
 						Психологам

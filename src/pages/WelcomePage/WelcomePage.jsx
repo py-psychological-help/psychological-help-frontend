@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
-
 
 export default function WelcomePage() {
 	const isValid = true;
@@ -10,7 +9,9 @@ export default function WelcomePage() {
 	return (
 		<section>
 			<div className={cls.container}>
-				<h1 className={cls.header}>Приветствуем тебя на нашем ресурсе!</h1>
+				<h1 className={cls.header}>
+					Приветствуем тебя на нашем ресурсе!
+				</h1>
 				<p className={cls.caption}>
 					Наша миссия помочь людям раскрыть их внутреннюю силу, чтобы
 					справляться с трудностями и жить в гармонии с собой.
@@ -33,14 +34,20 @@ export default function WelcomePage() {
 				</h2>
 				<ul className={cls.requiredList}>
 					<li className={cls.requiredItem}>Профильное образование</li>
-					<li className={cls.requiredItem}>Опыт работы с клиентами</li>
+					<li className={cls.requiredItem}>
+						Опыт работы с клиентами
+					</li>
 					<li className={cls.requiredItem}>
 						Подходы признанные научным сообществом
 					</li>
 				</ul>
 				<div className={cls.button}>
 					<Link to="/signup" className={cls.link}>
-						<Button type="button" name="Хочу в команду" isValid={isValid}/>
+						<Button
+							type="button"
+							name="Хочу в команду"
+							isValid={isValid}
+						/>
 					</Link>
 				</div>
 			</div>

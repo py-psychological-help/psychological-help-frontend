@@ -138,6 +138,20 @@
 			background-color: #a9c6c5;
 			color: rgba(52, 52, 52, 1);
 		}
+
+		&:disabled {
+			background-color: #d9d9d9;
+			color: #6f6f6f;
+			cursor: auto;
+		}
+	}
+
+	.label {
+		position: relative;
+
+		&:not(:first-of-type) {
+			margin-top: 20px;
+		}
 	}
 
 	.input {
@@ -148,7 +162,6 @@
 		line-height: 24px;
 		// background-color: #f2f2f2;
 		border: 1px #a9c6c5 solid;
-		margin: 0 0 49px 0;
 	}
 
 	.inputCaption {
@@ -173,6 +186,16 @@
 	}
 
 	.error {
+		margin: 0;
+		position: absolute;
+		bottom: -18px;
+		left: 0;
+		font-size: 12px;
+		line-height: 14px;
 		color: #ff0909;
+	}
+
+	.errorMessage {
+		color: red;
 	}
 }
