@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { setMessage } from '../messageSlice';
 
 const baseURL = 'https://dpogovorim.ru/api/v1/';
 
-export const submitHelpRequest = createAsyncThunk(
-	'howItWorks/submitHelpRequest',
+export const AskForHelpReq = createAsyncThunk(
+	'helpReq/AskForHelpReq',
 	async (formData, thunkAPI) => {
 		try {
 			const config = {
@@ -20,7 +21,8 @@ export const submitHelpRequest = createAsyncThunk(
 			return response.data;
 		} catch (error) {
 			if (error.response && error.response.data) {
-				return thunkAPI.rejectWithValue(error.response.data);
+				const message = 'Произошла ошибка регистрации заявки';
+				thunkAPI.dispatch(setMessage(message));
 			}
 			return thunkAPI.rejectWithValue(error.message);
 		}

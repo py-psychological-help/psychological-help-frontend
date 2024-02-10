@@ -1,132 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './HowItWorksSection.module.scss';
-import { submitHelpRequest } from '../../../slices/clientSlice/howItWorksAsyncActions';
+import { AskForHelpReq } from '../../../slices/clientSlice/helpReqAsyncActions';
+import { clearMessage } from '../../../slices/messageSlice';
+import { helpReqActions } from '../../../slices/clientSlice/helpReqSlice';
 
 const HowItWorksSection = () => {
-	const [formData, setFormData] = useState({
-		complaint: '',
-		email: '',
-		first_name: '',
-	});
-
-	const [errors, setErrors] = useState({
-		email: '',
-		first_name: '',
-		complaint: '',
-	});
-
-	const [submitting, setSubmitting] = useState(false);
-	const [submitError, setSubmitError] = useState(null);
-	const [submitSuccess, setSubmitSuccess] = useState(false);
-
-	const [emailChanged, setEmailChanged] = useState(false);
-	const [firstNameChanged, setFirstNameChanged] = useState(false);
-	const [complaintChanged, setComplaintChanged] = useState(false);
 	const navigate = useNavigate();
-
-	const validateField = (name, value) => {
-		if (name === 'email') {
-			if (value.trim() === '') {
-				return 'Пожалуйста, заполните поле';
-			}
-			if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i.test(value)) {
-				return 'Введите корректный email';
-			}
-		} else if (name === 'first_name') {
-			if (
-				value.trim() === '' ||
-				!/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)
-			) {
-				return value.trim() === '' ||
-					/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/.test(value)
-					? ''
-					: 'Укажите имя как в паспорте';
-			}
-		} else if (name === 'complaint') {
-			if (value.trim() === '') {
-				return 'Пожалуйста, заполните поле';
-			}
-			if (value.length > 500) {
-				return 'Превышено максимальное количество символов (500)';
-			}
-		}
-		return '';
-	};
-
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormData((prevData) => ({ ...prevData, [name]: value }));
-
-		if (name === 'email') setEmailChanged(true);
-		else if (name === 'first_name') setFirstNameChanged(true);
-		else if (name === 'complaint') setComplaintChanged(true);
-	};
-
-	useEffect(() => {
-		if (emailChanged) {
-			const emailError = validateField('email', formData.email);
-			setErrors((prevErrors) => ({ ...prevErrors, email: emailError }));
-			setEmailChanged(false);
-		}
-	}, [formData.email, emailChanged]);
-
-	useEffect(() => {
-		if (firstNameChanged) {
-			const firstNameError = validateField(
-				'first_name',
-				formData.first_name
-			);
-			setErrors((prevErrors) => ({
-				...prevErrors,
-				first_name: firstNameError,
-			}));
-			setFirstNameChanged(false);
-		}
-	}, [formData.first_name, firstNameChanged]);
-
-	useEffect(() => {
-		if (complaintChanged) {
-			const complaintError = validateField(
-				'complaint',
-				formData.complaint
-			);
-			setErrors((prevErrors) => ({
-				...prevErrors,
-				complaint: complaintError,
-			}));
-			setComplaintChanged(false);
-		}
-	}, [formData.complaint, complaintChanged]);
-
-	useEffect(() => {
-		if (submitSuccess) {
-			navigate('/waiting-room');
-		}
-	}, [navigate, submitSuccess]);
-
 	const dispatch = useDispatch();
+	const { isLoading, isSuccess } = useSelector((state) => state.helpReq);
+	const { message } = useSelector((state) => state.message);
+	const {
+		register,
+		handleSubmit,
+		formState: { isValid, errors },
+	} = useForm({ mode: 'onChange' });
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-
-		if (errors.email || errors.first_name || errors.complaint) {
-			return;
+	useEffect(() => {
+		if (isSuccess) {
+			navigate('/waiting-room');
+			dispatch(helpReqActions.resetSuccessStatus()); // Костыль для сброса isSuccess, чтобы редиректнуться на др. страницу
 		}
+		// eslint-disable-next-line
+	}, [isSuccess]);
 
-		setSubmitting(true);
+	useEffect(() => {
+		dispatch(clearMessage());
+	}, [dispatch]);
 
-		try {
-			await dispatch(submitHelpRequest(formData));
-			setSubmitSuccess(true);
-		} catch (error) {
-			setSubmitError(
-				error.message || 'Произошла ошибка при отправке заявки'
-			);
-		} finally {
-			setSubmitting(false);
-		}
+	const onSubmit = (data) => {
+		dispatch(AskForHelpReq(data));
 	};
 
 	return (
@@ -171,8 +76,12 @@ const HowItWorksSection = () => {
 					обсудишь с&nbsp;психологом, конфиденциальна.
 				</p>
 
-				<form className={styles.helpForm} onSubmit={handleSubmit}>
-					<label htmlFor="email">
+				<form
+					className={styles.helpForm}
+					onSubmit={handleSubmit(onSubmit)}
+					noValidate
+				>
+					<label className={styles.label} htmlFor="email">
 						<p className={styles.inputCaption}>Почта</p>
 						<input
 							className={`${styles.input} ${
@@ -181,17 +90,37 @@ const HowItWorksSection = () => {
 							type="email"
 							name="email"
 							id="email"
-							value={formData.email}
-							onChange={handleChange}
-							required
-							// placeholder="example@mail.ru"
+							{...register('email', {
+								required: true,
+								minLength: 6,
+								maxLength: 50,
+								pattern:
+									/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
+							})}
 						/>
+						{errors?.email?.type === 'pattern' && (
+							<p className={styles.error}>
+								Не соответствует формату почты
+							</p>
+						)}
+						{errors?.email?.type === 'required' && (
+							<p className={styles.error}>
+								Пожалуйста, заполните поле
+							</p>
+						)}
+						{errors?.email?.type === 'minLength' && (
+							<p className={styles.error}>
+								Слишком мало символов
+							</p>
+						)}
+						{errors?.email?.type === 'maxLength' && (
+							<p className={styles.error}>
+								Слишком много символов
+							</p>
+						)}
 					</label>
-					{errors.email && (
-						<p className={styles.error}>{errors.email}</p>
-					)}
 
-					<label htmlFor="first_name">
+					<label className={styles.label} htmlFor="first_name">
 						<p className={styles.inputCaption}>
 							Имя (Можно не указывать)
 						</p>
@@ -199,20 +128,21 @@ const HowItWorksSection = () => {
 							className={`${styles.input} ${
 								errors.first_name && styles.inputWrong
 							}`}
-							type="text"
 							name="first_name"
 							id="first_name"
-							value={formData.first_name}
-							onChange={handleChange}
-							disabled={formData.disableName}
-							// placeholder="Ваше имя"
+							type="text"
+							{...register('first_name', {
+								maxLength: 50,
+							})}
 						/>
+						{errors?.first_name?.type === 'maxLength' && (
+							<p className={styles.error}>
+								Слишком много символов
+							</p>
+						)}
 					</label>
-					{errors.first_name && (
-						<p className={styles.error}>{errors.first_name}</p>
-					)}
 
-					<label htmlFor="complaint">
+					<label className={styles.label} htmlFor="complaint">
 						<p className={styles.inputCaption}>Проблема</p>
 						<textarea
 							className={`${styles.textInput} ${
@@ -220,27 +150,40 @@ const HowItWorksSection = () => {
 							}`}
 							id="complaint"
 							name="complaint"
-							value={formData.complaint}
-							onChange={handleChange}
-							required
 							rows="10"
-							// placeholder="Опишите кратко вашу проблему (максимум 500 символов)"
+							{...register('complaint', {
+								required: true,
+								minLength: 2,
+								maxLength: 500,
+							})}
 						/>
+						{errors?.complaint?.type === 'required' && (
+							<p className={styles.error}>
+								Пожалуйста, заполните поле
+							</p>
+						)}
+						{errors?.complaint?.type === 'minLength' && (
+							<p className={styles.error}>
+								Слишком мало символов
+							</p>
+						)}
+						{errors?.complaint?.type === 'maxLength' && (
+							<p className={styles.error}>
+								Слишком много символов
+							</p>
+						)}
 					</label>
-					{errors.complaint && (
-						<p className={styles.error}>{errors.complaint}</p>
-					)}
 
 					<button
 						className={styles.mainBtn}
 						type="submit"
-						disabled={submitting}
+						disabled={!isValid}
 					>
-						{submitting ? 'Отправка...' : 'Отправить заявку'}
+						{isLoading ? 'Отправка...' : 'Отправить заявку'}
 					</button>
 
-					{submitError && (
-						<p className={styles.errorMessage}>{submitError}</p>
+					{message && (
+						<p className={styles.errorMessage}>{message}</p>
 					)}
 				</form>
 			</div>

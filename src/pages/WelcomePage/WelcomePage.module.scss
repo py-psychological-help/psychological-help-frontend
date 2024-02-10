@@ -78,14 +78,6 @@
 		line-height: 36px;
 	}
 
-	.requiredList {
-		margin: 30px 0 32px;
-		padding-inline-start: 30px;
-		font-size: 20px;
-		font-weight: 400;
-		line-height: 26px;
-	}
-
 	.link {
 		display: block;
 		width: 231px;
@@ -144,7 +136,7 @@
 		font-size: 20px;
 		font-weight: 600;
 		line-height: 24px;
-		background-color: black;
+		background-color: rgba(52, 52, 52, 1);
 		border-radius: 12px;
 		color: white;
 		text-decoration: none;
@@ -154,7 +146,7 @@
 
 		&:hover {
 			background-color: #a9c6c5;
-			color: black;
+			color: rgba(52, 52, 52, 1);
 		}
 	}
 }
@@ -171,4 +163,12 @@
 	width: 231px;
 	height: 48px;
 	margin-top: 32px;
+}
+
+.requiredList {
+	margin: 30px 0 32px;
+	padding-inline-start: 30px;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 26px;
 }

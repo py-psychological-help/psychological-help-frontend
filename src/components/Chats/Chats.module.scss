@@ -10,7 +10,7 @@
 	font-size: 40px;
 	font-weight: 600;
 	line-height: 1.1;
-	color: #212028;
+	color: rgba(52, 52, 52, 1);
 	margin: 0;
 	padding: 0;
 }
@@ -37,15 +37,14 @@
 }
 
 .active {
-	border-bottom: 2px solid #4f4f4f;
-	color: #212028;
+	border-bottom: 4px solid rgba(52, 52, 52, 1);
+	color: rgba(52, 52, 52, 1);
 	font-weight: 600;
 }
 
 .dashboardItem:hover {
 	cursor: pointer;
 	opacity: 0.7;
-	transition: 1s ease;
 }
 
 .chatsList {
@@ -76,7 +75,7 @@
 	font-size: 24px;
 	font-weight: 400;
 	line-height: 1.5;
-	color: #212028;
+	color: rgba(52, 52, 52, 1);
 	margin: 0;
 	padding: 0;
 }

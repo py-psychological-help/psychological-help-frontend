@@ -4,7 +4,7 @@
 	margin: 0;
 	flex-direction: column;
 	justify-content: space-between;
-	color: black;
+	color: rgba(52, 52, 52, 1);
 	font-family: Montserrat, Arial, sans-serif;
 	max-width: 1280px;
 
@@ -62,6 +62,7 @@
 	}
 
 	.helpForm {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		padding: 31px 0 0 0;
@@ -100,7 +101,7 @@
 	.textInputInfo {
 		width: 303px;
 		padding: 16px;
-		border: 1px black solid;
+		border: 1px rgba(52, 52, 52, 1) solid;
 		border-radius: 20px;
 	}
 
@@ -124,9 +125,9 @@
 		font-weight: 600;
 		font-size: 20px;
 		line-height: 24px;
-		background-color: black;
+		background-color: rgba(52, 52, 52, 1);
 		border-radius: 12px;
-		color: white;
+		color: rgba(235, 231, 220, 1);
 		text-decoration: none;
 		align-items: center;
 		justify-content: center;
@@ -136,7 +137,21 @@
 
 		&:hover {
 			background-color: #a9c6c5;
-			color: black;
+			color: rgba(52, 52, 52, 1);
+		}
+
+		&:disabled {
+			background-color: #d9d9d9;
+			color: #6f6f6f;
+			cursor: auto;
+		}
+	}
+
+	.label {
+		position: relative;
+
+		&:not(:first-of-type) {
+			margin-top: 20px;
 		}
 	}
 
@@ -148,7 +163,6 @@
 		line-height: 24px;
 		// background-color: #f2f2f2;
 		border: 1px #a9c6c5 solid;
-		margin: 0 0 49px 0;
 	}
 
 	.inputCaption {
@@ -173,6 +187,19 @@
 	}
 
 	.error {
+		margin: 0;
+		position: absolute;
+		bottom: -18px;
+		left: 0;
+		font-size: 12px;
+		line-height: 14px;
 		color: #ff0909;
+	}
+
+	.errorMessage {
+		position: absolute;
+		bottom: -40px;
+		left: 0;
+		color: red;
 	}
 }

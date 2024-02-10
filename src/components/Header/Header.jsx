@@ -46,7 +46,7 @@ const Header = memo(() => {
 					</NavLink>
 
 					<NavLink
-						to={isLoggedIn ? '/account' : '/welcome'}
+						to={isLoggedIn ? '/account-chat' : '/welcome'}
 						className={styles.navLink}
 					>
 						Психологам
@@ -71,8 +71,6 @@ const Header = memo(() => {
 					{!isLoggedIn &&
 						location.pathname !== '/' &&
 						(location.pathname === '/welcome' ||
-							location.pathname === '/signin' ||
-							location.pathname === '/forgotpassword' ||
 							location.pathname === '/signup') && (
 							<Button
 								additionalStyles={styles.logBtn}
@@ -84,6 +82,16 @@ const Header = memo(() => {
 					{!isLoggedIn &&
 						location.pathname === '/' &&
 						location.pathname !== '/welcome' && (
+							<Button
+								additionalStyles={styles.mainBtn}
+								buttonText="Обратиться за помощью"
+								onClick={() => navigate('/#howItWorksSection')}
+							/>
+						)}
+					{!isLoggedIn &&
+						(location.pathname === '/signin' ||
+							location.pathname === '/forgotpassword' ||
+							location.pathname === '/waiting-room') && (
 							<Button
 								additionalStyles={styles.mainBtn}
 								buttonText="Обратиться за помощью"

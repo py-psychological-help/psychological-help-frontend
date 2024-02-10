@@ -31,7 +31,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .inputCaption {
-	color: #212028;
+	color: rgba(52, 52, 52, 1);
 	margin: 0 0 5px;
 	font-size: 14px;
 	font-weight: 400;
@@ -52,7 +52,7 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 
 .input:focus {
-    outline-style: solid;
+	outline-style: solid;
 	outline-color: #a9c6c5;
 }
 
