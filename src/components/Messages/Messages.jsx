@@ -15,10 +15,9 @@ function Messages({ selectedChat }) {
 	// const chatSecretKey = 'apNrl6L4GhAsj9uj76DP';
 	const token = useSelector((state) => state.auth.authToken);
 	const messagesListRef = useRef(null);
-	const chatNew = selectedChat.new;
+	const chatNew = selectedChat?.new;
 
 	useEffect(() => {
-		console.log('chatNew', chatNew);
 		if (chatNew) {
 			dispatch(sendChatLink(chatSecretKey));
 			console.log('Новый чат');
