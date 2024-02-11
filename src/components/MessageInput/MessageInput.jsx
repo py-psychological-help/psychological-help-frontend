@@ -4,7 +4,7 @@ import cls from './MessageInput.module.scss';
 
 const MessageInput = ({ onSend, className }) => {
 	const [text, setText] = useState('');
-	const [isError, setIsError] = useState(false);
+	const [isError, setIsError] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 
 	const textareaRef = useRef(null);
@@ -14,9 +14,9 @@ const MessageInput = ({ onSend, className }) => {
 		if (textareaValue.trim().length === 0) {
 			setIsError(true);
 			setErrorMessage('Сообщение не может быть пустым.');
-		} else if (textareaValue.length > 1000) {
+		} else if (textareaValue.length > 500) {
 			setIsError(true);
-			setErrorMessage('Сообщение не может превышать 1000 символов.');
+			setErrorMessage('Сообщение не может превышать 500 символов.');
 		} else {
 			setIsError(false);
 			setErrorMessage('');
