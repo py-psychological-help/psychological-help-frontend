@@ -5,23 +5,26 @@ import cls from './MessageInput.module.scss';
 const MessageInput = ({ onSend, className }) => {
 	const [text, setText] = useState('');
 	const [isError, setIsError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const textareaRef = useRef(null);
 
-	const wordsRegex = /[А-Яа-яЁё]+[\s\p{P}][А-Яа-яЁё]+/; // поменять
-
 	const handleMessageInputChange = () => {
-		const textarea = textareaRef.current;
-
-		if (!wordsRegex.test(textarea.value)) {
+		const textareaValue = textareaRef.current.value;
+		if (textareaValue.trim().length === 0) {
 			setIsError(true);
+			setErrorMessage('Сообщение не может быть пустым.');
+		} else if (textareaValue.length > 1000) {
+			setIsError(true);
+			setErrorMessage('Сообщение не может превышать 1000 символов.');
 		} else {
 			setIsError(false);
+			setErrorMessage('');
 		}
 	};
 
 	const handleSend = () => {
-		if (text.trim() !== '' && !isError) {
+		if (!isError && text.trim() !== '' && text.length <= 1000) {
 			onSend(text);
 			setText('');
 			textareaRef.current.style.height = 'auto';
@@ -29,7 +32,7 @@ const MessageInput = ({ onSend, className }) => {
 	};
 
 	const handleKeyPress = (e) => {
-		if (e.key === 'Enter') {
+		if (e.key === 'Enter' && !e.shiftKey) {
 			e.preventDefault();
 			handleSend();
 		}
@@ -51,13 +54,15 @@ const MessageInput = ({ onSend, className }) => {
 						[cls.errorInput]: isError,
 					})}
 				/>
-				<span
-					className={clsx(cls.errorText, className, {
-						[cls.visible]: isError,
-					})}
-				>
-					Ошибка, слишком кратко описана проблема, минимум 2 слова.
-				</span>
+				{isError && (
+					<span
+						className={clsx(cls.errorText, className, {
+							[cls.visible]: isError,
+						})}
+					>
+						{errorMessage}
+					</span>
+				)}
 			</div>
 			<button
 				type="button"

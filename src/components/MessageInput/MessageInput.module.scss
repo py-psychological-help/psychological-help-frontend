@@ -8,6 +8,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
+    height: 100px;
 }
 
 .messageInput {
@@ -35,11 +36,13 @@
 	line-height: 1.2;
 	font-weight: 400;
 	color: #ee505a;
-	display: none;
+    visibility: hidden;
+    height: 25px;
 }
 
 .visible {
-	display: inline;
+    visibility: visible;
+    height: 25px;
 }
 
 .submitButton {

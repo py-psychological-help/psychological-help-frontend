@@ -12,10 +12,6 @@ function Chats({ className, onSelect }) {
 	const dispatch = useDispatch();
 	const userData = useSelector((state) => state.user.userData);
 
-	// useEffect(() => {
-	// 	if (userData) setIsVerified(userData.approved);
-	// }, [userData]);
-
 	useEffect(() => {
 		if (userData) setIsVerified(userData.approved);
 	}, [userData]);
@@ -26,23 +22,32 @@ function Chats({ className, onSelect }) {
 
 	const [isFiltered, setIsFiltered] = useState('new');
 
-	const filteredChats = selectChats.filter((chat) => {
-		if (isFiltered === 'active') {
-			return (
-				chat.psychologist?.last_name === userData.last_name &&
-				chat.active === true
-			);
-		}
-		if (isFiltered === 'new') return chat.new;
-		if (isFiltered === 'archive') {
-			return (
+	let filteredAndSortedChats = selectChats;
+
+	if (isFiltered === 'active') {
+		filteredAndSortedChats = selectChats
+			.filter(
+				(chat) =>
+					chat.psychologist?.last_name === userData.last_name &&
+					chat.active === true
+			)
+			.sort((a, b) => {
+				const lastMessageA =
+					a.messages[a.messages.length - 1]?.date_time;
+				const lastMessageB =
+					b.messages[b.messages.length - 1]?.date_time;
+				console.log(new Date(lastMessageB) - new Date(lastMessageA));
+				return new Date(lastMessageB) - new Date(lastMessageA);
+			});
+	} else if (isFiltered === 'new') {
+		filteredAndSortedChats = selectChats.filter((chat) => chat.new);
+	} else if (isFiltered === 'archive') {
+		filteredAndSortedChats = selectChats.filter(
+			(chat) =>
 				chat.psychologist?.last_name === userData.last_name &&
 				chat.active === false
-			);
-		}
-		return selectChats;
-	});
-	console.log(filteredChats);
+		);
+	}
 
 	const isActiveChatExist = selectChats.some((chat) => chat.active);
 	const handleConnectBtnDisabled = () => {
@@ -95,7 +100,7 @@ function Chats({ className, onSelect }) {
 			</ul>
 			{isVerified ? (
 				<ul className={cls.chatsList}>
-					{filteredChats.map((chat) => (
+					{filteredAndSortedChats.map((chat) => (
 						<Chat
 							key={chat.id}
 							chat={chat}
