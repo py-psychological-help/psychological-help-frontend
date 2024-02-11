@@ -22,9 +22,10 @@ export default function ResetPasswordPage() {
 
 	function onSubmit(data) {
 		const fullData = { uid, token, ...data };
-		console.log(fullData);
 		dispatch(resetPasswordChange(fullData));
 	}
+
+	console.log(message);
 
 	useEffect(() => {
 		if (isSuccess) navigate('/signin');

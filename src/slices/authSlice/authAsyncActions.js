@@ -41,6 +41,34 @@ export const registerUser = createAsyncThunk(
 	}
 );
 
+export const activateUser = createAsyncThunk(
+	'auth/activateUser',
+	async ({ uid, token }, thunkAPI) => {
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			const response = await axios.post(
+				`${baseURL}users/psychologists/activation/`,
+				{ uid, token },
+				config
+			);
+			return response.data;
+		} catch (error) {
+			if (error.response && error.response.data) {
+				const message = 'Произошла ошибка';
+
+				thunkAPI.dispatch(setMessage(message));
+			}
+			console.log(error);
+
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	}
+);
+
 export const loginUser = createAsyncThunk(
 	'auth/login',
 	async ({ email, password }, thunkAPI) => {

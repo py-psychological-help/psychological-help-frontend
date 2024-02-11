@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
 	registerUser,
+	activateUser,
 	loginUser,
 	requestPasswordChange,
 	resetPasswordChange,
@@ -42,6 +43,18 @@ const authSlice = createSlice({
 				state.isLoading = false;
 				state.error = action.payload;
 			}) // Нужно ли разделять разные редьюсеры?
+			.addCase(activateUser.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(activateUser.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(activateUser.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
 			.addCase(loginUser.pending, (state) => {
 				state.error = undefined;
 				state.isLoading = true;
