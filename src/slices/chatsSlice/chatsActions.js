@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BASE_URL } from '../config';
+import { BASE_URL } from '../../utils/const';
 import makeRequest from '../../utils/makeRequest';
 
 export const fetchChats = createAsyncThunk(

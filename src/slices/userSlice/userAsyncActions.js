@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from '../messageSlice';
-
-const baseURL = 'https://dpogovorim.ru/api/v1/';
+import { BASE_URL } from '../../utils/const';
 
 export const getCurrentUser = createAsyncThunk(
 	'user/getCurrentUser',
@@ -15,7 +14,7 @@ export const getCurrentUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.get(
-				`${baseURL}users/psychologists/me/`,
+				`${BASE_URL}users/psychologists/me/`,
 				config
 			);
 			return response.data;
@@ -39,7 +38,7 @@ export const updateCurrentUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.patch(
-				`${baseURL}users/psychologists/me/`,
+				`${BASE_URL}users/psychologists/me/`,
 				{
 					first_name: firstName,
 					last_name: lastName,

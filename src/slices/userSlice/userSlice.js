@@ -7,9 +7,6 @@ export const userSlice = createSlice({
 	name: 'user',
 	initialState,
 	reducers: {
-		// setUserData: (state, action) => {
-		// 	state.userData = action.payload;
-		// },
 		logout: (state) => {
 			state.userData = undefined;
 			state.isSuccess = false;
