@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cls from './ClientSide.module.scss';
 import Messages from '../Messages/Messages';
 
 function ClientSide() {
 	const navigate = useNavigate();
+	const archiveButtonRef = useRef(null);
 	const handleCloseButtonClick = () => {
 		navigate('/');
 	};
@@ -13,6 +14,7 @@ function ClientSide() {
 			<div className={cls.row}>
 				<h1 className={cls.title}>Чат с психологом </h1>
 				<button
+					ref={archiveButtonRef}
 					className={cls.close}
 					type="button"
 					onClick={handleCloseButtonClick}
@@ -21,7 +23,7 @@ function ClientSide() {
 				</button>
 			</div>
 			<div className={cls.messagesContainer}>
-				<Messages />
+				<Messages archiveButtonRef={archiveButtonRef} />
 			</div>
 		</div>
 	);
