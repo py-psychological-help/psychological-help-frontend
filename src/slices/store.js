@@ -16,6 +16,5 @@ export default configureStore({
 		chats: chatsReducer,
 		sendChatLink: sendChatLinkReducer,
 		selectedChat: selectedChatReducer,
-		// chat: chatReducer
 	},
 });

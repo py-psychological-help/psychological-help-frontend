@@ -1,3 +1,5 @@
+import { BASE_URL } from '../../utils/const';
+
 function checkResponse(res) {
 	if (res.ok) {
 		return res.json();
@@ -22,14 +24,14 @@ class Api {
 	}
 
 	getUploadedDocuments() {
-		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
+		return fetch(`${this.baseUrl}users/psychologists/me/documents/`, {
 			method: 'GET',
 			headers: this.getHeaders(),
 		}).then(checkResponse);
 	}
 
 	uploadDocument(doc) {
-		return fetch(`${this.baseUrl}/users/psychologists/me/documents/`, {
+		return fetch(`${this.baseUrl}users/psychologists/me/documents/`, {
 			method: 'POST',
 			headers: this.getHeaders(),
 			body: JSON.stringify({ scan: doc }),
@@ -38,7 +40,7 @@ class Api {
 }
 
 const api = new Api({
-	baseUrl: 'https://dpogovorim.ru/api/v1',
+	baseUrl: BASE_URL,
 	getAuthToken: () => localStorage.getItem('authToken'),
 });
 

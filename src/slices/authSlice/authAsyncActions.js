@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from '../messageSlice';
-
-const baseURL = 'https://dpogovorim.ru/api/v1/';
+import { BASE_URL } from '../../utils/const';
 
 export const registerUser = createAsyncThunk(
 	'auth/register',
@@ -17,7 +16,7 @@ export const registerUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/psychologists/`,
+				`${BASE_URL}users/psychologists/`,
 				{
 					first_name: firstName,
 					last_name: lastName,
@@ -51,7 +50,7 @@ export const activateUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/psychologists/activation/`,
+				`${BASE_URL}users/psychologists/activation/`,
 				{ uid, token },
 				config
 			);
@@ -79,7 +78,7 @@ export const loginUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}auth/token/login/`,
+				`${BASE_URL}auth/token/login/`,
 				{ email: email.toLowerCase(), password }, // Поля из формы входа (идентичные)
 				config
 			);
@@ -106,7 +105,7 @@ export const requestPasswordChange = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/psychologists/reset_password/`,
+				`${BASE_URL}users/psychologists/reset_password/`,
 				{ email: email.toLowerCase() },
 				config
 			);
@@ -132,7 +131,7 @@ export const resetPasswordChange = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/psychologists/reset_password_confirm/`,
+				`${BASE_URL}users/psychologists/reset_password_confirm/`,
 				{ uid, token, new_password: password },
 				config
 			);

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from '../messageSlice';
-
-const baseURL = 'https://dpogovorim.ru/api/v1/';
+import { BASE_URL } from '../../utils/const';
 
 export const AskForHelpReq = createAsyncThunk(
 	'helpReq/AskForHelpReq',
@@ -14,7 +13,7 @@ export const AskForHelpReq = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/clients/`,
+				`${BASE_URL}users/clients/`,
 				formData,
 				config
 			);
