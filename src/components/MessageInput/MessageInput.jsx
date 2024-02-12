@@ -24,7 +24,7 @@ const MessageInput = ({ onSend, className }) => {
 	};
 
 	const handleSend = () => {
-		if (!isError && text.trim() !== '' && text.length <= 1000) {
+		if (!isError && text.trim() !== '' && text.length <= 500) {
 			onSend(text);
 			setText('');
 			textareaRef.current.style.height = 'auto';
