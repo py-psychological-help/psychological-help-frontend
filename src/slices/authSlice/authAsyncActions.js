@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setMessage } from '../messageSlice';
-
-const baseURL = 'https://letstalk.ddns.net/api/v1/';
+import { BASE_URL } from '../../utils/const';
 
 export const registerUser = createAsyncThunk(
 	'auth/register',
@@ -17,19 +16,18 @@ export const registerUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}users/psychologists/`,
+				`${BASE_URL}users/psychologists/`,
 				{
 					first_name: firstName,
 					last_name: lastName,
 					birth_date: birthDate,
-					email,
+					email: email.toLowerCase(),
 					password,
 				},
 				config
 			);
 			return response.data;
 		} catch (error) {
-			console.log(error);
 			if (error.response && error.response.data) {
 				// тут будут тексты ошибок от бэка, когда они их добавят
 				// const message = error.response.data.non_field_errors.toString();
@@ -37,6 +35,34 @@ export const registerUser = createAsyncThunk(
 
 				thunkAPI.dispatch(setMessage(message));
 			}
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	}
+);
+
+export const activateUser = createAsyncThunk(
+	'auth/activateUser',
+	async ({ uid, token }, thunkAPI) => {
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			const response = await axios.post(
+				`${BASE_URL}users/psychologists/activation/`,
+				{ uid, token },
+				config
+			);
+			return response.data;
+		} catch (error) {
+			if (error.response && error.response.data) {
+				const message = 'Произошла ошибка';
+
+				thunkAPI.dispatch(setMessage(message));
+			}
+			console.log(error);
+
 			return thunkAPI.rejectWithValue(error.response.data);
 		}
 	}
@@ -52,8 +78,8 @@ export const loginUser = createAsyncThunk(
 				},
 			};
 			const response = await axios.post(
-				`${baseURL}auth/token/login/`,
-				{ email, password }, // Поля из формы входа (идентичные)
+				`${BASE_URL}auth/token/login/`,
+				{ email: email.toLowerCase(), password }, // Поля из формы входа (идентичные)
 				config
 			);
 			localStorage.setItem('authToken', response.data.auth_token);
@@ -61,6 +87,59 @@ export const loginUser = createAsyncThunk(
 		} catch (error) {
 			if (error.response && error.response.data) {
 				const message = error.response.data.non_field_errors.toString();
+
+				thunkAPI.dispatch(setMessage(message));
+			}
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	}
+);
+
+export const requestPasswordChange = createAsyncThunk(
+	'auth/forgotPassword',
+	async ({ email }, thunkAPI) => {
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			const response = await axios.post(
+				`${BASE_URL}users/psychologists/reset_password/`,
+				{ email: email.toLowerCase() },
+				config
+			);
+			return response.data;
+		} catch (error) {
+			if (error.response && error.response.data) {
+				const message = 'Произошла ошибка';
+
+				thunkAPI.dispatch(setMessage(message));
+			}
+			return thunkAPI.rejectWithValue(error.response.data);
+		}
+	}
+);
+
+export const resetPasswordChange = createAsyncThunk(
+	'auth/resetPassword',
+	async ({ uid, token, password }, thunkAPI) => {
+		try {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			const response = await axios.post(
+				`${BASE_URL}users/psychologists/reset_password_confirm/`,
+				{ uid, token, new_password: password },
+				config
+			);
+			console.log(response.data);
+			return response.data;
+		} catch (error) {
+			if (error.response && error.response.data) {
+				const message = 'Произошла ошибка';
 
 				thunkAPI.dispatch(setMessage(message));
 			}

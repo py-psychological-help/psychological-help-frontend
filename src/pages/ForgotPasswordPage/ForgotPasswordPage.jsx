@@ -1,17 +1,27 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import cls from './ForgotPasswordPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
+import { requestPasswordChange } from '../../slices/authSlice/authAsyncActions';
+import { clearMessage } from '../../slices/messageSlice';
 
 export default function ForgotPassword() {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-	} = useForm();
+		formState: { isValid, errors },
+	} = useForm({ mode: 'onChange' });
+	const dispatch = useDispatch();
+	const { message } = useSelector((state) => state.message);
 
 	function onSubmit(data) {
-		console.log(data);
+		dispatch(requestPasswordChange(data));
 	}
+
+	useEffect(() => {
+		dispatch(clearMessage());
+	}, [dispatch]);
 
 	return (
 		<div className={cls.container}>
@@ -29,8 +39,6 @@ export default function ForgotPassword() {
 				<input
 					name="email"
 					id="email"
-					type="email"
-					placeholder="почта"
 					className={
 						errors?.email
 							? `${cls.input} ${cls.inputWrong}`
@@ -38,9 +46,13 @@ export default function ForgotPassword() {
 					}
 					{...register('email', {
 						required: true,
-						minLength: 7,
+						minLength: 6,
 						maxLength: 50,
-						pattern: /[^@\s]+@[^@\s]+\.[^@\s]+/,
+						// ужасный паттерн для почты по требованиям к продукту:
+						pattern:
+							/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
+						// более дружелюбный паттерн, который можно использовать
+						// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -55,8 +67,13 @@ export default function ForgotPassword() {
 				{errors?.email?.type === 'maxLength' && (
 					<p className={cls.error}>Слишком много символов</p>
 				)}
+				<span className={cls.apiError}>{message}</span>
 				<div className={cls.button}>
-					<Button type="submit" name="Восстановить пароль" />
+					<Button
+						type="submit"
+						name="Восстановить пароль"
+						isValid={isValid}
+					/>
 				</div>
 			</form>
 		</div>

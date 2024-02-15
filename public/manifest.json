@@ -1,9 +1,9 @@
 {
-	"short_name": "React App",
-	"name": "Create React App Sample",
-	"icons": [],
-	"start_url": ".",
+	"short_name": "Поговорим",
+	"name": "Давай поговорим",
+	"icons": ["%PUBLIC_URL%/favicon.ico"],
+	"start_url": "https://dpogovorim.ru/",
 	"display": "standalone",
 	"theme_color": "#000000",
-	"background_color": "#ffffff"
+	"background_color": "#EBE7DC"
 }

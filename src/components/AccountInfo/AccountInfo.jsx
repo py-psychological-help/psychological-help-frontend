@@ -1,16 +1,56 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
 import styles from './AccountInfo.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
+import { updateCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
 const AccountInfo = () => {
 	const userData = useSelector((state) => state.user.userData);
-	// Выдаёт ошибку, пока сервер не прислал юзера (поэтому знаки вопроса в данных).
-	// В будущем добавить скелетон/лоадер, пока данные грузятся (state.user.isLoading)
+	const [isEditing, setIsEditing] = useState(false);
+	const [userFormData, setUserFormData] = useState({
+		firstName: userData?.first_name,
+		lastName: userData?.last_name,
+		birthDate: userData?.birth_date,
+	});
+	const dispatch = useDispatch();
+	const nameInputRef = useRef();
+	const lastNameInputRef = useRef();
+	const birthDayInputRef = useRef();
+	const accountFormRef = useRef();
+
+	const enableEditing = (e) => {
+		e.preventDefault();
+		setIsEditing(true);
+	};
+
+	const cancelEditing = (e) => {
+		e.preventDefault();
+		setIsEditing(false);
+		setUserFormData({
+			firstName: userData?.first_name,
+			lastName: userData?.last_name,
+			birthDate: userData?.birth_date,
+		});
+	};
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setUserFormData({
+			...userFormData,
+			[name]: value,
+		});
+	};
+
+	const handleButtonSubmit = (e) => {
+		e.preventDefault();
+		dispatch(updateCurrentUser(userFormData));
+		setIsEditing(false);
+	};
 	return (
 		<div className={styles.body}>
 			<AccountMenu />
 			<div className={styles.formBox}>
-				<form className={styles.form}>
+				<form className={styles.form} ref={accountFormRef}>
 					<label
 						className={`${styles.label} ${styles.name}`}
 						htmlFor="name"
@@ -19,44 +59,53 @@ const AccountInfo = () => {
 						<input
 							className={styles.input}
 							type="text"
-							name="name"
-							pattern="[a-zA-Zа-яА-Я\s\-]*"
+							name="firstName"
+							pattern="/^[а-яА-ЯёЁ]+(?:[-\s][а-яА-ЯёЁ]+)*$/"
 							placeholder="Иван"
 							minLength="1"
-							maxLength="30"
-							value={userData?.first_name}
+							maxLength="50"
+							value={userFormData.firstName}
+							onChange={handleInputChange}
+							ref={nameInputRef}
 							id="name"
-							readOnly
+							required
+							readOnly={!isEditing}
 						/>
 					</label>
-					<label className={styles.label} htmlFor="secondName">
+					<label className={styles.label} htmlFor="lastName">
 						<span>Фамилия</span>
 						<input
 							className={styles.input}
 							type="text"
-							name="name"
+							name="lastName"
 							pattern="[a-zA-Zа-яА-Я\s\-]*"
 							placeholder="Иванов"
 							minLength="1"
 							maxLength="30"
-							value={userData?.last_name}
-							id="secondName"
-							readOnly
+							value={userFormData.lastName}
+							onChange={handleInputChange}
+							ref={lastNameInputRef}
+							id="lastName"
+							required
+							readOnly={!isEditing}
 						/>
 					</label>
 					<label
-						className={`${styles.label} ${styles.birthData}`}
-						htmlFor="birthData"
+						className={`${styles.label} ${styles.birthDate}`}
+						htmlFor="birthDate"
 					>
 						<span>Дата рождения</span>
 						<input
 							className={styles.input}
-							type="text"
-							name="name"
+							type="date"
+							name="birthDate"
 							placeholder="12.12.1985"
-							value={userData?.birth_date} // Дата - null, проверить позже
-							id="birthData"
-							readOnly
+							value={userFormData.birthDate}
+							onChange={handleInputChange}
+							id="birthDate"
+							ref={birthDayInputRef}
+							required
+							readOnly={!isEditing}
 						/>
 					</label>
 					<label
@@ -75,6 +124,32 @@ const AccountInfo = () => {
 							readOnly
 						/>
 					</label>
+					{isEditing ? (
+						<div className={styles.buttons}>
+							<button
+								className={styles.saveButton}
+								type="submit"
+								onClick={handleButtonSubmit}
+							>
+								Сохранить
+							</button>
+							<button
+								className={styles.cancelButton}
+								type="button"
+								onClick={cancelEditing}
+							>
+								Отменить
+							</button>
+						</div>
+					) : (
+						<button
+							className={styles.editButton}
+							type="button"
+							onClick={enableEditing}
+						>
+							Редактировать
+						</button>
+					)}
 				</form>
 			</div>
 		</div>

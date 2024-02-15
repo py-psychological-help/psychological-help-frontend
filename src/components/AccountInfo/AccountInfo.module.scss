@@ -10,13 +10,14 @@
 
 .label {
 	width: 521px;
-	margin-bottom: 10px;
+	margin-bottom: 26px;
 	display: flex;
 	flex-direction: column;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 20px;
+	color: rgba(52, 52, 52, 1);
 
 	span {
 		font-size: 14px;
@@ -28,11 +29,79 @@
 
 	.input {
 		background-color: white;
-		border: 1px solid #212028;
-		border-radius: 20px;
+		border: 1px solid rgba(169, 198, 197, 1);
+		border-radius: 10px;
 		padding: 20px;
 		font-size: 16px;
-		color: #697077;
+		font-weight: 500;
+		color: rgba(52, 52, 52, 1);
 		display: block;
 	}
+}
+
+.buttons {
+	display: flex;
+}
+
+.editButton {
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 20px;
+	background-color: inherit;
+	cursor: pointer;
+	width: 210px;
+	padding: 12px 32px;
+	border: 2px solid rgba(52, 52, 52, 1);
+	margin-top: 5px;
+	color: rgba(52, 52, 52, 1);
+}
+
+.editButton:hover {
+	border: 2px solid rgba(169, 198, 197, 1);
+}
+
+.saveButton {
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	color: rgba(235, 231, 220, 1);
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px;
+	background-color: rgba(52, 52, 52, 1);
+	cursor: pointer;
+	width: 178px;
+	padding: 12px 32px;
+	border: 1px solid rgba(52, 52, 52, 1);
+	margin-right: 32px;
+}
+.saveButton:hover {
+	border: 1px solid rgba(169, 198, 197, 1);
+	color: rgba(52, 52, 52, 1);
+	background-color: rgba(169, 198, 197, 1);
+}
+
+.cancelButton {
+	border-radius: 10px;
+	text-decoration: none;
+	font-family: Montserrat, sans-serif;
+	color: rgba(52, 52, 52, 1);
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px;
+	background-color: inherit;
+	cursor: pointer;
+	width: 178px;
+	padding: 12px 32px;
+	border: 2px solid rgba(52, 52, 52, 1);
+}
+
+.cancelButton:hover {
+	border: 2px solid rgba(169, 198, 197, 1);
 }

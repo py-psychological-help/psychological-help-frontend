@@ -5,88 +5,103 @@ import { userActions } from '../../slices/userSlice/userSlice';
 import styles from './Header.module.scss';
 import Logo from '../Logo/Logo';
 import Button from '../buttonHeader/Button';
-
-const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-};
+import { authActions } from '../../slices/authSlice/authSlice';
 
 const Header = memo(() => {
-    const isLoggedIn = useSelector((state) => state.user.userData);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const location = useLocation();
+	const isLoggedIn = useSelector((state) => state.user.userData);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
 
-    const handleNav = () => {
-        navigate('/signin');
-    };
+	const handleNav = () => {
+		if (location.pathname !== '/signin') {
+			navigate('/signin');
+		} else {
+			window.location.reload();
+		}
+	};
 
-    const handleLogout = () => {
-        dispatch(userActions.logout());
-        navigate('/');
-    };
+	const handleLogout = () => {
+		dispatch(userActions.logout());
+		dispatch(authActions.logout());
+		navigate('/');
+	};
 
-    return (
-        <section className={styles.header}>
-            <nav className={styles.headerNav}>
-                <div className={styles.logoBar}>
-                    <Logo />
-                </div>
-                <div className={styles.navLinks}>
-                    <NavLink
-                        to="/"
-                        onClick={() => scrollToSection('aboutSection')}
-                        className={styles.navLink}
-                    >
-                        О проекте
-                    </NavLink>
-                    <NavLink
-                        to="/"
-                        onClick={() => scrollToSection('howItWorksSection')}
-                        className={styles.navLink}
-                    >
-                        Как это работает
-                    </NavLink>
+	return (
+		<section id="headerSection" className={styles.header}>
+			<nav className={styles.headerNav}>
+				<div className={styles.logoBar}>
+					<Logo />
+				</div>
+				<div className={styles.navLinks}>
+					<NavLink to="/#aboutSection" className={styles.navLink}>
+						О проекте
+					</NavLink>
 
-                    <NavLink
-                        to={isLoggedIn ? '/account' : '/signup'}
-                        className={styles.navLink}
-                    >
-                        Психологам
-                    </NavLink>
-                </div>
+					<NavLink
+						to="/#howItWorksSection"
+						className={styles.navLink}
+					>
+						Как это работает
+					</NavLink>
 
-                <div className={styles.navAuthbar}>
-                {isLoggedIn && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.logBtn}
-        buttonText="Выйти"
-        onClick={handleLogout}
-    />
-)}
+					<NavLink
+						to={isLoggedIn ? '/account-chat' : '/welcome'}
+						className={styles.navLink}
+					>
+						Психологам
+					</NavLink>
 
-{!isLoggedIn && location.pathname !== '/' && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.logBtn}
-        buttonText="Войти"
-        onClick={handleNav}
-    />
-)}
+					{!isLoggedIn && (
+						<NavLink to="/#faqSection" className={styles.navLink}>
+							Вопросы
+						</NavLink>
+					)}
+				</div>
 
-{!isLoggedIn && location.pathname === '/' && location.pathname !== '/welcome' && (
-    <Button
-        additionalStyles={styles.mainBtn}
-        buttonText="Обратиться за помощью"
-        onClick={() => scrollToSection('howItWorksSection')}
-    />
-)}
+				<div className={styles.navAuthbar}>
+					{isLoggedIn && location.pathname !== '/welcome' && (
+						<Button
+							additionalStyles={styles.logBtn}
+							buttonText="Выйти"
+							onClick={handleLogout}
+						/>
+					)}
 
-                </div>
-            </nav>
-        </section>
-    );
+					{!isLoggedIn &&
+						location.pathname !== '/' &&
+						(location.pathname === '/welcome' ||
+							location.pathname === '/signup') && (
+							<Button
+								additionalStyles={styles.logBtn}
+								buttonText="Войти"
+								onClick={handleNav}
+							/>
+						)}
+
+					{!isLoggedIn &&
+						location.pathname === '/' &&
+						location.pathname !== '/welcome' && (
+							<Button
+								additionalStyles={styles.mainBtn}
+								buttonText="Обратиться за помощью"
+								onClick={() => navigate('/#howItWorksSection')}
+							/>
+						)}
+					{!isLoggedIn &&
+						(location.pathname === '/signin' ||
+							location.pathname === '/forgotpassword' ||
+							location.pathname === '/waiting-room') && (
+							<Button
+								additionalStyles={styles.mainBtn}
+								buttonText="Обратиться за помощью"
+								onClick={() => navigate('/#howItWorksSection')}
+							/>
+						)}
+				</div>
+			</nav>
+		</section>
+	);
 });
 
 export default Header;

@@ -1,27 +1,32 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
 import cls from './PsychologistSide.module.scss';
-import ChatNumber from '../ChatNumber/ChatNumber';
+import ChatInfo from '../ChatInfo/ChatInfo';
 import Messages from '../Messages/Messages';
 
-function PsychologistSide() {
-	const navigate = useNavigate();
-	const handleCloseButtonClick = () => {
-		navigate('/account-chat');
-	};
+function PsychologistSide({ selectedChat, onSelect }) {
+	const archiveButtonRef = useRef(null);
 
 	return (
-		<div className={cls.container}>
-			<ChatNumber />
-			<Messages />
-			<button
-				className={cls.close}
-				type="button"
-				onClick={handleCloseButtonClick}
-			>
-				Завершить чат
-			</button>
-		</div>
+		<>
+			<div className={cls.row}>
+				<h1 className={cls.title}>Чат с пользователем </h1>
+				<button
+					ref={archiveButtonRef}
+					className={cls.close}
+					type="button"
+				>
+					Завершить чат
+				</button>
+			</div>
+			<div className={cls.messagesContainer}>
+				<ChatInfo selectedChat={selectedChat} />
+				<Messages
+					selectedChat={selectedChat}
+					onSelect={onSelect}
+					archiveButtonRef={archiveButtonRef}
+				/>
+			</div>
+		</>
 	);
 }
 

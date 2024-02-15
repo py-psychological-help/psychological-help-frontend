@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { eyeOff } from 'react-icons-kit/feather/eyeOff';
-import { eye } from 'react-icons-kit/feather/eye';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './LoginPage.module.scss';
 import Button from '../../components/buttonRegister/Button';
@@ -16,27 +13,8 @@ export default function LoginPage() {
 		handleSubmit,
 		formState: { isValid, errors },
 	} = useForm({ mode: 'onChange' });
-	const [type, setType] = useState('password');
-	const [icon, setIcon] = useState(eyeOff);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	// const userData = useSelector((state) => state.user.userData);
-	const { isSuccess, authToken } = useSelector((state) => state.auth);
 	const { message } = useSelector((state) => state.message);
-
-	function handlePasswordToggle() {
-		if (type === 'password') {
-			setIcon(eye);
-			setType('text');
-		} else {
-			setIcon(eyeOff);
-			setType('password');
-		}
-	}
-
-	useEffect(() => {
-		if (isSuccess && authToken) navigate('/account');
-	}, [navigate, dispatch, isSuccess, authToken]);
 
 	function onSubmit(data) {
 		dispatch(loginUser(data));
@@ -58,8 +36,6 @@ export default function LoginPage() {
 				<input
 					name="authEmail"
 					id="authEmail"
-					type="email"
-					placeholder="Почта"
 					className={
 						errors?.email
 							? `${cls.input} ${cls.inputWrong}`
@@ -67,9 +43,13 @@ export default function LoginPage() {
 					}
 					{...register('email', {
 						required: true,
-						minLength: 7,
+						minLength: 6,
 						maxLength: 50,
-						pattern: /[^@\s]+@[^@\s]+\.[^@\s]+/,
+						// ужасный паттерн для почты по требованиям к продукту
+						pattern:
+							/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
+						// более дружелюбный паттерн, который можно использовать
+						// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 					})}
 				/>
 				{errors?.email?.type === 'pattern' && (
@@ -85,13 +65,13 @@ export default function LoginPage() {
 					<p className={cls.error}>Слишком много символов</p>
 				)}
 
-				<h3 className={cls.inputCaption}>Пароль</h3>
+				<h3 className={cls.inputCaption}>
+					Пароль (заглавные и строчные буквы, цифры и символы)
+				</h3>
 				<div className={cls.passwordContainer}>
 					<input
 						name="authPassword"
 						id="authPassword"
-						type={type}
-						placeholder="Пароль"
 						className={
 							errors?.password
 								? `${cls.input} ${cls.inputWrong}`
@@ -105,17 +85,6 @@ export default function LoginPage() {
 								/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
 						})}
 					/>
-					<button
-						type="button"
-						className={
-							errors?.password
-								? `${cls.eyeBtn} ${cls.eyeBtnWrong}`
-								: cls.eyeBtn
-						}
-						onClick={handlePasswordToggle}
-					>
-						<Icon class={cls.eyePicture} icon={icon} size={25} />
-					</button>
 
 					{errors?.password?.type === 'pattern' && (
 						<p className={cls.error}>
@@ -132,20 +101,17 @@ export default function LoginPage() {
 						<p className={cls.error}>Пожалуйста, заполните поле</p>
 					)}
 				</div>
-				{errors?.password === undefined && (
-					<span className={cls.passwordSpan}>
-						Пароль должен содержать заглавные и строчные буквы,
-						цифры и специальные символы.
-					</span>
-				)}
+
 				<span className={cls.apiError}>{message}</span>
-				<div className={cls.button}>
-					<Button type="submit" name="Войти" />
+				<div className={cls.buttonContainer}>
+					<div className={cls.button}>
+						<Button type="submit" name="Войти" isValid={isValid} />
+					</div>
+					<Link to="/forgotpassword" className={cls.link}>
+						Забыли пароль?
+					</Link>
 				</div>
 			</form>
-			<Link to="/forgotpassword" className={cls.link}>
-				Забыли пароль?
-			</Link>
 		</div>
 	);
 }

@@ -1,4 +1,56 @@
-.messagesContainer {
-	width: 768px;
-	height: 955px;
+.messageItem {
+	border-radius: 25px;
+	position: relative;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: #343434;
+	margin: 0;
+	padding: 8px 24px 8px 24px;
+	width: auto;
+	text-wrap: wrap;
+}
+
+.me {
+	background-color: #fff;
+}
+
+.other {
+	background-color: #eeffff;
+}
+
+.messageItem:before,
+.messageItem:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	height: 25px;
+}
+
+.me:before {
+	right: -7px;
+	width: 20px;
+	background-color: #fff;
+	border-bottom-left-radius: 16px 14px;
+}
+
+.me:after {
+	right: -26px;
+	width: 26px;
+	background-color: #ebe7dc;
+	border-bottom-left-radius: 10px;
+}
+
+.other:before {
+	left: -7px;
+	width: 20px;
+	background-color: #eeffff;
+	border-bottom-right-radius: 16px 14px;
+}
+
+.other:after {
+	left: -26px;
+	width: 26px;
+	background-color: #ebe7dc;
+	border-bottom-right-radius: 10px;
 }

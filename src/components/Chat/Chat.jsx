@@ -1,29 +1,53 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useNavigate, useParams } from 'react-router-dom';
+import clsx from 'clsx';
 import cls from './Chat.module.scss';
 
-function Chat({ id, firstName, complaint }) {
+function Chat({ chat, onSelect, onDisable, className }) {
+	const navigate = useNavigate();
+	const { key: chatSecretKey } = useParams();
+	const handleClick = () => {
+		onSelect(chat);
+		navigate(`/psy-side/${chat.chat_secret_key}/`);
+	};
+
+	const getFirstFiveWords = (text) => {
+		return text.split(' ').slice(0, 5).join(' ');
+	};
+
 	return (
 		<div className={cls.chat}>
 			<div className={cls.chatInfo}>
-				<h2 className={cls.number}>{`Заявка №${id}`}</h2>
-				<p className={cls.name}>
-					{firstName.length > 0 ? `Имя: ${firstName}` : ''}
-				</p>
-				<p className={cls.problem}>{`Проблема: ${complaint}`}</p>
+				<div className={cls.row}>
+					<h2 className={cls.number}>{`Заявка №${chat.id}`}</h2>
+					<span
+						className={clsx(cls.divider, className, {
+							[cls.invisible]: !chat.client.first_name,
+						})}
+					>
+						&#183;
+					</span>
+					<p className={cls.name}>
+						{chat.client.first_name.length > 0
+							? `${chat.client.first_name}`
+							: ''}
+					</p>
+				</div>
+				<p className={cls.problem}>{`Проблема: ${getFirstFiveWords(
+					chat.client.complaint
+				)}`}</p>
 			</div>
-			<NavLink to="/psy-side" className={cls.chatButton}>
+			<button
+				className={clsx(cls.chatButton, className, {
+					[cls.disabled]: !chat.active,
+				})}
+				onClick={handleClick}
+				disabled={!chat.active}
+			>
 				Подключиться
-			</NavLink>
+			</button>
 		</div>
 	);
 }
-
-Chat.propTypes = {
-	id: PropTypes.number.isRequired,
-	firstName: PropTypes.string.isRequired,
-	complaint: PropTypes.string.isRequired,
-};
 
 export default Chat;

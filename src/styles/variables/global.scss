@@ -1,12 +1,19 @@
 :root {
 	--font-family-main: 'Montserrat', serif;
 	--font-family-secondary: 'Segoe Print', serif;
+	color: rgba(52, 52, 52, 1);
 }
 
 @font-face {
 	font-family: Montserrat;
 	font-weight: 400;
 	src: url('../../vendor/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+	font-family: Montserrat;
+	font-weight: 500;
+	src: url('../../vendor/fonts/Montserrat-Medium.ttf');
 }
 
 @font-face {

@@ -1,6 +1,6 @@
 const chats = [
 	{
-		client: {
+		psychologist: {
 			first_name: 'Анастасия',
 			complaint: 'Психосоматика / физическое здоровье',
 		},
@@ -8,10 +8,22 @@ const chats = [
 		chat_secret_key: '1',
 		active: true,
 		new: false,
+		messages: [
+			{
+				id: 1,
+				text: 'Здравствуйте!Чем могу помочь?',
+				is_author_me: false,
+			},
+			{
+				id: 2,
+				text: 'Здравствуйте!Грустно',
+				is_author_me: true,
+			},
+		],
 	},
 
 	{
-		client: {
+		psychologist: {
 			first_name: 'User',
 			complaint: 'Семейные проблемы',
 		},
@@ -19,16 +31,40 @@ const chats = [
 		chat_secret_key: '2',
 		active: false,
 		new: true,
+		messages: [
+			{
+				id: 1,
+				text: 'Здравствуйте!Чем могу помочь?',
+				is_author_me: true,
+			},
+			{
+				id: 1,
+				text: 'Здравствуйте!Проблема в семье',
+				is_author_me: false,
+			},
+		],
 	},
 	{
-		client: {
+		psychologist: {
 			first_name: '',
 			complaint: 'Я не знаю что со мной',
 		},
 		id: 44,
 		chat_secret_key: '3',
-		active: true,
-		new: false,
+		active: false,
+		new: true,
+		messages: [
+			{
+				id: 1,
+				text: 'Здравствуйте!Чем могу помочь?',
+				is_author_me: true,
+			},
+			{
+				id: 1,
+				text: 'Здравствуйте!Постоянно злой',
+				is_author_me: false,
+			},
+		],
 	},
 ];
 

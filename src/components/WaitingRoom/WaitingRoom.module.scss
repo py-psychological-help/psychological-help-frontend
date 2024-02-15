@@ -1,0 +1,83 @@
+.waitingRoom {
+	display: flex;
+	margin: 0 auto;
+	flex-direction: column;
+	gap: 10px;
+	height: 732px;
+	//   border: 1px red solid;
+	.headers {
+		display: flex;
+		margin: 0 auto;
+		flex-direction: column;
+		gap: 12px;
+		width: 843px;
+	}
+	.mainSubHeader {
+		font-weight: 600;
+		font-size: 32px;
+		line-height: 36px;
+		padding: 0;
+		margin-top: 100px;
+		margin-bottom: 0;
+		color: rgba(52, 52, 52, 1);
+		//   border: 1px red solid;
+		max-width: 588px;
+		align-self: center;
+		text-align: center;
+
+		&.boldLeft {
+			font-weight: 600;
+			align-self: start;
+		}
+	}
+
+	.mainText {
+		color: rgba(52, 52, 52, 1);
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 36px;
+		padding: 0;
+		margin: 0;
+		width: 734px;
+	}
+
+	.featuresBlock {
+		display: flex;
+		gap: 20px;
+		justify-content: center;
+		//   border: 1px red solid;
+	}
+
+	.featuresElement {
+		display: flex;
+		width: 410px;
+		height: 150px;
+		flex-direction: column;
+		border-radius: 20px;
+		background-color: rgba(255, 255, 255, 1);
+		padding: 10px;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 26px;
+		//   border: 1px red solid;
+	}
+
+	.featuresIcon {
+		width: 32px;
+		height: 32px;
+		background-size: contain;
+
+		&.peopleIcon {
+			background-image: url(../../images/Users.svg);
+		}
+
+		&.timeIcon {
+			background-image: url(../../images/time.svg);
+		}
+	}
+}
+
+.featuresText {
+	width: 381px;
+	color: rgba(52, 52, 52, 1);
+}

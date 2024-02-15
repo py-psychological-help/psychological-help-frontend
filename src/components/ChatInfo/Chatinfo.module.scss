@@ -1,36 +1,20 @@
 .info {
 	display: flex;
 	flex-direction: column;
-	border-radius: 20px;
-	background-color: #f6f6f6;
-	width: 198px;
-	height: 220px;
-	margin: 0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: #fff;
+	margin: 0 20px 0 0;
+	width: 197px;
+	height: 218px;
 }
 
-.number {
-	display: flex;
-	align-self: center;
-	margin: 13px 23px 25px;
-	gap: 12px;
-}
-
-.numberText {
+.title {
 	font-size: 18px;
 	font-weight: 600;
 	line-height: 1.2;
-	color: #212028;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-}
-
-.button {
-	border: none;
-	background-color: #f6f6f6;
-	width: 24px;
-	height: 24px;
-	display: flex;
+	color: #343434;
+	margin: 12px 12px 24px 12px;
 	padding: 0;
 }
 
@@ -44,7 +28,7 @@
 	font-weight: 400;
 	line-height: 1.25;
 	color: #6f6f6f;
-	margin: 0 0 8px 12px;
+	margin: 0 12px 8px 12px;
 	padding: 0;
 }
 
@@ -52,7 +36,11 @@
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.25;
-	color: #212028;
-	margin: 0 0 12px 12px;
+	color: #343434;
+	margin: 0 12px 12px 12px;
 	padding: 0;
+	max-width: 173px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: wrap;
 }

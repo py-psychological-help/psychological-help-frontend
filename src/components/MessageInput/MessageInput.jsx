@@ -1,40 +1,81 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef } from 'react';
+import clsx from 'clsx';
 import cls from './MessageInput.module.scss';
-import arrow from '../../images/arrow.svg';
 
-const MessageInput = ({ onSend }) => {
+const MessageInput = ({ onSend, className }) => {
 	const [text, setText] = useState('');
+	const [isError, setIsError] = useState(true);
+	const [errorMessage, setErrorMessage] = useState('');
+
+	const textareaRef = useRef(null);
+
+	const handleMessageInputChange = () => {
+		const textareaValue = textareaRef.current.value;
+		if (textareaValue.trim().length === 0) {
+			setIsError(true);
+			setErrorMessage('Сообщение не может быть пустым.');
+		} else if (textareaValue.length > 500) {
+			setIsError(true);
+			setErrorMessage('Сообщение не может превышать 500 символов.');
+		} else {
+			setIsError(false);
+			setErrorMessage('');
+		}
+	};
 
 	const handleSend = () => {
-		if (text.trim() !== '') {
-			onSend(text, 'me');
+		if (!isError && text.trim() !== '' && text.length <= 500) {
+			onSend(text);
 			setText('');
+			textareaRef.current.style.height = 'auto';
+		}
+	};
+
+	const handleKeyPress = (e) => {
+		if (e.key === 'Enter' && !e.shiftKey) {
+			e.preventDefault();
+			handleSend();
 		}
 	};
 
 	return (
-		<div className={cls.messageForm}>
-			<input
-				className={cls.messageInput}
-				type="text"
-				value={text}
-				onChange={(e) => setText(e.target.value)}
-				placeholder="Сообщение"
-			/>
+		<form className={cls.messageForm} noValidate>
+			<div className={cls.container}>
+				<textarea
+					ref={textareaRef}
+					name="messageInput"
+					value={text}
+					onChange={(e) => {
+						setText(e.target.value);
+						handleMessageInputChange();
+					}}
+					onKeyDown={handleKeyPress}
+					className={clsx(cls.messageInput, className, {
+						[cls.errorInput]: isError,
+					})}
+				/>
+				{isError && (
+					<span
+						className={clsx(cls.errorText, className, {
+							[cls.visible]: isError,
+						})}
+					>
+						{errorMessage}
+					</span>
+				)}
+			</div>
 			<button
 				type="button"
-				className={cls.submitButton}
+				className={clsx(cls.submitButton, className, {
+					[cls.disabled]: isError,
+				})}
 				onClick={handleSend}
+				disabled={isError}
 			>
-				<img src={arrow} alt="стрелка" className={cls.arrow} />
+				Отправить
 			</button>
-		</div>
+		</form>
 	);
-};
-
-MessageInput.propTypes = {
-	onSend: PropTypes.func.isRequired,
 };
 
 export default MessageInput;

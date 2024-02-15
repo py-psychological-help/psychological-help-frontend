@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from './authAsyncActions';
+import {
+	registerUser,
+	activateUser,
+	loginUser,
+	requestPasswordChange,
+	resetPasswordChange,
+} from './authAsyncActions';
 
 const authToken = localStorage.getItem('authToken')
 	? localStorage.getItem('authToken')
@@ -7,7 +13,7 @@ const authToken = localStorage.getItem('authToken')
 
 const initialState = {
 	isLoading: false,
-	authToken, // jwt
+	authToken,
 	error: null,
 	isSuccess: false,
 };
@@ -15,7 +21,14 @@ const initialState = {
 const authSlice = createSlice({
 	name: 'auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		logout: (state) => {
+			state.error = null;
+			state.isLoading = false;
+			state.isSuccess = false;
+			state.authToken = null;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(registerUser.pending, (state) => {
@@ -30,6 +43,18 @@ const authSlice = createSlice({
 				state.isLoading = false;
 				state.error = action.payload;
 			}) // Нужно ли разделять разные редьюсеры?
+			.addCase(activateUser.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(activateUser.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(activateUser.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
 			.addCase(loginUser.pending, (state) => {
 				state.error = undefined;
 				state.isLoading = true;
@@ -40,6 +65,30 @@ const authSlice = createSlice({
 				state.authToken = action.payload.auth_token; // Поправить в будущем snake_case
 			})
 			.addCase(loginUser.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(requestPasswordChange.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(requestPasswordChange.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(requestPasswordChange.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.payload;
+			})
+			.addCase(resetPasswordChange.pending, (state) => {
+				state.error = undefined;
+				state.isLoading = true;
+			})
+			.addCase(resetPasswordChange.fulfilled, (state) => {
+				state.isLoading = false;
+				state.isSuccess = true;
+			})
+			.addCase(resetPasswordChange.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			});

@@ -1,10 +1,10 @@
 .container {
 	max-width: 521px;
-	margin: 0 auto;
+	margin: 108px auto 232px 300px;
 }
 
 .header {
-	margin: 80px 0 32px;
+	margin: 0 0 32px;
 	font-size: 40px;
 	font-weight: 600;
 	line-height: 44px;
@@ -16,7 +16,7 @@
 }
 
 .inputCaption {
-	color: #212028;
+	color: rgba(52, 52, 52, 1);
 	margin: 0 0 8px;
 	font-size: 14px;
 	font-weight: 400;
@@ -24,16 +24,21 @@
 }
 
 .input {
-	margin: 0 0 4px;
+	margin: 0 0 5px;
 	width: calc(100% - 40px);
 	height: 64px;
-	border-radius: 20px;
+	border-radius: 10px;
 	padding: 0 20px;
-	border: 1px solid #212028;
+	border: 1px solid #a9c6c5;
 	color: #6f6f6f;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
+}
+
+.input:focus {
+	outline-style: solid;
+	outline-color: #a9c6c5;
 }
 
 .inputWrong {
@@ -41,7 +46,12 @@
 	color: #ff0909;
 }
 
+.inputWrong::placeholder {
+	color: #ff0909;
+}
+
 .inputWrong:focus {
+	outline-style: solid;
 	outline-color: #ff0909;
 }
 
@@ -50,7 +60,7 @@
 }
 
 .error {
-	margin: -16px 0 0;
+	margin: -18px 0 0;
 	color: #ff0909;
 }
 
@@ -83,21 +93,28 @@
 
 .link {
 	display: block;
-	margin-bottom: 80px;
 	color: #212028;
 	font-size: 16px;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: 24px;
 	text-decoration-line: underline;
 }
 
-.button {
+.buttonContainer {
+	height: max-content;
 	margin: 4px 0 12px;
+	display: flex;
+	flex-direction: row;
+	gap: 32px;
+	align-items: center;
+}
+
+.button {
 	width: 131px;
 	height: 48px;
 }
 
 .apiError {
-	margin: 20px 0 0;
+	margin: 26px 0 0;
 	color: #ff0909;
 }

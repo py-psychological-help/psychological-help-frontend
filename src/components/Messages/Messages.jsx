@@ -1,41 +1,92 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import cls from './Messages.module.scss';
 import MessageInput from '../MessageInput/MessageInput';
+import Message from '../Message/Message';
+import { sendChatLink } from '../../slices/chatsSlice/sendChatLinkAction';
 
-const Messages = () => {
+function Messages({ selectedChat, archiveButtonRef }) {
+	const [ws, setWs] = useState(null);
+	const [messages, setMessages] = useState([]);
+	const [error, setError] = useState(false);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { key: chatSecretKey } = useParams();
+	const token = useSelector((state) => state.auth.authToken);
+	const messagesListRef = useRef(null);
+	const chatNew = selectedChat?.new;
+
+	useEffect(() => {
+		// if (chatNew) {
+		//     dispatch(sendChatLink(chatSecretKey));
+		//     console.log('Новый чат');
+		// }
+		const socket = new WebSocket(
+			`wss://dpogovorim.ru/ws/chat/${chatSecretKey}/?token=${token}`
+		);
+
+		socket.onopen = () => {
+			console.log('Подключился к вебсокету');
+		};
+
+		socket.onmessage = (e) => {
+			const data = JSON.parse(e.data);
+
+			if (data.error) {
+				setError(true);
+				return;
+			}
+			setMessages((prevState) => [...prevState, JSON.parse(e.data)]);
+		};
+
+		archiveButtonRef.current.addEventListener('click', () => {
+			socket.send(JSON.stringify({ action: 'archive_chat' }));
+			setTimeout(() => navigate('/account-chat'), 0);
+		});
+
+		setWs(socket);
+
+		return () => {
+			socket.close();
+		};
+	}, [token, chatSecretKey, chatNew, dispatch, archiveButtonRef, navigate]);
+
+	useEffect(() => {
+		if (messagesListRef.current) {
+			messagesListRef.current.scrollTop =
+				messagesListRef.current.scrollHeight;
+		}
+	}, [messages]);
+
+	const sendMessage = (message) => {
+		if (ws) {
+			ws.send(message);
+			console.log(typeof message);
+			console.log('Отправил сообщение', message);
+		}
+	};
+
 	return (
 		<div className={cls.messagesContainer}>
-			<ul className={cls.messagesList}>
-				<li className={`${cls.messageItem} ${cls.me}`}>
-					<p className={cls.chatBubble}>
-						Рад приветствовать тебя на нашей онлайн-платформе для
-						консультаций. Меня зовут Иван Иванов( краткая информация
-						о специализации психолога и опыте работы) Если у вас
-						есть какие-то предпочтения относительно формата нашего
-						взаимодействия или если есть что-то, что вы хотели бы
-						обсудить в первую очередь, не стесняйтесь сообщить мне.
-						Ваш опыт и ваши чувства имеют первостепенное значение, и
-						я готов адаптироваться к вашим потребностям.
-					</p>
-				</li>
-
-				<li className={`${cls.messageItem} ${cls.other}`}>
-					<p className={cls.chatBubble}>
-						Здравствуйте. (клиент описывает свою проблему и
-						спрашивает как проходит сессия)
-					</p>
-				</li>
-
-				{/* {messages.map((message) => (
-          <div key={message.id} className={`chatBubble ${message.sender}`}>
-            {message.text}
-          </div>
-        ))} */}
-
-				<MessageInput />
-			</ul>
+			{!error ? (
+				<>
+					<ul ref={messagesListRef} className={cls.messagesList}>
+						{messages.map((data) => (
+							<Message
+								key={data.date}
+								text={data.message}
+								isAuthorMe={data.psy}
+							/>
+						))}
+					</ul>
+					<MessageInput onSend={sendMessage} />
+				</>
+			) : (
+				<h1>Чат уже занят</h1>
+			)}
 		</div>
 	);
-};
+}
 
 export default Messages;
