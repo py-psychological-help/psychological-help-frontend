@@ -39,10 +39,11 @@ jobs:
                   host: ${{ secrets.HOST }}
                   username: ${{ secrets.USER }}
                   password: ${{ secrets.PASSWORD }}
+                  timeout: 120s
                   script: |
                       cd psyhelp
                       # Выполняет pull образов с Docker Hub
                       sudo docker compose -f docker-compose.production.yml pull frontend
                       # Перезапускает все контейнеры в Docker Compose
-                      sudo docker compose -f docker-compose.production.yml down
+                      sudo docker compose -f docker-compose.production.yml down frontend
                       sudo docker compose -f docker-compose.production.yml up -d
