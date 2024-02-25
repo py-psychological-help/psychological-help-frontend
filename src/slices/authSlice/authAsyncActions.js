@@ -31,7 +31,13 @@ export const registerUser = createAsyncThunk(
 			if (error.response && error.response.data) {
 				// тут будут тексты ошибок от бэка, когда они их добавят
 				// const message = error.response.data.non_field_errors.toString();
-				const message = 'Произошла ошибка';
+				let message;
+
+				if (error.response.data.email) {
+					message = error.response.data.email;
+				} else {
+					message = 'Произошла ошибка';
+				}
 
 				thunkAPI.dispatch(setMessage(message));
 			}

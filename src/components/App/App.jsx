@@ -19,6 +19,7 @@ import ForgotPassword from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
 import NewPassword from '../../pages/ResetPasswordPage/ResetPasswordPage';
 import WaitingRoom from '../WaitingRoom/WaitingRoom';
 import ActivateUserPage from '../../pages/ActivateUserPage/ActivateUserPage';
+import SuccessRegisterPage from '../../pages/SuccessRegisterPage/SuccessRegisterPage';
 
 const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -60,6 +61,10 @@ const App = () => {
 					<Route element={<ClientSide />} path="/client-side/:key/" />
 					<Route element={<LoginPage />} path="/signin" />
 					<Route element={<RegisterPage />} path="/signup" />
+					<Route
+						element={<SuccessRegisterPage />}
+						path="/success-register"
+					/>
 					<Route
 						element={<ActivateUserPage />}
 						path="/activate/:uid/:token"

@@ -23,7 +23,8 @@
 		"react/no-unescaped-entities": "off",
 		"react/button-has-type": "off",
 		"no-unused-vars": "warn",
-		"arrow-body-style": "off"
+		"arrow-body-style": "off",
+		"no-nested-ternary": "off"
 	},
 	"overrides": [
 		{

@@ -17,7 +17,7 @@ export default function RegisterPage() {
 	} = useForm({ mode: 'onChange' });
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const isSuccess = useSelector((state) => state.auth.isSuccess);
+	const { isSuccess } = useSelector((state) => state.auth);
 	const { message } = useSelector((state) => state.message);
 	const [type, setType] = useState('text');
 
@@ -26,7 +26,7 @@ export default function RegisterPage() {
 	const maxDate = date.toISOString().slice(0, 10);
 
 	useEffect(() => {
-		if (isSuccess) navigate('/signin');
+		if (isSuccess) navigate('/success-register');
 	}, [navigate, dispatch, isSuccess]);
 
 	function onSubmit(data) {
