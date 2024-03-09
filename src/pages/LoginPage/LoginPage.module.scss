@@ -59,8 +59,17 @@
 	margin-bottom: 20px;
 }
 
+.label {
+	position: relative;
+}
+
 .error {
-	margin: -18px 0 0;
+	margin: 0;
+	position: absolute;
+	bottom: 4px;
+	left: 0;
+	font-size: 12px;
+	line-height: 14px;
 	color: #ff0909;
 }
 

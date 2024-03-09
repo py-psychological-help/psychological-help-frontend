@@ -39,7 +39,7 @@
 		flex-direction: column;
 		margin: 0;
 		padding: 0;
-		padding: 21px 0 0 0;
+		padding: 21px 0 0;
 	}
 
 	.toggle {
@@ -54,7 +54,7 @@
 	.plus {
 		display: inline-block;
 		transition: transform 0.3s ease;
-		margin: 0 0 0 0;
+		margin: 0;
 		padding: 0;
 		transform: rotate(45deg);
 	}
@@ -64,8 +64,8 @@
 	}
 
 	.faqElement {
-		margin: 0 0 0 0;
-		padding: 29px 0 0 0;
+		margin: 0;
+		padding: 29px 0 0;
 		width: 846px;
 	}
 
@@ -88,15 +88,16 @@
 	}
 
 	.faqAnswer {
-		max-height: 0;
-		overflow: hidden;
-		transition: max-height 0.4s ease-in-out;
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease-out;
 		margin: 0;
 		padding: 0;
 		border-bottom: 1px black solid;
 	}
-
+	
 	.faqAnswerText {
+		overflow: hidden;
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 20px;
@@ -104,9 +105,10 @@
 		padding: 0;
 		color: rgba(52, 52, 52, 1);
 	}
-
+	
 	.expandedAnswer {
+		grid-template-rows: 1fr;
 		max-height: 100px;
-		border: transparent;
+		border-bottom: none;
 	}
 }

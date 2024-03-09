@@ -32,75 +32,83 @@ export default function LoginPage() {
 				onSubmit={handleSubmit(onSubmit)}
 				noValidate
 			>
-				<h3 className={cls.inputCaption}>Почта</h3>
-				<input
-					name="authEmail"
-					id="authEmail"
-					className={
-						errors?.email
-							? `${cls.input} ${cls.inputWrong}`
-							: cls.input
-					}
-					{...register('email', {
-						required: true,
-						minLength: 6,
-						maxLength: 50,
-						// ужасный паттерн для почты по требованиям к продукту
-						pattern:
-							/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
-						// более дружелюбный паттерн, который можно использовать
-						// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-					})}
-				/>
-				{errors?.email?.type === 'pattern' && (
-					<p className={cls.error}>Не соответствует формату почты</p>
-				)}
-				{errors?.email?.type === 'required' && (
-					<p className={cls.error}>Пожалуйста, заполните поле</p>
-				)}
-				{errors?.email?.type === 'minLength' && (
-					<p className={cls.error}>Слишком мало символов</p>
-				)}
-				{errors?.email?.type === 'maxLength' && (
-					<p className={cls.error}>Слишком много символов</p>
-				)}
-
-				<h3 className={cls.inputCaption}>
-					Пароль (заглавные и строчные буквы, цифры и символы)
-				</h3>
-				<div className={cls.passwordContainer}>
+				<label className={cls.label} htmlFor="authEmail">
+					<h3 className={cls.inputCaption}>Почта</h3>
 					<input
-						name="authPassword"
-						id="authPassword"
+						name="authEmail"
+						id="authEmail"
 						className={
-							errors?.password
+							errors?.email
 								? `${cls.input} ${cls.inputWrong}`
 								: cls.input
 						}
-						{...register('password', {
+						{...register('email', {
 							required: true,
-							minLength: 8,
-							maxLength: 20,
+							minLength: 6,
+							maxLength: 50,
+							// ужасный паттерн для почты по требованиям к продукту
 							pattern:
-								/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
+								/^(?!.*[._-]{2})[a-zA-Z0-9]+([._-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/,
+							// более дружелюбный паттерн, который можно использовать
+							// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
 						})}
 					/>
-
-					{errors?.password?.type === 'pattern' && (
+					{errors?.email?.type === 'pattern' && (
 						<p className={cls.error}>
-							Не соответствует требованиям к паролю
+							Не соответствует формату почты
 						</p>
 					)}
-					{errors?.password?.type === 'minLength' && (
-						<p className={cls.error}>Слишком мало символов</p>
-					)}
-					{errors?.password?.type === 'maxLength' && (
-						<p className={cls.error}>Слишком много символов</p>
-					)}
-					{errors?.password?.type === 'required' && (
+					{errors?.email?.type === 'required' && (
 						<p className={cls.error}>Пожалуйста, заполните поле</p>
 					)}
-				</div>
+					{errors?.email?.type === 'minLength' && (
+						<p className={cls.error}>Слишком мало символов</p>
+					)}
+					{errors?.email?.type === 'maxLength' && (
+						<p className={cls.error}>Слишком много символов</p>
+					)}
+				</label>
+
+				<label className={cls.label} htmlFor="authPassword">
+					<h3 className={cls.inputCaption}>
+						Пароль (заглавные и строчные буквы, цифры и символы)
+					</h3>
+					<div className={cls.passwordContainer}>
+						<input
+							name="authPassword"
+							id="authPassword"
+							className={
+								errors?.password
+									? `${cls.input} ${cls.inputWrong}`
+									: cls.input
+							}
+							{...register('password', {
+								required: true,
+								minLength: 8,
+								maxLength: 20,
+								pattern:
+									/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-])/,
+							})}
+						/>
+
+						{errors?.password?.type === 'pattern' && (
+							<p className={cls.error}>
+								Не соответствует требованиям к паролю
+							</p>
+						)}
+						{errors?.password?.type === 'minLength' && (
+							<p className={cls.error}>Слишком мало символов</p>
+						)}
+						{errors?.password?.type === 'maxLength' && (
+							<p className={cls.error}>Слишком много символов</p>
+						)}
+						{errors?.password?.type === 'required' && (
+							<p className={cls.error}>
+								Пожалуйста, заполните поле
+							</p>
+						)}
+					</div>
+				</label>
 
 				<span className={cls.apiError}>{message}</span>
 				<div className={cls.buttonContainer}>
