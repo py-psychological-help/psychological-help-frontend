@@ -3,8 +3,10 @@ import style from './SentDocuments.module.scss';
 
 const SentDocuments = ({ documents }) => {
 	function extractDocName(url) {
-		const lastSlashIndex = url.lastIndexOf('/');
-		return url.slice(lastSlashIndex + 1);
+		// const lastSlashIndex = url.lastIndexOf('/');
+		// return url.slice(lastSlashIndex + 1);
+		const docName = url.match(/\/([^/?#]+)\.jpeg/);
+		return `${docName[1]}.jpeg`;
 	}
 
 	return (
