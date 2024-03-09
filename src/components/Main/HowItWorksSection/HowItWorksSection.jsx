@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import { AskForHelpReq } from '../../../slices/clientSlice/helpReqAsyncActions';
 import { clearMessage } from '../../../slices/messageSlice';
 import { helpReqActions } from '../../../slices/clientSlice/helpReqSlice';
 
-const HowItWorksSection = () => {
+const HowItWorksSection = memo(() => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { isLoading, isSuccess } = useSelector((state) => state.helpReq);
@@ -189,6 +189,6 @@ const HowItWorksSection = () => {
 			</div>
 		</section>
 	);
-};
+});
 
 export default HowItWorksSection;

@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import styles from './AccountInfo.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
 import { updateCurrentUser } from '../../slices/userSlice/userAsyncActions';
 
-const AccountInfo = () => {
+const AccountInfo = memo(() => {
 	const userData = useSelector((state) => state.user.userData);
 	const [isEditing, setIsEditing] = useState(false);
 	const [userFormData, setUserFormData] = useState({
@@ -154,6 +154,6 @@ const AccountInfo = () => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default AccountInfo;

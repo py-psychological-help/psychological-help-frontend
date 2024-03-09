@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './Principles.module.scss';
 import Principle from '../Principle/Principle';
 import principles from '../../utils/principles';
 
-function Principles() {
+const Principles = memo(() => {
 	return (
 		<main className={cls.principles}>
 			<h1 className={cls.title}>Памятка</h1>
@@ -18,6 +18,6 @@ function Principles() {
 			</ul>
 		</main>
 	);
-}
+});
 
 export default Principles;

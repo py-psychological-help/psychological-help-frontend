@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,7 +8,7 @@ import passwordValidation from '../../utils/passwordValidation';
 import { resetPasswordChange } from '../../slices/authSlice/authAsyncActions';
 import { clearMessage } from '../../slices/messageSlice';
 
-export default function ResetPasswordPage() {
+const ResetPasswordPage = memo(() => {
 	const {
 		register,
 		handleSubmit,
@@ -83,4 +83,6 @@ export default function ResetPasswordPage() {
 			</form>
 		</div>
 	);
-}
+});
+
+export default ResetPasswordPage;

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import style from './Documents.module.scss';
 import AccountMenu from '../AccountMenu/AccountMenu';
 import DocumentsUploader from '../DocumentsUploader/DocumentsUploader';
 import SentDocuments from '../SentDocuments/SentDocuments';
 import api from '../DocumentsUploader/api';
 
-const Documents = () => {
+const Documents = memo(() => {
 	const [sentDocuments, setSentDocuments] = useState([]);
 
 	const handleSuccessfulUpload = (docs) => {
@@ -54,6 +54,6 @@ const Documents = () => {
 			)}
 		</div>
 	);
-};
+});
 
 export default Documents;

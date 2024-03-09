@@ -24,7 +24,7 @@ function DocumentsUploader({ onSuccessfulUpload }) {
 		});
 	};
 
-	const handleUpload = () => {
+	const handleUpload = useCallback(() => {
 		if (!checkboxChecked) {
 			return;
 		}
@@ -40,7 +40,7 @@ function DocumentsUploader({ onSuccessfulUpload }) {
 		Promise.all(uploadedDocs)
 			.then(onSuccessfulUpload)
 			.catch((e) => console.log(e));
-	};
+	}, [checkboxChecked, docsToUpload, onSuccessfulUpload]);
 
 	const onDrop = useCallback((droppedFiles) => {
 		setDocsToUpload((files) => [...files, ...droppedFiles]);

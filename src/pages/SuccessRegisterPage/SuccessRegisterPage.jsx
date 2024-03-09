@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import cls from './SucessRegisterPage.module.scss';
 
-export default function SucessRegisterPage() {
+const SucessRegisterPage = memo(() => {
 	return (
 		<div className={cls.container}>
 			<h1 className={cls.header}>Регистрация прошла успешно!</h1>
@@ -10,4 +11,6 @@ export default function SucessRegisterPage() {
 			</p>
 		</div>
 	);
-}
+});
+
+export default SucessRegisterPage;

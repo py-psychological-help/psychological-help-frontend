@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import clsx from 'clsx';
 import cls from './Chats.module.scss';
@@ -6,7 +6,7 @@ import Chat from '../Chat/Chat';
 // import chats from '../../utils/chats';
 import { fetchChats } from '../../slices/chatsSlice/chatsActions';
 
-function Chats({ className, onSelect }) {
+const Chats = ({ className, onSelect }) => {
 	const [isVerified, setIsVerified] = useState(false);
 	const selectChats = useSelector((state) => state.chats.chats);
 	const dispatch = useDispatch();
@@ -50,12 +50,12 @@ function Chats({ className, onSelect }) {
 	}
 
 	const isActiveChatExist = selectChats.some((chat) => chat.active);
-	const handleConnectBtnDisabled = () => {
+	const handleConnectBtnDisabled = useCallback(() => {
 		if (isActiveChatExist && isFiltered === 'new') {
 			return true;
 		}
 		return false;
-	};
+	}, [isActiveChatExist, isFiltered]);
 
 	return (
 		<main className={cls.chats}>
@@ -126,6 +126,6 @@ function Chats({ className, onSelect }) {
 			)}
 		</main>
 	);
-}
+};
 
 export default Chats;

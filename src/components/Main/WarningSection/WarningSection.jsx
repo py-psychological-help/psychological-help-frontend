@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './WarningSection.module.scss';
 
-function WarningSection() {
+const WarningSection = memo(() => {
 	return (
 		<section className={styles.warningSection}>
 			<h2 className={`${styles.mainSubHeader} ${styles.boldLeft}`}>
@@ -54,6 +54,6 @@ function WarningSection() {
 			</div>
 		</section>
 	);
-}
+});
 
 export default WarningSection;

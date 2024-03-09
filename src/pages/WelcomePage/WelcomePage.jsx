@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import cls from './WelcomePage.module.scss';
 import Button from '../../components/buttonRegister/Button';
 
-export default function WelcomePage() {
+const WelcomePage = memo(() => {
 	const isValid = true;
 
 	return (
@@ -53,4 +53,6 @@ export default function WelcomePage() {
 			</div>
 		</section>
 	);
-}
+});
+
+export default WelcomePage;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { registerUser } from '../../slices/authSlice/authAsyncActions';
 import { clearMessage } from '../../slices/messageSlice';
 import passwordValidation from '../../utils/passwordValidation';
 
-export default function RegisterPage() {
+const RegisterPage = memo(() => {
 	const {
 		register,
 		handleSubmit,
@@ -241,4 +241,6 @@ export default function RegisterPage() {
 			</form>
 		</div>
 	);
-}
+});
+
+export default RegisterPage;

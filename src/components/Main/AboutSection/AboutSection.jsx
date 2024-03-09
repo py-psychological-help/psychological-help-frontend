@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './AboutSection.module.scss';
 import Button from '../../buttonHeader/Button';
 
@@ -9,7 +9,7 @@ const scrollToSection = (sectionId) => {
 	}
 };
 
-function AboutSection() {
+const AboutSection = memo(() => {
 	return (
 		<section id="aboutSection" className={styles.aboutSection}>
 			<div className={styles.aboutBlock}>
@@ -68,6 +68,6 @@ function AboutSection() {
 			</div>
 		</section>
 	);
-}
+});
 
 export default AboutSection;

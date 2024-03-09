@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './WorkWithUsSection.module.scss';
 import Button from '../../buttonHeader/Button';
 
-function WorkWithUsSection() {
+const WorkWithUsSection = memo(() => {
 	return (
 		<section className={styles.warningSection}>
 			<h2 className={styles.mainSubHeader}>Психологам</h2>
@@ -47,6 +47,6 @@ function WorkWithUsSection() {
 			</Link>
 		</section>
 	);
-}
+});
 
 export default WorkWithUsSection;

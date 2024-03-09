@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 import cls from './Chat.module.scss';
 
-function Chat({ chat, onSelect, onDisable, className }) {
+const Chat = memo(({ chat, onSelect, onDisable, className }) => {
 	const navigate = useNavigate();
 	const { key: chatSecretKey } = useParams();
 	const handleClick = () => {
@@ -48,6 +48,6 @@ function Chat({ chat, onSelect, onDisable, className }) {
 			</button>
 		</div>
 	);
-}
+});
 
 export default Chat;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './MainSection.module.scss';
 
-function MainSection() {
+const MainSection = memo(() => {
 	return (
 		<section className={styles.mainSection}>
 			<h1 className={styles.mainHeader}>Давай поговорим</h1>
@@ -17,6 +17,6 @@ function MainSection() {
 			</div>
 		</section>
 	);
-}
+});
 
 export default MainSection;

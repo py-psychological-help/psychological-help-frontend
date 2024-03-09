@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoImage from '../../images/logoImage.svg';
 import styles from './Logo.module.scss';
 
-const Logo = () => {
+const Logo = memo(() => {
 	return (
 		<div className={styles.logoContainer}>
 			<NavLink to="/#headerSection">
@@ -11,6 +11,6 @@ const Logo = () => {
 			</NavLink>
 		</div>
 	);
-};
+});
 
 export default Logo;

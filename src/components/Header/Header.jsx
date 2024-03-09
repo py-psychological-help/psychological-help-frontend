@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { userActions } from '../../slices/userSlice/userSlice';
@@ -21,11 +21,11 @@ const Header = memo(() => {
 		}
 	};
 
-	const handleLogout = () => {
+	const handleLogout = useCallback(() => {
 		dispatch(userActions.logout());
 		dispatch(authActions.logout());
 		navigate('/');
-	};
+	}, [dispatch, navigate]);
 
 	return (
 		<section id="headerSection" className={styles.header}>

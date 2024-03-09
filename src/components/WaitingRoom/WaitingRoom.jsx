@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './WaitingRoom.module.scss';
 
-const WaitingRoom = () => {
+const WaitingRoom = memo(() => {
 	return (
 		<section id="waitingRoom" className={styles.waitingRoom}>
 			<div className={styles.headers}>
@@ -38,6 +38,6 @@ const WaitingRoom = () => {
 			</div>
 		</section>
 	);
-};
+});
 
 export default WaitingRoom;

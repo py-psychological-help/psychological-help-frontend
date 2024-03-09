@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cls from './Chatinfo.module.scss';
 
-function ChatInfo({ selectedChat }) {
+const ChatInfo = memo(({ selectedChat }) => {
 	return (
 		<div className={cls.info}>
 			<h2 className={cls.title}>{`Заявка №${selectedChat?.id}`}</h2>
@@ -11,6 +11,6 @@ function ChatInfo({ selectedChat }) {
 			<p className={cls.text}>{selectedChat?.client.complaint}</p>
 		</div>
 	);
-}
+});
 
 export default ChatInfo;

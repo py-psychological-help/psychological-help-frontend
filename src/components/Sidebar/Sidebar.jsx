@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
 import userIcon from '../../images/User_01.svg';
 import chatIcon from '../../images/Chat_Circle_Dots.svg';
 import fileIcon from '../../images/Files.svg';
 
-const Sidebar = () => {
+const Sidebar = memo(() => {
 	const location = useLocation();
 	return (
 		<div className={styles.sidebar}>
@@ -55,6 +55,6 @@ const Sidebar = () => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default Sidebar;

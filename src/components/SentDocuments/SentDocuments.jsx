@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import style from './SentDocuments.module.scss';
 
-const SentDocuments = ({ documents }) => {
-	function extractDocName(url) {
+const SentDocuments = memo(({ documents }) => {
+	const extractDocName = useCallback((url) => {
 		// const lastSlashIndex = url.lastIndexOf('/');
 		// return url.slice(lastSlashIndex + 1);
 		const docName = url.match(/\/([^/?#]+)\.jpeg/);
-		return `${docName[1]}.jpeg`;
-	}
+		return `${docName[1]}.jpg`;
+	}, []);
 
 	return (
 		<div className={style.body}>
@@ -45,6 +45,6 @@ const SentDocuments = ({ documents }) => {
 			</div>
 		</div>
 	);
-};
+});
 
 export default SentDocuments;

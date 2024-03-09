@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './ActivateUserPage.module.scss';
@@ -6,7 +6,7 @@ import { activateUser } from '../../slices/authSlice/authAsyncActions';
 import { clearMessage } from '../../slices/messageSlice';
 import Button from '../../components/buttonRegister/Button';
 
-export default function ActivateUserPage() {
+const ActivateUserPage = memo(() => {
 	const dispatch = useDispatch();
 	const [isLoading, setIsLoading] = useState(false);
 	const { message } = useSelector((state) => state.message);
@@ -62,4 +62,6 @@ export default function ActivateUserPage() {
 			</Link>
 		</div>
 	);
-}
+});
+
+export default ActivateUserPage;

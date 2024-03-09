@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import styles from './FaqSection.module.scss';
 import plus from '../../../images/plus.svg';
 
-function FaqSection() {
+const FaqSection = memo(() => {
 	const [expanded1, setExpanded1] = useState(false);
 	const [expanded2, setExpanded2] = useState(false);
 	const [expanded3, setExpanded3] = useState(false);
@@ -244,6 +244,6 @@ function FaqSection() {
 			</div>
 		</section>
 	);
-}
+});
 
 export default FaqSection;

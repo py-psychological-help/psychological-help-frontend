@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import cls from './ForgotPasswordPage.module.scss';
@@ -6,7 +6,7 @@ import Button from '../../components/buttonRegister/Button';
 import { requestPasswordChange } from '../../slices/authSlice/authAsyncActions';
 import { clearMessage } from '../../slices/messageSlice';
 
-export default function ForgotPassword() {
+const ForgotPassword = memo(() => {
 	const {
 		register,
 		handleSubmit,
@@ -78,4 +78,6 @@ export default function ForgotPassword() {
 			</form>
 		</div>
 	);
-}
+});
+
+export default ForgotPassword;

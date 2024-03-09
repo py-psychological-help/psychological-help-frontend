@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ChatNumber.module.scss';
 import arrowDown from '../../images/arrow-down.svg';
 import ChatInfo from '../ChatInfo/ChatInfo';
-import chat from '../Chat/Chat';
 
 function ChatNumber(props) {
 	const [isChatInfoOpened, setIsChatInfoOpened] = useState(false);
@@ -11,10 +10,10 @@ function ChatNumber(props) {
 	// eslint-disable-next-line react/prop-types
 	const { className, id, selectedChat } = props;
 
-	const handleChatNumberClick = () => {
+	const handleChatNumberClick = useCallback(() => {
 		setIsChatInfoOpened(true);
 		setIsInvisible(true);
-	};
+	}, []);
 
 	return (
 		<>

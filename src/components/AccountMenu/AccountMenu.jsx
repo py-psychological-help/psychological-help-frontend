@@ -1,7 +1,8 @@
 import { NavLink, useLocation } from 'react-router-dom';
+import { memo } from 'react';
 import styles from './AccountMenu.module.scss';
 
-const AccountMenu = () => {
+const AccountMenu = memo(() => {
 	const location = useLocation();
 	return (
 		<div className={styles.formsBody}>
@@ -34,6 +35,6 @@ const AccountMenu = () => {
 			</ul>
 		</div>
 	);
-};
+});
 
 export default AccountMenu;

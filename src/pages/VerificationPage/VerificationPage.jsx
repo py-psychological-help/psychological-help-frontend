@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import cls from './VerificationPage.module.scss';
 
-export default function HowItWorksPage() {
+const HowItWorksPage = memo(() => {
 	function handleUploadSubmit() {
 		console.log('загружено фото');
 	}
@@ -80,4 +80,6 @@ export default function HowItWorksPage() {
 			</form>
 		</div>
 	);
-}
+});
+
+export default HowItWorksPage;
